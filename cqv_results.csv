@@ -1,0 +1,152 @@
+ticker,name,f1,f2,f3,f4,f5,cqv,status
+MA,Mastercard Incorporated,10.0,9.0,9.33,9.8,9.5,9.6,Success
+V,Visa Inc.,9.89,9.0,9.33,9.8,9.5,9.57,Success
+AAPL,Apple Inc.,9.65,9.25,9.5,9.7,9.5,9.55,Success
+ASML,ASML Holding N.V. - New York Re,9.65,9.5,8.63,9.8,9.8,9.54,Success
+AVGO,Broadcom Inc.,9.86,9.25,8.83,9.5,9.7,9.49,Success
+FICO,Fair Isaac Corporation,9.92,7.94,9.5,9.9,9.6,9.49,Success
+ANET,"Arista Networks, Inc.",10.0,9.5,8.83,9.1,9.6,9.44,Success
+ISRG,"Intuitive Surgical, Inc.",9.28,9.25,9.33,9.6,9.6,9.43,Success
+MCO,Moody's Corporation,9.82,8.96,8.57,9.7,9.5,9.41,Success
+ADBE,Adobe Inc.,10.0,9.25,8.58,9.4,9.3,9.38,Success
+INTU,Intuit Inc.,10.0,9.25,8.32,9.5,9.3,9.37,Success
+PLTR,Palantir Technologies Inc.,9.54,9.5,8.83,9.2,9.7,9.37,Success
+SPGI,S&P Global Inc.,9.49,8.97,8.82,9.7,9.5,9.37,Success
+BKNG,Booking Holdings Inc. Common St,10.0,8.75,9.33,9.4,9.0,9.36,Success
+CSU,CONSTELLATION SOFTWARE INC.,9.22,9.25,9.27,9.6,9.3,9.34,Success
+RMS,HERMES INTL,9.79,9.0,8.1,9.8,9.2,9.3,Success
+MSCI,MSCI Inc.,9.83,7.42,9.23,9.7,9.6,9.3,Success
+TSM,Taiwan Semiconductor Manufactur,8.43,9.5,8.83,9.8,9.8,9.27,Success
+NOW,"ServiceNow, Inc.",8.96,9.5,8.83,9.4,9.5,9.24,Success
+NVDA,NVIDIA Corporation,8.02,9.5,8.83,9.8,9.9,9.18,Success
+VRT,"Vertiv Holdings, LLC",9.35,8.75,9.33,8.8,9.5,9.15,Success
+LLY,Eli Lilly and Company,8.36,9.0,9.33,9.5,9.7,9.15,Success
+MSFT,Microsoft Corporation,8.05,9.25,8.83,9.8,9.8,9.13,Success
+META,"Meta Platforms, Inc.",8.36,8.75,9.33,9.5,9.6,9.1,Success
+RACE,Ferrari N.V.,9.16,8.75,8.02,9.7,9.2,9.07,Success
+ACN,Accenture plc,9.14,9.5,8.22,9.1,9.2,9.06,Success
+CRM,"Salesforce, Inc.",9.5,8.46,8.64,9.1,9.1,9.04,Success
+CDNS,"Cadence Design Systems, Inc.",10.0,9.25,8.83,8.2,8.5,8.96,Success
+GOOGL,Alphabet Inc.,7.48,9.0,9.33,9.6,9.6,8.94,Success
+FTNT,"Fortinet, Inc.",9.77,9.5,8.83,8.2,8.5,8.94,Success
+ODFL,"Old Dominion Freight Line, Inc.",9.53,9.0,7.34,9.2,9.0,8.93,Success
+CTAS,Cintas Corporation,9.13,8.75,8.66,9.1,8.8,8.93,Success
+CPRT,"Copart, Inc.",9.09,9.0,7.9,9.3,9.0,8.93,Success
+MEDP,"Medpace Holdings, Inc.",9.35,9.25,9.33,8.3,8.6,8.92,Success
+LVMH,LVMH,9.21,8.75,7.14,9.6,9.1,8.91,Success
+IDXX,"IDEXX Laboratories, Inc.",9.43,9.0,9.26,8.3,8.6,8.89,Success
+COST,Costco Wholesale Corporation,7.81,9.0,9.33,9.5,9.0,8.88,Success
+DSGX,The Descartes Systems Group Inc,9.29,9.5,8.8,8.2,8.5,8.82,Success
+LRCX,Lam Research Corporation,9.3,9.5,8.83,8.2,8.5,8.82,Success
+NVO,Novo Nordisk A/S,7.0,9.0,9.33,9.5,9.7,8.81,Success
+MPWR,"Monolithic Power Systems, Inc.",9.16,9.5,8.83,8.2,8.5,8.79,Success
+APH,Amphenol Corporation,9.42,9.04,8.83,8.2,8.5,8.79,Success
+NFLX,"Netflix, Inc.",9.87,8.75,9.33,8.0,8.0,8.78,Success
+KNSL,"Kinsale Capital Group, Inc.",10.0,9.0,8.8,8.0,8.0,8.77,Success
+TPL,Texas Pacific Land Corporation,7.0,9.0,9.33,9.5,9.5,8.77,Success
+MANH,"Manhattan Associates, Inc.",9.56,9.5,7.99,8.2,8.5,8.76,Success
+ADI,"Analog Devices, Inc.",9.11,9.25,8.83,8.2,8.5,8.74,Success
+TEL,TE Connectivity plc,9.11,9.25,8.78,8.2,8.5,8.73,Success
+EXLS,"ExlService Holdings, Inc.",9.11,9.25,8.7,8.2,8.5,8.72,Success
+SAP,SAP  SE,9.5,9.5,7.83,8.2,8.5,8.72,Success
+APP,Applovin Corporation,9.62,8.75,9.33,8.0,8.0,8.72,Success
+KLAC,KLA Corporation,9.24,9.25,8.44,8.2,8.5,8.71,Success
+PRI,"Primerica, Inc.",9.86,9.0,8.57,8.0,8.0,8.7,Success
+WCN,"Waste Connections, Inc.",9.27,7.37,8.38,9.0,8.8,8.69,Success
+INFY,Infosys Limited,9.26,9.5,7.9,8.2,8.5,8.68,Success
+WM,"Waste Management, Inc.",9.29,7.43,8.06,9.0,8.8,8.66,Success
+AMZN,"Amazon.com, Inc.",6.47,8.75,9.33,9.6,9.6,8.65,Success
+HEI,Heico Corporation,9.21,8.54,9.77,8.0,8.0,8.65,Success
+BXSX,Boston Scientific Corporation,8.71,8.78,8.96,8.3,8.6,8.63,Success
+GWW,"W.W. Grainger, Inc.",8.38,8.75,8.79,8.8,8.5,8.63,Success
+HWM,Howmet Aerospace Inc.,9.1,8.75,9.33,8.0,8.0,8.59,Success
+TDD,"The Trade Desk, Inc.",9.17,9.0,8.98,8.0,8.0,8.59,Success
+UBER,"Uber Technologies, Inc.",8.5,9.25,8.78,8.2,8.5,8.58,Success
+SHOP,Shopify Inc.,8.28,9.5,8.83,8.2,8.5,8.57,Success
+MSI,"Motorola Solutions, Inc.",9.46,8.36,7.99,8.2,8.5,8.57,Success
+JBL,Jabil Inc.,8.48,9.25,8.48,8.2,8.5,8.53,Success
+PGR,Progressive Corporation (The),9.1,9.0,8.63,8.0,8.0,8.52,Success
+AMD,"Advanced Micro Devices, Inc.",8.09,9.5,8.83,8.2,8.5,8.52,Success
+IT,"Gartner, Inc.",9.28,9.25,7.0,8.2,8.5,8.51,Success
+FLEX,Flex Ltd.,8.18,9.25,8.83,8.2,8.5,8.51,Success
+BRO,"Brown & Brown, Inc.",9.33,7.77,9.33,8.0,8.0,8.5,Success
+PH,Parker-Hannifin Corporation,9.15,8.6,8.84,8.0,8.0,8.5,Success
+MLI,"Mueller Industries, Inc.",8.62,9.0,9.33,8.0,8.0,8.5,Success
+GEV,GE Vernova Inc.,8.57,9.0,9.33,8.0,8.0,8.49,Success
+GE,GE Aerospace,8.72,8.75,9.33,8.0,8.0,8.49,Success
+AMAT,"Applied Materials, Inc.",8.18,9.5,8.43,8.2,8.5,8.48,Success
+LIN,Linde plc,9.18,8.62,8.58,8.0,8.0,8.47,Success
+CRVL,CorVel Corp.,8.85,9.25,8.49,8.0,8.0,8.47,Success
+FAST,Fastenal Company,8.76,8.75,9.04,8.0,8.0,8.46,Success
+DECK,Deckers Outdoor Corporation,9.15,9.0,8.73,7.8,7.8,8.46,Success
+VRSK,"Verisk Analytics, Inc.",10.0,7.65,8.1,8.0,8.0,8.46,Success
+BMI,"Badger Meter, Inc.",9.34,9.5,6.17,8.2,8.5,8.44,Success
+PYPL,"PayPal Holdings, Inc.",8.84,9.0,8.47,8.0,8.0,8.43,Success
+TMUS,"T-Mobile US, Inc.",9.84,6.95,8.84,8.0,8.0,8.43,Success
+TT,Trane Technologies plc,9.04,8.75,8.33,8.0,8.0,8.42,Success
+WTS,"Watts Water Technologies, Inc.",8.26,9.0,9.33,8.0,8.0,8.41,Success
+EPAM,"EPAM Systems, Inc.",8.12,9.5,8.01,8.2,8.5,8.41,Success
+BRK,Berkshire Hathaway Inc. New,8.72,9.25,8.16,8.0,8.0,8.39,Success
+FSS,Federal Signal Corporation,8.32,8.75,9.33,8.0,8.0,8.39,Success
+HCA,"HCA Healthcare, Inc.",8.95,7.53,8.14,8.3,8.6,8.38,Success
+EME,"EMCOR Group, Inc.",8.03,9.0,9.33,8.0,8.0,8.36,Success
+MU,"Micron Technology, Inc.",7.37,9.5,8.83,8.2,8.5,8.34,Success
+CSL,Carlisle Companies Incorporated,9.43,8.5,7.22,8.0,8.0,8.32,Success
+FIX,"Comfort Systems USA, Inc.",8.9,8.75,7.78,8.0,8.0,8.3,Success
+PANW,"Palo Alto Networks, Inc.",7.21,9.5,8.83,8.2,8.5,8.3,Success
+HLT,Hilton Worldwide Holdings Inc.,9.96,6.45,8.89,7.8,7.8,8.3,Success
+TDG,Transdigm Group Incorporated,9.64,5.9,9.33,8.0,8.0,8.29,Success
+ETN,"Eaton Corporation, PLC",8.69,7.11,9.33,8.0,8.0,8.24,Success
+URI,"United Rentals, Inc.",9.13,7.16,8.47,8.0,8.0,8.23,Success
+TTEK,"Tetra Tech, Inc.",9.0,8.75,7.12,8.0,8.0,8.23,Success
+UNH,UnitedHealth Group Incorporated,7.88,8.39,7.89,8.3,8.6,8.21,Success
+TKO,"TKO Group Holdings, Inc.",8.3,7.49,9.33,8.0,8.0,8.2,Success
+WWD,"Woodward, Inc.",7.55,8.75,9.33,8.0,8.0,8.2,Success
+ORCL,Oracle Corporation,7.0,6.85,8.83,9.0,9.2,8.19,Success
+ORLY,"O'Reilly Automotive, Inc.",8.39,8.23,8.97,7.8,7.8,8.19,Success
+PWR,"Quanta Services, Inc.",7.93,8.08,9.33,8.0,8.0,8.19,Success
+DRS,"Leonardo DRS, Inc.",7.9,9.0,8.32,8.0,8.0,8.17,Success
+SHW,Sherwin-Williams Company (The),8.85,7.26,8.42,8.0,8.0,8.16,Success
+CAT,"Caterpillar, Inc.",7.81,7.64,9.33,8.0,8.0,8.1,Success
+SKY,"Champion Homes, Inc.",8.03,9.0,8.18,7.8,7.8,8.09,Success
+NVR,"NVR, Inc.",9.09,9.0,6.33,7.8,7.8,8.08,Success
+AJG,Arthur J. Gallagher & Co.,7.68,7.63,9.33,8.0,8.0,8.06,Success
+RS,"Reliance, Inc.",6.96,8.75,9.33,8.0,8.0,8.05,Success
+HD,"Home Depot, Inc. (The)",8.44,7.86,8.2,7.8,7.8,8.03,Success
+JPM,JP Morgan Chase & Co.,6.71,9.25,9.08,8.0,8.0,8.03,Success
+TW,Tradeweb Markets Inc.,6.52,9.25,9.33,8.0,8.0,8.02,Success
+POOL,Pool Corporation,7.9,7.96,8.36,8.0,8.0,8.02,Success
+TSLA,"Tesla, Inc.",7.06,9.0,9.33,7.8,7.8,8.02,Success
+RLI,RLI Corp.,7.22,9.25,8.11,8.0,8.0,8.01,Success
+LOW,"Lowe's Companies, Inc.",8.4,7.12,8.81,7.8,7.8,8.0,Success
+MCK,McKesson Corporation,6.4,9.0,8.33,8.3,8.6,7.99,Success
+MPC,Marathon Petroleum Corporation,8.02,7.28,8.64,8.0,8.0,7.99,Success
+MUSA,Murphy USA Inc.,7.85,8.05,8.62,7.8,7.8,7.97,Success
+SPOT,Spotify Technology S.A.,6.92,9.0,8.58,8.0,8.0,7.97,Success
+BAH,Booz Allen Hamilton Holding Cor,8.61,7.67,6.94,8.0,8.0,7.94,Success
+FN,Fabrinet,5.75,9.5,8.83,8.2,8.5,7.94,Success
+EL,"Estee Lauder Companies, Inc. (T",8.0,7.74,8.18,7.8,7.8,7.9,Success
+AZO,"AutoZone, Inc.",7.69,7.39,8.77,7.8,7.8,7.86,Success
+RJF,"Raymond James Financial, Inc.",5.99,9.25,9.12,8.0,8.0,7.85,Success
+WMT,Walmart Inc.,6.49,8.75,8.48,7.8,7.8,7.72,Success
+CEG,Constellation Energy Corporatio,6.26,7.66,9.33,8.0,8.0,7.71,Success
+CHDN,"Churchill Downs, Incorporated",8.06,6.17,8.01,7.8,7.8,7.65,Success
+MELI,"MercadoLibre, Inc.",5.83,8.57,9.33,7.8,7.8,7.65,Success
+HLI,"Houlihan Lokey, Inc.",6.24,9.25,7.16,8.0,8.0,7.62,Success
+KBR,"KBR, Inc.",7.72,6.77,7.14,8.0,8.0,7.62,Success
+MOH,Molina Healthcare Inc,5.4,9.25,7.19,8.3,8.6,7.61,Success
+CRWD,"CrowdStrike Holdings, Inc.",4.05,9.5,8.83,8.2,8.5,7.51,Success
+NTRA,"Natera, Inc.",3.6,9.25,9.33,8.3,8.6,7.48,Success
+BJ,"BJ's Wholesale Club Holdings, I",5.73,7.82,8.77,7.8,7.8,7.43,Success
+BLDR,"Builders FirstSource, Inc.",7.2,6.4,6.54,8.0,8.0,7.34,Success
+BABA,Alibaba Group Holding Limited,4.75,9.0,7.99,7.8,7.8,7.25,Success
+FDRL,"Floor & Decor Holdings, Inc.",6.14,7.02,7.59,7.8,7.8,7.24,Success
+AXP,American Express Company,6.31,4.75,8.96,8.0,8.0,7.23,Success
+OR,"Ormat Technologies, Inc.",5.3,6.04,9.33,8.0,8.0,7.23,Success
+APO,"Apollo Global Management, Inc. ",4.81,9.25,6.64,8.0,8.0,7.19,Success
+LPLA,LPL Financial Holdings Inc.,5.74,4.75,9.33,8.0,8.0,7.15,Success
+SMH,VanEck Semiconductor ETF,3.6,9.0,8.22,8.0,8.0,7.08,Success
+MRSH,MMC,3.6,9.0,8.22,8.0,8.0,7.08,Success
+ABB,ABB,3.6,9.0,8.22,8.0,8.0,7.08,Success
+COR,"Cencora, Inc.",2.78,8.16,8.09,8.3,8.6,6.93,Success
+AXON,"Axon Enterprise, Inc.",4.63,4.5,9.33,8.0,8.0,6.83,Success
