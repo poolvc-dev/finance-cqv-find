@@ -1,0 +1,571 @@
+=== PAGE 1 ===
+Investor
+Presentation
+Third Quarter 2025
+---PAGE---
+=== PAGE 2 ===
+2
+© 2025 ServiceNow, Inc. All Rights Reserved. 2
+2© 2025 ServiceNow, Inc. All Rights Reserved.
+This presentation contains “forward‐looking” statements that are based on our management’s beliefs and assumptions and on inf ormation currently available to management. Forward ‐looking 
+statements include information concerning our possible or assumed strategy, future operations, financing plans, operating mod el, financial position, future revenues, projected costs, 
+competitive position, industry environment, potential growth opportunities, potential market opportunities, plans and objectives  of management, the effects of competition on our business and 
+customer trends.
+Forward‐looking statements include all statements that are not historical facts and can be identified by terms such as “antic ipates,” “believes,” “could,” “seeks,” “estimates” (including, without 
+limitation, financial estimates denoted with an “E,” such as FY25E), “targets,” “guidance,” “expects,” “intends,” “may,” “pla ns,” “potential,” “predicts,” “prospects,” “projects,” “should,” “will,” 
+“would” or similar expressions and the negatives of those terms, although not all forward ‐looking statements contain these id entifying words.
+Forward-looking statements involve known and unknown risks, uncertainties and other factors that may cause our actual results, p erformance or achievements to be materially different from 
+any future results, performance or achievements expressed or implied by the forward -looking statements. Additionally, these forw ard-looking statements, particularly our guidance, involve 
+risks, uncertainties and assumptions based on information available to us as of October 29, 2025, including those related to our future financial performance, global economic conditions and 
+demand for digital transformation. Many of these assumptions relate to matters that are beyond our control and changing rapid ly, including, but not limited to, fluctuations in the value of foreign 
+currencies relative to the U.S. Dollar; fluctuations in interest rates; global macroeconomic and political conditions including changes in government spending and operating status, tariffs, 
+inflation and armed conflicts; and fluctuations and volatility in our stock price. If any such risks or uncertainties materia lize or if any of the assumptions prove incorrect, our results could differ 
+materially from the results expressed or implied by the forward -looking statements we make. Further information on these and other factors that could cause or contribute to such differences 
+include, but are not limited to, those discussed in the “Risk Factors” section in our Annual Report on Form 10-K filed for the year ended December 31, 2024 and in our other Securities and 
+Exchange Commission (“SEC”) filings. We cannot guarantee that we will achieve the plans, intentions, or expectations disclosed i n our forward-looking statements, and you should not place 
+undue reliance on our forward-looking statements.
+Forward-looking statements represent our management’s beliefs and assumptions only as of the date of this presentation. We under take no obligation, and do not intend, to update these 
+forward-looking statements, to review or confirm analysts’ expectations, or to provide interim reports or updates on the progres s of the current financial quarter.
+This presentation includes certain non‐GAAP financial measures and the corresponding growth rates as defined by SEC rules. For a dditional information, see the slide titled “Statement 
+Regarding Use of Non-GAAP Financial Measures.”
+Terms such as Remaining Performance Obligations (“RPO”), Current Remaining Performance Obligations (“ cRPO”) and Renewal Rate shall have the meanings set forth in our filings with the 
+SEC.
+The information in this presentation on new products, features, or functionality, including products that incorporate AI technology, is intended to outline our general product direction and should 
+not be relied upon in making a purchasing decision. The information on new products, features, and functionality is for infor mational purposes only and shall not be incorporated into any 
+contract. The information on new products, features, and functionality is not a commitment, promise, or legal obligation to d eliver any material, code or functionality. The development, release, 
+and timing of any features or functionality described for our products remains at our sole discretion.
+Safe Harbor and other information
+---PAGE---
+=== PAGE 3 ===
+3
+© 2025 ServiceNow, Inc. All Rights Reserved. 3
+3© 2025 ServiceNow, Inc. All Rights Reserved.
+We report non-GAAP financial measures in addition to, and not as a substitute for, or superior to, financial measures calculated in accordance with GAAP.
+We adjust revenues and related growth rates (“revenues”), and current remaining performance obligations (“cRPO”) and remaining performance obligations (”RPO”) and related growth rates for constant 
+currency to provide a framework for assessing how our business performed excluding the effect of foreign currency rate fluctuations, and for revenues only, any gains or losses from foreign currency 
+hedge contracts that are reported in the current and comparative period. To exclude the effect of foreign currency rate fluctuations, current period revenues results for entities reporting in currencies other 
+than U.S. Dollars are converted into U.S. Dollars at the average exchange rates in effect for the comparison period, rather than the actual exchange rates in effect for the current period. Guidance for related 
+growth rates is derived by applying the average exchange rates in effect during the comparison period, rather than the exchange rates for the guidance period, adjusted for any foreign currency hedging 
+effects. We believe the presentation of revenues and corresponding growth rates adjusted for constant currency by excluding effects of foreign currency rate fluctuations and any gains or losses from 
+foreign currency hedge contracts facilitates the comparison of revenues year-over-year. Current period cRPO and RPO results and related growth rates for entities reporting in currencies other than U.S. 
+Dollars are converted into U.S. Dollars at the exchange rates in effect at the end of the comparison period rather than the actual end of the period exchange rates in effect during the current period. 
+Guidance for cRPO growth rates is derived by applying the end of period exchange rates in effect during the comparison period rather than the exchange rates in effect during the guidance period. We 
+believe the presentation of cRPO and RPO and related growth rates adjusted for constant currency facilitates the comparison of cRPO and RPO year-over-year, respectively.
+Our non-GAAP presentation of gross profit, income from operations, and net income measures exclude certain non-cash or non-recurring items, including stock-based compensation expense, 
+amortization of purchased intangibles, legal settlements, business combination and other related costs including compensation expense, impairment of assets, severance costs, and income tax effects 
+and adjustments. We believe these adjustments provide useful supplemental information to investors and facilitates the analysis of our operating results and comparison of operating results across 
+reporting periods.
+Free cash flow is defined as net cash provided by operating activities plus cash outflows for legal settlements and business combination and other related costs including compensation expense, reduced 
+by purchases of property and equipment. Free cash flow margin is calculated as free cash flow as a percentage of total revenues. We believe information regarding free cash flow and free cash flow 
+margin provides useful information to investors because it is an indicator of the strength and performance of our business operations.
+Our presentation of non-GAAP financial measures may not be comparable to similar measures used by other companies. We encourage investors to carefully consider our results under GAAP, as well as 
+our supplemental non-GAAP information and the reconciliation between these presentations, to more fully understand our business. Please see the tables included at the end of this presentation for the 
+reconciliation of GAAP and non-GAAP results.
+Statement Regarding Use of 
+Non-GAAP Financial Measures
+---PAGE---
+=== PAGE 4 ===
+4
+© 2025 ServiceNow, Inc. All Rights Reserved. 4
+Technology
+Workflows
+Core Business 
+Workflows
+CRM and Industry 
+Workflows
+Creator
+Workflows
+Connect AI, data, and workflows to maximize the value of existing technology investments, cut costs, 
+and make impactful improvements in core business processes all on a single platform
+Accelerate digital 
+transformation with 
+resilient, cost-efficient, 
+and secure technology
+Provide easy-to-follow 
+processes across HR, 
+Procurement, Facilities, 
+Legal, and Finance, 
+reducing costs and 
+improving performance
+Intelligently orchestrate 
+customer experiences to 
+service, sell, and deliver 
+on a single platform
+Build connected cross-
+enterprise workflow apps 
+fast using low-code and 
+hyperautomation that 
+safely deliver agile 
+services at scale
+© 2025 ServiceNow, Inc. All Rights Reserved. 4
+ServiceNow AI Platform
+---PAGE---
+=== PAGE 5 ===
+5
+© 2025 ServiceNow, Inc. All Rights Reserved. 5
+5© 2025 ServiceNow, Inc. All Rights Reserved.
+We are the AI Platform for Business Transformation
+Our aspiration is to be the 
+defining enterprise software 
+company of the 21st century
+We move with the pace of 
+innovation to help customers 
+transform organizations across 
+every industry while upholding a 
+trustworthy, human centered 
+approach to deploying our 
+products and services at scale 
+Our approximately 8,400 global 
+customers(1) include over 85% of 
+the Fortune 500. They all rely on 
+ServiceNow solutions using the 
+Now AI Platform—the intelligent 
+and intuitive cloud platform—for 
+successful digital transformation
+From Fortune Magazine. © 2025 Fortune Media IP Limited. All rights reserved. Used under license. Fortune is a registered tradema rk of Fortune Media IP Limited and is used under license. 
+Fortune Magazine and Fortune Media (USA) Corporation are not affiliated with, and do not endorse products or services of, Ser viceNow.
+(1)  Global customers count is as of the end of fiscal 2024.
+
+---PAGE---
+=== PAGE 6 ===
+6
+© 2025 ServiceNow, Inc. All Rights Reserved. 6
+6© 2025 ServiceNow, Inc. All Rights Reserved.
+Q3-25 Financial Highlights
+(1) Currency impact on subscription revenue growth rates are derived by applying the average exchange rates in effect during the comparison period, rather than the actual average exchange rates in effect during the current period, excluding 
+any gains or losses from foreign currency hedge contracts that are reported in the current and comparative periods. Currency impact on cRPO and RPO growth rates are derived by applying the exchange rates in effect at the end of the 
+comparison period rather than the actual end of period exchange rates in effect during the current period. 
+(2) The non-GAAP growth rates for subscription revenues are adjusted for constant currency by excluding effects of foreign curr ency rate fluctuations and any gains or losses from foreign currency hedge contracts, and cRPO and RPO are adjusted 
+only for constant currency. See slides 10-11 for additional discussion of non-GAAP subscription revenues and their corresponding growth rates. See slide 12 for additional discussion of non -GAAP cRPO and RPO and their corresponding growth rates.
+(3)  This financial metric and its corresponding growth rate, if applicable, are calculated on a non -GAAP basis. See appendix for a reconciliation of non-GAAP financial measures to the most comparable GAAP measures.
+Note: Numbers rounded for presentation purposes.
+Q3 2025 Results Quarterly Results Increase 
+(Decrease) Y/Y Currency Impact (1) Non-GAAP Constant 
+Currency Y/Y(2)
+Subscription Revenues $3,299M 21.5% ~100bps tailwind 20.5%
+Current RPO (cRPO) $11.35B 21% ~100bps tailwind 20.5%
+Remaining Performance Obligations (RPO) $24.3B 24% ~100bps tailwind 23%
+Non-GAAP Operating Margin(3) 33.5% ~250bps NA NA
+Non-GAAP Free Cash Flow Margin(3) 17.5% ~50bps NA NA
+---PAGE---
+=== PAGE 7 ===
+7
+© 2025 ServiceNow, Inc. All Rights Reserved. 7
+7© 2025 ServiceNow, Inc. All Rights Reserved.
+2025 Guidance Assumptions
+Our guidance includes GAAP and non-GAAP financial measures. The non-GAAP growth rates for 
+subscription revenues are adjusted for constant currency by excluding the effects of foreign currency rate 
+fluctuations and any gains or losses from foreign currency hedge contracts, and the non-GAAP growth 
+rates for cRPO are adjusted only for constant currency to provide better visibility into the underlying 
+business trends.
+U.S. Federal agencies are currently navigating changes, from tightening budgets to evolving mission 
+demands. The recent government shutdown may also impact deal timing in the near-term. These 
+dynamics have been reflected in our Q4 2025 guidance.
+---PAGE---
+=== PAGE 8 ===
+8
+© 2025 ServiceNow, Inc. All Rights Reserved. 8
+8© 2025 ServiceNow, Inc. All Rights Reserved.
+Guidance Summary
+Q4 2025 Guidance Quarterly Guidance Increase 
+(Decrease) Y/Y
+Currency Impact 
+Included in 
+Guidance (1)
+Non-GAAP Constant 
+Currency Y/Y (2)
+Subscription Revenues $3,420M - $3,430M 19.5% ~150bps tailwind 17.5% - 18%
+Non-GAAP Operating Margin(3) 30% ~50bps NA NA
+Current RPO (cRPO) Growth 23% NA ~400bps tailwind 19%
+FY 2025 Guidance Full-Year Guidance Increase 
+(Decrease) Y/Y
+Currency Impact 
+Included in 
+Guidance (1)
+Non-GAAP Constant 
+Currency Y/Y (2)
+Subscription Revenues $12,835M - $12,845M 20.5% ~50bps tailwind 20%
+Non-GAAP Subscription Gross Margin(3) 83.5% ~(150bps) NA NA
+Non-GAAP Operating Margin(3) 31% ~150bps NA NA
+Non-GAAP Free Cash Flow Margin(3) 34% ~250bps NA NA
+(1) Currency impact on subscription revenues growth rates are derived by applying the average exchange rates in effect during the comparison period, rather than the exchange rates for the guidance period, adjusted for any foreign currency hedging effects. Currency impact on 
+cRPO growth rates are derived by applying the end of period exchange rates in effect during the comparison period rather than  the exchange rates in effect during the guidance period.
+(2) The non-GAAP growth rates for subscription revenues are adjusted for constant currency by excluding effects of foreign currency  rate fluctuations and any gains or losses from foreign currency hedge contracts, and cRPO is adjusted only for constant curre ncy.
+(3) This financial metric and its corresponding growth rate, if applicable, are calculated on a non-GAAP basis. See appendix for a reconciliation of non -GAAP financial measures to the most comparable GAA P measures.
+---PAGE---
+=== PAGE 9 ===
+9
+© 2025 ServiceNow, Inc. All Rights Reserved. 9
+9© 2025 ServiceNow, Inc. All Rights Reserved.
+Comparison to Previously Issued Guidance
+$12,785 $34 $21 $12,840 
+Q3-25A FY25E
+20% 20.5%
+Actual ResultsCurrency Impact(2)Prev. Guidance Midpoint(1) Q3 Performance Current Guidance MidpointGuidance Change
+$3,263 $16 $21 $3,299 
+(1) Refers to previously issued financial guidance dated 7/23/25.
+(2) GAAP subscription revenues included in our previous guidance is based on the 30 -day average foreign exchange rates for June 2025 for entities reporting in currencies other than U.S. Dollars. Currency impact in Q3 2025 represents the impact of the diffe rence between the 
+actual average foreign exchange rates in the period used to calculate our Q3 2025 actual results and the 30 -day average foreign exchange rates for June 2025 assumed in our previously issued guidance dated 7/23/25, including any gains or losses from foreign currency hedge 
+contracts. Currency impact on our full year guidance represents the impact of the difference between the 30 -day average foreign exchange rates for September 2025 assumed in our updated full- year 2025 guidance, and the 30-day average foreign exchange rates for June 2025 
+in our previously issued guidance dated 7/23/25, including any gains or losses from foreign currency hedge contracts.
+Note: Numbers rounded for presentation purposes and may not foot.
+($M)
+Subscription 
+Revenues
+Y/Y Growth 20% 21.5%
+---PAGE---
+=== PAGE 10 ===
+10
+© 2025 ServiceNow, Inc. All Rights Reserved. 10
+10© 2025 ServiceNow, Inc. All Rights Reserved.
+Year-Over-Year Subscription Revenues Growth
+27% 27% 25% 23% 23%
+26%
+23% 21% 19%
+22% 22% 23%22% 21% 20% 22% 20%
+23%
+Non-GAAP Constant Currency Sub Revenue Growth (1)Actual GrowthPrevious Year Growth
+Subscription Revenues (%)
+FY24AQ3-24A Q4-24A Q1-25A
+(1) Non-GAAP subscription revenues growth rates are adjusted only for constant currency and derived by adjusting subscription revenues for constant currency by applying the average exchange rates in effect during the comparison period rather than the ac tual 
+average exchange rate in effect during the current period and excluding any gains or losses from foreign currency hedge contract s.
+Note: Numbers are rounded to the nearest whole percentage for presentation purposes.
+Q3-25AQ2-25A
+---PAGE---
+=== PAGE 11 ===
+11
+© 2025 ServiceNow, Inc. All Rights Reserved. 11
+11© 2025 ServiceNow, Inc. All Rights Reserved.
+23% 23%
+FY24A
+$(7)
+$10,646 $10,639
+23% 22%
+$(4)
+Q3-24A
+$2,711
+$3,113 
+22% 22%
+Q2-25A
+Currency Impact to Year-Over-Year Sub. Revenues 
+$3,299 
+22% 20%
+Q3-25A
+$3,005 
+19% 20%
+Q1-25A
+$2,866 
+21% 21%
+Q4-24A
+$2,859
+$(7)
+(1) Non-GAAP constant currency subscription revenues and the corresponding growth figures  are adjusted only for constant currency and derived by applying the average exchange rates in effect during the comparison peri od rather than the actual average exchange rate 
+in effect during the current period and excluding any gains or losses from foreign currency hedge contracts. 
+Note: Numbers are rounded to the nearest whole percentage for presentation purposes.
+Y/Y 
+Growth
+Non-GAAP Constant Currency Sub Revenues (1)Actuals Currency Impact
+Subscription Revenues ($M)
+$3,267
+$2,715 $(32)
+$3,086
+$(27)
+$3,031
+$26
+---PAGE---
+=== PAGE 12 ===
+12
+© 2025 ServiceNow, Inc. All Rights Reserved. 12
+12© 2025 ServiceNow, Inc. All Rights Reserved.
+Remaining Performance Obligations (RPO)
+$9.36 $10.27 $10.31 $10.92 $11.35 
+$10.2 
+$12.0 $11.8 $13.0 $12.9 
+$19.5
+$22.3 $22.1
+$23.9 $24.3
+Q3-24 Q4-24 Q1-25 Q2-25 Q3-25
+Current RPO Noncurrent RPO
+(1) The total RPO and current RPO growth rates are adjusted only for constant currency. Results for entities reporting in cur rencies other than U.S. Dollars are converted into U.S. Dollars at the exchange rates in effect at the end of the comparison per iod, rather than the 
+actual exchange rates in effect at the end of the current period.
+Note: Numbers rounded for presentation purposes.
+($B)
+cRPO Y/Y Growth 26% 19.5% 22% 24.5% 21%
+cRPO cc(1) Y/Y Growth 23.5% 22% 22% 21.5% 20.5%
++24% / +23% cc(1)
+Total RPO
+Q3-25
+Y/Y Growth
+---PAGE---
+=== PAGE 13 ===
+13
+© 2025 ServiceNow, Inc. All Rights Reserved. 13
+13© 2025 ServiceNow, Inc. All Rights Reserved.
+85%
+Customer Cohort Growth
+69%
+173%
+225%
+288% (1)
+172%
+116%
+126%
+99%
+78%
+81%
+(1) As an illustrative example, 2010 customer cohort started with a contract of initial ACV (annual contract value) of $100 a nd grew to ACV of $4,420 as of Q3-25 and represents annual growth of initial ACV of 288%.
+Note: Chart reflects growth in total annual contract value over time, inclusive of losses, for the group of customers that jo ined ServiceNow in each respective year.  Annual Growth represents increases in total annual contract value after the initial contr act of 
+each customer.
+51%
+53%
+57%
+45%
+Annual Growth of Initial ACV
+---PAGE---
+=== PAGE 14 ===
+14
+© 2025 ServiceNow, Inc. All Rights Reserved. 14
+14© 2025 ServiceNow, Inc. All Rights Reserved.
+$12.6 $13.0 $13.1 $13.4 $13.6 $14.0 $14.1 $14.3 $14.6
+Avg ACV of Customers with $5M+ ACV
+387
+419 432 448 469
+503 516 535 553
+Q3-23 Q4-23 Q1-24 Q2-24 Q3-24 Q4-24 Q1-25 Q2-25 Q3-25
+Number of Customers with $5M+ ACV
+Note: Previously disclosed number of customers with ACV greater than $5 million is restated to allow for comparability. ACV is c alculated based on the foreign exchange rate in effect at the time the contract was entered into. Foreign exchange rate fluct uations could cause 
+some variability in the number of customers with ACV greater than $5 million.
+($M)
+Expansion of Customer Relationships
+---PAGE---
+=== PAGE 15 ===
+15
+© 2025 ServiceNow, Inc. All Rights Reserved. 15
+15© 2025 ServiceNow, Inc. All Rights Reserved.
+Renewal Rate
+98% 98% 98% 98%
+97%
+(1)
+Q3-24 Q4-24 Q1-25 Q2-25 Q3-25
+(1) Excluding the closure of a large US Federal agency, Q3 2025 renewal rate would be 98%.
+Note: We adjust our Renewal Rate for acquisitions, consolidations and other customer events that cause the merging of two or more accounts occurring at the time of renewal.
+---PAGE---
+=== PAGE 16 ===
+16
+© 2025 ServiceNow, Inc. All Rights Reserved. 16
+16© 2025 ServiceNow, Inc. All Rights Reserved.
+Net New ACV Contribution Across Workflows and Products
+(1)
+(1) Historical presentations disclosed net new ACV contribution across products and are not comparable to net new ACV contrib ution across workflows and products disclosed herein. NNACV generated from Industry products is spread across several workflows,  the 
+majority of which is reported under CRM and Industry Workflows.
+Note: Technology Workflows include IT Service Management, IT Operations Management, Asset Management, Security Operations, In tegrated Risk Management, Strategic Portfolio Management, Operational Technology Management, and others. CRM and Industry & 
+Core Business Workflows include Customer Service Management, Field Service Management, HR Service Delivery, Workplace Service Delivery, Legal Service Delivery, Source-to-Pay Operations, and others. Creator Workflows & Others include App Engine, Workflow Da ta 
+Fabric, Platform Privacy & Security, and others. Prior to Q1 -25, Source-to-Pay Operations were included as part of Creator Workf lows & Others.
+54% 52% 48% 56% 53%
+31% 30% 34% 26% 24%
+15% 18% 18% 18% 23%
+Q3-24 Q4-24 Q1-25 Q2-25 Q3-25
+Technology Workflows CRM and Industry & Core Business Workflows Creator Workflows & Others
+---PAGE---
+=== PAGE 17 ===
+17
+© 2025 ServiceNow, Inc. All Rights Reserved. 17
+17© 2025 ServiceNow, Inc. All Rights Reserved.
+GAAP Revenues by Geography
+64% 62% 64% 62% 63%
+25% 27% 25% 26% 26%
+11% 11% 11% 12% 11%
+Q3-24 Q4-24 Q1-25 Q2-25 Q3-25
+North America EMEA APAC & Other
+---PAGE---
+=== PAGE 18 ===
+18
+© 2025 ServiceNow, Inc. All Rights Reserved. 18
+18© 2025 ServiceNow, Inc. All Rights Reserved.
+Headcount by Department
+905 911 859 878 936
+4,351 4,583 4,749 5,003 5,297
+9,008 9,083 9,219 9,271 9,295
+8,393 8,583 8,640 8,874 9,203
+3,086 3,133 3,231 3,268 3,269 25,743 26,293 26,698 27,294 28,000 
+Q3-24 Q4-24 Q1-25 Q2-25 Q3-25
+PS & Other Cost of Sales Sub. Cost of Sales S&M R&D G&A
+---PAGE---
+=== PAGE 19 ===
+19
+© 2025 ServiceNow, Inc. All Rights Reserved. 19
+19© 2025 ServiceNow, Inc. All Rights Reserved.
+7.5% 8.5% 4.0%
+14.0% 11.0% 9.5% 11.5%
+Q3-24 Q4-24 Q1-25 Q2-25 Q3-25 FY23 FY24
+Non-GAAP Gross Margins
+Note: All figures are calculated on a non-GAAP basis. See appendix for reconciliation of non -GAAP financial measures. 
+85.0% 84.5% 84.5%
+83.0% 83.0%
+84.5% 85.0%
+Q3-24 Q4-24 Q1-25 Q2-25 Q3-25 FY23 FY24
+82.5% 82.0% 82.0% 81.0% 81.0% 82.5% 82.5%
+Q3-24 Q4-24 Q1-25 Q2-25 Q3-25 FY23 FY24
+Non-GAAP Subscription Gross Margin
+Non-GAAP PS & Other Gross Margin
+Non-GAAP Total Gross Margin
+---PAGE---
+=== PAGE 20 ===
+20
+© 2025 ServiceNow, Inc. All Rights Reserved. 20
+20© 2025 ServiceNow, Inc. All Rights Reserved.
+Non-GAAP Operating and Free Cash Flow 
+Margins
+17.0%
+47.5% 48.0%
+16.5% 17.5%
+30.5% 31.5%
+Q3-24 Q4-24 Q1-25 Q2-25 Q3-25 FY23 FY24
+Non-GAAP Free Cash Flow Margin
+31.0% 29.5% 31.0% 29.5%
+33.5%
+27.5% 29.5%
+Q3-24 Q4-24 Q1-25 Q2-25 Q3-25 FY23 FY24
+Non-GAAP Operating Margin
+Note: All figures are calculated on a non-GAAP basis. See appendix for reconciliation of non -GAAP financial measures. 
+---PAGE---
+=== PAGE 21 ===
+21
+© 2025 ServiceNow, Inc. All Rights Reserved. 21
+21© 2025 ServiceNow, Inc. All Rights Reserved.
+Non-GAAP Net Income and Diluted EPS
+$3.72 $3.67 $4.04 $4.09 $4.82 
+$10.78 
+$13.92 
+Q3-24 Q4-24 Q1-25 Q2-25 Q3-25 FY23 FY24
+$775 $769 $846 $854 $1,010
+$2,215
+$2,902
+Q3-24 Q4-24 Q1-25 Q2-25 Q3-25 FY23 FY24
+Non-GAAP Net Income ($M)
+Non-GAAP Diluted EPS
+Note: All figures are calculated on a non-GAAP basis. See appendix for reconciliation of non -GAAP financial measures. 
+---PAGE---
+=== PAGE 22 ===
+22
+© 2025 ServiceNow, Inc. All Rights Reserved. 22
+22
+22© 2025 ServiceNow, Inc. All Rights Reserved.
+GAAP to Non-GAAP 
+Reconciliation
+and Supplemental 
+Information
+---PAGE---
+=== PAGE 23 ===
+23
+© 2025 ServiceNow, Inc. All Rights Reserved. 23
+GAAP to Non-GAAP Reconciliation – Other 
+Note: Numbers rounded for presentation purposes and may not foot. 
+ in millions (except %'s and per share data) Q1'24 Margin Q2'24 Margin Q3'24 Margin Q4'24 Margin 2024 Margin Q1'25 Margin Q2'25 Margin Q3'25 Margin Q4'25E Margin 2025E Margin
+GAAP Subscription Gross Profit  $ 2,082 82.5%  $ 2,073 81.5%  $  2,219 81.5%  $2,330 81.5%  $8,704 82%  $2,444 81.5%  $2,488 80%  $2,633 80% N/A N/A N/A 80%
+          (+) Subscription SBC  $      58 2.5%  $       62 2.5%  $      64 2.5%  $      66 2.5%  $    250 2.5%  $      68 2.5%  $       76 2.5%  $       78 2.5% N/A N/A N/A 2%
+          (+) Subscription Amort of Purchased Intangibles  $        21 1%  $        21 1%  $       22 1%  $       20 0.5%  $      84 1%  $       20 0.5%  $       23 0.5%  $       32 1% N/A N/A N/A 1%
+          (+) Business Combination and Other Related Costs             -   0%             -   0%             -   0%             -   0%             -   0%             -   0%             -   0%             -   0% N/A N/A N/A 0%
+          (+) Severance Costs             -   0%             -   0%             -   0%             -   0%             -   0%             -   0%  $         3 0%  $          1 0% N/A N/A N/A 0%
+Non-GAAP Subscription Gross Profit  $  2,161 85.5%  $ 2,156 85%  $2,305 85%  $ 2,416 84.5%  $9,038 85%  $ 2,532 84.5%  $2,590 83%  $ 2,744 83% N/A N/A N/A 83.5%
+GAAP Professional Services and Other Gross Profit (Loss)  $          1 1%  $         2 2%  $       (6) (6.5%)  $       (4) (4%)  $        (7) (2%)  $        (7) (8.5%)  $         3 3%  $        -   0.5% N/A N/A N/A N/A
+          (+) Professional Services and Other SBC  $        12 14.5%  $        12 13.5%  $        11 14%  $        11 12.5%  $      46 13.5%  $        11 13%  $        11 11%  $        11 10.5% N/A N/A N/A N/A
+          (+) Severance Costs             -   0%             -   0%             -   0%             -   0%             -   0%             -   0%             -   0%  $          1 0.5% N/A N/A N/A N/A
+Non-GAAP Professional Services and Other Gross Profit  $       13 15.5%  $       14 15.5%  $         5 7.5%  $         7 8.5%  $      39 11.5%  $         4 4%  $       14 14%  $        12 11% N/A N/A N/A N/A
+GAAP Gross Profit  $2,083 80%  $ 2,075 79%  $  2,213 79%  $ 2,326 78.5%  $8,697 79%  $ 2,437 79%  $ 2,491 77.5%  $2,633 77.5% N/A N/A N/A N/A
+          (+) SBC  $       70 2.5%  $       74 3%  $       75 2.5%  $       77 2.5%  $    296 2.5%  $       79 2.5%  $       87 2.5%  $      89 2.5% N/A N/A N/A N/A
+          (+) Amort of Purchased Intangibles  $        21 1%  $        21 1%  $       22 1%  $       20 0.5%  $      84 1%  $       20 0.5%  $       23 0.5%  $       32 1% N/A N/A N/A N/A
+          (+) Severance Costs             -   0%             -   0%             -   0%             -   0%             -   0%             -   0%  $         3 0%  $         2 0% N/A N/A N/A N/A
+Non-GAAP Gross Profit  $  2,174 83.5%  $  2,170 82.5%  $ 2,310 82.5%  $ 2,423 82%  $ 9,077 82.5%  $2,536 82%  $2,604 81%  $ 2,756 81% N/A N/A N/A N/A
+GAAP Income from Operations  $    332 12.5%  $    240 9%  $     418 15%  $    374 12.5%  $ 1,364 12.5%  $     451 14.5%  $    358 11%  $    572 17% N/A 14% N/A 14%
+          (+) SBC  $    422 16%  $    444 17%  $    426 15%  $    454 15.5%  $ 1,746 16%  $    470 15%  $    499 15.5%  $    492 14.5% N/A 14% N/A 15%
+          (+) Amort of Purchased Intangibles  $       24 1%  $       24 1%  $       23 1%  $       23 1%  $      94 1%  $        21 0.5%  $       25 1%  $      33 1% N/A 1% N/A 1%
+          (+) Business Combination and Other Related Costs  $       13 0.5%  $        12 0.5%  $         4 0%  $         4 0%  $      33 0.5%  $        11 0.5%  $       14 0.5%  $       19 0.5% N/A 0% N/A 0%
+          (+) Impairment of Assets             -   0%             -   0%             -   0%             -   0%             -   0%             -   0%  $      30 1%             -   0% N/A 0% N/A 0%
+          (+) Severance Costs             -   0%             -   0%             -   0%             -   0%             -   0%             -   0%  $       29 1%  $       24 0.5% N/A 1% N/A 1%
+          (+) Legal Settlements             -   0%             -   0%             -   0%  $        17 0.5%  $        17 0%             -   0%             -   0%             -   0% N/A 0% N/A 0%
+Non-GAAP Income from Operations  $     791 30.5%  $    720 27.5%  $    872 31%  $    872 29.5%  $3,254 29.5%  $    953 31%  $    955 29.5%  $  1,140 33.5% N/A 30% N/A 31%
+GAAP Net Income  $    347 13.5%  $    262 10%  $    432 15.5%  $    384 13%  $ 1,425 13%  $    460 15%  $    385 12%  $    502 14.5% N/A N/A N/A N/A
+          (+) SBC  $    422 16%  $    444 17%  $    426 15%  $    454 15.5%  $ 1,746 16%  $    470 15%  $    499 15.5%  $    492 14.5% N/A N/A N/A N/A
+          (+) Amort of Purchased Intangibles  $       24 1%  $       24 1%  $       23 1%  $       23 1%  $      94 1%  $        21 0.5%  $       25 1%  $      33 1% N/A N/A N/A N/A
+          (+) Business Combination and Other Related Costs  $       13 0.5%  $        12 0.5%  $         4 0%  $         4 0%  $      33 0.5%  $        11 0.5%  $       14 0.5%  $       19 0.5% N/A N/A N/A N/A
+          (+) Impairment of Assets             -   0%             -   0%             -   0%             -   0%             -   0%             -   0%  $      30 1%             -   0% N/A N/A N/A N/A
+          (+) Severance Costs             -   0%             -   0%             -   0%             -   0%             -   0%             -   0%  $       29 1%  $       24 0.5% N/A N/A N/A N/A
+          (+) Legal Settlements             -   0%             -   0%             -   0%  $        17 0.5%  $        17 0%             -   0%             -   0%             -   0% N/A N/A N/A N/A
+          (-) Income Tax Expense Effects Related to the Above Adjustments (1)  $     (99) (4%)  $      (91) (3.5%)  $    (110) (4%)  $    (113) (4%)  $   (413) (4%)  $    (116) (4%)  $   (128) (4%)  $     (60) (2%) N/A N/A N/A N/A
+          (-) Income Tax  benefit from the release of a valuation allowance on the deferred tax asset             -   0%             -   0%             -   0%             -   0%             -   0%             -   0%             -   0%             -   0% N/A N/A N/A N/A
+Non-GAAP Net Income  $    707 27%  $     651 25%  $    775 27.5%  $    769 26%  $ 2,902 26.5%  $    846 27.5%  $    854 26.5%  $  1,010 29.5% N/A N/A N/A N/A
+Weighted-Average Shares Used to Compute Net Income per Share - Diluted         208 N/A 208 N/A 209 N/A 209 N/A 208 N/A 209 N/A 209 N/A 210 N/A 210 N/A 210 N/A
+GAAP Net Income per Share - Diluted  $    1.67 N/A  $    1.26 N/A  $   2.07 N/A  $    1.83 N/A  $   6.84 N/A  $   2.20 N/A  $    1.84 N/A  $   2.40 N/A N/A N/A N/A N/A
+Non-GAAP Net Income per Share - Diluted  $    3.41 N/A  $    3.13 N/A  $   3.72 N/A  $   3.67 N/A  $ 13.92 N/A  $   4.04 N/A  $   4.09 N/A  $   4.82 N/A N/A N/A N/A N/A
+GAAP Net Cash Provided by Operating Activities  $  1,341 51.5%  $    620 23.5%  $     671 24%  $ 1,635 55.5%  $ 4,267 39%  $  1,677 54.5%  $     716 22.5%  $     813 24% N/A N/A N/A 41%
+          (-) Purchases of Property and Equipment  $   (135) (5%)  $   (262) (10%)  $   (202) (7%)  $  (253) (8.5%)  $  (852) (8%)  $  (205) (6.5%)  $   (190) (6%)  $  (235) (7%) N/A N/A N/A (7%)
+          (+) Cash Paid for Legal Settlements             -   0%             -   0%             -   0%  $        17 0.5%  $        17 0%             -   0%             -   0%             -   0% N/A N/A N/A 0%
+          (+) Business combination and other related costs  $       19 0.5%  $          1 0%  $         2 0%  $          1 0%  $       23 0%  $         5 0%  $         9 0.5%  $       14 0.5% N/A N/A N/A 0%
+Non-GAAP Free Cash Flow  $  1,225 47%  $    359 13.5%  $     471 17%  $ 1,400 47.5%  $3,455 31.5%  $  1,477 48%  $    535 16.5%  $    592 17.5% N/A N/A N/A 34%
+(1)  We use a non-GAAP effective tax rate for evaluating our operating results to provide consistency across reporting periods. Based on our  long-term projections, we are using a non-GAAP tax rate of 20% for each of the three months ended September 30, 2025 and 2024. This non-GAAP tax rate 
+could change for various reasons including significant changes in our geographic earnings mix or fundamental tax law changes in major jurisdictions in which we operate. 
+---PAGE---
+=== PAGE 24 ===
+24
+© 2025 ServiceNow, Inc. All Rights Reserved. 24
+Supplemental Information
+ in millions Q1'24 Q2'24 Q3'24 Q4'24 2024 Q1'25 Q2'25 Q3'25
+Stock-based compensation
+Cost of revenues:
+          Subscription  $              58  $                   62  $               64  $              66  $              250  $                 68  $                 76  $                 78 
+          Professional services and other  $               12  $                    12  $                 11  $               11  $                46  $                  11  $                  11  $                  11 
+Operating expenses:  $                  -   
+          Sales and marketing  $            134  $                  141  $             144  $            146  $              565  $               148  $               155  $                141 
+          Research and development  $            159  $                  170  $             150  $            176  $              655  $               185  $               196  $              203 
+          General and administrative  $              59  $                   59  $                57  $              55  $              230  $                 58  $                  61  $                 59 
+Total stock-based compensation  $           422  $                444  $             426  $           454  $           1,746  $              470  $              499  $              492 
+Amortization of purchase intangibles
+Cost of revenues:
+          Subscription  $               21  $                    21  $               22  $             20  $                84  $                 20  $                 23  $                 32 
+          Professional services and other  $               -    $                     -    $                 -    $               -    $                  -    $                  -    $                  -    $                  -   
+Operating expenses:  $                  -   
+          Sales and marketing  $               -    $                     -    $                 -    $               -    $                  -    $                  -    $                  -    $                  -   
+          Research and development  $               -    $                     -    $                 -    $               -    $                  -    $                  -    $                  -    $                  -   
+          General and administrative  $                4  $                      2  $                  1  $                3  $                 10  $                    1  $                   2  $                    1 
+Total amortization of purchase intangibles  $              24  $                   24  $               23  $              23  $                94  $                  21  $                 25  $                 33 
+Business combinations and other related costs
+Cost of revenues:
+          Subscription  $               -    $                     -    $                 -    $               -    $                  -    $                  -    $                  -    $                  -   
+          Professional services and other  $               -    $                     -    $                 -    $               -    $                  -    $                  -    $                  -    $                  -   
+Operating expenses:  $                  -   
+          Sales and marketing  $               -    $                     -    $                 -    $                 1  $                   1  $                  -    $                  -    $                  -   
+          Research and development  $               11  $                    10  $                  3  $                2  $                26  $                   2  $                   2  $                   2 
+          General and administrative  $                2  $                      2  $                  1  $                 1  $                   6  $                   9  $                  12  $                  17 
+Total Business combinations and other related 
+costs  $               13  $                    12  $                 4  $                4  $                33  $                  11  $                 14  $                  19 
+Legal settlements
+Cost of revenues:
+          Subscription  $               -    $                     -    $                 -    $               -    $                  -    $                  -    $                  -    $                  -   
+          Professional services and other  $               -    $                     -    $                 -    $               -    $                  -    $                  -    $                  -    $                  -   
+Operating expenses:
+          Sales and marketing  $               -    $                     -    $                 -    $               -    $                  -    $                  -    $                  -    $                  -   
+          Research and development  $               -    $                     -    $                 -    $               -    $                  -    $                  -    $                  -    $                  -   
+          General and administrative  $               -    $                     -    $                 -    $               17  $                 17  $                  -    $                  -    $                  -   
+Total Legal settlements  $               -    $                     -    $                 -    $               17  $                 17  $                  -    $                  -    $                  -   
+Impairment of assets
+Cost of revenues:
+          Subscription  $               -    $                     -    $                 -    $               -    $                  -    $                  -    $                  -    $                  -   
+          Professional services and other  $               -    $                     -    $                 -    $               -    $                  -    $                  -    $                  -    $                  -   
+Operating expenses:
+          Sales and marketing  $               -    $                     -    $                 -    $               -    $                  -    $                  -    $                  -    $                  -   
+          Research and development  $               -    $                     -    $                 -    $               -    $                  -    $                  -    $                  -    $                  -   
+          General and administrative  $               -    $                     -    $                 -    $               -    $                  -    $                  -    $                 30  $                  -   
+Total Impairment of assets  $               -    $                     -    $                 -    $               -    $                  -    $                  -    $                 30  $                  -   
+Severance costs
+Cost of revenues:
+          Subscription  $               -    $                     -    $                 -    $               -    $                  -    $                  -    $                   3  $                   2 
+          Professional services and other  $               -    $                     -    $                 -    $               -    $                  -    $                  -    $                  -    $                  -   
+Operating expenses:
+          Sales and marketing  $               -    $                     -    $                 -    $               -    $                  -    $                  -    $                  19  $                  17 
+          Research and development  $               -    $                     -    $                 -    $               -    $                  -    $                  -    $                   5  $                   2 
+          General and administrative  $               -    $                     -    $                 -    $               -    $                  -    $                  -    $                   2  $                   3 
+Total Severance costs  $               -    $                     -    $                 -    $               -    $                  -    $                  -    $                 29  $                 24 
+         Note: Numbers rounded for presentation purposes and may not foot. 
+---PAGE---
+=== PAGE 25 ===

@@ -1,0 +1,139 @@
+//@version=5
+indicator("CM_Ultimate_MA_MTF + Fair Value", shorttitle="CM_MA_FV", overlay=true, precision=2)
+
+// --- Parámetros de Entrada del Indicador Original ---
+src = input.source(close, title="Fuente de Precio")
+useCurrentRes = input.bool(true, title="Use Current Chart Resolution?")
+resCustom = input.timeframe("D", title="Use Different Timeframe? Uncheck Box Above")
+len = input.int(20, title="Moving Average Length - LookBack Period")
+atype = input.int(1, minval=1, maxval=7, title="1=SMA, 2=EMA, 3=WMA, 4=HullMA, 5=VWMA, 6=RMA, 7=TEMA")
+cc = input.bool(true, title="Change Color Based On Direction?")
+smoothe = input.int(2, minval=1, maxval=10, title="Color Smoothing - 1 = No Smoothing")
+doma2 = input.bool(false, title="Optional 2nd Moving Average")
+len2 = input.int(50, title="Moving Average Length - Optional 2nd MA")
+atype2 = input.int(1, minval=1, maxval=7, title="1=SMA, 2=EMA, 3=WMA, 4=HullMA, 5=VWMA, 6=RMA, 7=TEMA")
+cc2 = input.bool(true, title="Change Color Based On Direction 2nd MA?")
+sd = input.bool(false, title="Show Dots on Cross of Both MA's")
+
+// --- Parámetros de Entrada para Fair Value & Valor Intrínseco Normalizado ---
+show_fv          = input.bool(true, title="Mostrar Fair Value (Precio Justo por PER)")
+pe_avg_len       = input.int(252, title="Longitud de la Media del PER para Fair Value", minval=1)
+eps_source       = input.string("Operating EPS (Normalizado Core)", title="Fuente del EPS para Ratios", options=["Operating EPS (Normalizado Core)", "Diluted TTM", "Basic TTM"])
+tax_rate         = input.float(16.0, title="Tasa Impositiva Efectiva (%) para EPS Operativo", minval=0.0, maxval=50.0)
+max_pe_cap       = input.float(65.0, title="PER Máximo Permitido (Capping Normalización)", minval=10.0)
+min_pe_cap       = input.float(10.0, title="PER Mínimo Permitido", minval=1.0)
+use_eps_smooth   = input.bool(true, title="Activar Filtro Anti-Acantilado de EPS (Normalización GAAP)")
+smooth_eps_len   = input.int(52, title="Longitud del Suavizado Anti-Acantilado EPS", minval=1)
+show_iv          = input.bool(true, title="Mostrar Valor Intrínseco (Graham)")
+growth_rate      = input.float(8.5, title="Tasa Crecimiento g (%) para Graham", minval=0.0)
+
+res = useCurrentRes ? timeframe.period : resCustom
+
+// --- Función Auxiliar para Calcular las Medias Móviles ---
+get_ma(ma_type, source, ma_len) =>
+    float ma = na
+    if ma_type == 1 // SMA
+        ma := ta.sma(source, ma_len)
+    else if ma_type == 2 // EMA
+        ma := ta.ema(source, ma_len)
+    else if ma_type == 3 // WMA
+        ma := ta.wma(source, ma_len)
+    else if ma_type == 4 // HullMA
+        ma := ta.wma(2 * ta.wma(source, int(ma_len/2)) - ta.wma(source, ma_len), int(math.round(math.sqrt(ma_len))))
+    else if ma_type == 5 // VWMA
+        ma := ta.vwma(source, ma_len)
+    else if ma_type == 6 // RMA
+        ma := ta.rma(source, ma_len)
+    else if ma_type == 7 // TEMA
+        ema1 = ta.ema(source, ma_len)
+        ema2 = ta.ema(ema1, ma_len)
+        ema3 = ta.ema(ema2, ma_len)
+        ma := 3 * (ema1 - ema2) + ema3
+    ma
+
+avg = get_ma(atype, src, len)
+avg2 = get_ma(atype2, src, len2)
+
+out1 = request.security(syminfo.tickerid, res, avg)
+out2 = request.security(syminfo.tickerid, res, avg2)
+
+ma_up = out1 >= out1[smoothe]
+ma_down = out1 < out1[smoothe]
+
+color col = cc ? (ma_up ? color.lime : color.red) : color.aqua
+color col2 = cc2 ? (ma_up ? color.lime : color.red) : color.aqua
+
+// Dibujo de las MAs del indicador original
+plot(out1, title="Multi-Timeframe Moving Avg", linewidth=3, color=col)
+plot(doma2 ? out2 : na, title="2nd Multi-TimeFrame Moving Average", style=plot.style_circles, linewidth=4, color=col2)
+ma_cross = ta.cross(out1, out2)
+plot(sd and ma_cross ? out2 : na, style=plot.style_cross, linewidth=5, color=color.yellow)
+
+// Dibujo de las MAs adicionales de soporte
+short_ma = ta.ema(close, 9)
+long_ma = ta.ema(close, 50)
+long_ma2 = ta.ema(close, 100)
+long_ma3 = ta.ema(close, 200)
+longSma = ta.sma(close, 200)
+
+plot(short_ma, title="EMA 9", color=color.red)
+plot(long_ma, title="EMA 50", color=color.green, linewidth=2)
+plot(long_ma2, title="EMA 100", color=color.gray, linewidth=1)
+plot(long_ma3, title="EMA 200", color=color.blue, linewidth=2)
+plot(longSma, title="SMA 200", color=color.black, linewidth=2)
+
+// --- Módulo de Cálculo del Fair Value Normalizado ---
+// Obtenemos los datos de beneficios (EPS GAAP & Operativo Normalizado)
+eps_diluted_ttm = request.financial(syminfo.tickerid, "EARNINGS_PER_SHARE_DILUTED", "TTM", ignore_invalid_symbol=true)
+eps_basic_ttm   = request.financial(syminfo.tickerid, "EARNINGS_PER_SHARE_BASIC", "TTM", ignore_invalid_symbol=true)
+op_income_ttm   = request.financial(syminfo.tickerid, "OPERATING_INCOME", "TTM", ignore_invalid_symbol=true)
+shares_ttm      = request.financial(syminfo.tickerid, "TOTAL_SHARES_OUTSTANDING", "TTM", ignore_invalid_symbol=true)
+
+// Cálculo del EPS Operativo Normalizado (Aísla distorsiones de cartera accionaria no operativa como en GOOGL)
+float eps_op = na
+if not na(op_income_ttm) and not na(shares_ttm) and shares_ttm > 0
+    eps_op := (op_income_ttm * (1.0 - tax_rate / 100.0)) / shares_ttm
+
+float eps_raw = na
+if eps_source == "Operating EPS (Normalizado Core)" and not na(eps_op) and eps_op > 0
+    eps_raw := eps_op
+else if eps_source == "Basic TTM"
+    eps_raw := eps_basic_ttm
+else
+    eps_raw := eps_diluted_ttm
+
+// Filtro Anti-Acantilado de EPS: evita colapsos a cero por cargos contables GAAP no recurrentes (ej. adquisición de Xilinx en AMD)
+float eps = na
+if not na(eps_raw)
+    if use_eps_smooth
+        eps_sma = ta.sma(eps_raw, smooth_eps_len)
+        eps := not na(eps_sma) and eps_sma > 0 ? math.max(eps_raw, eps_sma * 0.4) : eps_raw
+    else
+        eps := eps_raw
+
+// Capping de PER para eliminar distorsiones SaaS/Splits
+float pe = na
+if not na(eps) and eps > 0
+    raw_pe = close / eps
+    pe := math.max(min_pe_cap, math.min(max_pe_cap, raw_pe))
+
+// Media móvil rodante limpia para el PER histórico
+float pe_avg = ta.sma(pe, pe_avg_len)
+if na(pe_avg)
+    pe_avg := ta.cum(pe) / ta.cum(not na(pe) ? 1 : 0)
+
+// Calcular Fair Value Normalizado (Precio Justo por PER histórico)
+float fair_value = na
+if not na(pe_avg) and not na(eps)
+    fair_value := pe_avg * eps
+
+// Calcular Valor Intrínseco (Fórmula de Benjamin Graham)
+float intrinsic_value = na
+if not na(eps) and eps > 0
+    intrinsic_value := eps * (8.5 + 2 * growth_rate)
+
+// Dibujar el Fair Value y el Valor Intrínseco directamente en el gráfico principal
+// Fair Value: Línea dorada/naranja gruesa y discontinua
+plot(show_fv ? fair_value : na, title="Fair Value (Precio Justo por PER)", color=color.new(#d97706, 0), linewidth=1, style=plot.style_linebr)
+// Valor Intrínseco (Graham): Línea violeta discontinua
+plot(show_iv ? intrinsic_value : na, title="Valor Intrínseco (Graham)", color=color.new(#8b5cf6, 0), linewidth=1, style=plot.style_linebr)

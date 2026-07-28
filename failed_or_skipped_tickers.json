@@ -1,0 +1,37 @@
+[
+  [
+    "CAPITALCOM:WLSNC",
+    "WSC.L",
+    "Skipped (No financials)"
+  ],
+  [
+    "NASDAQ:FISV",
+    "FISV",
+    "Skipped (Incomplete info)"
+  ],
+  [
+    "NASDAQ:MTCH",
+    "MTCH",
+    "Skipped (Incomplete info)"
+  ],
+  [
+    "NASDAQ:QQQ",
+    "QQQ",
+    "Skipped (ETF/Index)"
+  ],
+  [
+    "NYSE:A",
+    "A",
+    "Skipped (Incomplete info)"
+  ],
+  [
+    "NYSE:XYZ",
+    "XYZ",
+    "Skipped placeholder XYZ"
+  ],
+  [
+    "TVC:DJI",
+    "^DJI",
+    "Skipped (ETF/Index)"
+  ]
+]

@@ -1,0 +1,2892 @@
+[
+  {
+    "raw": "EURONEXT:ASM",
+    "mapped": "ASM.AS",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "ASM International NV",
+    "sector": "Technology"
+  },
+  {
+    "raw": "CBOE:CBOE",
+    "mapped": "CBOE",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Cboe Global Markets, Inc.",
+    "sector": "Financial Services"
+  },
+  {
+    "raw": "FWB:LOR",
+    "mapped": "OR.PA",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "L'Or\u00e9al S.A.",
+    "sector": "Consumer Defensive"
+  },
+  {
+    "raw": "NASDAQ:AFRM",
+    "mapped": "AFRM",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Affirm Holdings, Inc.",
+    "sector": "Financial Services"
+  },
+  {
+    "raw": "EURONEXT:ALFEN",
+    "mapped": "ALFEN.AS",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Alfen N.V.",
+    "sector": "Industrials"
+  },
+  {
+    "raw": "NASDAQ:ADP",
+    "mapped": "ADP",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Automatic Data Processing, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:CELH",
+    "mapped": "CELH",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Celsius Holdings, Inc.",
+    "sector": "Consumer Defensive"
+  },
+  {
+    "raw": "NASDAQ:CDW",
+    "mapped": "CDW",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "CDW Corporation",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:CRSP",
+    "mapped": "CRSP",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "CRISPR Therapeutics AG",
+    "sector": "Healthcare"
+  },
+  {
+    "raw": "NASDAQ:CASY",
+    "mapped": "CASY",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Casey's General Stores, Inc.",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "NASDAQ:API",
+    "mapped": "API",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Agora, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:ALAB",
+    "mapped": "ALAB",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Astera Labs, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:COIN",
+    "mapped": "COIN",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Coinbase Global, Inc.",
+    "sector": "Financial Services"
+  },
+  {
+    "raw": "NASDAQ:CMCSA",
+    "mapped": "CMCSA",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Comcast Corporation",
+    "sector": "Communication Services"
+  },
+  {
+    "raw": "NASDAQ:ASTS",
+    "mapped": "ASTS",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "AST SpaceMobile, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:ALGM",
+    "mapped": "ALGM",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Allegro MicroSystems, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:CNXC",
+    "mapped": "CNXC",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Concentrix Corporation",
+    "sector": "Technology"
+  },
+  {
+    "raw": "LSE:WOSG",
+    "mapped": "WOSG.L",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Watches of Switzerland Group PLC",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "NASDAQ:CHTR",
+    "mapped": "CHTR",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Charter Communications, Inc.",
+    "sector": "Communication Services"
+  },
+  {
+    "raw": "NASDAQ:BCPC",
+    "mapped": "BCPC",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Balchem Corporation",
+    "sector": "Basic Materials"
+  },
+  {
+    "raw": "NASDAQ:ACLS",
+    "mapped": "ACLS",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Axcelis Technologies, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:CSGP",
+    "mapped": "CSGP",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "CoStar Group, Inc.",
+    "sector": "Real Estate"
+  },
+  {
+    "raw": "NASDAQ:APPS",
+    "mapped": "APPS",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Digital Turbine, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:DASH",
+    "mapped": "DASH",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "DoorDash, Inc.",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "NASDAQ:AMGN",
+    "mapped": "AMGN",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Amgen Inc.",
+    "sector": "Healthcare"
+  },
+  {
+    "raw": "NASDAQ:CLFD",
+    "mapped": "CLFD",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Clearfield, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:CIGI",
+    "mapped": "CIGI",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Colliers International Group Inc.",
+    "sector": "Real Estate"
+  },
+  {
+    "raw": "NASDAQ:ARM",
+    "mapped": "ARM",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Arm Holdings plc",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:ADSK",
+    "mapped": "ADSK",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Autodesk, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:DIOD",
+    "mapped": "DIOD",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Diodes Incorporated",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:EXPO",
+    "mapped": "EXPO",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Exponent, Inc.",
+    "sector": "Industrials"
+  },
+  {
+    "raw": "NASDAQ:DDOG",
+    "mapped": "DDOG",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Datadog, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:EBAY",
+    "mapped": "EBAY",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "eBay Inc.",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "NASDAQ:ENTG",
+    "mapped": "ENTG",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Entegris, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:DOCU",
+    "mapped": "DOCU",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "DocuSign, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:ENPH",
+    "mapped": "ENPH",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Enphase Energy, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:FROG",
+    "mapped": "FROG",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "JFrog Ltd.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:HON",
+    "mapped": "HON",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Honeywell International Inc.",
+    "sector": "Industrials"
+  },
+  {
+    "raw": "NASDAQ:DUOL",
+    "mapped": "DUOL",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Duolingo, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:IBKR",
+    "mapped": "IBKR",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Interactive Brokers Group, Inc.",
+    "sector": "Financial Services"
+  },
+  {
+    "raw": "NASDAQ:GTLB",
+    "mapped": "GTLB",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "GitLab Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:DXCM",
+    "mapped": "DXCM",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "DexCom, Inc.",
+    "sector": "Healthcare"
+  },
+  {
+    "raw": "NASDAQ:FRPT",
+    "mapped": "FRPT",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Freshpet, Inc.",
+    "sector": "Consumer Defensive"
+  },
+  {
+    "raw": "NASDAQ:FIVN",
+    "mapped": "FIVN",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Five9, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:ICLR",
+    "mapped": "ICLR",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "ICON Public Limited Company",
+    "sector": "Healthcare"
+  },
+  {
+    "raw": "NASDAQ:INTA",
+    "mapped": "INTA",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Intapp, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:FORM",
+    "mapped": "FORM",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "FormFactor, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:FRSH",
+    "mapped": "FRSH",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Freshworks Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:FTDR",
+    "mapped": "FTDR",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Frontdoor, Inc.",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "NASDAQ:HOOD",
+    "mapped": "HOOD",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Robinhood Markets, Inc.",
+    "sector": "Financial Services"
+  },
+  {
+    "raw": "NASDAQ:FIVE",
+    "mapped": "FIVE",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Five Below, Inc.",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "NASDAQ:INMD",
+    "mapped": "INMD",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "InMode Ltd.",
+    "sector": "Healthcare"
+  },
+  {
+    "raw": "NASDAQ:JD",
+    "mapped": "JD",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "JD.com, Inc.",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "NASDAQ:IPAR",
+    "mapped": "IPAR",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Interparfums, Inc.",
+    "sector": "Consumer Defensive"
+  },
+  {
+    "raw": "NASDAQ:INTC",
+    "mapped": "INTC",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Intel Corporation",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:IREN",
+    "mapped": "IREN",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "IREN Limited",
+    "sector": "Financial Services"
+  },
+  {
+    "raw": "NASDAQ:JKHY",
+    "mapped": "JKHY",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Jack Henry & Associates, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:KINS",
+    "mapped": "KINS",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Kingstone Companies, Inc.",
+    "sector": "Financial Services"
+  },
+  {
+    "raw": "NASDAQ:LITE",
+    "mapped": "LITE",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Lumentum Holdings Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:MKTX",
+    "mapped": "MKTX",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "MarketAxess Holdings Inc.",
+    "sector": "Financial Services"
+  },
+  {
+    "raw": "NASDAQ:MNST",
+    "mapped": "MNST",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Monster Beverage Corporation",
+    "sector": "Consumer Defensive"
+  },
+  {
+    "raw": "NASDAQ:LOGI",
+    "mapped": "LOGI",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Logitech International S.A.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:MDB",
+    "mapped": "MDB",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "MongoDB, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:LULU",
+    "mapped": "LULU",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "lululemon athletica inc.",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "NASDAQ:NTES",
+    "mapped": "NTES",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "NetEase, Inc.",
+    "sector": "Communication Services"
+  },
+  {
+    "raw": "NASDAQ:MAMA",
+    "mapped": "MAMA",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Mama's Creations, Inc.",
+    "sector": "Consumer Defensive"
+  },
+  {
+    "raw": "NASDAQ:LSCC",
+    "mapped": "LSCC",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Lattice Semiconductor Corporation",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:NOVT",
+    "mapped": "NOVT",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Novanta Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:NNE",
+    "mapped": "NNE",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "NANO Nuclear Energy Inc.",
+    "sector": "Industrials"
+  },
+  {
+    "raw": "NASDAQ:OKTA",
+    "mapped": "OKTA",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Okta, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:NSSC",
+    "mapped": "NSSC",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Napco Security Technologies, Inc.",
+    "sector": "Industrials"
+  },
+  {
+    "raw": "NASDAQ:MRNA",
+    "mapped": "MRNA",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Moderna, Inc.",
+    "sector": "Healthcare"
+  },
+  {
+    "raw": "NASDAQ:PAYX",
+    "mapped": "PAYX",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Paychex, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:ON",
+    "mapped": "ON",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "ON Semiconductor Corporation",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:OPEN",
+    "mapped": "OPEN",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Opendoor Technologies Inc.",
+    "sector": "Real Estate"
+  },
+  {
+    "raw": "NASDAQ:PODD",
+    "mapped": "PODD",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Insulet Corporation",
+    "sector": "Healthcare"
+  },
+  {
+    "raw": "NASDAQ:MMSI",
+    "mapped": "MMSI",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Merit Medical Systems, Inc.",
+    "sector": "Healthcare"
+  },
+  {
+    "raw": "NASDAQ:MAR",
+    "mapped": "MAR",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Marriott International, Inc.",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "NASDAQ:MRVL",
+    "mapped": "MRVL",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Marvell Technology, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:MSTR",
+    "mapped": "MSTR",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Strategy Inc",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:PCTY",
+    "mapped": "PCTY",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Paylocity Holding Corporation",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:QCOM",
+    "mapped": "QCOM",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "QUALCOMM Incorporated",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:NXPI",
+    "mapped": "NXPI",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "NXP Semiconductors N.V.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:NICE",
+    "mapped": "NICE",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "NICE Ltd.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:PEP",
+    "mapped": "PEP",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "PepsiCo, Inc.",
+    "sector": "Consumer Defensive"
+  },
+  {
+    "raw": "NASDAQ:PDD",
+    "mapped": "PDD",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "PDD Holdings Inc.",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "NASDAQ:QLYS",
+    "mapped": "QLYS",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Qualys, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:RGTI",
+    "mapped": "RGTI",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Rigetti Computing, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:ROST",
+    "mapped": "ROST",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Ross Stores, Inc.",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "NASDAQ:ROP",
+    "mapped": "ROP",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Roper Technologies, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:SMCI",
+    "mapped": "SMCI",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Super Micro Computer, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:SBUX",
+    "mapped": "SBUX",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Starbucks Corporation",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "NASDAQ:SPSC",
+    "mapped": "SPSC",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "SPS Commerce, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:SBAC",
+    "mapped": "SBAC",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "SBA Communications Corporation",
+    "sector": "Real Estate"
+  },
+  {
+    "raw": "NASDAQ:SEZL",
+    "mapped": "SEZL",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Sezzle Inc.",
+    "sector": "Financial Services"
+  },
+  {
+    "raw": "NASDAQ:SSNC",
+    "mapped": "SSNC",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "SS&C Technologies Holdings, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:TECH",
+    "mapped": "TECH",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Bio-Techne Corporation",
+    "sector": "Healthcare"
+  },
+  {
+    "raw": "NASDAQ:TEAM",
+    "mapped": "TEAM",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Atlassian Corporation",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:TRMB",
+    "mapped": "TRMB",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Trimble Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:TLN",
+    "mapped": "TLN",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Talen Energy Corporation",
+    "sector": "Utilities"
+  },
+  {
+    "raw": "NASDAQ:TDUP",
+    "mapped": "TDUP",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "ThredUp Inc.",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "NASDAQ:TEM",
+    "mapped": "TEM",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Tempus AI, Inc.",
+    "sector": "Healthcare"
+  },
+  {
+    "raw": "NASDAQ:SOUN",
+    "mapped": "SOUN",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "SoundHound AI, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:RPD",
+    "mapped": "RPD",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Rapid7, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:TTWO",
+    "mapped": "TTWO",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Take-Two Interactive Software, Inc.",
+    "sector": "Communication Services"
+  },
+  {
+    "raw": "NASDAQ:TXRH",
+    "mapped": "TXRH",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Texas Roadhouse, Inc.",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "NASDAQ:TROW",
+    "mapped": "TROW",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "T. Rowe Price Group, Inc.",
+    "sector": "Financial Services"
+  },
+  {
+    "raw": "NASDAQ:SAIA",
+    "mapped": "SAIA",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Saia, Inc.",
+    "sector": "Industrials"
+  },
+  {
+    "raw": "NASDAQ:SOFI",
+    "mapped": "SOFI",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "SoFi Technologies, Inc.",
+    "sector": "Financial Services"
+  },
+  {
+    "raw": "NASDAQ:STLD",
+    "mapped": "STLD",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Steel Dynamics, Inc.",
+    "sector": "Basic Materials"
+  },
+  {
+    "raw": "NASDAQ:SEDG",
+    "mapped": "SEDG",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "SolarEdge Technologies, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:TXN",
+    "mapped": "TXN",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Texas Instruments Incorporated",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:SNDK",
+    "mapped": "SNDK",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Sandisk Corporation",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:ULTA",
+    "mapped": "ULTA",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Ulta Beauty, Inc.",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "NASDAQ:TER",
+    "mapped": "TER",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Teradyne, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:STX",
+    "mapped": "STX",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Seagate Technology Holdings plc",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:VRTX",
+    "mapped": "VRTX",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Vertex Pharmaceuticals Incorporated",
+    "sector": "Healthcare"
+  },
+  {
+    "raw": "NASDAQ:UPST",
+    "mapped": "UPST",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Upstart Holdings, Inc.",
+    "sector": "Financial Services"
+  },
+  {
+    "raw": "NASDAQ:XPEL",
+    "mapped": "XPEL",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "XPEL, Inc.",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "NASDAQ:ZG",
+    "mapped": "ZG",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Zillow Group, Inc.",
+    "sector": "Communication Services"
+  },
+  {
+    "raw": "NASDAQ:WDC",
+    "mapped": "WDC",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Western Digital Corporation",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:WDAY",
+    "mapped": "WDAY",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Workday, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:ZBRA",
+    "mapped": "ZBRA",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Zebra Technologies Corporation",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NASDAQ:WING",
+    "mapped": "WING",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Wingstop Inc.",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "NYSE:ABBV",
+    "mapped": "ABBV",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "AbbVie Inc.",
+    "sector": "Healthcare"
+  },
+  {
+    "raw": "NYSE:ATR",
+    "mapped": "ATR",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "AptarGroup, Inc.",
+    "sector": "Healthcare"
+  },
+  {
+    "raw": "NASDAQ:USLM",
+    "mapped": "USLM",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "United States Lime & Minerals, Inc.",
+    "sector": "Basic Materials"
+  },
+  {
+    "raw": "NYSE:AME",
+    "mapped": "AME",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "AMETEK, Inc.",
+    "sector": "Industrials"
+  },
+  {
+    "raw": "NYSE:AI",
+    "mapped": "AI",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "C3.ai, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NYSE:AGM",
+    "mapped": "AGM",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Federal Agricultural Mortgage Corporation",
+    "sector": "Financial Services"
+  },
+  {
+    "raw": "NYSE:ABT",
+    "mapped": "ABT",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Abbott Laboratories",
+    "sector": "Healthcare"
+  },
+  {
+    "raw": "NYSE:ACA",
+    "mapped": "ACA",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Arcosa, Inc.",
+    "sector": "Industrials"
+  },
+  {
+    "raw": "NASDAQ:ZS",
+    "mapped": "ZS",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Zscaler, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NYSE:ANF",
+    "mapped": "ANF",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Abercrombie & Fitch Co.",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "NYSE:AON",
+    "mapped": "AON",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Aon plc",
+    "sector": "Financial Services"
+  },
+  {
+    "raw": "NYSE:BE",
+    "mapped": "BE",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Bloom Energy Corporation",
+    "sector": "Industrials"
+  },
+  {
+    "raw": "NYSE:ATKR",
+    "mapped": "ATKR",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Atkore Inc.",
+    "sector": "Industrials"
+  },
+  {
+    "raw": "NYSE:BAM",
+    "mapped": "BAM",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Brookfield Asset Management Ltd.",
+    "sector": "Financial Services"
+  },
+  {
+    "raw": "NYSE:CACI",
+    "mapped": "CACI",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "CACI International Inc",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NYSE:BLK",
+    "mapped": "BLK",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "BlackRock, Inc.",
+    "sector": "Financial Services"
+  },
+  {
+    "raw": "NYSE:BN",
+    "mapped": "BN",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Brookfield Corporation",
+    "sector": "Financial Services"
+  },
+  {
+    "raw": "NYSE:CAVA",
+    "mapped": "CAVA",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "CAVA Group, Inc.",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "NYSE:BRBR",
+    "mapped": "BRBR",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "BellRing Brands, Inc.",
+    "sector": "Consumer Defensive"
+  },
+  {
+    "raw": "NYSE:BILL",
+    "mapped": "BILL",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "BILL Holdings, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NYSE:BX",
+    "mapped": "BX",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Blackstone Inc.",
+    "sector": "Financial Services"
+  },
+  {
+    "raw": "NYSE:CHPT",
+    "mapped": "CHPT",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "ChargePoint Holdings, Inc.",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "NYSE:CI",
+    "mapped": "CI",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "The Cigna Group",
+    "sector": "Healthcare"
+  },
+  {
+    "raw": "NYSE:CP",
+    "mapped": "CP",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Canadian Pacific Kansas City Limited",
+    "sector": "Industrials"
+  },
+  {
+    "raw": "NYSE:CMG",
+    "mapped": "CMG",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Chipotle Mexican Grill, Inc.",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "NYSE:CLH",
+    "mapped": "CLH",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Clean Harbors, Inc.",
+    "sector": "Industrials"
+  },
+  {
+    "raw": "NYSE:CPNG",
+    "mapped": "CPNG",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Coupang, Inc.",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "NYSE:CNI",
+    "mapped": "CNI",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Canadian National Railway Company",
+    "sector": "Industrials"
+  },
+  {
+    "raw": "NYSE:DG",
+    "mapped": "DG",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Dollar General Corporation",
+    "sector": "Consumer Defensive"
+  },
+  {
+    "raw": "NYSE:COHR",
+    "mapped": "COHR",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Coherent Corp.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NYSE:CVNA",
+    "mapped": "CVNA",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Carvana Co.",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "NYSE:DAVA",
+    "mapped": "DAVA",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Endava plc",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NYSE:DHR",
+    "mapped": "DHR",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Danaher Corporation",
+    "sector": "Healthcare"
+  },
+  {
+    "raw": "NYSE:CNS",
+    "mapped": "CNS",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Cohen & Steers, Inc.",
+    "sector": "Financial Services"
+  },
+  {
+    "raw": "NYSE:DE",
+    "mapped": "DE",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Deere & Company",
+    "sector": "Industrials"
+  },
+  {
+    "raw": "NYSE:DIS",
+    "mapped": "DIS",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "The Walt Disney Company",
+    "sector": "Communication Services"
+  },
+  {
+    "raw": "NYSE:CMC",
+    "mapped": "CMC",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Commercial Metals Company",
+    "sector": "Industrials"
+  },
+  {
+    "raw": "NYSE:CTVA",
+    "mapped": "CTVA",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Corteva, Inc.",
+    "sector": "Basic Materials"
+  },
+  {
+    "raw": "NYSE:CRCL",
+    "mapped": "CRCL",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Circle Internet Group",
+    "sector": "Financial Services"
+  },
+  {
+    "raw": "NYSE:DHI",
+    "mapped": "DHI",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "D.R. Horton, Inc.",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "NYSE:DT",
+    "mapped": "DT",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Dynatrace, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NYSE:DELL",
+    "mapped": "DELL",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Dell Technologies Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NYSE:DOV",
+    "mapped": "DOV",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Dover Corporation",
+    "sector": "Industrials"
+  },
+  {
+    "raw": "NYSE:ELF",
+    "mapped": "ELF",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "e.l.f. Beauty, Inc.",
+    "sector": "Consumer Defensive"
+  },
+  {
+    "raw": "NYSE:DBD",
+    "mapped": "DBD",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Diebold Nixdorf, Incorporated",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NYSE:DOLE",
+    "mapped": "DOLE",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Dole plc",
+    "sector": "Consumer Defensive"
+  },
+  {
+    "raw": "NYSE:EGP",
+    "mapped": "EGP",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "EastGroup Properties, Inc.",
+    "sector": "Real Estate"
+  },
+  {
+    "raw": "NYSE:ELV",
+    "mapped": "ELV",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Elevance Health, Inc.",
+    "sector": "Healthcare"
+  },
+  {
+    "raw": "NYSE:EFX",
+    "mapped": "EFX",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Equifax Inc.",
+    "sector": "Industrials"
+  },
+  {
+    "raw": "NYSE:EVR",
+    "mapped": "EVR",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Evercore Inc.",
+    "sector": "Financial Services"
+  },
+  {
+    "raw": "NYSE:DOCN",
+    "mapped": "DOCN",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "DigitalOcean Holdings, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NYSE:EW",
+    "mapped": "EW",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Edwards Lifesciences Corporation",
+    "sector": "Healthcare"
+  },
+  {
+    "raw": "NYSE:GDDY",
+    "mapped": "GDDY",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "GoDaddy Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NYSE:GIB",
+    "mapped": "GIB",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "CGI Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NYSE:EXR",
+    "mapped": "EXR",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Extra Space Storage Inc.",
+    "sector": "Real Estate"
+  },
+  {
+    "raw": "NYSE:GLOB",
+    "mapped": "GLOB",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Globant S.A.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NYSE:GNRC",
+    "mapped": "GNRC",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Generac Holdings Inc.",
+    "sector": "Industrials"
+  },
+  {
+    "raw": "NYSE:GPN",
+    "mapped": "GPN",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Global Payments Inc.",
+    "sector": "Industrials"
+  },
+  {
+    "raw": "NYSE:KEYS",
+    "mapped": "KEYS",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Keysight Technologies, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NYSE:IHG",
+    "mapped": "IHG",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "InterContinental Hotels Group PLC",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "NYSE:HTB",
+    "mapped": "HTB",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "HomeTrust Bancshares, Inc.",
+    "sector": "Financial Services"
+  },
+  {
+    "raw": "NYSE:HRB",
+    "mapped": "HRB",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "H&R Block, Inc.",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "NYSE:JCI",
+    "mapped": "JCI",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Johnson Controls International plc",
+    "sector": "Industrials"
+  },
+  {
+    "raw": "NYSE:HCI",
+    "mapped": "HCI",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "HCI Group, Inc.",
+    "sector": "Financial Services"
+  },
+  {
+    "raw": "NYSE:JNJ",
+    "mapped": "JNJ",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Johnson & Johnson",
+    "sector": "Healthcare"
+  },
+  {
+    "raw": "NYSE:HUBS",
+    "mapped": "HUBS",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "HubSpot, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NYSE:HSY",
+    "mapped": "HSY",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "The Hershey Company",
+    "sector": "Consumer Defensive"
+  },
+  {
+    "raw": "NYSE:ITW",
+    "mapped": "ITW",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Illinois Tool Works Inc.",
+    "sector": "Industrials"
+  },
+  {
+    "raw": "NYSE:KR",
+    "mapped": "KR",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "The Kroger Co.",
+    "sector": "Consumer Defensive"
+  },
+  {
+    "raw": "NYSE:GGG",
+    "mapped": "GGG",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Graco Inc.",
+    "sector": "Industrials"
+  },
+  {
+    "raw": "NYSE:KO",
+    "mapped": "KO",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "The Coca-Cola Company",
+    "sector": "Consumer Defensive"
+  },
+  {
+    "raw": "NYSE:LW",
+    "mapped": "LW",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Lamb Weston Holdings, Inc.",
+    "sector": "Consumer Defensive"
+  },
+  {
+    "raw": "NYSE:LEN",
+    "mapped": "LEN",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Lennar Corporation",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "NYSE:KMX",
+    "mapped": "KMX",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "CarMax, Inc.",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "NYSE:IIPR",
+    "mapped": "IIPR",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Innovative Industrial Properties, Inc.",
+    "sector": "Real Estate"
+  },
+  {
+    "raw": "NYSE:HIMS",
+    "mapped": "HIMS",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Hims & Hers Health, Inc.",
+    "sector": "Healthcare"
+  },
+  {
+    "raw": "NYSE:LPX",
+    "mapped": "LPX",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Louisiana-Pacific Corporation",
+    "sector": "Industrials"
+  },
+  {
+    "raw": "NYSE:IONQ",
+    "mapped": "IONQ",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "IonQ, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NYSE:IEX",
+    "mapped": "IEX",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "IDEX Corporation",
+    "sector": "Industrials"
+  },
+  {
+    "raw": "NYSE:INSP",
+    "mapped": "INSP",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Inspire Medical Systems, Inc.",
+    "sector": "Healthcare"
+  },
+  {
+    "raw": "NYSE:LYB",
+    "mapped": "LYB",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "LyondellBasell Industries N.V.",
+    "sector": "Basic Materials"
+  },
+  {
+    "raw": "NYSE:MAA",
+    "mapped": "MAA",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Mid-America Apartment Communities, Inc.",
+    "sector": "Real Estate"
+  },
+  {
+    "raw": "NYSE:MLM",
+    "mapped": "MLM",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Martin Marietta Materials, Inc.",
+    "sector": "Basic Materials"
+  },
+  {
+    "raw": "NYSE:MAS",
+    "mapped": "MAS",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Masco Corporation",
+    "sector": "Industrials"
+  },
+  {
+    "raw": "NYSE:MTH",
+    "mapped": "MTH",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Meritage Homes Corporation",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "NYSE:MKC",
+    "mapped": "MKC",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "McCormick & Company, Incorporated",
+    "sector": "Consumer Defensive"
+  },
+  {
+    "raw": "NYSE:MCD",
+    "mapped": "MCD",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "McDonald's Corporation",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "NYSE:MP",
+    "mapped": "MP",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "MP Materials Corp.",
+    "sector": "Basic Materials"
+  },
+  {
+    "raw": "NYSE:MTN",
+    "mapped": "MTN",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Vail Resorts, Inc.",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "NYSE:MATX",
+    "mapped": "MATX",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Matson, Inc.",
+    "sector": "Industrials"
+  },
+  {
+    "raw": "NYSE:MTD",
+    "mapped": "MTD",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Mettler-Toledo International Inc.",
+    "sector": "Healthcare"
+  },
+  {
+    "raw": "NYSE:NRG",
+    "mapped": "NRG",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "NRG Energy, Inc.",
+    "sector": "Utilities"
+  },
+  {
+    "raw": "NYSE:MKL",
+    "mapped": "MKL",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Markel Group Inc.",
+    "sector": "Financial Services"
+  },
+  {
+    "raw": "NYSE:NIO",
+    "mapped": "NIO",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "NIO Inc.",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "NYSE:NUE",
+    "mapped": "NUE",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Nucor Corporation",
+    "sector": "Basic Materials"
+  },
+  {
+    "raw": "NYSE:NEE",
+    "mapped": "NEE",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "NextEra Energy, Inc.",
+    "sector": "Utilities"
+  },
+  {
+    "raw": "NYSE:NSP",
+    "mapped": "NSP",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Insperity, Inc.",
+    "sector": "Industrials"
+  },
+  {
+    "raw": "NYSE:NET",
+    "mapped": "NET",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Cloudflare, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NYSE:NYT",
+    "mapped": "NYT",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "The New York Times Company",
+    "sector": "Communication Services"
+  },
+  {
+    "raw": "NYSE:NU",
+    "mapped": "NU",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Nu Holdings Ltd.",
+    "sector": "Financial Services"
+  },
+  {
+    "raw": "NYSE:OKLO",
+    "mapped": "OKLO",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Oklo Inc.",
+    "sector": "Utilities"
+  },
+  {
+    "raw": "NYSE:NKE",
+    "mapped": "NKE",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "NIKE, Inc.",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "NYSE:OSCR",
+    "mapped": "OSCR",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Oscar Health, Inc.",
+    "sector": "Healthcare"
+  },
+  {
+    "raw": "NYSE:PFGC",
+    "mapped": "PFGC",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Performance Food Group Company",
+    "sector": "Consumer Defensive"
+  },
+  {
+    "raw": "NYSE:PATH",
+    "mapped": "PATH",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "UiPath, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NYSE:NOC",
+    "mapped": "NOC",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Northrop Grumman Corporation",
+    "sector": "Industrials"
+  },
+  {
+    "raw": "NYSE:OTIS",
+    "mapped": "OTIS",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Otis Worldwide Corporation",
+    "sector": "Industrials"
+  },
+  {
+    "raw": "NYSE:MRK",
+    "mapped": "MRK",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Merck & Co., Inc.",
+    "sector": "Healthcare"
+  },
+  {
+    "raw": "NYSE:PAC",
+    "mapped": "PAC",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Grupo Aeroportuario del Pac\u00edfico, S.A.B. de C.V.",
+    "sector": "Industrials"
+  },
+  {
+    "raw": "NYSE:OWL",
+    "mapped": "OWL",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Blue Owl Capital Inc.",
+    "sector": "Financial Services"
+  },
+  {
+    "raw": "NYSE:PAYC",
+    "mapped": "PAYC",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Paycom Software, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NYSE:PHM",
+    "mapped": "PHM",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "PulteGroup, Inc.",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "NYSE:PJT",
+    "mapped": "PJT",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "PJT Partners Inc.",
+    "sector": "Financial Services"
+  },
+  {
+    "raw": "NYSE:PKG",
+    "mapped": "PKG",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Packaging Corporation of America",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "NYSE:RELX",
+    "mapped": "RELX",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "RELX PLC",
+    "sector": "Industrials"
+  },
+  {
+    "raw": "NYSE:RBLX",
+    "mapped": "RBLX",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Roblox Corporation",
+    "sector": "Communication Services"
+  },
+  {
+    "raw": "NYSE:PLD",
+    "mapped": "PLD",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Prologis, Inc.",
+    "sector": "Real Estate"
+  },
+  {
+    "raw": "NYSE:SE",
+    "mapped": "SE",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Sea Limited",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "NYSE:SNOW",
+    "mapped": "SNOW",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Snowflake Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NYSE:SN",
+    "mapped": "SN",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "SharkNinja, Inc.",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "NYSE:SLGN",
+    "mapped": "SLGN",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Silgan Holdings Inc.",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "NYSE:RMD",
+    "mapped": "RMD",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "ResMed Inc.",
+    "sector": "Healthcare"
+  },
+  {
+    "raw": "NYSE:SCHW",
+    "mapped": "SCHW",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "The Charles Schwab Corporation",
+    "sector": "Financial Services"
+  },
+  {
+    "raw": "NYSE:RDDT",
+    "mapped": "RDDT",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Reddit, Inc.",
+    "sector": "Communication Services"
+  },
+  {
+    "raw": "NYSE:SCI",
+    "mapped": "SCI",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Service Corporation International",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "NYSE:TMO",
+    "mapped": "TMO",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Thermo Fisher Scientific Inc.",
+    "sector": "Healthcare"
+  },
+  {
+    "raw": "NYSE:SMWB",
+    "mapped": "SMWB",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Similarweb Ltd.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NYSE:ROK",
+    "mapped": "ROK",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Rockwell Automation, Inc.",
+    "sector": "Industrials"
+  },
+  {
+    "raw": "NYSE:SONY",
+    "mapped": "SONY",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Sony Group Corporation",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NYSE:TRU",
+    "mapped": "TRU",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "TransUnion",
+    "sector": "Financial Services"
+  },
+  {
+    "raw": "NYSE:TDY",
+    "mapped": "TDY",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Teledyne Technologies Incorporated",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NYSE:TOST",
+    "mapped": "TOST",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Toast, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NYSE:RH",
+    "mapped": "RH",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "RH",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "NYSE:TTC",
+    "mapped": "TTC",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "The Toro Company",
+    "sector": "Industrials"
+  },
+  {
+    "raw": "NYSE:TDOC",
+    "mapped": "TDOC",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Teladoc Health, Inc.",
+    "sector": "Healthcare"
+  },
+  {
+    "raw": "NYSE:STZ",
+    "mapped": "STZ",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Constellation Brands, Inc.",
+    "sector": "Consumer Defensive"
+  },
+  {
+    "raw": "NYSE:TWLO",
+    "mapped": "TWLO",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Twilio Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NYSE:TFII",
+    "mapped": "TFII",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "TFI International Inc.",
+    "sector": "Industrials"
+  },
+  {
+    "raw": "NYSE:TGT",
+    "mapped": "TGT",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Target Corporation",
+    "sector": "Consumer Defensive"
+  },
+  {
+    "raw": "NYSE:TREX",
+    "mapped": "TREX",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Trex Company, Inc.",
+    "sector": "Industrials"
+  },
+  {
+    "raw": "NYSE:TYL",
+    "mapped": "TYL",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Tyler Technologies, Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NYSE:U",
+    "mapped": "U",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Unity Software Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NYSE:UI",
+    "mapped": "UI",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Ubiquiti Inc.",
+    "sector": "Technology"
+  },
+  {
+    "raw": "NYSE:UDR",
+    "mapped": "UDR",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "UDR, Inc.",
+    "sector": "Real Estate"
+  },
+  {
+    "raw": "NYSE:UNP",
+    "mapped": "UNP",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Union Pacific Corporation",
+    "sector": "Industrials"
+  },
+  {
+    "raw": "NYSE:VAL",
+    "mapped": "VAL",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Valaris Limited",
+    "sector": "Energy"
+  },
+  {
+    "raw": "NYSE:YETI",
+    "mapped": "YETI",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "YETI Holdings, Inc.",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "NYSE:VICI",
+    "mapped": "VICI",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "VICI Properties Inc.",
+    "sector": "Real Estate"
+  },
+  {
+    "raw": "NYSE:WSO",
+    "mapped": "WSO",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Watsco, Inc.",
+    "sector": "Industrials"
+  },
+  {
+    "raw": "NYSE:WSM",
+    "mapped": "WSM",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Williams-Sonoma, Inc.",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "NYSE:W",
+    "mapped": "W",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Wayfair Inc.",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "NYSE:VMC",
+    "mapped": "VMC",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Vulcan Materials Company",
+    "sector": "Basic Materials"
+  },
+  {
+    "raw": "NYSE:YUM",
+    "mapped": "YUM",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Yum! Brands, Inc.",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "SIX:NESN",
+    "mapped": "NESN.SW",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Nestl\u00e9 S.A.",
+    "sector": "Consumer Defensive"
+  },
+  {
+    "raw": "NYSE:WAT",
+    "mapped": "WAT",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Waters Corporation",
+    "sector": "Healthcare"
+  },
+  {
+    "raw": "OMXSTO:TEQ",
+    "mapped": "TEQ.ST",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Teqnion AB (publ)",
+    "sector": "Industrials"
+  },
+  {
+    "raw": "NYSE:WGO",
+    "mapped": "WGO",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Winnebago Industries, Inc.",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "TSX:GSY",
+    "mapped": "GSY.TO",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "goeasy Ltd.",
+    "sector": "Financial Services"
+  },
+  {
+    "raw": "NYSE:VLO",
+    "mapped": "VLO",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Valero Energy Corporation",
+    "sector": "Energy"
+  },
+  {
+    "raw": "XETR:NA9",
+    "mapped": "NA9.DE",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Nagarro SE",
+    "sector": "Technology"
+  },
+  {
+    "raw": "TSX:CNR",
+    "mapped": "CNR.TO",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Canadian National Railway Company",
+    "sector": "Industrials"
+  },
+  {
+    "raw": "TSX:CNQ",
+    "mapped": "CNQ.TO",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Canadian Natural Resources Limited",
+    "sector": "Energy"
+  },
+  {
+    "raw": "NYSE:WST",
+    "mapped": "WST",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "West Pharmaceutical Services, Inc.",
+    "sector": "Healthcare"
+  },
+  {
+    "raw": "XETR:HFG",
+    "mapped": "HFG.DE",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "HelloFresh SE",
+    "sector": "Consumer Cyclical"
+  },
+  {
+    "raw": "OTC:TCEHY",
+    "mapped": "0700.HK",
+    "success": true,
+    "has_info": true,
+    "has_financials": true,
+    "is_etf_or_index": false,
+    "name": "Tencent Holdings Limited",
+    "sector": "Communication Services"
+  }
+]

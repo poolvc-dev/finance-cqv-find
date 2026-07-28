@@ -1,0 +1,164 @@
+//@version=5
+indicator("FIP - Múltiplo PER y Media Histórica", shorttitle="FIP PER", overlay=false, precision=2)
+
+// --- Parámetros de Entrada ---
+eps_source      = input.string("Diluted TTM", title="Fuente del EPS", options=["Diluted TTM", "Basic TTM"])
+pe_avg_len      = input.int(252, title="Longitud de la Media del PER (en velas)", minval=1)
+show_normalized = input.bool(true, title="Mostrar PER Normalizado (Media 3 años)")
+show_bands      = input.bool(true, title="Mostrar Bandas de Desviación Estándar")
+dev_multiplier  = input.float(1.0, title="Multiplicador de Desviación Estándar", minval=0.1)
+table_theme     = input.string("Claro", title="Tema de la Tabla", options=["Claro", "Oscuro"])
+
+// --- Configuración de Colores de la Tabla ---
+color tbl_bg     = table_theme == "Claro" ? color.new(#ffffff, 10) : color.new(#0f172a, 30)
+color tbl_border = table_theme == "Claro" ? color.new(#cbd5e1, 30) : color.new(#334155, 50)
+color cell_bg    = table_theme == "Claro" ? color.new(#f8fafc, 10) : color.new(#1e293b, 50)
+color text_head  = table_theme == "Claro" ? #1e293b : color.white
+
+// --- Obtención de Datos de EPS (TTM) ---
+// Usamos request.financial para obtener el EPS de la base de datos de TradingView
+eps_diluted_ttm = request.financial(syminfo.tickerid, "EARNINGS_PER_SHARE_DILUTED", "TTM")
+eps_basic_ttm   = request.financial(syminfo.tickerid, "EARNINGS_PER_SHARE_BASIC", "TTM")
+
+eps = eps_source == "Diluted TTM" ? eps_diluted_ttm : eps_basic_ttm
+
+// --- Cálculo del PER ---
+// Si el EPS es nulo o menor/igual a cero, no calculamos el PER para evitar divisiones por cero
+float pe = na
+if not na(eps) and eps > 0
+    pe := close / eps
+
+// --- Cálculos Estadísticos (Statistics Engine con ventana expansiva) ---
+// Usamos variables acumulativas para calcular la media y la desviación estándar
+// desde la primera vela con datos de PER, en lugar de esperar a completar la ventana.
+var float pe_sum    = 0.0
+var float pe_sq_sum = 0.0
+var int pe_count    = 0
+
+if not na(pe)
+    pe_sum    := pe_sum + pe
+    pe_sq_sum := pe_sq_sum + (pe * pe)
+    pe_count  := pe_count + 1
+
+float pe_avg_rolling = ta.sma(pe, pe_avg_len)
+float pe_dev_rolling = ta.stdev(pe, pe_avg_len)
+
+float pe_avg = na
+float pe_dev = na
+
+if pe_count > 0
+    if pe_count < pe_avg_len
+        pe_avg := pe_sum / pe_count
+        if pe_count > 1
+            float pe_var = (pe_sq_sum / pe_count) - (pe_avg * pe_avg)
+            // Ajuste para varianza muestral
+            pe_var := pe_var * pe_count / (pe_count - 1)
+            pe_dev := pe_var > 0 ? math.sqrt(pe_var) : 0.0
+        else
+            pe_dev := 0.0
+    else
+        pe_avg := pe_avg_rolling
+        pe_dev := pe_dev_rolling
+
+pe_upper = pe_avg + pe_dev * dev_multiplier
+pe_lower = pe_avg - pe_dev * dev_multiplier
+
+// --- Cálculo del PER Normalizado (Opción A: Media de EPS de 3 años) ---
+// Auto-detección de longitud de velas según la resolución temporal del gráfico
+int eps_avg_len = 756 // 3 años en diario (252 * 3)
+if timeframe.isweekly
+    eps_avg_len := 156 // 3 años en semanal (52 * 3)
+else if timeframe.ismonthly
+    eps_avg_len := 36  // 3 años en mensual (12 * 3)
+
+var float eps_sum = 0.0
+if not na(eps)
+    eps_sum := eps_sum + eps
+
+float eps_avg_3y = na
+if pe_count > 0
+    if pe_count < eps_avg_len
+        eps_avg_3y := eps_sum / pe_count
+    else
+        eps_avg_3y := ta.sma(eps, eps_avg_len)
+
+float pe_norm = na
+if not na(eps_avg_3y) and eps_avg_3y > 0
+    pe_norm := close / eps_avg_3y
+
+// --- Cálculo del Fair Value (Precio Justo por PER histórico) ---
+float fair_value = na
+float upside_pct = na
+
+if not na(pe_avg) and not na(eps)
+    fair_value := pe_avg * eps
+    if fair_value > 0
+        upside_pct := ((fair_value - close) / close) * 100
+
+// --- Renderizado de Gráficos (Bottom Pane) ---
+// Colores de los elementos
+color_pe      = color.new(#06b6d4, 0)   // Cian para el PER actual
+color_pe_norm = color.new(#f57c00, 0)   // Naranja para el PER normalizado
+color_pe_avg  = color.new(#ef4444, 0)   // Rojo para la media del PER
+color_bands   = color.new(#94a3b8, 50)  // Gris para las bandas de desviación
+
+// Línea base en cero
+hline(0, "Cero", color=color.new(#94a3b8, 80))
+
+// Dibujo de las líneas principales
+plot(pe, title="Múltiplo PER actual", color=color_pe, linewidth=2, style=plot.style_line)
+plot(show_normalized ? pe_norm : na, title="Múltiplo PER Normalizado", color=color_pe_norm, linewidth=1, style=plot.style_linebr)
+plot(pe_avg, title="Media del PER", color=color_pe_avg, linewidth=2, style=plot.style_line)
+
+// Dibujo de las bandas de desviación estándar
+plot_upper = plot(show_bands ? pe_upper : na, title="Banda Superior (+1σ)", color=color_bands, style=plot.style_line, linewidth=1)
+plot_lower = plot(show_bands ? pe_lower : na, title="Banda Inferior (-1σ)", color=color_bands, style=plot.style_line, linewidth=1)
+
+// Relleno entre las bandas para representar el canal de valoración normal
+fill(plot_upper, plot_lower, color=color.new(#94a3b8, 93), title="Zona de Valoración Normal")
+
+// --- Tabla Informativa Bloomberg-style (Esquina superior derecha del panel) ---
+var table info_table = table.new(position.top_right, columns=2, rows=6, bgcolor=tbl_bg, border_color=tbl_border, border_width=1)
+
+if barstate.islast
+    // Calcular Z-Score de la valoración relativa
+    float z_score = na
+    if not na(pe) and not na(pe_avg) and not na(pe_dev) and pe_dev > 0
+        z_score := (pe - pe_avg) / pe_dev
+        
+    // Determinar diagnóstico de valoración basado en Z-Score
+    string status = "Valoración Normal"
+    color status_color = color.orange
+    if not na(z_score)
+        if z_score > 1.0
+            status := "SOBREVALORADO (Caro)"
+            status_color := color.red
+        else if z_score < -1.0
+            status := "INFRAVALORADO (Barato)"
+            status_color := color.green
+
+    // Fila 1: PER actual
+    table.cell(info_table, 0, 0, "PER Actual", text_color=text_head, text_size=size.small, bgcolor=cell_bg)
+    table.cell(info_table, 1, 0, not na(pe) ? str.tostring(pe, "#.##") + "x" : "-", text_color=color_pe, text_size=size.small, bgcolor=cell_bg)
+    
+    // Fila 2: PER normalizado (Media 3 años)
+    table.cell(info_table, 0, 1, "PER Normalizado", text_color=text_head, text_size=size.small, bgcolor=cell_bg)
+    table.cell(info_table, 1, 1, not na(pe_norm) ? str.tostring(pe_norm, "#.##") + "x" : "-", text_color=color_pe_norm, text_size=size.small, bgcolor=cell_bg)
+    
+    // Fila 3: PER promedio
+    table.cell(info_table, 0, 2, "PER Promedio", text_color=text_head, text_size=size.small, bgcolor=cell_bg)
+    table.cell(info_table, 1, 2, not na(pe_avg) ? str.tostring(pe_avg, "#.##") + "x" : "-", text_color=color_pe_avg, text_size=size.small, bgcolor=cell_bg)
+    
+    // Fila 4: Fair Value por PER
+    table.cell(info_table, 0, 3, "Fair Value (PER)", text_color=text_head, text_size=size.small, bgcolor=cell_bg)
+    table.cell(info_table, 1, 3, not na(fair_value) ? "$" + str.tostring(fair_value, "#.##") : "-", text_color=color.new(#10b981, 0), text_size=size.small, bgcolor=cell_bg)
+    
+    // Fila 5: Upside estimado
+    color upside_color = not na(upside_pct) and upside_pct >= 0 ? color.new(#10b981, 0) : color.new(#ef4444, 0)
+    string upside_str = not na(upside_pct) ? (upside_pct >= 0 ? "+" : "") + str.tostring(upside_pct, "#.##") + "%" : "-"
+    table.cell(info_table, 0, 4, "Upside", text_color=text_head, text_size=size.small, bgcolor=cell_bg)
+    table.cell(info_table, 1, 4, upside_str, text_color=upside_color, text_size=size.small, bgcolor=cell_bg)
+    
+    // Fila 6: Diagnóstico de Valoración
+    table.cell(info_table, 0, 5, "Diagnóstico", text_color=text_head, text_size=size.small, bgcolor=cell_bg)
+    table.cell(info_table, 1, 5, status, text_color=status_color, text_size=size.small, bgcolor=cell_bg)

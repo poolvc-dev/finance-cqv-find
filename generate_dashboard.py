@@ -49,7 +49,7 @@ def main():
                 r['f8'] * 0.10
             )
             r['cqv_v2'] = round(cqv_v2, 2)
-            r['cqv'] = r['cqv_v2'] # default is v2.0
+            r['cqv'] = r.get('cqv_v3', r.get('cqv_v2', r['cqv'])) # default is v3.0
             
         json_data = json.dumps(records, indent=2)
         
@@ -78,7 +78,13 @@ def main():
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Chart.js -->
+    <script src="chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Data Injections for file:/// and HTTP compatibility -->
+    <script src="cqv_data.js"></script>
+    <script src="cqv_history.js"></script>
+    <!-- DATA_INJECTION_START -->
+    <!-- DATA_INJECTION_END -->
     
     <style>
         :root {
@@ -394,18 +400,168 @@ def main():
             color: var(--accent);
         }
 
-        /* Chart card */
+        
+        /* Top 20 Showcase Grid Styles */
+        .top20-section {
+            margin-top: 25px;
+        }
+
+        .top20-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 16px;
+            margin-top: 15px;
+        }
+
+        .top20-card {
+            background: rgba(15, 23, 42, 0.55);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 14px;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+        }
+
+        .light-theme .top20-card {
+            background: #ffffff;
+            border-color: rgba(0, 0, 0, 0.08);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+        }
+
+        .top20-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+            box-shadow: 0 8px 22px rgba(99, 102, 241, 0.25);
+        }
+
+        .top20-rank-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 10px;
+            font-weight: 800;
+            padding: 3px 8px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .rank-gold { background: linear-gradient(135deg, #f59e0b, #d97706); color: #ffffff; box-shadow: 0 2px 8px rgba(245, 158, 11, 0.4); }
+        .rank-silver { background: linear-gradient(135deg, #94a3b8, #64748b); color: #ffffff; }
+        .rank-bronze { background: linear-gradient(135deg, #d97706, #b45309); color: #ffffff; }
+        .rank-elite { background: linear-gradient(135deg, #10b981, #059669); color: #ffffff; }
+        .rank-purple { background: linear-gradient(135deg, #8b5cf6, #6d28d9); color: #ffffff; }
+
+        .top20-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 4px;
+        }
+
+        .top20-ticker {
+            font-size: 18px;
+            font-weight: 800;
+            color: var(--font-title);
+            letter-spacing: 0.5px;
+        }
+
+        .top20-name {
+            font-size: 12px;
+            color: var(--text-secondary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            margin-bottom: 12px;
+        }
+
+        .top20-score-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            background: rgba(99, 102, 241, 0.1);
+            padding: 6px 10px;
+            border-radius: 8px;
+            border: 1px solid rgba(99, 102, 241, 0.2);
+        }
+
+        .top20-score-label {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--primary-light);
+        }
+
+        .top20-score-val {
+            font-size: 18px;
+            font-weight: 800;
+            color: #10b981;
+            font-family: var(--font-title);
+        }
+
+        .top20-metrics-pills {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+            font-size: 11px;
+        }
+
+        .top20-pill {
+            background: rgba(255, 255, 255, 0.04);
+            padding: 4px 6px;
+            border-radius: 6px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .light-theme .top20-pill {
+            background: rgba(0, 0, 0, 0.03);
+        }
+
+        .top20-pill-lbl {
+            color: var(--text-secondary);
+        }
+
+        .top20-pill-val {
+            font-weight: 700;
+            color: var(--font-title);
+        }
+
+/* Chart card */
         .chart-card {
             min-height: 260px;
             display: flex;
             flex-direction: column;
         }
 
+        .chart-card {
+            min-height: 320px;
+            display: flex;
+            flex-direction: column;
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 16px;
+        }
+
         .chart-container {
             position: relative;
-            flex-grow: 1;
             width: 100%;
-            height: 190px;
+            height: 250px;
+            min-height: 250px;
+            flex-grow: 1;
+        }
+
+        .chart-container canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100% !important;
+            height: 100% !important;
+            display: block;
         }
 
         .distribution-list {
@@ -593,6 +749,19 @@ def main():
             font-size: 12px;
             display: inline-block;
             font-family: var(--font-title);
+        }
+
+        .q-badge {
+            background: rgba(6, 182, 212, 0.12);
+            border: 1px solid rgba(6, 182, 212, 0.3);
+            color: #06b6d4;
+            padding: 3px 7px;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 11px;
+            display: inline-block;
+            font-family: var(--font-title);
+            white-space: nowrap;
         }
 
         .sparkline-container {
@@ -1071,9 +1240,14 @@ def main():
                 <button class="nav-btn" onclick="switchTab('simulator')">
                     <i class="fa-solid fa-calculator"></i> Simulador
                 </button>
-                <div class="version-selector" style="display: flex; background: var(--input-bg); border: 1px solid var(--input-border); border-radius: 20px; padding: 2px; align-items: center; gap: 2px; margin-right: 5px;">
-                    <button id="btn-version-v1" class="v-btn" onclick="setCQVVersion('v1')" style="background: transparent; border: none; padding: 4px 10px; border-radius: 16px; color: var(--text-secondary); font-size: 10px; font-weight: 700; cursor: pointer; font-family: var(--font-title); transition: var(--transition);">v1.0 (5F)</button>
-                    <button id="btn-version-v2" class="v-btn" onclick="setCQVVersion('v2')" style="background: var(--primary); border: none; padding: 4px 10px; border-radius: 16px; color: #fff; font-size: 10px; font-weight: 700; cursor: pointer; font-family: var(--font-title); transition: var(--transition);">v2.0 (8F)</button>
+                <div class="version-selector-container" style="display: flex; align-items: center; gap: 6px; margin-right: 5px;">
+                    <label for="version-select" style="font-size: 0.8rem; font-weight: 600; color: var(--text-secondary);"><i class="fa-solid fa-layer-group"></i> Modelo:</label>
+                    <select id="version-select" class="select-filter" onchange="setCQVVersion(this.value)" style="padding: 4px 10px; border-radius: 20px; background: var(--input-bg); color: var(--font-title); border: 1px solid var(--primary); font-weight: 700; cursor: pointer; font-size: 0.82rem; height: 32px;">
+                        <option value="v3" selected>CQV v3.0 (8F Pro - Recomendado)</option>
+                        <option value="v2">CQV v2.0 (8F Legacy)</option>
+                        <option value="v1_1">CQV v1.1 (5F Pro)</option>
+                        <option value="v1">CQV v1.0 (5F Legacy)</option>
+                    </select>
                 </div>
                 <button class="theme-toggle-btn" onclick="toggleTheme()" title="Cambiar Modo Claro/Oscuro">
                     <i id="theme-toggle-icon" class="fa-solid fa-sun"></i>
@@ -1104,7 +1278,7 @@ def main():
                 <div class="card primary-border">
                     <div class="kpi-card">
                         <div class="kpi-info">
-                            <h3>Promedio CQV</h3>
+                            <h3>Promedio CQV General</h3>
                             <div class="value" id="kpi-avg-cqv">0.00</div>
                             <div class="subtitle">Calificación general media</div>
                         </div>
@@ -1130,9 +1304,9 @@ def main():
                 <div class="card primary-border">
                     <div class="kpi-card">
                         <div class="kpi-info">
-                            <h3>Líder de Calidad</h3>
-                            <div class="value" style="font-size: 24px;" id="kpi-top-performer">MA (9.60)</div>
-                            <div class="subtitle">Mastercard Incorporated</div>
+                            <h3>Líder de Calidad #1</h3>
+                            <div class="value" style="font-size: 24px;" id="kpi-top-performer">GOOGL (9.41)</div>
+                            <div class="subtitle" id="kpi-top-performer-name">Alphabet Inc.</div>
                         </div>
                         <div class="kpi-icon kpi-cyan">
                             <i class="fa-solid fa-crown"></i>
@@ -1141,69 +1315,114 @@ def main():
                 </div>
             </div>
 
-            <!-- Dashboard Layout (Charts) -->
-            <div class="dashboard-layout">
-                <!-- Bar Chart -->
-                <div class="card chart-card">
+            <!-- Charts Row 1: Top 20 Bar Chart & Sector Distribution Top 20 -->
+            <div class="dashboard-layout" style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom: 20px;">
+                <!-- Bar Chart: Ranking Top 20 -->
+                <div class="card chart-card" style="min-height: 320px;">
                     <h3 class="section-title">
-                        <i class="fa-solid fa-ranking-star"></i> Top 15 Empresas Élite
+                        <i class="fa-solid fa-trophy" style="color: #f59e0b;"></i> Top 20 Empresas Élite (Score CQV)
                     </h3>
-                    <div class="chart-container">
+                    <div class="chart-container" style="height: 250px;">
                         <canvas id="topChart"></canvas>
                     </div>
                 </div>
                 
-                <!-- Distribution Column -->
-                <div class="card chart-card">
+                <!-- Sector Distribution Top 20 -->
+                <div class="card chart-card" style="min-height: 320px;">
                     <h3 class="section-title">
-                        <i class="fa-solid fa-pie-chart"></i> Distribución de Calidad
+                        <i class="fa-solid fa-chart-pie" style="color: #10b981;"></i> Sectores del Top 20 Élite
                     </h3>
-                    <div class="distribution-list">
-                        <div class="dist-item">
-                            <div class="dist-label-row">
-                                <span>ÉLITE (CQV &gt; 9.0)</span>
-                                <span id="dist-count-elite">0 emp. (0%)</span>
-                            </div>
-                            <div class="dist-bar-bg">
-                                <div class="dist-bar-fill" id="dist-bar-elite" style="background: var(--elite); width: 0%;"></div>
-                            </div>
+                    <div class="chart-container" style="height: 250px;">
+                        <canvas id="top20SectorChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Row 2: Pillars Comparison & Valuation vs Quality (Top 20) -->
+            <div class="dashboard-layout" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+                <!-- Pillars Comparison Chart (F1, F2, F4) -->
+                <div class="card chart-card" style="min-height: 300px;">
+                    <h3 class="section-title">
+                        <i class="fa-solid fa-layer-group" style="color: #6366f1;"></i> Comparativa de Pilares (Top 20): F1 Rent., F2 Solidez, F4 Foso
+                    </h3>
+                    <div class="chart-container" style="height: 230px;">
+                        <canvas id="top20PillarsChart"></canvas>
+                    </div>
+                </div>
+                
+                <!-- Valuation PER vs CQV Score Chart -->
+                <div class="card chart-card" style="min-height: 300px;">
+                    <h3 class="section-title">
+                        <i class="fa-solid fa-scale-balanced" style="color: #3b82f6;"></i> Valuación PER Trailing vs Calidad CQV (Top 20)
+                    </h3>
+                    <div class="chart-container" style="height: 230px;">
+                        <canvas id="top20ValuationChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quality Tier Breakdown Bar Section -->
+            <div class="card" style="margin-bottom: 25px; padding: 20px;">
+                <h3 class="section-title" style="margin-bottom: 15px;">
+                    <i class="fa-solid fa-sliders" style="color: #ec4899;"></i> Distribución General por Categorías de Calidad CQV
+                </h3>
+                <div class="distribution-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                    <div class="dist-item">
+                        <div class="dist-label-row">
+                            <span style="font-weight: 700; color: var(--elite);">ÉLITE (CQV &gt; 9.0)</span>
+                            <span id="dist-count-elite">0 emp. (0%)</span>
                         </div>
-                        
-                        <div class="dist-item">
-                            <div class="dist-label-row">
-                                <span>SÓLIDA (8.5 - 9.0)</span>
-                                <span id="dist-count-strong">0 emp. (0%)</span>
-                            </div>
-                            <div class="dist-bar-bg">
-                                <div class="dist-bar-fill" id="dist-bar-strong" style="background: var(--strong); width: 0%;"></div>
-                            </div>
+                        <div class="dist-bar-bg" style="height: 10px; border-radius: 5px;">
+                            <div class="dist-bar-fill" id="dist-bar-elite" style="background: var(--elite); width: 0%; height: 100%; border-radius: 5px;"></div>
                         </div>
-                        
-                        <div class="dist-item">
-                            <div class="dist-label-row">
-                                <span>MEDIA (8.0 - 8.5)</span>
-                                <span id="dist-count-medium">0 emp. (0%)</span>
-                            </div>
-                            <div class="dist-bar-bg">
-                                <div class="dist-bar-fill" id="dist-bar-medium" style="background: var(--medium); width: 0%;"></div>
-                            </div>
+                    </div>
+                    
+                    <div class="dist-item">
+                        <div class="dist-label-row">
+                            <span style="font-weight: 700; color: var(--strong);">SÓLIDA (8.5 - 9.0)</span>
+                            <span id="dist-count-strong">0 emp. (0%)</span>
                         </div>
-                        
-                        <div class="dist-item">
-                            <div class="dist-label-row">
-                                <span>ESPECULATIVA (&lt; 8.0)</span>
-                                <span id="dist-count-weak">0 emp. (0%)</span>
-                            </div>
-                            <div class="dist-bar-bg">
-                                <div class="dist-bar-fill" id="dist-bar-weak" style="background: var(--weak); width: 0%;"></div>
-                            </div>
+                        <div class="dist-bar-bg" style="height: 10px; border-radius: 5px;">
+                            <div class="dist-bar-fill" id="dist-bar-strong" style="background: var(--strong); width: 0%; height: 100%; border-radius: 5px;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="dist-item">
+                        <div class="dist-label-row">
+                            <span style="font-weight: 700; color: var(--medium);">MEDIA (8.0 - 8.5)</span>
+                            <span id="dist-count-medium">0 emp. (0%)</span>
+                        </div>
+                        <div class="dist-bar-bg" style="height: 10px; border-radius: 5px;">
+                            <div class="dist-bar-fill" id="dist-bar-medium" style="background: var(--medium); width: 0%; height: 100%; border-radius: 5px;"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="dist-item">
+                        <div class="dist-label-row">
+                            <span style="font-weight: 700; color: var(--weak);">ESPECULATIVA (&lt; 8.0)</span>
+                            <span id="dist-count-weak">0 emp. (0%)</span>
+                        </div>
+                        <div class="dist-bar-bg" style="height: 10px; border-radius: 5px;">
+                            <div class="dist-bar-fill" id="dist-bar-weak" style="background: var(--weak); width: 0%; height: 100%; border-radius: 5px;"></div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Top 20 Showcase Grid Section -->
+            <div class="top20-section">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+                    <h3 class="section-title" style="font-size: 1.25rem;">
+                        <i class="fa-solid fa-award" style="color: #f59e0b;"></i> Catálogo Élite: Las 20 Mejores Empresas del Mercado
+                    </h3>
+                    <span style="font-size: 0.85rem; color: var(--text-secondary);">Haz clic en cualquier tarjeta para ver su análisis e historial</span>
+                </div>
+                <div class="top20-grid" id="top20-grid">
+                    <!-- Populated dynamically via JS -->
+                </div>
+            </div>
         </div>
 
-        <!-- Tab: Explorer -->
         <div id="tab-explorer" class="tab-panel">
             <div class="explorer-card">
                 <h3 class="section-title">
@@ -1242,6 +1461,7 @@ def main():
                             <tr>
                                 <th onclick="handleSort('ticker')">Acción <span id="sort-icon-ticker"><i class="fa-solid fa-sort"></i></span></th>
                                 <th onclick="handleSort('name')">Nombre de la Empresa <span id="sort-icon-name"><i class="fa-solid fa-sort"></i></span></th>
+                                <th onclick="handleSort('quarter')">Periodo (Q) <span id="sort-icon-quarter"><i class="fa-solid fa-sort"></i></span></th>
                                 <th onclick="handleSort('f1')">F1 (Rent.) <span id="sort-icon-f1"><i class="fa-solid fa-sort"></i></span></th>
                                 <th onclick="handleSort('f2')">F2 (Solidez) <span id="sort-icon-f2"><i class="fa-solid fa-sort"></i></span></th>
                                 <th onclick="handleSort('f3')">F3 (Crec.) <span id="sort-icon-f3"><i class="fa-solid fa-sort"></i></span></th>
@@ -1250,6 +1470,7 @@ def main():
                                 <th onclick="handleSort('f6')">F6 (Asig.) <span id="sort-icon-f6"><i class="fa-solid fa-sort"></i></span></th>
                                 <th onclick="handleSort('f7')">F7 (Yield) <span id="sort-icon-f7"><i class="fa-solid fa-sort"></i></span></th>
                                 <th onclick="handleSort('f8')">F8 (Antif.) <span id="sort-icon-f8"><i class="fa-solid fa-sort"></i></span></th>
+                                <th onclick="handleSort('pe')">PER <span id="sort-icon-pe"><i class="fa-solid fa-sort"></i></span></th>
                                 <th onclick="handleSort('cqv')">CQV Score <span id="sort-icon-cqv"><i class="fa-solid fa-sort-down"></i></span></th>
                                 <th>Evolución (5a)</th>
                                 <th>Categoría</th>
@@ -1290,9 +1511,23 @@ def main():
                     </div>
                 </div>
                 
-                <!-- Chart Container -->
-                <div style="height: 350px; margin-bottom: 30px; position: relative;">
-                    <canvas id="historyChart"></canvas>
+                <!-- Chart Containers -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px;">
+                    <div style="background: rgba(30, 41, 59, 0.4); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 15px;">
+                        <h4 style="margin: 0 0 15px 0; font-size: 13px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;"><i class="fa-solid fa-chart-line"></i> Evolución del Score CQV</h4>
+                        <div style="height: 280px; position: relative;">
+                            <canvas id="historyChart"></canvas>
+                        </div>
+                    </div>
+                    <div style="background: rgba(30, 41, 59, 0.4); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 15px;">
+                        <h4 style="margin: 0 0 15px 0; font-size: 13px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; display: flex; justify-content: space-between; align-items: center;">
+                            <span><i class="fa-solid fa-scale-balanced"></i> Historial de Precio vs. PER</span>
+                            <span id="pe-average-badge" style="font-size: 11px; background: rgba(79, 70, 229, 0.2); color: #818cf8; padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(79, 70, 229, 0.3); font-weight: bold;">PER Prom: -</span>
+                        </h4>
+                        <div style="height: 280px; position: relative;">
+                            <canvas id="peValuationChart"></canvas>
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- Details Table -->
@@ -1309,6 +1544,7 @@ def main():
                                 <th>F6: Asignación (Fijo)</th>
                                 <th>F7: FCF Yield (Fijo)</th>
                                 <th>F8: Antifragilidad (Fijo)</th>
+                                <th>Múltiplo PER</th>
                                 <th>CQV Score</th>
                             </tr>
                         </thead>
@@ -1701,8 +1937,10 @@ def main():
     </main>
 
     <!-- Scripting -->
+    <!-- DATA_INJECTION_START -->
     <script src="cqv_data.js"></script>
     <script src="cqv_history.js"></script>
+    <!-- DATA_INJECTION_END -->
     <script>
         // Check if data loaded correctly, fallback to fetch JSON if needed
         let companies = [];
@@ -1826,34 +2064,27 @@ def main():
             };
         }
 
-        let currentVersion = 'v2'; // 'v1' or 'v2'
+        let currentVersion = 'v3'; // 'v1' or 'v2'
 
         function setCQVVersion(version) {
             currentVersion = version;
             
-            const btnV1 = document.getElementById('btn-version-v1');
-            const btnV2 = document.getElementById('btn-version-v2');
-            if (btnV1 && btnV2) {
-                if (version === 'v1') {
-                    btnV1.style.background = 'var(--primary)';
-                    btnV1.style.color = '#fff';
-                    btnV2.style.background = 'transparent';
-                    btnV2.style.color = 'var(--text-secondary)';
-                    
-                    companies.forEach(c => {
-                        c.cqv = c.cqv_v1;
-                    });
-                } else {
-                    btnV2.style.background = 'var(--primary)';
-                    btnV2.style.color = '#fff';
-                    btnV1.style.background = 'transparent';
-                    btnV1.style.color = 'var(--text-secondary)';
-                    
-                    companies.forEach(c => {
-                        c.cqv = c.cqv_v2;
-                    });
-                }
+            const versionSelect = document.getElementById('version-select');
+            if (versionSelect) {
+                versionSelect.value = version;
             }
+            
+            companies.forEach(c => {
+                if (version === 'v1') {
+                    c.cqv = (c.cqv_v1 !== undefined && c.cqv_v1 !== null) ? c.cqv_v1 : c.cqv;
+                } else if (version === 'v1_1') {
+                    c.cqv = (c.cqv_v1_1 !== undefined && c.cqv_v1_1 !== null) ? c.cqv_v1_1 : (c.cqv_v1 || c.cqv);
+                } else if (version === 'v2') {
+                    c.cqv = (c.cqv_v2 !== undefined && c.cqv_v2 !== null) ? c.cqv_v2 : c.cqv;
+                } else {
+                    c.cqv = (c.cqv_v3 !== undefined && c.cqv_v3 !== null) ? c.cqv_v3 : (c.cqv_v2 || c.cqv);
+                }
+            });
             
             updateVersionUI();
             
@@ -1881,8 +2112,8 @@ def main():
         }
         
         function updateVersionUI() {
-            const isV2 = (currentVersion === 'v2');
-            if (isV2) {
+            const is8F = (currentVersion === 'v2' || currentVersion === 'v3');
+            if (is8F) {
                 document.body.classList.remove('cqv-v1-active');
             } else {
                 document.body.classList.add('cqv-v1-active');
@@ -1908,7 +2139,7 @@ def main():
             filteredData = [...companies];
             
             // Set initial version
-            setCQVVersion('v2');
+            setCQVVersion('v3');
             
             populateSimCompanySelect();
             populateHistoryCompanySelect();
@@ -2044,8 +2275,9 @@ def main():
             if (!selectEl) return;
             selectEl.innerHTML = '<option value="">-- Seleccionar una empresa --</option>';
             const sortedCompanies = [...companies].sort((a, b) => a.ticker.localeCompare(b.ticker));
+            const historyObj = window.cqvHistoryData || (typeof cqvHistoryData !== 'undefined' ? cqvHistoryData : null);
             sortedCompanies.forEach(c => {
-                if (typeof cqvHistoryData !== 'undefined' && cqvHistoryData[c.ticker]) {
+                if (!historyObj || historyObj[c.ticker]) {
                     const opt = document.createElement('option');
                     opt.value = c.ticker;
                     opt.innerText = `${c.ticker} - ${c.name} (CQV: ${c.cqv.toFixed(2)})`;
@@ -2147,6 +2379,7 @@ def main():
         }
 
         let historyChart = null;
+        let peChart = null;
         function loadCompanyHistory() {
             const ticker = document.getElementById('history-company-select').value;
             const tbody = document.getElementById('history-details-body');
@@ -2188,16 +2421,26 @@ def main():
                 profileCard.style.display = 'block';
             }
             
-            const rawHistory = (typeof cqvHistoryData !== 'undefined' && cqvHistoryData[ticker]) ? cqvHistoryData[ticker] : {};
+            const historyObj = window.cqvHistoryData || (typeof cqvHistoryData !== 'undefined' ? cqvHistoryData : {});
+            const rawHistory = historyObj[ticker] || {};
             const history = { ...rawHistory };
+            
+
             
             // Append 2026 calculation if not already present in the history database
             if (!history["2026"]) {
-                history["2026"] = { f1: company.f1, f2: company.f2, f3: company.f3, cqv: company.cqv };
+                history["2026"] = { f1: company.f1, f2: company.f2, f3: company.f3, cqv: company.cqv, pe: company.pe };
             }
             
             const years = Object.keys(history).sort();
+            const chartLabels = years.map(yr => (yr === "2026" && !rawHistory["2026"]) ? "2026 (Act.)" : yr);
             
+            const chartData = [];
+            const priceData = [];
+            const peData = [];
+            let peSum = 0;
+            let peCount = 0;
+
             years.forEach(yr => {
                 const data = history[yr];
                 const isCurrent = yr === "2026" && !rawHistory["2026"];
@@ -2214,7 +2457,19 @@ def main():
                     company.f7 * 0.10 +
                     company.f8 * 0.10
                 );
-                
+                chartData.push(cqv_v2);
+
+                // Get historical close price from company.close_history
+                const closePrice = company.close_history ? company.close_history[yr] : null;
+                priceData.push(closePrice);
+
+                const peVal = data.pe || null;
+                peData.push(peVal);
+                if (peVal) {
+                    peSum += peVal;
+                    peCount++;
+                }
+
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
                     <td><span style="font-weight: bold; color: ${isCurrent ? 'var(--accent)' : 'var(--text-primary)'};">${label}</span></td>
@@ -2226,26 +2481,20 @@ def main():
                     <td class="cqv-value-cell">${company.f6.toFixed(2)}</td>
                     <td class="cqv-value-cell">${company.f7.toFixed(2)}</td>
                     <td class="cqv-value-cell">${company.f8.toFixed(2)}</td>
+                    <td class="cqv-value-cell">${data.pe ? data.pe.toFixed(1) + 'x' : '-'}</td>
                     <td class="cqv-value-cell score-high" style="font-weight: bold;">${cqv_v2.toFixed(2)}</td>
                 `;
                 tbody.appendChild(tr);
             });
             
-            const chartLabels = years.map(yr => (yr === "2026" && !rawHistory["2026"]) ? "2026 (Act.)" : yr);
-            const chartData = years.map(yr => {
-                const data = history[yr];
-                return (
-                    data.f1 * 0.20 +
-                    data.f2 * 0.10 +
-                    data.f3 * 0.10 +
-                    company.f4 * 0.20 +
-                    company.f5 * 0.10 +
-                    company.f6 * 0.10 +
-                    company.f7 * 0.10 +
-                    company.f8 * 0.10
-                );
-            });
             renderHistoryChart(ticker, chartLabels, chartData);
+
+            const avgPE = peCount > 0 ? (peSum / peCount) : null;
+            const avgPEBadge = document.getElementById('pe-average-badge');
+            if (avgPEBadge) {
+                avgPEBadge.innerText = avgPE ? `PER Prom: ${avgPE.toFixed(1)}x` : 'PER Prom: -';
+            }
+            renderPEValuationChart(ticker, chartLabels, priceData, peData, avgPE);
             
             // Load analyst notes
             loadCompanyNotes(ticker);
@@ -2323,6 +2572,128 @@ def main():
             });
         }
 
+        function renderPEValuationChart(ticker, labels, prices, pes, avgPE) {
+            if (typeof Chart === 'undefined') {
+                console.warn("Chart.js is not loaded. Skipping PE chart rendering.");
+                return;
+            }
+            const canvasEl = document.getElementById('peValuationChart');
+            if (!canvasEl) return;
+            const ctx = canvasEl.getContext('2d');
+            
+            if (peChart) {
+                peChart.destroy();
+            }
+            
+            const avgLineData = labels.map(() => avgPE);
+            
+            peChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Precio de Cierre ($)',
+                            data: prices,
+                            borderColor: '#10b981',
+                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                            borderWidth: 2.5,
+                            pointRadius: 4,
+                            tension: 0.2,
+                            yAxisID: 'y-price'
+                        },
+                        {
+                            label: 'Múltiplo PER (x)',
+                            data: pes,
+                            borderColor: '#06b6d4',
+                            backgroundColor: 'rgba(6, 182, 212, 0.1)',
+                            borderWidth: 2.5,
+                            pointRadius: 4,
+                            tension: 0.2,
+                            yAxisID: 'y-pe'
+                        },
+                        {
+                            label: 'PER Promedio',
+                            data: avgLineData,
+                            borderColor: '#ef4444',
+                            borderWidth: 1.5,
+                            borderDash: [5, 5],
+                            pointRadius: 0,
+                            fill: false,
+                            yAxisID: 'y-pe'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        mode: 'index',
+                        intersect: false,
+                    },
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top',
+                            labels: {
+                                color: getChartLabelColor(),
+                                font: { size: 11, family: 'Inter' }
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: '#0f172a',
+                            borderColor: '#334155',
+                            borderWidth: 1,
+                            padding: 10,
+                            callbacks: {
+                                label: function(context) {
+                                    const val = context.raw;
+                                    if (val === null || val === undefined) return '';
+                                    if (context.datasetIndex === 0) {
+                                        return `Precio: $${val.toFixed(2)}`;
+                                    } else if (context.datasetIndex === 1) {
+                                        return `PER: ${val.toFixed(1)}x`;
+                                    } else {
+                                        return `PER Prom: ${val.toFixed(1)}x`;
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { color: getChartGridColor() },
+                            ticks: { color: getChartLabelColor(), font: { family: 'Inter' } }
+                        },
+                        'y-price': {
+                            type: 'linear',
+                            position: 'left',
+                            title: {
+                                display: true,
+                                text: 'Precio ($)',
+                                color: '#10b981',
+                                font: { weight: 'bold', family: 'Inter' }
+                            },
+                            grid: { color: getChartGridColor() },
+                            ticks: { color: getChartLabelColor() }
+                        },
+                        'y-pe': {
+                            type: 'linear',
+                            position: 'right',
+                            title: {
+                                display: true,
+                                text: 'PER Ratio (x)',
+                                color: '#06b6d4',
+                                font: { weight: 'bold', family: 'Inter' }
+                            },
+                            grid: { drawOnChartArea: false },
+                            ticks: { color: getChartLabelColor() }
+                        }
+                    }
+                }
+            });
+        }
+
         // Navigation state
         function switchTab(tabId) {
             // Deactivate all panels
@@ -2350,8 +2721,21 @@ def main():
             // Re-render chart if navigating back to dashboard or history
             if (tabId === 'dashboard') {
                 setTimeout(renderTopChart, 50);
-            } else if (tabId === 'history' && historyChart) {
-                setTimeout(() => historyChart.resize(), 50);
+            } else if (tabId === 'history') {
+                const historySelect = document.getElementById('history-company-select');
+                if (historySelect) {
+                    if (!historySelect.value || historySelect.value === '') {
+                        const sortedComp = [...companies].sort((a, b) => b.cqv - a.cqv);
+                        if (sortedComp.length > 0) {
+                            historySelect.value = sortedComp[0].ticker;
+                        }
+                    }
+                }
+                setTimeout(() => {
+                    loadCompanyHistory();
+                    if (historyChart && typeof historyChart.resize === 'function') historyChart.resize();
+                    if (typeof peChart !== 'undefined' && peChart && typeof peChart.resize === 'function') peChart.resize();
+                }, 50);
             }
         }
 
@@ -2399,87 +2783,307 @@ def main():
 
         // Render Top 15 Bar Chart
         let topChart = null;
+        let top20SectorChart = null;
+        let top20PillarsChart = null;
+        let top20ValuationChart = null;
+
         function renderTopChart() {
             if (typeof Chart === 'undefined') {
                 console.warn("Chart.js is not loaded. Skipping chart rendering.");
                 return;
             }
-            const canvasEl = document.getElementById('topChart');
-            if (!canvasEl) return;
-            const ctx = canvasEl.getContext('2d');
-            const top15 = [...companies].sort((a, b) => b.cqv - a.cqv).slice(0, 15);
             
-            const labels = top15.map(c => c.ticker);
-            const data = top15.map(c => c.cqv);
+            if (!companies || companies.length === 0) return;
             
-            if (topChart) {
-                topChart.destroy();
-            }
+            // Sort companies descending by CQV score
+            const top20 = [...companies].sort((a, b) => b.cqv - a.cqv).slice(0, 20);
             
-            // Gradient fill
-            const gradient = ctx.createLinearGradient(0, 0, 0, 300);
-            gradient.addColorStop(0, '#4f46e5');
-            gradient.addColorStop(1, '#d946ef');
+            const labelColor = getChartLabelColor();
+            const gridColor = getChartGridColor();
             
-            topChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: 'CQV Score',
-                        data: data,
-                        backgroundColor: gradient,
-                        borderColor: 'rgba(255,255,255,0.1)',
-                        borderWidth: 1,
-                        borderRadius: 6,
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: false
-                        },
-                        tooltip: {
-                            backgroundColor: '#0f172a',
-                            titleColor: '#f8fafc',
-                            bodyColor: '#cbd5e1',
-                            borderColor: '#334155',
+            // 1. Render Top 20 Bar Chart (Score CQV)
+            const canvasTop = document.getElementById('topChart');
+            if (canvasTop) {
+                const ctx = canvasTop.getContext('2d');
+                const labels = top20.map(c => c.ticker);
+                const data = top20.map(c => c.cqv);
+                
+                if (topChart && typeof topChart.destroy === 'function') topChart.destroy();
+                
+                const gradient = ctx.createLinearGradient(0, 0, 0, 300);
+                gradient.addColorStop(0, '#6366f1');
+                gradient.addColorStop(1, '#a855f7');
+                
+                topChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'Score CQV',
+                            data: data,
+                            backgroundColor: gradient,
+                            borderColor: 'rgba(255,255,255,0.15)',
                             borderWidth: 1,
-                            padding: 12,
-                            displayColors: false,
-                            callbacks: {
-                                title: function(context) {
-                                    const index = context[0].dataIndex;
-                                    return `${top15[index].ticker} - ${top15[index].name}`;
+                            borderRadius: 6
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                backgroundColor: '#0f172a',
+                                titleColor: '#f8fafc',
+                                bodyColor: '#cbd5e1',
+                                borderColor: '#334155',
+                                borderWidth: 1,
+                                padding: 12,
+                                callbacks: {
+                                    title: (items) => `${top20[items[0].dataIndex].ticker} - ${top20[items[0].dataIndex].name}`,
+                                    label: (item) => `Score CQV: ${item.raw.toFixed(2)} / 10`
                                 }
                             }
-                        }
-                    },
-                    scales: {
-                        x: {
-                            grid: {
-                                display: false
-                            },
-                            ticks: {
-                                color: getChartLabelColor(),
-                                font: { family: 'Inter', size: 11 }
-                            }
                         },
-                        y: {
-                            min: 6,
-                            max: 10,
-                            grid: {
-                                color: getChartGridColor()
+                        scales: {
+                            x: {
+                                grid: { display: false },
+                                ticks: { color: labelColor, font: { family: 'Inter', size: 10, weight: '700' } }
                             },
-                            ticks: {
-                                color: getChartLabelColor(),
-                                font: { family: 'Outfit', size: 11 }
+                            y: {
+                                min: 7, max: 10,
+                                grid: { color: gridColor },
+                                ticks: { color: labelColor, font: { family: 'Outfit', size: 11 } }
                             }
                         }
                     }
-                }
+                });
+            }
+
+            // 2. Render Top 20 Sector Distribution Doughnut Chart
+            const canvasSector = document.getElementById('top20SectorChart');
+            if (canvasSector) {
+                const ctx = canvasSector.getContext('2d');
+                const sectorCounts = {};
+                top20.forEach(c => {
+                    const sec = c.sector || 'Otros';
+                    sectorCounts[sec] = (sectorCounts[sec] || 0) + 1;
+                });
+                
+                const sectorLabels = Object.keys(sectorCounts);
+                const sectorData = Object.values(sectorCounts);
+                const sectorColors = ['#6366f1', '#10b981', '#3b82f6', '#f59e0b', '#ec4899', '#8b5cf6', '#14b8a6'];
+                
+                if (top20SectorChart && typeof top20SectorChart.destroy === 'function') top20SectorChart.destroy();
+                
+                top20SectorChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: sectorLabels,
+                        datasets: [{
+                            data: sectorData,
+                            backgroundColor: sectorColors.slice(0, sectorLabels.length),
+                            borderWidth: 2,
+                            borderColor: gridColor
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: true,
+                                position: 'right',
+                                labels: { color: labelColor, font: { family: 'Inter', size: 10 } }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: (item) => `${item.label}: ${item.raw} empresas (${(item.raw/20*100).toFixed(0)}%)`
+                                }
+                            }
+                        },
+                        cutout: '60%'
+                    }
+                });
+            }
+
+            // 3. Render Top 20 Pillars Comparison Chart (F1 Rentabilidad, F2 Solidez, F4 Moat)
+            const canvasPillars = document.getElementById('top20PillarsChart');
+            if (canvasPillars) {
+                const ctx = canvasPillars.getContext('2d');
+                const labels = top20.map(c => c.ticker);
+                const dataF1 = top20.map(c => c.f1 || 0);
+                const dataF2 = top20.map(c => c.f2 || 0);
+                const dataF4 = top20.map(c => c.f4 || 0);
+                
+                if (top20PillarsChart && typeof top20PillarsChart.destroy === 'function') top20PillarsChart.destroy();
+                
+                top20PillarsChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [
+                            { label: 'F1 Rentabilidad', data: dataF1, backgroundColor: '#3b82f6', borderRadius: 4 },
+                            { label: 'F2 Solidez', data: dataF2, backgroundColor: '#10b981', borderRadius: 4 },
+                            { label: 'F4 Moat', data: dataF4, backgroundColor: '#8b5cf6', borderRadius: 4 }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: true,
+                                position: 'top',
+                                labels: { color: labelColor, font: { family: 'Inter', size: 11 } }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                grid: { display: false },
+                                ticks: { color: labelColor, font: { family: 'Inter', size: 10 } }
+                            },
+                            y: {
+                                min: 5, max: 10,
+                                grid: { color: gridColor },
+                                ticks: { color: labelColor, font: { family: 'Outfit', size: 11 } }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // 4. Render Top 20 Valuation PER vs Quality Score Chart
+            const canvasValuation = document.getElementById('top20ValuationChart');
+            if (canvasValuation) {
+                const ctx = canvasValuation.getContext('2d');
+                const labels = top20.map(c => c.ticker);
+                const dataCQV = top20.map(c => c.cqv || 0);
+                const dataPER = top20.map(c => c.pe || 0);
+                
+                if (top20ValuationChart && typeof top20ValuationChart.destroy === 'function') top20ValuationChart.destroy();
+                
+                top20ValuationChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [
+                            {
+                                type: 'line',
+                                label: 'Score CQV (Eje Izq)',
+                                data: dataCQV,
+                                borderColor: '#10b981',
+                                backgroundColor: '#10b981',
+                                borderWidth: 3,
+                                pointRadius: 4,
+                                yAxisID: 'y'
+                            },
+                            {
+                                type: 'bar',
+                                label: 'PER Trailing (Eje Der)',
+                                data: dataPER,
+                                backgroundColor: 'rgba(59, 130, 246, 0.65)',
+                                borderRadius: 4,
+                                yAxisID: 'y1'
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: true,
+                                position: 'top',
+                                labels: { color: labelColor, font: { family: 'Inter', size: 11 } }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                grid: { display: false },
+                                ticks: { color: labelColor, font: { family: 'Inter', size: 10 } }
+                            },
+                            y: {
+                                type: 'linear',
+                                display: true,
+                                position: 'left',
+                                min: 6, max: 10,
+                                title: { display: true, text: 'Score CQV', color: labelColor, font: { size: 10 } },
+                                grid: { color: gridColor },
+                                ticks: { color: labelColor }
+                            },
+                            y1: {
+                                type: 'linear',
+                                display: true,
+                                position: 'right',
+                                min: 0,
+                                title: { display: true, text: 'Múltiplo PER', color: labelColor, font: { size: 10 } },
+                                grid: { drawOnChartArea: false },
+                                ticks: { color: labelColor }
+                            }
+                        }
+                    }
+                });
+            }
+
+            // 5. Render Top 20 Cards Showcase Grid
+            renderTop20Grid(top20);
+        }
+
+        function renderTop20Grid(top20) {
+            const gridEl = document.getElementById('top20-grid');
+            if (!gridEl) return;
+            gridEl.innerHTML = '';
+            
+            top20.forEach((c, idx) => {
+                const rank = idx + 1;
+                const card = document.createElement('div');
+                card.className = 'top20-card';
+                card.onclick = () => {
+                    switchTab('history');
+                    const historySelect = document.getElementById('history-company-select');
+                    if (historySelect) {
+                        historySelect.value = c.ticker;
+                        loadCompanyHistory();
+                    }
+                };
+                
+                const tierInfo = getTier(c.cqv);
+                card.innerHTML = `
+                    <div class="top20-rank-badge">#${rank}</div>
+                    <div class="top20-header">
+                        <div>
+                            <div class="top20-ticker">${c.ticker}</div>
+                            <div class="top20-name">${c.name}</div>
+                        </div>
+                    </div>
+                    <div class="top20-score-row">
+                        <div>
+                            <div class="top20-score-label">Score CQV</div>
+                            <span class="badge ${tierInfo.class}" style="font-size: 11px;">${tierInfo.name}</span>
+                        </div>
+                        <div class="top20-score-val">${c.cqv.toFixed(2)}</div>
+                    </div>
+                    <div class="top20-metrics-pills">
+                        <div class="top20-pill">
+                            <div class="top20-pill-lbl">F1 Rentab.</div>
+                            <div class="top20-pill-val">${c.f1.toFixed(1)}</div>
+                        </div>
+                        <div class="top20-pill">
+                            <div class="top20-pill-lbl">F2 Solidez</div>
+                            <div class="top20-pill-val">${c.f2.toFixed(1)}</div>
+                        </div>
+                        <div class="top20-pill">
+                            <div class="top20-pill-lbl">F4 Moat</div>
+                            <div class="top20-pill-val">${c.f4.toFixed(1)}</div>
+                        </div>
+                        <div class="top20-pill">
+                            <div class="top20-pill-lbl">PER Trailing</div>
+                            <div class="top20-pill-val">${c.pe ? c.pe.toFixed(1) + 'x' : '-'}</div>
+                        </div>
+                    </div>
+                `;
+                gridEl.appendChild(card);
             });
         }
 
@@ -2583,6 +3187,7 @@ def main():
                 tr.innerHTML = `
                     <td><span class="ticker-badge">${c.ticker}</span></td>
                     <td><span class="company-name">${c.name}</span></td>
+                    <td><span class="q-badge">${c.quarter || 'Q1 2026'}</span></td>
                     <td class="cqv-value-cell">${c.f1.toFixed(2)}</td>
                     <td class="cqv-value-cell">${c.f2.toFixed(2)}</td>
                     <td class="cqv-value-cell">${c.f3.toFixed(2)}</td>
@@ -2591,6 +3196,7 @@ def main():
                     <td class="cqv-value-cell">${c.f6.toFixed(2)}</td>
                     <td class="cqv-value-cell">${c.f7.toFixed(2)}</td>
                     <td class="cqv-value-cell">${c.f8.toFixed(2)}</td>
+                    <td class="cqv-value-cell">${c.pe ? c.pe.toFixed(1) + 'x' : '-'}</td>
                     <td class="cqv-value-cell score-high">${c.cqv.toFixed(2)}</td>
                     <td>${sparklineCellHtml}</td>
                     <td><span class="tier-badge ${tier.class}">${tier.name}</span></td>
@@ -2693,14 +3299,16 @@ def main():
             }
             
             // Update UI headers indicators
-            const colIndices = { 'ticker': 0, 'name': 1, 'f1': 2, 'f2': 3, 'f3': 4, 'f4': 5, 'f5': 6, 'f6': 7, 'f7': 8, 'f8': 9, 'cqv': 10 };
+            const colIndices = { 'ticker': 0, 'name': 1, 'quarter': 2, 'f1': 3, 'f2': 4, 'f3': 5, 'f4': 6, 'f5': 7, 'f6': 8, 'f7': 9, 'f8': 10, 'pe': 11, 'cqv': 12 };
             
             for (let key in colIndices) {
                 const icon = document.getElementById('sort-icon-' + key);
-                if (key === column) {
-                    icon.innerHTML = currentSort.direction === 'asc' ? '<i class="fa-solid fa-sort-up"></i>' : '<i class="fa-solid fa-sort-down"></i>';
-                } else {
-                    icon.innerHTML = '<i class="fa-solid fa-sort"></i>';
+                if (icon) {
+                    if (key === column) {
+                        icon.innerHTML = currentSort.direction === 'asc' ? '<i class="fa-solid fa-sort-up"></i>' : '<i class="fa-solid fa-sort-down"></i>';
+                    } else {
+                        icon.innerHTML = '<i class="fa-solid fa-sort"></i>';
+                    }
                 }
             }
             
@@ -2856,37 +3464,73 @@ def main():
         }
 
         // Initialize script logic
-        const hasData = (typeof window.companiesData !== 'undefined') || (typeof companiesData !== 'undefined');
-        if (!hasData) {
-            console.warn("cqv_data.js not found or blocked. Fetching cqv_data.json...");
-            fetch('cqv_data.json')
-                .then(r => r.json())
-                .then(data => {
-                    window.companiesData = data;
-                    initDashboard();
-                })
-                .catch(err => {
-                    console.error("CORS block or missing file. Manually injecting fallback...", err);
-                    window.companiesData = [];
-                });
-        } else {
-            initDashboard();
+        function bootDashboard() {
+            const hasGlobalData = (typeof window.companiesData !== 'undefined' && window.companiesData.length > 0) || (typeof companiesData !== 'undefined' && companiesData.length > 0);
+            if (hasGlobalData) {
+                initDashboard();
+            } else {
+                fetch('cqv_data.json')
+                    .then(r => r.json())
+                    .then(data => {
+                        window.companiesData = data;
+                        initDashboard();
+                    })
+                    .catch(err => {
+                        console.warn("CORS block or missing file during fetch, falling back to window.companiesData if available", err);
+                        if (window.companiesData) {
+                            initDashboard();
+                        }
+                    });
+            }
         }
 
-        window.onload = function() {
-            if (companies.length === 0 && ((window.companiesData && window.companiesData.length > 0) || (typeof companiesData !== 'undefined' && companiesData.length > 0))) {
-                initDashboard();
-            }
-        };
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', bootDashboard);
+        } else {
+            bootDashboard();
+        }
+        window.addEventListener('load', bootDashboard);
     </script>
 </body>
 </html>
 """
         
+        # Inject data directly into dashboard.html for 100% offline file:/// compatibility
+        try:
+            import os
+            history_db = {}
+            if os.path.exists('cqv_history.json'):
+                with open('cqv_history.json', 'r', encoding='utf-8') as hf:
+                    history_db = json.load(hf)
+            
+            theses_dict = {}
+            inform_dir = 'inform'
+            if os.path.exists(inform_dir):
+                for fn in os.listdir(inform_dir):
+                    if fn.endswith('.md'):
+                        ticker = fn.split('_')[0].upper()
+                        with open(os.path.join(inform_dir, fn), 'r', encoding='utf-8') as tf:
+                            theses_dict[ticker] = tf.read()
+
+            import re
+            injection_block = f"""<!-- DATA_INJECTION_START -->
+    <script>
+        window.companiesData = {json_data};
+        window.cqvHistoryData = {json.dumps(history_db, indent=2)};
+        window.investmentTheses = {json.dumps(theses_dict, indent=2)};
+    </script>
+    <!-- DATA_INJECTION_END -->"""
+
+            pattern = r'<!-- DATA_INJECTION_START -->[\s\S]*?<!-- DATA_INJECTION_END -->'
+            if re.search(pattern, html_content):
+                html_content = re.sub(pattern, lambda m: injection_block, html_content, count=1)
+        except Exception as ie:
+            print("Error injecting data into html_content:", ie)
+            
         # Write clean html
         with open('dashboard.html', 'w', encoding='utf-8') as f:
             f.write(html_content)
-        print("Successfully created clean dashboard.html linking cqv_data.js")
+        print("Successfully created clean dashboard.html with injected data")
         
     except Exception as e:
         print("Error:", e)
