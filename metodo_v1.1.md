@@ -26,6 +26,8 @@ $$\text{ROIC} = \frac{\text{NOPAT}}{\text{Capital Investido Neto}} = \frac{\text
   * $ROIC \in [5.0\%, 10.0\%] \rightarrow 5.0 - 7.5$ puntos.
   * $ROIC < 5.0\% \rightarrow < 5.0$ puntos.
 
+El factor se calcula como $F_{1,\text{v1.1}}=(\text{Score Margen}+\text{Score ROIC}+\text{Score Conversión FCF})/3$. La conversión FCF es $FCF/Beneficio Neto GAAP$. Si el capital invertido neto es menor o igual que cero, el ROIC no se puntúa como infinito: se marca como no interpretable y se exige una justificación económica específica.
+
 ---
 
 ### 2. Filtro Automático de Degradación Fundamental (*Degradation Filter*)
@@ -33,7 +35,9 @@ Para evitar la sobrevaloración de empresas con ventajas competitivas deteriorad
 
 $$\text{Si } F_4 < 6.0 \text{ o } F_{2,\text{v1.1}} < 5.0 \implies \text{CQV v1.1} = \min(\text{CQV v1.1}, 7.00)$$
 
-Esto garantiza que ninguna compañía con foso económico débil ($F_4 < 6.0$) o solvencia comprometida ($F_2 < 5.0$) pueda figurar en la categoría **ÉLITE** o **ALTA CALIDAD**.
+Esto garantiza que ninguna compañía con foso económico débil ($F_4 < 6.0$) o solvencia comprometida ($F_{2,\text{v1.1}} < 5.0$) pueda figurar en la categoría **ÉLITE** o **ALTA CALIDAD**.
+
+Para completar la puntuación, $F_{2,\text{v1.1}}$ es el promedio de Score Deuda y Score Predecibilidad; $F_{3,\text{v1.1}}$ es el promedio de Score Crecimiento y Score Dilución SBC. La dilución neta material reduce la nota del subcomponente entre 0.5 y 2.0 puntos.
 
 ---
 
@@ -41,7 +45,7 @@ Esto garantiza que ninguna compañía con foso económico débil ($F_4 < 6.0$) o
 
 | Factor | Denominación | Peso | Avance Metodológico |
 | :--- | :--- | :---: | :--- |
-| **$F_{1,\text{v1.1}}$** | Rentabilidad con ROIC | **25%** | Incorpora $ROIC$ real y Rule of 40/45. |
+| **$F_{1,\text{v1.1}}$** | Rentabilidad con ROIC | **25%** | Incorpora $ROIC$ real y conversión FCF. |
 | **$F_{2,\text{v1.1}}$** | Solidez Ajustada | **15%** | Tratamiento especial de patrimonio neto negativo por recompras de acciones (FICO, ORLY). |
 | **$F_{3,\text{v1.1}}$** | Crecimiento & SBC | **15%** | Auditoría estricta de dilución por Stock-Based Compensation. |
 | **$F_4$** | Moat Actual | **25%** | Ventaja defensiva cualitativa y costes de cambio. |

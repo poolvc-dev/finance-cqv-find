@@ -1,0 +1,135 @@
+{
+  "ASML": {
+    "price": 1550.69,
+    "pe_trailing": 54.64024,
+    "pe_forward": 26.787987,
+    "eps_trailing": 28.38,
+    "eps_forward": 57.887512
+  },
+  "FICO": {
+    "price": 1373.08,
+    "pe_trailing": 42.37901,
+    "pe_forward": 25.170767,
+    "eps_trailing": 32.4,
+    "eps_forward": 54.55058
+  },
+  "FTNT": {
+    "price": 153.22,
+    "pe_trailing": 58.037876,
+    "pe_forward": 44.17535,
+    "eps_trailing": 2.64,
+    "eps_forward": 3.46845
+  },
+  "GOOGL": {
+    "price": 336.71,
+    "pe_trailing": 16.751741,
+    "pe_forward": 22.861042,
+    "eps_trailing": 20.1,
+    "eps_forward": 14.72855
+  },
+  "INTC": {
+    "price": 81.88,
+    "pe_trailing": null,
+    "pe_forward": 40.236263,
+    "eps_trailing": -1.98,
+    "eps_forward": 2.03498
+  },
+  "ISRG": {
+    "price": 353.1,
+    "pe_trailing": 41.492363,
+    "pe_forward": 29.252338,
+    "eps_trailing": 8.51,
+    "eps_forward": 12.07083
+  },
+  "KLAC": {
+    "price": 170.19,
+    "pe_trailing": 54.028572,
+    "pe_forward": 25.892208,
+    "eps_trailing": 3.15,
+    "eps_forward": 6.57302
+  },
+  "KNSL": {
+    "price": 376.67,
+    "pe_trailing": 15.036728,
+    "pe_forward": 17.400797,
+    "eps_trailing": 25.05,
+    "eps_forward": 21.64671
+  },
+  "MEDP": {
+    "price": 584.93,
+    "pe_trailing": 33.520344,
+    "pe_forward": 30.291338,
+    "eps_trailing": 17.45,
+    "eps_forward": 19.31014
+  },
+  "META": {
+    "price": 585.61,
+    "pe_trailing": 21.601254,
+    "pe_forward": 15.89857,
+    "eps_trailing": 27.11,
+    "eps_forward": 36.83413
+  },
+  "MRSH": {
+    "price": 197.59,
+    "pe_trailing": 23.466745,
+    "pe_forward": 17.320711,
+    "eps_trailing": 8.42,
+    "eps_forward": 11.40773
+  },
+  "MSCI": {
+    "price": 582.92,
+    "pe_trailing": 31.646036,
+    "pe_forward": 25.936222,
+    "eps_trailing": 18.42,
+    "eps_forward": 22.47513
+  },
+  "MSFT": {
+    "price": 390.54,
+    "pe_trailing": 23.41367,
+    "pe_forward": 20.152971,
+    "eps_trailing": 16.68,
+    "eps_forward": 19.37878
+  },
+  "NOW": {
+    "price": 115.76,
+    "pe_trailing": 72.35,
+    "pe_forward": 23.093988,
+    "eps_trailing": 1.6,
+    "eps_forward": 5.01256
+  },
+  "NVDA": {
+    "price": 190.01,
+    "pe_trailing": 30.208267,
+    "pe_forward": 14.764904,
+    "eps_trailing": 6.29,
+    "eps_forward": 12.86903
+  },
+  "ORLY": {
+    "price": 90.63,
+    "pe_trailing": 29.714754,
+    "pe_forward": 25.03508,
+    "eps_trailing": 3.05,
+    "eps_forward": 3.62012
+  },
+  "PGR": {
+    "price": 219.99,
+    "pe_trailing": 11.038134,
+    "pe_forward": 13.504348,
+    "eps_trailing": 19.93,
+    "eps_forward": 16.29031
+  },
+  "SPGI": {
+    "price": 419.64,
+    "pe_trailing": 26.509161,
+    "pe_forward": 20.76957,
+    "eps_trailing": 15.83,
+    "eps_forward": 20.20456
+  },
+  "TSM": {
+    "price": 374.67,
+    "pe_trailing": 34.46826,
+    "pe_forward": 17.370684,
+    "eps_trailing": 10.87,
+    "eps_forward": 21.5691
+  }
+}

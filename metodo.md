@@ -12,7 +12,8 @@ Este documento constituye el manual metodológico central del sistema **CQV (Qua
 | **CQV v1.0** | [metodo_v1.0.md](file:///e:/DeveloperGitHub/repo/finance-cqv-find/metodo_v1.0.md) | 5 Factores | Marco fundacional (Rentabilidad 25%, Solidez 15%, Crecimiento 15%, Moat 25%, Futuro 20%). Introduce el Score PEG Normalizado. | Histórico / Legacy |
 | **CQV v1.1** | [metodo_v1.1.md](file:///e:/DeveloperGitHub/repo/finance-cqv-find/metodo_v1.1.md) | 5 Factores Pro | Incorporación del **ROIC Real** ($\frac{\text{NOPAT}}{\text{Capital Investido}}$) en $F_{1,\text{v1.1}}$ y el **Filtro de Degradación** (tope 7.00/10 si $F_4 < 6.0$). | Histórico / Pro |
 | **CQV v2.0** | [metodo_v2.0.md](file:///e:/DeveloperGitHub/repo/finance-cqv-find/metodo_v2.0.md) | 8 Factores | Expansión a 8 dimensiones (20-10-10-20-10-10-10-10) añadiendo Asignación de Capital, Valuación heurística e Antifragilidad base. | Histórico / Legacy |
-| **CQV v3.0** | [metodo_v3.0.md](file:///e:/DeveloperGitHub/repo/finance-cqv-find/metodo_v3.0.md) | 8 Factores Pro | **Estándar Oficial Actual**. Algoritmos cuantitativos completos de puntuación 1-10, ROIC Real, Owner Earnings, FCF Yield Real, Score PEG y Filtro de Degradación. | **ESTÁNDAR OFICIAL ACTUAL** |
+| **CQV v3.0** | [metodo_v3.0.md](file:///e:/DeveloperGitHub/repo/finance-cqv-find/metodo_v3.0.md) | 8 Factores Pro | Algoritmos cuantitativos de puntuación 1-10, ROIC Real, Owner Earnings, FCF Yield Real, Score PEG y Filtro de Degradación. | Histórico / Pro |
+| **CQV v4.0** | [metodo_v4.0.md](file:///e:/DeveloperGitHub/repo/finance-cqv-find/metodo_v4.0.md) | 8 Factores Pro + Valoración Intrínseca Separada | **Estándar Operativo Actual**. Normalización sectorial, confianza de datos, DCF por escenarios, expectativas implícitas, margen de seguridad y filtros de seguridad. | **ESTÁNDAR OFICIAL ACTUAL** |
 
 ---
 
@@ -33,6 +34,9 @@ $$\text{CQV v3.0} = (F_1 \times 0.20) + (F_2 \times 0.10) + (F_3 \times 0.10) + 
 $$\text{Si } F_4 < 6.0 \text{ o } F_2 < 5.0 \implies \text{CQV v3.0} = \min(\text{CQV v3.0}, 7.00)$$
 
 ---
+
+### 5. CQV v4.0 (8 Factores Pro - Estándar Operativo Actual):
+$$\text{CQV v4.0} = (F_1 \times 0.20) + (F_2 \times 0.15) + (F_3 \times 0.15) + (F_4 \times 0.15) + (F_5 \times 0.10) + (F_6 \times 0.10) + (F_7 \times 0.05) + (F_8 \times 0.10)$$
 
 ## 🏆 Escala Unificada de Calidad CQV
 

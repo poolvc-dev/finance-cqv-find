@@ -40,3 +40,8 @@ $$\text{Si } F_4 < 6.0 \text{ o } F_2 < 5.0 \implies \text{CQV v3.0} = \min(\tex
 - **ALTA CALIDAD (Score $8.00 - 8.99$):** Empresas con gran fortaleza financiera y foso competitivo robusto, pero con tasas de crecimiento moderadas o industrias más maduras.
 - **EN OBSERVACIÓN (Score $7.00 - 7.99$):** Compañías en transición o con compresión puntual en márgenes.
 - **VULNERABLE (Score $< 7.00$):** Trampas de valor o modelos amenazados estructuralmente.
+
+
+## Promt
+
+Actualiza con CQV v4.0 y sincronización SSOT completa las siguientes acciones Q2 2026 de los tickets que estan en la data cqv_data.json. Genera sus informes en inform/ y actualiza el dashboard.

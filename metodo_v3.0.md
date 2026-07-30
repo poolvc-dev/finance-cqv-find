@@ -23,6 +23,8 @@ Cada macro-factor $F_n$ resulta del promediado o ponderación de métricas espec
 
 $$F_1 = \frac{\text{Score Margen} + \text{Score ROIC} + \text{Score Conversión FCF}}{3}$$
 
+Para F1 se utiliza FCF reportado. Owner Earnings se reserva para F7, donde se analiza la valoración. No se deben mezclar ambas definiciones dentro del mismo subcomponente.
+
 #### 1. Score Margen Operativo / EBITDA ($\text{Margen} = \max(\frac{\text{EBITDA}}{\text{Ventas}}, \frac{\text{EBIT}}{\text{Ventas}})$):
 - $\text{Margen} \ge 35.0\% \implies \text{Score Margen} = 10.0$
 - $15.0\% \le \text{Margen} < 35.0\% \implies \text{Score Margen} = 7.0 + 3.0 \times \left( \frac{\text{Margen} - 0.15}{0.20} \right)$
@@ -34,6 +36,8 @@ $$F_1 = \frac{\text{Score Margen} + \text{Score ROIC} + \text{Score Conversión 
 - $10.0\% \le \text{ROIC} < 20.0\% \implies \text{Score ROIC} = 7.5 + 2.5 \times \left( \frac{\text{ROIC} - 0.10}{0.10} \right)$
 - $5.0\% \le \text{ROIC} < 10.0\% \implies \text{Score ROIC} = 5.0 + 2.5 \times \left( \frac{\text{ROIC} - 0.05}{0.05} \right)$
 - $\text{ROIC} < 5.0\% \implies \text{Score ROIC} = \max\left(1.0, 5.0 \times \frac{\text{ROIC}}{0.05}\right)$
+
+Si el capital invertido neto es menor o igual que cero, el ROIC se marca como no interpretable y no puede convertirse automáticamente en 10.0. El informe debe presentar una métrica alternativa de retorno sobre capital operativo y explicar la causa del denominador no positivo.
 
 #### 3. Score Conversión FCF ($\text{Conversión} = \frac{\text{FCF}}{\text{Beneficio Neto GAAP}}$):
 - $\text{Conversión} \ge 100.0\% \implies \text{Score Conversión} = 10.0$
@@ -59,6 +63,8 @@ Si el Patrimonio Neto Contable es $\le 0$ pero se debe a recompras masivas de ac
 - Software / SaaS B2B / Datos Regulados: **9.0 - 9.5**
 - Salud / Tecnología Médica / Infraestructura: **8.5 - 9.0**
 - Financieras / Industriales / Consumo: **8.0 - 8.5**
+
+El Score Predecibilidad debe elegirse dentro del intervalo usando evidencia de volatilidad de ingresos/FCF, concentración de clientes y sensibilidad histórica al ciclo; no se permite asignar automáticamente el máximo del intervalo por pertenecer a un sector.
 
 ---
 
@@ -88,7 +94,9 @@ Puntuación cualitativa rigurosa (1.0 a 10.0) basada en la presencia de barreras
 - **10.0 (Monopolio / Foso Inexpugnable):** Estándar regulatorio o de facto utilizado por el 90%+ de la industria con costes de cambio extremos (ej. FICO, MSCI, ASML).
 - **9.0 - 9.5 (Foso Fuerte):** Marca global dominante, economías de escala imbatibles o red logística propia (ej. ORLY, FTNT, MSFT, KLAC).
 - **7.5 - 8.9 (Foso Moderado):** Ventaja competitiva sólida pero expuesta a rivales de gran tamaño.
-- **< 7.0 (Foso Débil):** Negocio commoditizado sin poder de fijación de precios.
+- **7.0 - 7.4 (Foso Limitado):** Ventaja local o parcialmente defendible.
+- **6.0 - 6.9 (Foso Débil):** Ventaja frágil, con poder de fijación limitado.
+- **< 6.0 (Foso Muy Débil):** Negocio commoditizado sin poder de fijación de precios.
 
 ---
 
@@ -97,6 +105,8 @@ Puntuación cualitativa rigurosa (1.0 a 10.0) basada en la presencia de barreras
 - **9.5 - 10.0:** Infraestructura indispensable para megatendencias globales (Superclústeres de IA, semiconductores de precisión, ciberseguridad integrada).
 - **8.5 - 9.4:** Adopción rápida de IA generativa/agéntica monetizable con expansión sostenida del TAM.
 - **7.5 - 8.4:** Negocios tradicionales protegidos frente a la disrupción tecnológica.
+- **6.0 - 7.4:** Exposición significativa a disrupción o sin catalizadores estructurales.
+- **< 6.0:** Disrupción probable o deterioro estructural del modelo.
 
 ---
 
@@ -104,6 +114,7 @@ Puntuación cualitativa rigurosa (1.0 a 10.0) basada en la presencia de barreras
 
 - **9.5 - 10.0:** Programa de recompra de acciones masivo a precios de descuento ($>3\%$ del flotante retirado por año), política de dividendos creciente y ROIC $>25\%$.
 - **8.5 - 9.4:** Reversion eficiente del flujo de caja en proyectos de expansión interna (*Growth CapEx*) con ROIC superior al costo de capital ($WACC$).
+- **8.0 - 8.4:** Asignación aceptable, pero con evidencia mixta o retorno solo cercano al WACC.
 - **< 8.0:** Acumulación ineficiente de caja o M&A destructores de valor sobrepagando por *Goodwill*.
 
 ---
@@ -119,13 +130,17 @@ Rendimiento real del Flujo de Caja Libre sobre la Capitalización Bursátil ($\t
 
 *Nota de Normalización: Cuando un pico puntual de Growth CapEx reduce el FCF GAAP, se utiliza el **Owner Earnings (OCF - Maintenance CapEx)**.*
 
+El Maintenance CapEx debe estar respaldado por divulgación de la empresa o por una estimación documentada basada en el promedio histórico de CapEx de mantenimiento. Si no puede separarse razonablemente del Growth CapEx, F7 se marca como no disponible y no se publica un CQV v3.0 final.
+
 ---
 
 ### $F_8$: Antifragilidad y Recurrencia (Peso: 10%)
 
 - **9.5 - 10.0:** Ingresos recurrentes por suscripciones o mantenimiento contractual $> 70\%$, base de clientes diversificada globalmente y demanda insensible a ciclos recesivos.
 - **8.5 - 9.4:** Ingresos recurrentes entre $50\%$ y $70\%$ con contratos plurianuales.
-- **< 8.0:** Ventas por proyectos únicos con alta volatilidad macroeconómica.
+- **8.0 - 8.4:** Recurrencia parcial o diversificación incompleta, con sensibilidad cíclica moderada.
+- **7.0 - 7.9:** Ventas por proyectos o contratos cortos con volatilidad relevante.
+- **< 7.0:** Alta volatilidad macroeconómica y ausencia de ingresos recurrentes.
 
 ---
 
@@ -139,9 +154,11 @@ $$\text{Si } F_4 < 6.0 \text{ o } F_2 < 5.0 \implies \text{CQV v3.0} = \min(\tex
 
 ## 📊 Regla de Decisión y Score PEG Normalizado
 
-Para compañías en categoría **ÉLITE (CQV v3.0 $\ge 9.00$)**, la decisión de compra se valida con el **Score PEG Normalizado**:
+Para compañías en categoría **ÉLITE (CQV v3.0 $\ge 9.00$)**, la valoración se contrasta con el **Score PEG Normalizado**:
 
-$$\text{Score PEG} = \min\left(10.0, \max\left(1.0, \left( \frac{\text{Tasa Crecimiento EPS (\%) chaos}}{\text{PER Forward}} \right) \times 10 \right)\right)$$
+$$\text{Score PEG} = \min\left(10.0, \max\left(1.0, \left( \frac{\text{Tasa Crecimiento EPS (en puntos porcentuales)}}{\text{PER Forward}} \right) \times 10 \right)\right)$$
 
-- **Score PEG $\ge 8.0$:** *Anomalía de Descuento* (se activa gatillo de compra inmediata).
+La tasa de crecimiento se introduce como puntos porcentuales: 42.1% = 42.1. El crecimiento y el PER Forward deben referirse al mismo horizonte NTM y a la misma fecha.
+
+- **Score PEG $\ge 8.0$:** *Anomalía de Descuento* y señal de revisión de compra condicionada; no activa una orden automática sin validar riesgos, calidad de estimaciones y margen de seguridad.
 - **Score PEG $5.0 - 7.9$:** Zona de compra razonable / acumulativa.

@@ -15,14 +15,14 @@ $$\text{CQV v2.0} = (F_1 \times 0.20) + (F_2 \times 0.10) + (F_3 \times 0.10) + 
 
 | Factor | Denominación | Peso | Métrica / Heurística Aplicada |
 | :--- | :--- | :---: | :--- |
-| **$F_1$** | Rentabilidad Operativa | **20%** | Margen bruto, margen operativo GAAP y conversión de caja libre. |
+| **$F_1$** | Rentabilidad Operativa | **20%** | Margen operativo GAAP, margen EBITDA y conversión de caja libre. |
 | **$F_2$** | Solidez Financiera | **10%** | Ratio Deuda Neta / EBITDA y liquidez. |
 | **$F_3$** | Crecimiento del Negocio | **10%** | Crecimiento YoY de ventas, beneficio operativo y EPS. |
 | **$F_4$** | Foso Económico (Moat) | **20%** | Ventaja competitiva, marca, escala y costes de cambio. |
 | **$F_5$** | Proyecciones e IA | **10%** | Adaptación tecnológica e impacto de la IA. |
 | **$F_6$** | Asignación de Capital | **10%** | Promedio heurístico de Rentabilidad y Crecimiento ($F_6 = \frac{F_1 + F_3}{2}$). |
-| **$F_7$** | Valuación Heurística | **10%** | Ajuste inverso de rentabilidad ($F_7 = \max(1.0, \min(10.0, 10.0 - (F_1 - 5.0) \times 0.8))$). |
-| **$F_8$** | Antifragilidad Base | **10%** | Puntuación base predeterminada ($F_8 = 8.0$). |
+| **$F_7$** | Heurística Legacy de Múltiplo | **10%** | Ajuste inverso de rentabilidad ($F_7 = \max(1.0, \min(10.0, 10.0 - (F_1 - 5.0) \times 0.8))$). |
+| **$F_8$** | Antifragilidad Base Legacy | **10%** | Puntuación base predeterminada ($F_8 = 8.0$); no representa una medición específica de recurrencia. |
 
 ---
 
@@ -35,6 +35,8 @@ La revisión crítica del modelo v2.0 identificó dos heurísticas de cálculo q
 
 2. **Valor Predeterminado Fijo en $F_8$ ($F_8 = 8.0$):**
    En v2.0, $F_8$ asumía un valor fijo predeterminado de 8.0 para representar la resiliencia base de empresas cotizadas maduras. El modelo v3.0 eliminó esta constante fija y pasó a calificar $F_8$ cuantitativa y cualitativamente en función del porcentaje de ingresos recurrentes ($>60\%$) y la inelasticidad recesiva.
+
+Por estas limitaciones, v2.0 se conserva únicamente para reconstrucción histórica. No debe utilizarse para activar decisiones de compra ni debe interpretarse como equivalente cuantitativo a v3.0.
 
 ---
 
