@@ -17,18 +17,23 @@ Bajo el marco multifactorial **CQV v3.0 (Quality and Structural Value)**, la emp
 
 ## 2. Métricas y Puntuaciones en el Modelo CQV v3.0
 
-| Factor / Métrica | Puntuación (0-10) | Diagnóstico Financiero y Operativo |
-| :--- | :---: | :--- |
-| **F1: Rentabilidad** | **[X.XX]** | [Márgenes bruto/operativo/neto, ROIC, ROE y eficiencia]. |
-| **F2: Solidez Financiera** | **[X.XX]** | [Estructura de deuda, ratio Deuda/EBITDA, caja neta y liquidez]. |
-| **F3: Crecimiento** | **[X.XX]** | [Crecimiento CAGR de ingresos, beneficio operativo y EPS]. |
-| **F4: Foso Económico (Moat)** | **[X.XX]** | [Tipo de moat: marca, costes de cambio, efecto red, patentes]. |
-| **F5: Proyecciones e IA** | **[X.XX]** | [Resiliencia tecnológica y adopción de IA]. |
-| **F6: Asignación de Capital** | **[X.XX]** | [Recompra de acciones, dividendos y fusiones/adquisiciones]. |
-| **F7: FCF Yield (Valuación)** | **[X.XX]** | [Rendimiento del flujo de caja libre real e implicación en valuación]. |
-| **F8: Antifragilidad** | **[X.XX]** | [Ingresos recurrentes y comportamiento en ciclos recesivos]. |
-| **CQV Score Promedio** | **[X.XX]** | Calificación: **[ÉLITE / ALTA CALIDAD]** |
-| **Valuación PEG** | **[X.XX]** | [Calificación del margen de seguridad sobre 10]. |
+El modelo **CQV v3.0 (Quality & Structural Value)** evalúa la fortaleza fundamental de una compañía mediante la ponderación de 8 factores cuantitativos y cualitativos clave. La fórmula de cálculo del score consolidado es la siguiente:
+
+$$\text{CQV v3.0} = (F_1 \times 0.20) + (F_2 \times 0.10) + (F_3 \times 0.10) + (F_4 \times 0.20) + (F_5 \times 0.10) + (F_6 \times 0.10) + (F_7 \times 0.10) + (F_8 \times 0.10)$$
+
+### 2.1. Tabla de Valoraciones Parciales y Desglose de Cálculo
+
+| Factor / Componente del Modelo | Puntuación (0-10) | Peso Absoluto | Contribución Parcial | Diagnóstico Financiero y Sub-componentes Evaluados |
+| :--- | :---: | :---: | :---: | :--- |
+| **F1: Rentabilidad Operativa** | **[X.XX]** | 20.0% | **[F1 * 0.20]** | [Margen bruto, margen operativo GAAP/Non-GAAP, ROIC real, ROE y cumplimiento de la Rule of 40/45]. |
+| **F2: Solidez Financiera** | **[X.XX]** | 10.0% | **[F2 * 0.10]** | [Estructura de deuda, ratio Deuda/EBITDA, caja neta, cobertura de intereses y liquidez en balance]. |
+| **F3: Crecimiento del Negocio** | **[X.XX]** | 10.0% | **[F3 * 0.10]** | [Crecimiento YoY de ingresos, billings/contratos, EBITDA y EPS diluido normalizado]. |
+| **F4: Foso Económico (Moat)** | **[X.XX]** | 20.0% | **[F4 * 0.20]** | [Tipo de moat: costes de cambio, efecto red, patentes/ASIC, cuota de mercado global]. |
+| **F5: Proyecciones e IA** | **[X.XX]** | 10.0% | **[F5 * 0.10]** | [Resiliencia tecnológica, adopción de IA empresarial, crecimiento de ARR en nube y TAM objetivo]. |
+| **F6: Asignación de Capital** | **[X.XX]** | 10.0% | **[F6 * 0.10]** | [Recompras de acciones, dividendos, adquisiciones (M&A) y ratio de calidad GAAP/Non-GAAP (disciplina SBC)]. |
+| **F7: FCF Yield & Valuación** | **[X.XX]** | 10.0% | **[F7 * 0.10]** | [Rendimiento del flujo de caja libre ajustado (Owner Earnings), FCF Margin y ratio PEG]. |
+| **F8: Antifragilidad** | **[X.XX]** | 10.0% | **[F8 * 0.10]** | [Porcentaje de ingresos recurrentes, diversificación geográfica/clientes y resiliencia en recesiones]. |
+| **SCORE CQV v3.0 FINAL** | -- | **100.0%** | **[SUMA PARCIALES]** | **Calificación: [ÉLITE / ALTA CALIDAD / EN OBSERVACIÓN]** |
 
 ---
 
@@ -81,7 +86,42 @@ pie title Distribución de Ingresos por Segmento ([Periodo])
 
 ---
 
-### 3.3. Análisis Detallado del CapEx y la Inversión en Infraestructura / Planta
+### 3.3. Análisis Histórico de Eficiencia de Capital: ROIC, ROI/ROA y ROE (Comparativa 5 Años)
+
+Esta sección analiza la evolución quinquenal del retorno del capital invertido (**ROIC**), la eficiencia en el uso de activos totales (**ROA / ROI**) y la rentabilidad sobre patrimonio neto (**ROE**).
+
+#### A. Definiciones y Fórmulas de Cálculo:
+
+1. **ROIC (Return on Invested Capital)**:
+   $$\text{ROIC} = \frac{\text{NOPAT}}{\text{Capital Investido}} = \frac{\text{Beneficio Operativo (EBIT)} \times (1 - t)}{\text{Deuda Total} + \text{Patrimonio Neto} - \text{Caja Excedente}}$$
+   *Mide la capacidad real de los activos operativos del negocio para generar retornos netos.*
+
+2. **ROA / ROI (Return on Assets / Return on Investment)**:
+   $$\text{ROA} = \frac{\text{Beneficio Neto GAAP}}{\text{Activos Totales Promedio}}$$
+   *Mide la eficiencia en la utilización de la infraestructura total y planta del balance.*
+
+3. **ROE (Return on Equity)**:
+   $$\text{ROE} = \frac{\text{Beneficio Neto GAAP}}{\text{Patrimonio Neto Promedio}}$$
+   *Refleja el apalancamiento de retornos capturado por los accionistas comunes.*
+
+#### B. Tabla Comparativa de Retornos sobre Capital (Evolución 5 Años):
+
+| Métrica de Eficiencia de Capital | [Año -4] | [Año -3] | [Año -2] | [Año -1] | [Año Actual] | Tendencia y Diagnóstico (5 Años) |
+| :--- | :---: | :---: | :---: | :---: | :---: | :--- |
+| **Ingresos Totales (M$)** | $[X] M | $[X] M | $[X] M | $[X] M | **$[X] M** | [Tasa CAGR de ingresos]. |
+| **Beneficio Operativo GAAP (M$)** | $[X] M | $[X] M | $[X] M | $[X] M | **$[X] M** | [Crecimiento de EBITDA/EBIT]. |
+| **Margen Operativo Non-GAAP (%)** | [X]% | [X]% | [X]% | [X]% | **[X]%** | [Expansión/contracción en bps]. |
+| **Beneficio Neto GAAP (M$)** | $[X] M | $[X] M | $[X] M | $[X] M | **$[X] M** | [Evolución de ganancias netas]. |
+| **Activos Totales (M$)** | $[X] M | $[X] M | $[X] M | $[X] M | **$[X] M** | [Crecimiento de la base de activos]. |
+| **Capital Investido Neto (M$)** | $[X] M | $[X] M | $[X] M | $[X] M | **$[X] M** | [Capital neto operativo]. |
+| **ROA / ROI (Return on Assets %)** | **[X]%** | **[X]%** | **[X]%** | **[X]%** | **[X]%** | **[Diagnóstico de eficiencia en activos]** |
+| **ROE (Return on Equity %)** | **[X]%** | **[X]%** | **[X]%** | **[X]%** | **[X]%** | **[Diagnóstico de retorno sobre capital]** |
+| **ROIC (Return on Invested Capital %)** | **[X]%** | **[X]%** | **[X]%** | **[X]%** | **[X]%** | **[Diagnóstico de retorno sobre inversión]** |
+| **Margen de Free Cash Flow (%)** | [X]% | [X]% | [X]% | [X]% | **[X]%** | [Conversión de caja libre]. |
+
+---
+
+### 3.4. Análisis Detallado del CapEx y la Inversión en Infraestructura / Planta
 
 El gasto en inversión de capital (CapEx) debe evaluarse trimestralmente para medir la intensidad de la reinversión y la velocidad de expansión:
 
@@ -99,7 +139,7 @@ El gasto en inversión de capital (CapEx) debe evaluarse trimestralmente para me
 
 ---
 
-### 3.4. Asignación de Capital y Estructura de Balance
+### 3.5. Asignación de Capital y Estructura de Balance
 
 *   **Recompra de Acciones & Dividendos**: [Detalles de buybacks en el trimestre, precio medio de recompra y dividendo por acción].
 *   **Deuda y Solvencia**:
@@ -110,7 +150,7 @@ El gasto en inversión de capital (CapEx) debe evaluarse trimestralmente para me
 
 ---
 
-### 3.5. Normalización Financiera: Ajustes Críticos en EPS y CapEx (Owner Earnings)
+### 3.6. Normalización Financiera: Ajustes Críticos en EPS y CapEx (Owner Earnings)
 
 *(Sección obligatoria cuando existan distorsiones contables por ingresos/gastos no operativos o picos extraordinarios de inversión de capital CapEx)*.
 
@@ -132,7 +172,7 @@ El gasto en inversión de capital (CapEx) debe evaluarse trimestralmente para me
 
 ---
 
-### 3.6. Actualización de Guías Financieras (Guidance)
+### 3.7. Actualización de Guías Financieras (Guidance)
 
 | Métrica de Guía | Guía Actual ([Año]) | Guía Anterior ([Periodo]) | Diagnóstico |
 | :--- | :---: | :---: | :--- |
@@ -142,7 +182,7 @@ El gasto en inversión de capital (CapEx) debe evaluarse trimestralmente para me
 
 ---
 
-### 3.7. Líneas Rojas y Puntos de Vulnerabilidad Detectados
+### 3.8. Líneas Rojas y Puntos de Vulnerabilidad Detectados
 
 A continuación se resumen las principales alertas y focos de atención identificados en los estados financieros:
 
@@ -160,7 +200,7 @@ A continuación se resumen las principales alertas y focos de atención identifi
 
 ---
 
-### 3.8. Impacto de la Inteligencia Artificial (Presente y Futuro)
+### 3.9. Impacto de la Inteligencia Artificial (Presente y Futuro)
 
 #### A. Impacto en el Presente ([Año Actual]):
 * **[Caso de Uso 1]**: [Implementaciones actuales de IA en productos o servicios].
@@ -171,7 +211,7 @@ A continuación se resumen las principales alertas y focos de atención identifi
 
 ---
 
-### 3.9. Análisis Detallado de la Competencia y Posicionamiento de Mercado
+### 3.10. Análisis Detallado de la Competencia y Posicionamiento de Mercado
 
 ```mermaid
 graph TD
@@ -205,15 +245,42 @@ graph TD
 
 ---
 
-## 5. Evolución Histórica de Puntuaciones CQV y Valuación (PER Trailing / Forward)
+## 5. Evolución Histórica de Puntuaciones CQV y Valuación (Últimos 5 Años)
 
-| Año / Periodo | PER Trailing (Prom: [X]x) | PER Forward (Prom: [X]x) | CQV v1.0 (5F Legacy) | CQV v1.1 (5F Pro) | CQV v2.0 (8F Legacy) | CQV v3.0 (8F Pro) |
-| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
-| **2022** | [X.X]x | [X.X]x | [X.XX] | [X.XX] | [X.XX] | **[X.XX]** |
-| **2023** | [X.X]x | [X.X]x | [X.XX] | [X.XX] | [X.XX] | **[X.XX]** |
-| **2024** | [X.X]x | [X.X]x | [X.XX] | [X.XX] | [X.XX] | **[X.XX]** |
-| **2025** | [X.X]x | [X.X]x | [X.XX] | [X.XX] | [X.XX] | **[X.XX]** |
-| **[Periodo Actual]** | **[X.X]x** | **[X.X]x** | **[X.XX]** | **[X.XX]** | **[X.XX]** | **[X.XX]** |
+Esta sección monitorea el comportamiento de las calificaciones del modelo CQV a lo largo del tiempo para verificar si la compañía atraviesa un proceso de **compounding fundamental (mejora continua de la calidad)** o un deterioro estructural.
+
+### 5.1. Tabla Evolutiva de Scores CQV (v1.0, v1.1, v2.0 y v3.0) y Múltiplos PER
+
+| Año / Periodo | PER Trailing (Promedio) | PER Forward (Estimado) | CQV v1.0 (5F Legacy) | CQV v1.1 (5F Pro) | CQV v2.0 (8F Legacy) | CQV v3.0 (8F Pro) | Clasificación CQV |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **[Año -4]** | [X.X]x | [X.X]x | [X.XX] | [X.XX] | [X.XX] | **[X.XX]** | [Clasificación] |
+| **[Año -3]** | [X.X]x | [X.X]x | [X.XX] | [X.XX] | [X.XX] | **[X.XX]** | [Clasificación] |
+| **[Año -2]** | [X.X]x | [X.X]x | [X.XX] | [X.XX] | [X.XX] | **[X.XX]** | [Clasificación] |
+| **[Año -1]** | [X.X]x | [X.X]x | [X.XX] | [X.XX] | [X.XX] | **[X.XX]** | [Clasificación] |
+| **[Periodo Actual]** | **[X.X]x** | **[X.X]x** | **[X.XX]** | **[X.XX]** | **[X.XX]** | **[X.XX]** | **[Clasificación]** |
+
+---
+
+### 5.2. Gráfico de Evolución Histórica del Score CQV v3.0
+
+```mermaid
+linechart
+    title Trayectoria Histórica del Score CQV v3.0 ([TICKER])
+    x-axis [[Año -4], [Año -3], [Año -2], [Año -1], [Periodo Actual]]
+    y-axis "Score CQV (0-10)" 7.0 --> 10.0
+    line "CQV v3.0 Score" [[Score-4], [Score-3], [Score-2], [Score-1], [Score Actual]]
+```
+
+---
+
+### 5.3. Diagnóstico del Compounding Fundamental y De-risking de Múltiplos
+
+1. **Evaluación de Permanencia en Categorías de Calidad**:
+   - Analizar si el activo se mantiene de forma estable en la franja **ÉLITE (Score > 9.00)** o **ALTA CALIDAD (8.00 - 8.99)** a lo largo de los ciclos económicos.
+2. **Tendencia del Score CQV v3.0**:
+   - Explicar los drivers detrás de la aceleración o compresión de la nota fundamental (expansión de márgenes, apalancamiento operativo, crecimiento de FCF).
+3. **Relación entre Múltiplos PER y Beneficios (De-risking)**:
+   - Diagnosticar si la compresión del múltiplo PER unida a un aumento en el score CQV v3.0 genera una ventana de compra con amplio margen de seguridad (ratio PEG < 1.2x).
 
 ---
 
