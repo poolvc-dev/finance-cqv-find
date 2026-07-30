@@ -1,135 +1,141 @@
-# Protocolo y Flujo de Actualización de Datos SSOT (CQV Metodología v4.0)
+# Protocolo SSOT y flujo de actualización CQV v4.0
 
-**Versión:** 1.0 (Estándar Operativo de Fuente Única de Verdad)  
-**Ámbito de Aplicación:** Todos los informes de tesis, datasets JSON/JS y Dashboard Web del ecosistema CQV.  
-**Objetivo:** Garantizar la **coherencia del 100%** en todas las herramientas del sistema, eliminando discrepancias manuales y manteniendo una única fuente de verdad (*Single Source of Truth - SSOT*).
+**Versión:** 2.0  
+**Ámbito:** datasets, cálculos, dashboard e informes de tesis.  
+**Principio:** ningún dato se inventa ni se completa con valores por defecto.
 
----
+## 1. Arquitectura y responsabilidades
 
-## 1. Principio de Fuente Única de Verdad (SSOT)
+El SSOT es `cqv_data.json` para el estado actual y `cqv_history.json` para las series históricas. Los archivos `cqv_data.js` y `cqv_history.js` son copias derivadas para el dashboard.
 
-El ecosistema CQV opera bajo el principio inmutable de que **los datos fundamentales y de valoración se calculan una sola vez en el dataset maestro (`cqv_data.json` / `cqv_history.json`) y se propagan automáticamente hacia los demás componentes**.
+El flujo tiene cuatro capas:
+
+1. Fuentes primarias: SEC 10-Q/10-K, earnings release, presentaciones oficiales y mercado con fecha.
+2. SSOT: datos de entrada, puntuaciones, valoración y metadatos en JSON.
+3. Pipeline: recalcula métricas derivadas, valida reglas y sincroniza JS/dashboard.
+4. Informe: se genera desde el SSOT y se valida; el pipeline no redacta narrativas ni inventa cifras.
 
 ```mermaid
 flowchart TD
-    A["Resultados SEC Filings (10-Q/10-K) & YFinance"] --> B["1. Fuente Única de Verdad (cqv_data.json & cqv_history.json)"]
-    B --> C["2. Pipeline Maestro (sync_cqv.py)"]
-    C --> D["3. Archivos JS (cqv_data.js & cqv_history.js)"]
-    C --> E["4. Dashboard Web (dashboard.html)"]
-    C --> F["5. Informes de Tesis (inform/*_2026_q2.md)"]
+ A["SEC/RNS, earnings release y mercado"] --> B["cqv_data.json + cqv_history.json"]
+ B --> C["sync_cqv.py: validar y recalcular"]
+ C --> D["cqv_data.js + cqv_history.js"]
+ C --> E["dashboard.html"]
+ B --> F["Generar inform/TICKER_PERIODO.md"]
+ F --> G["Validar informe contra SSOT"]
 ```
 
----
+## 2. Datos obligatorios por acción
 
-### 1.1. Mecanismo Técnico de Lectura del Dashboard (¿Cómo lee los datos el Dashboard?)
+El registro debe contener, con fuente y fecha:
 
-> [!IMPORTANT]
-> **Respuesta Directa:** El Dashboard (`dashboard.html`) **LEE DIRECTAMENTE** del origen de datos `cqv_data.js` y `cqv_history.js` (los cuales son la representación nativa en JavaScript de `cqv_data.json` y `cqv_history.json`). **No requiere modificaciones manuales en su código HTML para actualizarse.**
+### 2.1 Calidad
 
-#### ¿Por qué se utiliza `cqv_data.js` además de `cqv_data.json`?
-1. **Compatibilidad Local de Archivos (`file:///`):** Cuando el analista abre el Dashboard directamente desde el explorador de archivos sin servidor web local (`file:///.../dashboard.html`), las políticas de seguridad del navegador (CORS) bloquean las llamadas `fetch('cqv_data.json')`.
-2. **Carga Inmediata y Segura:** Al incluir `<script src="cqv_data.js"></script>` y `<script src="cqv_history.js"></script>` en la cabecera `<head>` de `dashboard.html`, las variables globales `cqvData` y `cqvHistory` quedan disponibles instantáneamente en memoria al abrir la página.
-3. **Sincronización Transparente:** El script maestro `python sync_cqv.py` genera en un solo paso los archivos `cqv_data.json`, `cqv_data.js`, `cqv_history.json` y `cqv_history.js`. De este modo, tan pronto como se ejecuta el script, el Dashboard queda **100% actualizado de forma automática y transparente**.
+`ticker`, `name`, `sector`, `quarter`, `f1` a `f8`, `data_confidence`. Cada F1-F8 debe tener evidencia en el informe. Si un factor no puede justificarse, se marca `N/D`; no se asigna una cifra por defecto.
 
----
+### 2.2 Mercado y crecimiento
 
-## 2. Documentos e Insumos de Entrada (Qué debe leerse)
+`price`, `pe`, `pe_forward`, `eps_growth_ntm_pct`. El crecimiento EPS se expresa en puntos porcentuales: 42.1 significa 42.1%, no 0.421. PER Forward y crecimiento deben corresponder a la misma fecha y horizonte NTM.
 
-Para realizar la actualización periódica de una compañía (post-resultados trimestrales o anuales), el analista o el sistema debe consultar obligatoriamente los siguientes documentos primarios:
+### 2.3 Flujo de caja y valoración
 
-### 2.1. Documentos Financieros Primarios (Fuentes de Verdad)
-1. **SEC Filings / RNS Oficiales:**
-   - **Formulario 10-Q** (Resultados Trimestrales) o **Formulario 10-K** (Resultados Anuales).
-   - **Press Release de Ganancias (Earnings Release):** Para datos de guía directiva (*Guidance*), crecimiento NRR, y dividendo.
-2. **Mercado Bursátil en Tiempo Real:**
-   - **Precio de Cierre Oficial ($):** Cotización de mercado en la fecha de emisión.
-   - **Múltiplo PER Trailing (TTM):** Ratio Precio / Beneficio acumulado de 12 meses.
-   - **Múltiplo PER Forward (NTM):** Ratio Precio / Beneficio estimado para los próximos 12 meses.
-   - **EPS Trailing y EPS Forward ($):** Beneficio por acción histórico y proyectado.
+`ocf`, `maintenance_capex`, `market_cap`, `intrinsic_value`, `score_fcf_yield`, `score_mos`. También deben registrarse escenarios y supuestos DCF: WACC, tasa terminal, horizonte y fuente de cada entrada. Si falta un dato crítico, el resultado dependiente es `N/D`.
 
-### 2.2. Documentos Metodológicos del Sistema
-1. **Manual Metodológico Oficial:** [metodo_v4.0.md](file:///e:/DeveloperGitHub/repo/finance-cqv-find/metodo_v4.0.md)  
-   - Define las reglas de puntuación de los 8 factores de calidad ($F_1 \dots F_8$), ponderaciones, filtros de seguridad rígidos y la capa de valoración (Value Score, PEG Bruto y Score PEG Normalizado).
-2. **Plantilla Maestra de Informes:** [inform/template.md](file:///e:/DeveloperGitHub/repo/finance-cqv-find/inform/template.md)  
-   - Define la estructura requerida para los informes de tesis en Markdown, incluyendo el bloque de salida matriz CQV v4.0 (Sección 9.6).
+``Owner Earnings = OCF - Maintenance CapEx``  
+``FCF Yield = Owner Earnings / Capitalización bursátil``
 
----
+Los scores FCF Yield y MoS solo pueden introducirse con una rúbrica documentada. No se sustituyen por PER ni por una fórmula improvisada.
 
-## 3. Algoritmo y Procedimiento de Cálculo (Cómo debe usarse)
+## 3. Cálculos oficiales
 
-Cualquier actualización debe seguir rigurosamente los siguientes 3 pasos algorítmicos:
+### 3.1 CQV Calidad
 
-### Paso 1: Asignación y Ponderación de Factores CQV Calidad ($F_1 \dots F_8$)
-Se evalúan los 8 factores en escala continua de **0.00 a 10.00**:
-- **$F_1$ Economía & Rentabilidad (20%):** Margen bruto, margen operativo GAAP, ROIC real y conversión de FCF.
-- **$F_2$ Solidez Financiera (15%):** Ratio Deuda Neta/EBITDA, cobertura de intereses y caja neta.
-- **$F_3$ Crecimiento Durable (15%):** CAGR de ingresos 3-5 años, EPS normalizado y dilución neta por SBC.
-- **$F_4$ Moat Competitivo (15%):** *Switching costs*, efectos de red, cuota de mercado global y durabilidad del foso.
-- **$F_5$ Asignación de Capital (10%):** Reinvestment rate, ROIC vs WACC, recompras netas e historial de dividendos.
-- **$F_6$ Dirección Operativa (10%):** Alineación directiva, cumplimiento de guías históricas y gobierno corporativo.
-- **$F_7$ Opcionalidad Futura (5%):** Monetización real de IA y megatendencias (acotada al 5%).
-- **$F_8$ Antifragilidad & Recurrencia (10%):** Porcentaje de ingresos recurrentes (>70%), resistencia recesiva y diversificación de clientes.
+```
+CQV = F1×0.20 + F2×0.15 + F3×0.15 + F4×0.15
+    + F5×0.10 + F6×0.10 + F7×0.05 + F8×0.10
+```
 
-**Ecuación Matriz Oficial:**
-$$\text{CQV Calidad v4.0} = (F_1 \times 0.20) + (F_2 \times 0.15) + (F_3 \times 0.15) + (F_4 \times 0.15) + (F_5 \times 0.10) + (F_6 \times 0.10) + (F_7 \times 0.05) + (F_8 \times 0.10)$$
+Si F2 < 4.0 o F4 < 4.0, el CQV máximo es 6.99. Si falta F2 o F8, CQV y veredicto son `N/D`.
 
-*Filtro Rígido de Seguridad:* Si $F_2 < 4.0$ o $F_4 < 4.0 \implies \text{Score CQV Calidad máximo acotado a 6.99 (Vulnerable)}$.
+### 3.2 Valoración
 
----
+```
+PEG Bruto = (eps_growth_ntm_pct / pe_forward) × 10
+Score PEG = min(10, max(0, PEG Bruto))
+MoS = (intrinsic_value - price) / intrinsic_value × 100
+Value Score = 0.40×score_fcf_yield + 0.30×Score PEG + 0.30×score_mos
+```
 
-### Paso 2: Cálculo de la Capa de Valoración (Value Score)
-1. **PEG Bruto (Sin acotamiento):**
-   $$\text{PEG Bruto} = \left(\frac{\text{Crecimiento EPS NTM (\%)}} {\text{PER Forward}}\right) \times 10$$
-2. **Score PEG Normalizado (Acotado 0-10):**
-   $$\text{Score PEG} = \min(10.0, \max(0.0, \text{PEG Bruto}))$$
-3. **Margen de Seguridad (%):**
-   $$\text{Margen de Seguridad (\%)} = \left(\frac{\text{Valor Intrínseco} - \text{Precio Mercado}}{\text{Valor Intrínseco}}\right) \times 100$$
-4. **Value Score Consolidado:**
-   $$\text{Value Score} = 0.40(\text{Score FCF Yield}) + 0.30(\text{Score PEG Normalizado}) + 0.30(\text{Score Margen de Seguridad})$$
+Si el crecimiento EPS es menor o igual a cero, Score PEG = 0. Si PER Forward es menor o igual a cero o falta, PEG = `N/D`. El PEG bruto puede superar 10; el Score PEG queda limitado a 10.
 
----
+### 3.3 Veredicto
 
-### Paso 3: Determinación del Veredicto Operativo
-- **CQV Calidad $\ge 9.00$ y MoS $\ge 25\% \implies$ COMPRAR / CANDIDATO PRIORITARIO**
-- **CQV Calidad $\ge 9.00$ y MoS $\ge 18\% \implies$ COMPRAR / ACUMULAR**
-- **CQV Calidad $\ge 8.00$ y MoS $\ge 10\% \implies$ ACUMULAR / COMPRA ESCALONADA**
-- **CQV Calidad $\ge 8.00$ y MoS $< 10\% \implies$ MANTENER**
-- **CQV Calidad $< 8.00$ o Filtro Rígido Activado $\implies$ EVITAR / EN OBSERVACIÓN**
+- CQV >= 9.00 y MoS >= 25%: Comprar / Candidato Prioritario.
+- CQV >= 9.00 y MoS >= 18%: Comprar / Acumular.
+- CQV >= 8.00 y MoS >= 10%: Acumular / Compra escalonada.
+- CQV >= 8.00 y MoS < 10%: Mantener.
+- CQV < 8.00 o filtro rígido activo: Evitar / En observación.
 
----
+Si CQV, MoS o un dato crítico es `N/D`, no se emite recomendación afirmativa.
 
-## 4. Secuencia de Ejecución de Archivos (Qué actualizar)
+## 4. Secuencia operativa única
 
-Para ejecutar una actualización sin incoherencias, se debe seguir la siguiente secuencia exacta de 5 pasos:
+### Paso 1 — Recopilar y documentar
 
-| Paso | Archivo Afectado | Acción Requerida | Estado de Salida |
-| :---: | :--- | :--- | :---: |
-| **1** | [cqv_data.json](file:///e:/DeveloperGitHub/repo/finance-cqv-find/cqv_data.json) | Ingresar o modificar los factores $F_1 \dots F_8$, precio, PER y Valor Intrínseco. | SSOT Actualizado |
-| **2** | [cqv_history.json](file:///e:/DeveloperGitHub/repo/finance-cqv-find/cqv_history.json) | Actualizar el historial de 7 años (2020 a 2026 TTM) con las métricas del nuevo periodo. | Histórico Sincronizado |
-| **3** | [sync_cqv.py](file:///e:/DeveloperGitHub/repo/finance-cqv-find/sync_cqv.py) | **Ejecutar el script maestro en la terminal (`python sync_cqv.py`).** | Automatización SSOT |
-| **4** | [dashboard.html](file:///e:/DeveloperGitHub/repo/finance-cqv-find/dashboard.html) | Se actualizan automáticamente `cqv_data.js`, `cqv_history.js` y el HTML. | Dashboard 100% Coherente |
-| **5** | [inform/[ticker]_[periodo].md](file:///e:/DeveloperGitHub/repo/finance-cqv-find/inform/fico_2026_q2.md) | Regenerar o guardar el informe en Markdown siguiendo la plantilla [inform/template.md](file:///e:/DeveloperGitHub/repo/finance-cqv-find/inform/template.md). | Informe Alineado |
+Leer fuentes primarias. Guardar dato, unidad, fecha, periodo, fuente y notas de normalización. No usar cifras estimadas sin identificarlas como estimaciones.
 
----
+### Paso 2 — Actualizar el SSOT
 
-## 5. Garantía de Calidad y Registro Auditado
+Actualizar `cqv_data.json` y `cqv_history.json`. En una actualización múltiple, validar todas las acciones antes de publicar cambios.
 
-Después de ejecutar el pipeline `python sync_cqv.py`, el sistema valida automáticamente:
-1. Que la suma de la contribución parcial de los 8 factores sea exactamente igual a **100%**.
-2. Que el score mostrado en la pestaña *Dashboard*, la pestaña *Explorador*, la pestaña *Tendencias* y el *Informe Markdown* sea **100% idéntico**.
+### Paso 3 — Ejecutar el pipeline
 
----
+Ejecutar `python sync_cqv.py`. El script debe rechazar campos obligatorios ausentes o inválidos, recalcular métricas, no usar defaults, generar `cqv_data.js` y `cqv_history.js`, y actualizar todas las inyecciones de `dashboard.html`: `window.companiesData`, `window.cqvHistoryData` y `let companies`. Si hay errores, debe detenerse antes de escribir. El dashboard no se edita manualmente: sus datos deben proceder únicamente del SSOT.
 
-## 6. Plantillas de Prompt para Solicitar el Análisis Completo a la IA
+El pipeline **no redacta informes Markdown**.
 
-Para que la IA entienda de forma precisa e inambigua que debe realizar el flujo completo de actualización sobre una acción, utiliza cualquiera de los siguientes comandos predeterminados:
+### Paso 4 — Generar o actualizar informes
 
-### 💬 Opción A: Comando Estándar Completo (Recomendado)
-> *"Analiza y actualiza completamente la acción **[TICKER]** para el periodo **[TRIMESTRE/AÑO ej. Q2 2026]** bajo el estándar **CQV v4.0**. Ejecuta el flujo integral SSOT: obtiene precio en vivo y datos financieros, calcula los 8 factores F1-F8, actualiza cqv_data.json y cqv_history.json (2020-2026), genera su informe en inform/ siguiendo template.md, actualiza el dashboard.html y ejecuta python sync_cqv.py."*
+Usar `inform/template.md`. El informe debe copiar exclusivamente valores del SSOT y añadir evidencia narrativa. La salida 9.6 debe mostrar CQV, Value Score, PEG Bruto, Score PEG normalizado, valor intrínseco, precio, MoS, confianza y veredicto.
 
-### 💬 Opción B: Comando Rápido (Una sola línea)
-> *"Realiza el análisis integral CQV v4.0 para **[TICKER] [Q2 2026]**, actualiza datasets SSOT, genera su informe en inform/ y sincroniza el dashboard."*
+Debe incluir también Owner Earnings, Maintenance CapEx, FCF Yield, componentes del Value Score, supuestos DCF, escenarios, sensibilidad, riesgos y fuentes.
 
-### 💬 Opción C: Actualización Multiactivo (Varias empresas a la vez)
-> *"Actualiza con CQV v4.0 y sincronización SSOT completa las siguientes acciones para Q2 2026: **[TICKER1], [TICKER2], [TICKER3]**. Genera sus informes en inform/ y actualiza el dashboard."*
+### Paso 5 — Validar coherencia
 
+Verificar identidad entre SSOT e informe para F1-F8, CQV, precio, PER, PEG, Score PEG, valor intrínseco, MoS, FCF Yield, Value Score y veredicto. Una discrepancia bloquea la publicación.
+
+## 5. Reglas de integridad
+
+- `peg_score` es histórico/deprecado; el campo oficial es `score_peg`.
+- No usar defaults como precio=100, PER=25, valor intrínseco=precio×1.25 o PEG=10.
+- No calcular FCF Yield a partir del PER.
+- No presentar Value Score sin sus tres componentes.
+- No presentar DCF sin supuestos y escenarios.
+- `N/D` es válido y preferible a una cifra inventada.
+- No reutilizar métricas de otro trimestre sin indicarlo y justificarlo.
+
+## 6. Prompt completo para una acción
+
+> Actualiza **[TICKER]** para **[PERIODO]** bajo CQV v4.0 y aplica el flujo SSOT completo.
+>
+> Usa fuentes primarias o claramente identificadas: SEC/RNS, earnings release, presentaciones oficiales y mercado con fecha. No inventes datos, no uses defaults y no rellenes campos faltantes: usa `N/D` y explica el impacto.
+>
+> Actualiza `cqv_data.json` y `cqv_history.json` con fuentes, fechas, F1-F8, EPS Growth NTM, OCF, Maintenance CapEx, Market Cap, valor intrínseco y supuestos DCF. Calcula CQV, PEG Bruto, Score PEG, Owner Earnings, FCF Yield, Score FCF Yield, Score MoS, Value Score, MoS, confianza y veredicto.
+>
+> Ejecuta `python sync_cqv.py`. Genera o actualiza `inform/[ticker]_[periodo].md` desde `inform/template.md`. El informe debe incluir evidencia para F1-F8, desglose del Value Score, PEG bruto y normalizado, FCF Yield, DCF por escenarios, sensibilidad, riesgos y fuentes.
+>
+> Valida que informe, JSON, JS y dashboard coincidan exactamente. Si existe una discrepancia o un dato crítico está ausente, detén el proceso y repórtalo. Devuelve archivos modificados, fuentes, campos N/D y validaciones ejecutadas.
+
+## 7. Prompt completo para varias acciones
+
+> Actualiza estas acciones para **[PERIODO]** bajo CQV v4.0: **[TICKER1], [TICKER2], [TICKER3]**.
+>
+> Aplica exactamente `flujo_actualizacion_datos.md`. Procesa en modo transaccional: recopila y valida todas primero; publica solo si no existe ningún error crítico.
+>
+> Para cada acción usa fuentes fechadas, no inventes ni uses defaults, calcula F1-F8, CQV, PEG bruto, Score PEG, Owner Earnings, FCF Yield, Value Score, DCF, MoS y veredicto; usa `N/D` cuando falte evidencia; actualiza SSOT, JS, dashboard e informe Markdown; y valida identidad exacta entre ellos.
+>
+> Antes de publicar, entrega una tabla por ticker con estado, CQV, Value Score, PEG bruto, Score PEG, MoS, veredicto, confianza, campos N/D y fuentes. Si una acción falla, no publiques cifras parciales ni ocultes el error.
+
+## 8. Resultado esperado
+
+La actualización solo termina cuando el SSOT es trazable, el pipeline termina sin errores, JS/dashboard coinciden, cada informe coincide con el SSOT y toda cifra crítica tiene fuente, fecha y unidad.

@@ -1,124 +1,188 @@
-"""
-===============================================================================
-MASTER SINGLE SOURCE OF TRUTH (SSOT) PIPELINE FOR CQV METHODOLOGY v4.0
-===============================================================================
-This script is the single master pipeline for the CQV Framework.
-Executing this script guarantees 100% coherence across:
- 1. cqv_data.json & cqv_data.js (Single Source of Truth)
- 2. cqv_history.json & cqv_history.js (Historical Series 2020-2026)
- 3. dashboard.html (Web Dashboard)
- 4. inform/*_2026_q2.md (Investment Thesis Reports)
-===============================================================================
+"""CQV v4.0 — pipeline SSOT estricto.
+
+Valida todos los registros antes de escribir. No usa valores por defecto,
+no redacta informes y no sustituye FCF Yield por PER.
 """
 
 import json
+import math
 import os
 import re
+import sys
 
-print("==================================================================")
-print("    INICIANDO PIPELINE MAESTRO CQV v4.0 (SINGLE SOURCE OF TRUTH)")
-print("==================================================================")
+DATA_FILE = "cqv_data.json"
+HISTORY_FILE = "cqv_history.json"
+REPORT_DIR = "inform"
 
-# 1. Cargar base de datos unificada
-with open('cqv_data.json', 'r', encoding='utf-8') as f:
-    cqv_list = json.load(f)
+REQUIRED = (
+    "ticker", "name", "sector", "quarter", "data_confidence",
+    "price", "pe", "pe_forward", "eps_growth_ntm_pct",
+    "ocf", "maintenance_capex", "market_cap",
+    "intrinsic_value", "score_fcf_yield", "score_mos",
+    "f1", "f2", "f3", "f4", "f5", "f6", "f7", "f8",
+)
 
-with open('cqv_history.json', 'r', encoding='utf-8') as f:
-    cqv_hist = json.load(f)
+WEIGHTS = {
+    "f1": 0.20, "f2": 0.15, "f3": 0.15, "f4": 0.15,
+    "f5": 0.10, "f6": 0.10, "f7": 0.05, "f8": 0.10,
+}
 
-# 2. Recalcular todas las métricas de calidad y valoración CQV v4.0
-updated_list = []
-for item in cqv_list:
-    ticker = item['ticker']
-    f1 = float(item.get('f1', 9.0))
-    f2 = float(item.get('f2', 9.0))
-    f3 = float(item.get('f3', 9.0))
-    f4 = float(item.get('f4_moat', item.get('f4', 9.0)))
-    f5 = float(item.get('f5', 9.0))
-    f6 = float(item.get('f6', 9.0))
-    f7 = float(item.get('f7', 8.5))
-    f8 = float(item.get('f8', 9.0))
 
-    # Ecuación Matriz CQV Calidad v4.0
-    cqv_v4 = (f1 * 0.20) + (f2 * 0.15) + (f3 * 0.15) + (f4 * 0.15) + (f5 * 0.10) + (f6 * 0.10) + (f7 * 0.05) + (f8 * 0.10)
-    cqv_v4 = round(cqv_v4, 2)
+def finite_number(item, key):
+    if key not in item or item[key] is None or item[key] == "":
+        raise ValueError(f"campo ausente: {key}")
+    try:
+        value = float(item[key])
+    except (TypeError, ValueError):
+        raise ValueError(f"campo no numérico: {key}")
+    if not math.isfinite(value):
+        raise ValueError(f"campo no finito: {key}")
+    return value
 
-    # Filtros de seguridad rígidos
-    if f2 < 4.0 or f4 < 4.0:
-        cqv_v4 = min(cqv_v4, 6.99)
 
-    price = float(item.get('price', 100.0))
-    pe_t = float(item.get('pe', 25.0))
-    pe_f = float(item.get('pe_forward', 20.0))
-    intrinsic_val = float(item.get('intrinsic_value', price * 1.25))
+def require_text(item, key):
+    value = item.get(key)
+    if value is None or str(value).strip() == "":
+        raise ValueError(f"campo ausente: {key}")
+    return str(value).strip()
 
-    peg_bruto = float(item.get('peg_bruto', 10.0))
-    score_peg = min(10.0, max(0.0, float(item.get('score_peg', 10.0))))
 
-    mos_pct = round(((intrinsic_val - price) / intrinsic_val) * 100.0, 1) if intrinsic_val > 0 else 0.0
-    score_fcf_yield = min(10.0, max(2.0, round((100.0 / pe_t) * 2.0, 2))) if pe_t > 0 else 5.0
-    score_mos = min(10.0, max(1.0, round((mos_pct / 30.0) * 10.0, 2)))
-    value_score = round((0.40 * score_fcf_yield) + (0.30 * score_peg) + (0.30 * score_mos), 2)
+def calculate(item):
+    ticker = require_text(item, "ticker")
+    for key in ("name", "sector", "quarter", "data_confidence"):
+        require_text(item, key)
 
-    if cqv_v4 >= 9.0 and mos_pct >= 25.0:
+    values = {key: finite_number(item, key) for key in REQUIRED if key not in
+              ("ticker", "name", "sector", "quarter", "data_confidence")}
+
+    for key in ("f1", "f2", "f3", "f4", "f5", "f6", "f7", "f8",
+                "score_fcf_yield", "score_mos"):
+        if not 0.0 <= values[key] <= 10.0:
+            raise ValueError(f"{key} fuera de rango 0-10")
+
+    if values["price"] <= 0:
+        raise ValueError("price debe ser > 0")
+    if values["pe_forward"] <= 0:
+        raise ValueError("pe_forward debe ser > 0")
+    if values["market_cap"] <= 0:
+        raise ValueError("market_cap debe ser > 0")
+    if values["intrinsic_value"] <= 0:
+        raise ValueError("intrinsic_value debe ser > 0")
+
+    cqv = sum(values[key] * weight for key, weight in WEIGHTS.items())
+    if values["f2"] < 4.0 or values["f4"] < 4.0:
+        cqv = min(cqv, 6.99)
+
+    owner_earnings = values["ocf"] - values["maintenance_capex"]
+    fcf_yield_pct = owner_earnings / values["market_cap"] * 100.0
+
+    peg_bruto = (values["eps_growth_ntm_pct"] / values["pe_forward"]) * 10.0
+    score_peg = min(10.0, max(0.0, peg_bruto))
+    mos_pct = ((values["intrinsic_value"] - values["price"]) /
+               values["intrinsic_value"]) * 100.0
+
+    value_score = (
+        0.40 * values["score_fcf_yield"]
+        + 0.30 * score_peg
+        + 0.30 * values["score_mos"]
+    )
+
+    if cqv >= 9.0 and mos_pct >= 25.0:
         verdict = "Comprar / Candidato Prioritario"
-    elif cqv_v4 >= 9.0 and mos_pct >= 18.0:
+    elif cqv >= 9.0 and mos_pct >= 18.0:
         verdict = "Comprar / Acumular"
-    elif cqv_v4 >= 8.0 and mos_pct >= 10.0:
+    elif cqv >= 8.0 and mos_pct >= 10.0:
         verdict = "Acumular / Compra Escalonada"
-    elif cqv_v4 >= 8.0:
+    elif cqv >= 8.0:
         verdict = "Mantener"
     else:
         verdict = "Evitar / En Observación"
 
-    clasif = "ÉLITE" if cqv_v4 >= 9.0 else ("ALTA CALIDAD" if cqv_v4 >= 8.0 else "EN OBSERVACIÓN")
-    if cqv_v4 < 7.0:
-        clasif = "VULNERABLE"
+    classification = (
+        "ÉLITE" if cqv >= 9.0 else
+        "ALTA CALIDAD" if cqv >= 8.0 else
+        "VULNERABLE" if cqv < 7.0 else
+        "EN OBSERVACIÓN"
+    )
 
-    item['cqv_v4'] = cqv_v4
-    item['cqv'] = cqv_v4
-    item['value_score'] = value_score
-    item['mos_pct'] = mos_pct
-    item['verdict'] = verdict
-    item['clasificacion'] = clasif
+    output = dict(item)
+    output.pop("peg_score", None)  # campo histórico/deprecado
+    output.update({
+        "cqv_v4": round(cqv, 2),
+        "cqv": round(cqv, 2),
+        "owner_earnings": round(owner_earnings, 4),
+        "fcf_yield_pct": round(fcf_yield_pct, 4),
+        "peg_bruto": round(peg_bruto, 4),
+        "score_peg": round(score_peg, 4),
+        "mos_pct": round(mos_pct, 2),
+        "value_score": round(value_score, 2),
+        "verdict": verdict,
+        "clasificacion": classification,
+    })
+    return output
 
-    updated_list.append(item)
 
-# Ordenar por CQV Calidad descendente
-updated_list.sort(key=lambda x: x['cqv_v4'], reverse=True)
+def write_json_js(path, variable, data):
+    with open(path, "w", encoding="utf-8") as handle:
+        if path.endswith(".js"):
+            handle.write(f"const {variable} = ")
+            json.dump(data, handle, indent=2, ensure_ascii=False)
+            handle.write(";")
+        else:
+            json.dump(data, handle, indent=2, ensure_ascii=False)
 
-# 3. Guardar SSOT JSON & JS
-with open('cqv_data.json', 'w', encoding='utf-8') as f:
-    json.dump(updated_list, f, indent=2)
 
-with open('cqv_data.js', 'w', encoding='utf-8') as f:
-    f.write('const cqvData = ' + json.dumps(updated_list, indent=2) + ';')
+def main():
+    with open(DATA_FILE, encoding="utf-8") as handle:
+        source = json.load(handle)
+    with open(HISTORY_FILE, encoding="utf-8") as handle:
+        history = json.load(handle)
 
-with open('cqv_history.json', 'w', encoding='utf-8') as f:
-    json.dump(cqv_hist, f, indent=2)
+    if not isinstance(source, list) or not source:
+        raise ValueError("cqv_data.json debe ser una lista no vacía")
 
-with open('cqv_history.js', 'w', encoding='utf-8') as f:
-    f.write('const cqvHistory = ' + json.dumps(cqv_hist, indent=2) + ';')
+    errors = []
+    calculated = []
+    for index, item in enumerate(source):
+        try:
+            calculated.append(calculate(item))
+        except ValueError as exc:
+            ticker = item.get("ticker", f"registro {index}")
+            errors.append(f"{ticker}: {exc}")
 
-# 4. Sincronizar Dashboard HTML
-with open('dashboard.html', 'r', encoding='utf-8') as f:
-    html = f.read()
+    if errors:
+        print("VALIDACIÓN FALLIDA. No se ha escrito ningún archivo.")
+        for error in errors:
+            print(f"- {error}")
+        return 2
 
-json_str = json.dumps(updated_list, indent=2)
-hist_str = json.dumps(cqv_hist, indent=2)
+    calculated.sort(key=lambda item: item["cqv_v4"], reverse=True)
 
-html = re.sub(r'const cqvData = \[[\s\S]*?\];', lambda m: f'const cqvData = {json_str};', html)
-html = re.sub(r'const cqvHistory = \{[\s\S]*?\};', lambda m: f'const cqvHistory = {hist_str};', html)
-html = re.sub(r'window\.companiesData\s*=\s*\[[\s\S]*?\];', lambda m: f'window.companiesData = {json_str};', html)
-html = re.sub(r'let companies\s*=\s*\[[\s\S]*?\];', lambda m: f'let companies = {json_str};', html)
-html = re.sub(r'window\.cqvHistoryData\s*=\s*\{[\s\S]*?\};', lambda m: f'window.cqvHistoryData = {hist_str};', html)
+    # Solo se escribe después de validar todos los registros.
+    write_json_js(DATA_FILE, "", calculated)
+    write_json_js("cqv_data.js", "cqvData", calculated)
+    write_json_js(HISTORY_FILE, "", history)
+    write_json_js("cqv_history.js", "cqvHistory", history)
 
-with open('dashboard.html', 'w', encoding='utf-8') as f:
-    f.write(html)
+    with open("dashboard.html", encoding="utf-8") as handle:
+        html = handle.read()
+    data_text = json.dumps(calculated, indent=2, ensure_ascii=False)
+    history_text = json.dumps(history, indent=2, ensure_ascii=False)
+    # El dashboard mantiene inyecciones embebidas además de los archivos JS.
+    # Se actualizan todas las copias que realmente consume dashboard.html.
+    html = re.sub(r"window\.companiesData\s*=\s*\[[\s\S]*?\];",
+                  lambda _: f"window.companiesData = {data_text};", html)
+    html = re.sub(r"let companies\s*=\s*\[[\s\S]*?\];",
+                  lambda _: f"let companies = {data_text};", html)
+    html = re.sub(r"window\.cqvHistoryData\s*=\s*\{[\s\S]*?\};",
+                  lambda _: f"window.cqvHistoryData = {history_text};", html)
+    with open("dashboard.html", "w", encoding="utf-8") as handle:
+        handle.write(html)
 
-print("[OK] cqv_data.json y cqv_data.js actualizados.")
-print("[OK] cqv_history.json y cqv_history.js actualizados.")
-print("[OK] dashboard.html sincronizado al 100%.")
-print("==================================================================")
-print("           PIPELINE SSOT EJECUTADO CON ÉXITO ABSOLUTO")
-print("==================================================================")
+    print(f"[OK] {len(calculated)} registros validados y sincronizados.")
+    print("[OK] Informes Markdown no se modifican: deben generarse y validarse aparte.")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
