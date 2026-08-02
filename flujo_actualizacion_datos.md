@@ -8,12 +8,13 @@
 
 El SSOT es `cqv_data.json` para el estado actual y `cqv_history.json` para las series históricas. Los archivos `cqv_data.js` y `cqv_history.js` son copias derivadas para el dashboard.
 
-El flujo tiene cuatro capas:
+El flujo tiene cinco capas:
 
 1. Fuentes primarias: SEC 10-Q/10-K, earnings release, presentaciones oficiales y mercado con fecha.
 2. SSOT: datos de entrada, puntuaciones, valoración y metadatos en JSON.
 3. Pipeline: recalcula métricas derivadas, valida reglas y sincroniza JS/dashboard.
-4. Informe: se genera desde el SSOT y se valida; el pipeline no redacta narrativas ni inventa cifras.
+4. Informe: se genera desde el SSOT y se audita; el pipeline no redacta narrativas ni inventa cifras.
+5. Auditoría y Corrección: validación matemática, verificación de coherencia SSOT vs informe, auto-corrección de discrepancias y recomendaciones explícitas.
 
 ```mermaid
 flowchart TD
@@ -22,7 +23,8 @@ flowchart TD
  C --> D["cqv_data.js + cqv_history.js"]
  C --> E["dashboard.html"]
  B --> F["Generar inform/TICKER_PERIODO.md"]
- F --> G["Validar informe contra SSOT"]
+ F --> G["Paso 5: Auditoría, Corrección y Recomendaciones (Sección 10)"]
+ G --> H["Validar Coherencia Final 100% SSOT vs Informe"]
 ```
 
 ## 2. Datos obligatorios por acción
@@ -86,23 +88,38 @@ Leer fuentes primarias. Guardar dato, unidad, fecha, periodo, fuente y notas de 
 
 ### Paso 2 — Actualizar el SSOT
 
-Actualizar `cqv_data.json` y `cqv_history.json`. En una actualización múltiple, validar todas las acciones antes de publicar cambios.
+Actualizar `cqv_data.json` y `cqv_history.json`. Para una acción, usar el modo selectivo `--ticker TICKER`; para varias acciones, validar todas antes de publicar cambios.
 
 ### Paso 3 — Ejecutar el pipeline
 
-Ejecutar `python sync_cqv.py`. El script debe rechazar campos obligatorios ausentes o inválidos, recalcular métricas, no usar defaults, generar `cqv_data.js` y `cqv_history.js`, y actualizar todas las inyecciones de `dashboard.html`: `window.companiesData`, `window.cqvHistoryData` y `let companies`. Si hay errores, debe detenerse antes de escribir. El dashboard no se edita manualmente: sus datos deben proceder únicamente del SSOT.
+Ejecutar `python sync_cqv.py --ticker TICKER` para una acción o `python sync_cqv.py` para todo el dataset. El script debe rechazar errores estructurales o datos no numéricos, no usar defaults y propagar `N/D` cuando falte una entrada de valoración. Debe recalcular las métricas posibles, generar `cqv_data.js` y `cqv_history.js`, y actualizar todas las inyecciones de `dashboard.html`: `window.companiesData`, `window.cqvHistoryData` y `let companies`. Si faltan datos críticos, el resultado dependiente queda `N/D` y no se emite recomendación afirmativa. El dashboard no se edita manualmente: sus datos deben proceder únicamente del SSOT.
 
 El pipeline **no redacta informes Markdown**.
 
 ### Paso 4 — Generar o actualizar informes
 
-Usar `inform/template.md`. El informe debe copiar exclusivamente valores del SSOT y añadir evidencia narrativa. La salida 9.6 debe mostrar CQV, Value Score, PEG Bruto, Score PEG normalizado, valor intrínseco, precio, MoS, confianza y veredicto.
+Usar `inform/template.md`. El archivo de informe debe seguir **estrictamente la convención oficial de nombres**:
+`inform/[ACCION]_[AÑO]_[Q?].md`
+
+Donde:
+- `[ACCION]`: Es el **código de stock o ticker en MAYÚSCULAS** (ejemplo: `MSFT`, `LIN`, `FICO`, `BSX`, `CPRT`, `NFLX`, `MSI`, `ORCL`, `PYPL`, `RACE`, `FTNT`, `MSCI`, `MU`), **nunca** el nombre completo de la empresa ni en minúsculas.
+- `[AÑO]`: Año de 4 dígitos (ejemplo: `2026`).
+- `[Q?]`: Identificador trimestral en MAYÚSCULAS (`Q1`, `Q2`, `Q3` o `Q4`).
+
+El informe debe copiar exclusivamente valores del SSOT y añadir evidencia narrativa. La salida 9.6 debe mostrar CQV, Value Score, PEG Bruto, Score PEG normalizado, valor intrínseco, precio, MoS, confianza y veredicto.
 
 Debe incluir también Owner Earnings, Maintenance CapEx, FCF Yield, componentes del Value Score, supuestos DCF, escenarios, sensibilidad, riesgos y fuentes.
 
-### Paso 5 — Validar coherencia
+### Paso 5 — Auditoría de Integridad, Auto-Corrección y Recomendaciones
 
-Verificar identidad entre SSOT e informe para F1-F8, CQV, precio, PER, PEG, Score PEG, valor intrínseco, MoS, FCF Yield, Value Score y veredicto. Una discrepancia bloquea la publicación.
+El analista/sistema debe ejecutar una **auditoría experta previa a la publicación definitiva**:
+
+1. **Auditoría Matemática y de Coherencia SSOT vs Informe:** Verificar coincidencia exacta en $F_1 \dots F_8$, nota CQV ponderada, PER Forward, PEG Bruto, Score PEG, Owner Earnings, FCF Yield, Score FCF Yield, Score MoS, Value Score, Valor Intrínseco, Margen de Seguridad (%) y Veredicto.
+2. **Auto-Corrección Automática:** Si se detecta cualquier discrepancia numérica o error tipográfico entre la base SSOT y el informe Markdown, se debe corregir inmediatamente el informe y re-ejecutar `python sync_cqv.py --ticker TICKER` para garantizar 100% de coherencia.
+3. **Registro de Observaciones y Advertencias de Datos (`N/D`):** Identificar cualquier falta de evidencia, partida no disponible (`N/D`), sesgo de estimación o advertencia de confianza financiera.
+4. **Sección 10 Obligatoria:** Toda auditoría debe reflejarse explícitamente en el informe en la **Sección 10: Auditoría, Observaciones y Recomendaciones del Analista / Auditor** (incorporada en `inform/template.md`).
+
+Una discrepancia no corregida o un dato crítico ausente sin indicar su motivo e impacto bloquea la publicación.
 
 ## 5. Reglas de integridad
 

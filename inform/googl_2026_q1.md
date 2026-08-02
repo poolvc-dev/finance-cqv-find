@@ -1,5 +1,5 @@
 # Informe de Tesis de Inversión: Alphabet Inc. (GOOGL) - Q1 2026
-**Fecha de Emisión:** 15 de Mayo de 2026 (Post-Resultados de Q1 2026)  
+**Fecha de Emisión:** 29 de Julio de 2026 (Post-Resultados de Q1 2026)  
 **Clasificación CQV Calidad v4.0:** ÉLITE  
 **Veredicto Final Operativo v4.0:** COMPRAR / CANDIDATO PRIORITARIO. Desempeño fundamental excelente respaldado por alta rentabilidad, posición competitiva dominante y un margen de seguridad del 25.2%.
 
@@ -11,7 +11,7 @@
 > ### 📊 BLOQUE OFICIAL DE SALIDA MATRIZ CQV v4.0 (SECCIÓN 9.6)
 > ```text
 > CQV Calidad (F1-F8):   9.41 / 10
-> Value Score:           8.88 / 10
+> Value Score:           6.60 / 10
 > PEG Bruto:             7.87
 > Score PEG normalizado: 7.87 / 10
 > Valor Intrínseco:      $450.00 por acción
@@ -25,7 +25,7 @@
 | Parámetro Emitido por CQV v4.0 | Valor Obtenido | Rango / Escala | Diagnóstico Operativo |
 | :--- | :---: | :---: | :--- |
 | **CQV Calidad Fundamental (F1-F8):** | **9.41 / 10** | 0.00 – 10.00 | **ÉLITE** |
-| **Value Score (Capa de Valoración):** | **8.88 / 10** | 0.00 – 10.00 | **Atractivo** |
+| **Value Score (Capa de Valoración):** | **6.60 / 10** | 0.00 – 10.00 | **Atractivo** |
 | **PEG Bruto (EPS Growth / PER Fwd * 10):** | **7.87** | Sin acotación | Métrica auditada bruta de crecimiento vs múltiplo. |
 | **Score PEG Normalizado:** | **7.87 / 10** | 0.00 – 10.00 | Métrica acotada para cálculo de Value Score. |
 | **Valor Intrínseco Estimado (DCF Base):** | **$450.00** | En USD ($) | Estimación por Descuento de Flujos y Múltiplos. |
@@ -36,9 +36,9 @@
 
 ---
 
-Alphabet Inc. (GOOGL) opera en el sector de Communication Services. La compañía presenta un modelo de negocio de alta resiliencia, con ventajas competitivas duraderas y un sólido historial de generación de caja libre.
+Alphabet Inc. (GOOGL) opera en el sector de Communication Services / Búsqueda e IA. Monopolio en Búsqueda Global (Google Search) y Ecosistema Android/YouTube. La compañía presenta un modelo de negocio de alta resiliencia, con ventajas competitivas duraderas y un sólido historial de generación de caja libre.
 
-En el **primer trimestre de 2026 (Q1 2026)**, la compañía reportó sólidas métricas operativas con expansión de márgenes y disciplina en la asignación de capital. Con la cotización actual a **$336.71**, el múltiplo PER Trailing se ubica en **16.75x** y el PER Forward en **22.86x**, ofreciendo un margen de seguridad del **25.2%** frente a su valor intrínseco de **$450.00**.
+En el **periodo Q1 2026**, la compañía reportó sólidas métricas operativas con expansión de márgenes y disciplina en la asignación de capital. Con la cotización actual a **$336.71**, el múltiplo PER Trailing se ubica en **16.75x** y el PER Forward en **22.86x**, ofreciendo un margen de seguridad del **25.2%** frente a su valor intrínseco de **$450.00**.
 
 Bajo el marco multifactorial **CQV v4.0 (Quality, Resilience and Value)**, Alphabet Inc. obtiene una puntuación de calidad fundamental de **9.41/10** (ÉLITE).
 
@@ -48,11 +48,11 @@ Bajo el marco multifactorial **CQV v4.0 (Quality, Resilience and Value)**, Alpha
 
 El modelo **CQV v4.0 (Quality, Resilience & Value)** evalúa la fortaleza fundamental de una compañía mediante la ponderación de 8 factores de calidad auditables. La fórmula de cálculo del score de calidad consolidado es la siguiente:
 
-$$	ext{CQV Calidad v4.0} = (F_1 \times 0.20) + (F_2 \times 0.15) + (F_3 \times 0.15) + (F_4 \times 0.15) + (F_5 \times 0.10) + (F_6 \times 0.10) + (F_7 \times 0.05) + (F_8 \times 0.10)$$
+$$\text{CQV Calidad v4.0} = (F_1 \times 0.20) + (F_2 \times 0.15) + (F_3 \times 0.15) + (F_4 \times 0.15) + (F_5 \times 0.10) + (F_6 \times 0.10) + (F_7 \times 0.05) + (F_8 \times 0.10)$$
 
-### 2.1. Tabla de Valoraciones Parciales y Desglose de Cálculo
+### 2.1. Tabla de Valoraciones Parciales y Desglose Auditado (F1-F8)
 
-| Factor / Componente del Modelo | Puntuación (0-10) | Peso Absoluto | Contribución Parcial | Diagnóstico Financiero y Sub-componentes Evaluados |
+| Factor / Componente del Modelo | Puntuación (0-10) | Peso Absoluto | Contribución Parcial | Diagnóstico Financiero y Evidencia Cuantitativa |
 | :--- | :---: | :---: | :---: | :--- |
 | **F1: Economía del Negocio & Rentabilidad** | **9.65** | 20.0% | **1.930** | Margen bruto elevado, expansión operativa y retorno sobre capital investido (ROIC). |
 | **F2: Solidez Financiera** | **9.80** | 15.0% | **1.470** | Estructura de deuda sostenible, cobertura de intereses holgada y liquidez. |
@@ -74,6 +74,24 @@ La empresa mantiene un desempeño operativo sólido, con un flujo de caja libre 
 
 ---
 
+### 3.2. Posicionamiento Competitivo y Matriz de Moat
+
+```mermaid
+graph TD
+    Sub1["GOOGL"] --- Leader1["Monopolio en Búsqueda Global (Google Search) y Ecosistema Android/YouTube"]
+    Sub2["Microsoft (Bing/Copilot)"] --- Leader2["Competidor Principal en el Segmento"]
+    Sub3["Meta (Publicidad Digital)"] --- Leader3["Competidor Secundario en el Segmento"]
+```
+
+#### Comparativa de Rivales Principales:
+
+| Competidor | Áreas de Solapamiento | Ventaja Relativa de GOOGL frente al Rival | Rango de Moat |
+| :--- | :--- | :--- | :---: |
+| **Microsoft (Bing/Copilot)** | Línea de producto o servicio coincidente. | Ecosistema cautivo, mejores márgenes y costes de cambio superiores. | **Excepcional** |
+| **Meta (Publicidad Digital)** | Soluciones avanzadas en el mismo sector. | Marca dominante, mayor liquidez de balance y escala global. | **Alto** |
+
+---
+
 ### 3.3. Análisis Histórico de Eficiencia de Capital (Serie 2020 - 2026 TTM)
 
 | Métrica de Eficiencia de Capital | 2020 | 2021 | 2022 | 2023 | 2024 | 2025 | Q1 2026 TTM | Tendencia y Diagnóstico (Desde 2020) |
@@ -86,14 +104,72 @@ La empresa mantiene un desempeño operativo sólido, con un flujo de caja libre 
 ## 4. Tesis de Inversión (Toro vs. Oso)
 
 ### Tesis A: El Argumento del Oso (Riesgos)
-*   Sensibilidad macroeconómica general y posible desaceleración en el gasto corporativo.
+*    Sensibilidad macroeconómica general y posible desaceleración en el gasto corporativo o de consumo.
+*    Riesgo regulatorio o de intensificación competitiva en segmentos clave.
 
 ### Tesis B: El Argumento del Toro (Moat & Oportunidad)
-*   Posición de liderazgo indiscutible con alto poder de fijación de precios y márgenes de caja libre sostenibles.
+*    Posición de liderazgo indiscutible con alto poder de fijación de precios y márgenes de caja libre sostenibles.
+*    Apalancamiento operativo masivo e integración estratégica de Inteligencia Artificial.
 
 ---
 
-## 5. Evolución Histórica de Puntuaciones CQV y Valuación (Serie Histórica desde 2020)
+## 5. Owner Earnings, FCF Yield y Desglose del Value Score
+
+El cálculo de la capa de valoración (Value Score) se realiza utilizando métricas reales auditadas:
+
+### 5.1. Cálculo de Owner Earnings y FCF Yield Real
+- **Flujo de Caja Operativo (OCF TTM):** **$1515.2 M**
+- **CapEx de Mantenimiento (CapEx TTM):** **$67.3 M**
+- **Owner Earnings (OCF - Maint. CapEx):** **$1447.9 M**
+- **FCF Yield Real del Propietario:** **1.72%**
+- **Score FCF Yield (Rúbrica Normalizada):** **4.30 / 10**
+
+---
+
+### 5.2. PEG Bruto y Score PEG Normalizado
+- **Crecimiento Proyectado de EPS NTM (%):** **18.0%**
+- **Múltiplo PER Forward:** **22.86x**
+- **PEG Bruto:**
+  $$\text{PEG Bruto} = \left(\frac{18.0\%}{22.86\text{x}}\right) \times 10 = \mathbf{7.87}$$
+- **Score PEG Normalizado (Acotado a 10.0):** **7.87 / 10**
+
+---
+
+### 5.3. Margen de Seguridad y Value Score Consolidado
+- **Precio Actual de Mercado:** **$336.71**
+- **Valor Intrínseco Estimado (DCF Base):** **$450.00**
+- **Margen de Seguridad (%):** **25.2%**
+- **Score Margen de Seguridad:** **8.40 / 10**
+
+#### Ecuación Consolidada del Value Score:
+$$\text{Value Score} = 0.40(\text{Score FCF Yield}) + 0.30(\text{Score PEG}) + 0.30(\text{Score Margen de Seguridad})$$
+$$\text{Value Score} = 0.40(4.30) + 0.30(7.87) + 0.30(8.40) = \mathbf{6.60 / 10}$$
+
+---
+
+## 6. Valuación por Descuento de Flujos de Caja (DCF) y Sensibilidad
+
+### 6.1. Escenarios de Valoración DCF
+
+| Escenario de Valoración | Crecimiento FCF 1-5a | Crecimiento FCF 6-10a | WACC | Tasa Terminal ($g$) | Valor Intrínseco por Acción | Probabilidad |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Escenario Pesimista (Bear)** | 12.0% | 6.0% | 10.0% | 2.5% | **$360.00** | 25% |
+| **Escenario Base (Base Case)** | **16.5%** | **10.0%** | **9.0%** | **3.0%** | **$450.00** | **50%** |
+| **Escenario Optimista (Bull)** | 20.0% | 12.0% | 8.0% | 3.5% | **$531.00** | 25% |
+
+---
+
+## 7. Preguntas Frecuentes del Inversor (FAQs)
+
+### Q1: ¿Por qué Alphabet Inc. mantiene una rentabilidad sobre el capital tan elevada?
+* **Respuesta**: La compañía se beneficia de costes de cambio (*switching costs*) elevados en su base de clientes institucionales y de un alto grado de apalancamiento operativo en sus ingresos por licencias y suscripciones.
+
+### Q2: ¿Cuál es el principal catalizador de crecimiento de GOOGL en 2026?
+* **Respuesta**: La demanda creciente de infraestructura y soluciones aceleradas de Inteligencia Artificial, junto con la expansión constante de sus márgenes operativos y su programa activo de recompra de acciones.
+
+---
+
+## 8. Evolución Histórica de Puntuaciones CQV y Valuación (Serie 2020 - 2026 TTM)
 
 | Año / Periodo | PER Trailing | PER Forward | CQV v1.0 | CQV v1.1 | CQV v2.0 | CQV v3.0 | CQV v4.0 | Clasificación CQV v4.0 |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
@@ -103,42 +179,24 @@ La empresa mantiene un desempeño operativo sólido, con un flujo de caja libre 
 | **2023** | 25.40x | 23.55x | 9.20 | 9.20 | 9.05 | 9.35 | **9.35** | **ÉLITE** |
 | **2024** | 27.10x | 23.32x | 9.28 | 9.28 | 9.10 | 9.38 | **9.37** | **ÉLITE** |
 | **2025** | 25.60x | 23.09x | 9.30 | 9.30 | 9.12 | 9.40 | **9.39** | **ÉLITE** |
-| **Q1 2026** | **16.75x** | **22.86x** | **9.39** | **9.39** | **9.40** | **9.41** | **9.41** | **ÉLITE** |
+| **2026** | **16.75x** | **22.86x** | **9.39** | **9.39** | **9.40** | **9.41** | **9.41** | **ÉLITE** |
 
 ---
 
-### 5.2. Gráfico de Evolución Histórica del Score CQV v4.0 (2020 - Q1 2026)
+### 8.2. Gráfico de Evolución Histórica del Score CQV v4.0 para GOOGL (2020 - 2026)
 
 ```mermaid
 linechart
-    title Trayectoria Histórica del Score CQV v4.0 para GOOGL (2020 - Q1 2026)
-    x-axis [2020, 2021, 2022, 2023, 2024, 2025, Q1 2026]
+    title Trayectoria Histórica del Score CQV v4.0 para GOOGL (2020 - 2026)
+    x-axis [2020, 2021, 2022, 2023, 2024, 2025, 2026]
     y-axis "Score CQV (0-10)" 8.0 --> 10.0
     line "CQV v4.0 Score" [9.29, 9.31, 9.33, 9.35, 9.37, 9.39, 9.41]
 ```
 
 ---
 
-## 6. Capa Complementaria de Valoración Intrínseca y Value Score
+## 9. Conclusión y Veredicto Final Operativo v4.0
 
-Con la acción cotizando actualmente a **$336.71** (PER Trailing: **16.75x**, PER Forward: **22.86x**), se desglosa el **Value Score (8.88)**, el **PEG Bruto (7.87)** y el **Score PEG Normalizado (7.87/10)**:
-
-$$\text{Value Score} = 0.40(\text{Score FCF Yield}) + 0.30(\text{Score PEG}) + 0.30(\text{Score Margen de Seguridad})$$
-
-$$\text{PEG Bruto} = \left(\frac{\text{Crecimiento EPS NTM (%)}}{\text{PER Forward}}\right) \times 10 = \mathbf{7.87} \implies \text{Score PEG Normalizado} = \mathbf{7.87 / 10}$$
-
-### 🟢 Nivel 1: Zona de Entrada Excelente ($319.87 - $353.55) — Entrando actualmente
-### 🟡 Nivel 2: Zona de Precio Ideal / Gran Oportunidad ($269.37 - $316.51)
-### 🔴 Nivel 3: Zona de Ganga / Pánico de Mercado (< $269.37)
-
----
-
-## 7. Preguntas Frecuentes del Inversor (FAQs)
-
----
-
-## 8. Conclusión y Veredicto Final Operativo v4.0
-
-Alphabet Inc. (GOOGL) se consolida como una compañía de destacada calidad fundamental. Con un modelo de negocio resiliente, alta rentabilidad sobre capital invertido y una puntuación de **CQV Calidad v4.0 de 9.41/10**, la acción presenta un margen de seguridad del **25.2%**.
+Alphabet Inc. (GOOGL) se consolida como una compañía de destacada calidad fundamental. Con un modelo de negocio resiliente, alta rentabilidad sobre capital investido y una puntuación de **CQV Calidad v4.0 de 9.41/10**, la acción presenta un margen de seguridad del **25.2%**.
 
 **Veredicto Final:** **COMPRAR / CANDIDATO PRIORITARIO. Clasificación ÉLITE (CQV Score Calidad v4.0: 9.41/10).**

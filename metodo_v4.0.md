@@ -342,3 +342,15 @@ Para evitar incoherencias entre los informes de tesis, datasets y el Dashboard W
 
 Cualquier actualización de datos debe ingresar a través de `cqv_data.json` / `cqv_history.json` y sincronizarse mediante el pipeline automatizado `python sync_cqv.py`.
 
+---
+
+## 12. Protocolo de Auditoría, Auto-Corrección y Recomendaciones del Informe
+
+El estándar CQV v4.0 exige una **fase obligatoria de auditoría y validación experta** antes de la publicación final de cualquier informe de tesis:
+
+1. **Auditoría de Integridad Matemático-Financiera:** Se debe validar la coherencia absoluta de las fórmulas ($F_1 \dots F_8$, Value Score, PEG Bruto, Score PEG, FCF Yield, MoS, DCF) entre el dataset SSOT (`cqv_data.json`) y el documento Markdown (`inform/TICKER_PERIODO.md`).
+2. **Auto-Corrección Transparente:** En caso de discrepancias numéricas o de tipografía, el analista/sistema está facultado para corregir inmediatamente el informe y re-ejecutar el pipeline `sync_cqv.py` para asegurar que el 100% de los artefactos (JSON, JS, Dashboard, Markdown) sean idénticos.
+3. **Observaciones y Advertencias de Datos (`N/D`):** Se deben documentar formalmente las limitaciones de datos, vacíos de información (`N/D`) o particularidades contables del período.
+4. **Incorporación en la Sección 10 del Informe:** Todo informe debe incluir la **Sección 10**, que detalla la Matriz de Auditoría, el Registro de Correcciones/Observaciones y las Recomendaciones Operativas para la gestión de cartera.
+
+

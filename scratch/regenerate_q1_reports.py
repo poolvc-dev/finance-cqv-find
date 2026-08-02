@@ -233,7 +233,7 @@ Con la acción cotizando actualmente a **${price:.2f}** (PER Trailing: **{pe_t:.
 
 $$\\text{{Value Score}} = 0.40(\\text{{Score FCF Yield}}) + 0.30(\\text{{Score PEG}}) + 0.30(\\text{{Score Margen de Seguridad}})$$
 
-$$\\text{{PEG Bruto}} = \\left(\\frac{{\\text{{Crecimiento EPS NTM (%)}}}}{{\\text{{PER Forward}}}}\\right) \\times 10 = \\mathbf{{{peg_bruto:.2f}}} \\implies \\text{{Score PEG Normalizado}} = \\mathbf{{{score_peg:.2f} / 10}}$$
+$$\\text{{PEG Bruto}} = \\left(\\frac{{\\text{{Crecimiento EPS NTM (%)}}}}{{\\text{{PER Forward}}}}\\r\right) \\times 10 = \\mathbf{{{peg_bruto:.2f}}} \\implies \\text{{Score PEG Normalizado}} = \\mathbf{{{score_peg:.2f} / 10}}$$
 
 ### 🟢 Nivel 1: Zona de Entrada Excelente (${price*0.95:.2f} - ${price*1.05:.2f}) — Entrando actualmente
 ### 🟡 Nivel 2: Zona de Precio Ideal / Gran Oportunidad (${price*0.80:.2f} - ${price*0.94:.2f})

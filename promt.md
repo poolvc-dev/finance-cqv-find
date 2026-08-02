@@ -160,16 +160,14 @@ Actualiza solo después de validar todos los datos:
 1. cqv_data.json
 2. cqv_history.json
 3. Ejecuta:
-
-   python sync_cqv.py
-
+    Para una acción: python sync_cqv.py --ticker [TICKER]`r`n    Para varias acciones: python sync_cqv.py
 4. Verifica la actualización de:
    - cqv_data.js
    - cqv_history.js
    - dashboard.html
 
-5. Genera o actualiza:
-   - inform/[ticker]_[periodo].md
+5. Genera o actualiza el informe siguiendo la convención estricta:
+   - inform/[ACCION]_[AÑO]_[Q?].md  (Donde [ACCION] es el ticker en MAYÚSCULAS ej. MSFT, LIN, FICO, CPRT; [AÑO] es el año ej. 2026; y [Q?] es Q1, Q2, Q3 o Q4). Nunca usar el nombre de la empresa ni minúsculas.
 
 El dashboard debe actualizarse exclusivamente desde el SSOT, incluyendo:
 - window.companiesData
@@ -198,6 +196,13 @@ Cada informe debe incluir:
 - Fuentes.
 - Nivel de confianza.
 - Veredicto final.
+- **Sección 10: Auditoría, Observaciones y Recomendaciones del Analista / Auditor** (Matriz de Coherencia SSOT vs Informe, Registro de Correcciones/Campos N/D, y Recomendaciones Operativas para la gestión de cartera).
+
+PASO ADICIONAL DE AUDITORÍA Y AUTO-CORRECCIÓN
+
+1. Ejecuta una auditoría matemática y de integridad entre SSOT JSON e Informe Markdown.
+2. Si detectas cualquier discrepancia numérica, corrige de inmediato el informe Markdown y re-ejecuta `python sync_cqv.py --ticker [TICKER]` para garantizar coherencia del 100%.
+3. Documenta en la Sección 10 las observaciones, correcciones realizadas, campos `N/D` y recomendaciones para la toma de decisiones.
 
 VALIDACIÓN FINAL
 
@@ -215,13 +220,15 @@ Comprueba que coincidan exactamente entre JSON, JS, dashboard e informe:
 - Valor intrínseco.
 - Margen de seguridad.
 - Veredicto.
+- Sección 10 de Auditoría y Recomendaciones completada.
 
 Si una acción presenta errores, datos faltantes o discrepancias:
 
 - No ocultes el problema.
 - No inventes una cifra.
 - Marca el campo como N/D.
-- No emitas una recomendación afirmativa.
+- Auto-corrige cualquier discrepancia antes de finalizar.
+- No emitas una recomendación afirmativa si faltan datos críticos.
 - No realices una actualización parcial sin informarlo.
 
 Entrega al final una tabla resumen:
