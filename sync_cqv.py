@@ -53,8 +53,8 @@ def calculate(item):
 
     scores = {}
     for key in WEIGHTS:
-        scores[key] = number(item, key, required=True)
-        if not 0.0 <= scores[key] <= 10.0:
+        scores[key] = number(item, key)
+        if scores[key] is not None and not 0.0 <= scores[key] <= 10.0:
             raise ValueError(f"{key} fuera de rango 0-10")
 
     price = number(item, "price", required=True)
@@ -74,8 +74,10 @@ def calculate(item):
         if value is not None and not 0.0 <= value <= 10.0:
             raise ValueError(f"{key} fuera de rango 0-10")
 
-    cqv = sum(scores[key] * weight for key, weight in WEIGHTS.items())
-    if scores["f2"] < 4.0 or scores["f4"] < 4.0:
+    cqv = None
+    if all(scores[key] is not None for key in WEIGHTS):
+        cqv = sum(scores[key] * weight for key, weight in WEIGHTS.items())
+    if cqv is not None and (scores["f2"] < 4.0 or scores["f4"] < 4.0):
         cqv = min(cqv, 6.99)
 
     owner_earnings = None
@@ -126,8 +128,8 @@ def calculate(item):
     output.pop("peg_score", None)
     output["data_confidence"] = item.get("data_confidence", "N/D")
     output.update({
-        "cqv_v4": round(cqv, 2),
-        "cqv": round(cqv, 2),
+        "cqv_v4": round(cqv, 2) if cqv is not None else None,
+        "cqv": round(cqv, 2) if cqv is not None else None,
         "owner_earnings": round(owner_earnings, 4) if owner_earnings is not None else None,
         "fcf_yield_pct": round(fcf_yield_pct, 4) if fcf_yield_pct is not None else None,
         "peg_bruto": round(peg_bruto, 4) if peg_bruto is not None else None,

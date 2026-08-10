@@ -236,6 +236,83 @@ Entrega al final una tabla resumen:
 Ticker | Estado | CQV | Value Score | PEG Bruto | Score PEG | FCF Yield | MoS | Veredicto | Confianza | Campos N/D | Fuentes principales
 ```
 
+## Addendum obligatorio: uso de fuentes secundarias confiables
+
+Cuando un dato no aparezca en los estados financieros, earnings release, presentacion oficial, guidance o filing regulatorio, se permite utilizar fuentes secundarias de buena reputacion para completar la recopilacion, siempre que se cumplan estas reglas:
+
+1. Prioridad de fuentes
+
+   - **Nivel 1 - Primarias:** SEC 10-Q/10-K, earnings release, presentaciones y guidance oficial.
+   - **Nivel 2 - Datos de mercado y consenso reputados:** S&P Global Market Intelligence, FactSet, Refinitiv/LSEG, Bloomberg, Capital IQ, Nasdaq, NYSE y proveedores institucionales equivalentes.
+   - **Nivel 3 - Fuentes financieras reputadas:** Morningstar, MarketBeat, StockAnalysis, Zacks, Yahoo Finance, Reuters y similares.
+   - **Nivel 4 - Fuentes de apoyo:** prensa financiera reconocida, informes de universidades, brokers o casas de analisis con metodologia identificable.
+
+   No utilizar blogs anonimos, foros, redes sociales, contenido generado automaticamente sin metodologia, paginas sin fecha o agregadores que no indiquen el origen del dato.
+
+2. Reglas de trazabilidad
+
+   Para cada dato secundario registrar obligatoriamente:
+
+   - valor y unidad;
+   - moneda;
+   - periodo fiscal o fecha de mercado;
+   - fecha de consulta y fecha de publicacion/actualizacion de la fuente;
+   - nombre exacto del proveedor;
+   - URL o referencia verificable;
+   - si es dato reportado, estimacion de consenso, dato derivado o calculo propio;
+   - limitaciones y posible desfase temporal.
+
+3. Reconciliacion entre fuentes
+
+   - Contrastar cada dato material con al menos dos fuentes cuando sea posible.
+   - Si las fuentes difieren, no promediar automaticamente: explicar la diferencia metodologica y escoger la fuente mas cercana a la fecha de valoracion.
+   - Para precios y capitalizacion, utilizar la misma fecha y mercado.
+   - Para PER forward y crecimiento EPS, exigir el mismo horizonte NTM o indicar expresamente si se utiliza FY2026/FY2027.
+   - No mezclar EPS GAAP con estimaciones ajustadas sin identificarlo.
+   - Los datos secundarios nunca pueden sobrescribir silenciosamente un dato primario posterior.
+
+4. Datos derivados permitidos
+
+   Se pueden calcular datos derivados si las entradas estan documentadas. Ejemplos:
+
+   - capitalizacion = precio x acciones en circulacion;
+   - PER = precio / EPS;
+   - PEG = crecimiento EPS en puntos porcentuales / PER forward x 10;
+   - deuda neta = deuda total - caja y equivalentes;
+   - margen operativo = beneficio operativo / ingresos.
+
+   Marcar siempre el resultado como **calculado**, conservar las entradas y no presentarlo como cifra reportada por la empresa.
+
+5. Maintenance CapEx y Owner Earnings
+
+   Si la empresa no desglosa maintenance capex, buscar en este orden:
+
+   - disclosure oficial de CapEx de mantenimiento;
+   - presentaciones de inversores o notas de analistas con metodologia explicita;
+   - estimacion de consenso de proveedores institucionales;
+   - informe sectorial reputado con una metodologia reproducible.
+
+   Si solo existe una estimacion secundaria, registrarla como **estimacion**, indicar su rango y ejecutar sensibilidad. No usar automaticamente CapEx total como maintenance capex. Si no existe una estimacion defendible, dejar Owner Earnings, FCF Yield y Value Score como N/D.
+
+6. DCF con datos secundarios
+
+   Se permite obtener de fuentes secundarias el WACC, beta, prima de riesgo, tasa libre de riesgo, crecimiento terminal y consenso de FCFF, pero cada entrada debe indicar proveedor, fecha y metodologia. Presentar al menos tres escenarios y una sensibilidad. Si el DCF depende principalmente de estimaciones secundarias o de una sola fuente, la confianza maxima de la valoracion sera **Media**.
+
+7. Regla de confianza
+
+   - Datos primarios corroborados: confianza Alta.
+   - Datos primarios combinados con consenso secundario reputado: confianza Media-Alta.
+   - Valoracion basada principalmente en fuentes secundarias: confianza Media o Baja.
+   - Si un dato critico solo esta disponible en una fuente secundaria no verificable, marcar N/D.
+
+8. Seccion obligatoria del informe
+
+   Añadir una tabla **Fuentes secundarias y datos complementarios** con estas columnas:
+
+   `Dato | Valor | Fuente | Fecha/periodo | Tipo (reportado/estimado/calculado) | Concordancia | Limitacion | Confianza`
+
+   La Seccion 10 debe indicar que campos fueron completados mediante fuentes secundarias, cuales permanecen N/D y como cambia esto la confianza y el veredicto.
+
 ## Ejemplo para una acción
 
 ```text
