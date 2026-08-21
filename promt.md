@@ -9,7 +9,7 @@ Actualiza completamente bajo la metodología CQV v4.0 las siguientes acciones:
 
 [TICKER1], [TICKER2], [TICKER3]
 
-Periodo de análisis: [Q2 2026]
+Periodo de análisis: [Q? YEAR]
 Fecha de valoración: [DD/MM/AAAA]
 
 Aplica estrictamente:

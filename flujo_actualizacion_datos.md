@@ -11,10 +11,11 @@ El SSOT es `cqv_data.json` para el estado actual y `cqv_history.json` para las s
 El flujo tiene cinco capas:
 
 1. Fuentes primarias: SEC 10-Q/10-K, earnings release, presentaciones oficiales y mercado con fecha.
-2. SSOT: datos de entrada, puntuaciones, valoración y metadatos en JSON.
-3. Pipeline: recalcula métricas derivadas, valida reglas y sincroniza JS/dashboard.
-4. Informe: se genera desde el SSOT y se audita; el pipeline no redacta narrativas ni inventa cifras.
-5. Auditoría y Corrección: validación matemática, verificación de coherencia SSOT vs informe, auto-corrección de discrepancias y recomendaciones explícitas.
+2. Verificar previamente que exista el informe solicitad, es decir que la accion haya presentado el informe para el periodo solicitado.
+3. SSOT: datos de entrada, puntuaciones, valoración y metadatos en JSON.
+4. Pipeline: recalcula métricas derivadas, valida reglas y sincroniza JS/dashboard.
+5. Informe: se genera desde el SSOT y se audita; el pipeline no redacta narrativas ni inventa cifras.
+6. Auditoría y Corrección: validación matemática, verificación de coherencia SSOT vs informe, auto-corrección de discrepancias y recomendaciones explícitas.
 
 ```mermaid
 flowchart TD
