@@ -1,95 +1,74 @@
-import pandas as pd
+import os
 import json
+import pandas as pd
 
 def main():
     try:
-        # Load the CSV
-        df = pd.read_csv('cqv_results.csv')
-        records = df.to_dict(orient='records')
-        
-        # Specific custom metrics for top companies
-        custom_metrics = {
-            "MA": {"f6": 9.5, "f7": 7.0, "f8": 9.9},
-            "V": {"f6": 9.5, "f7": 7.0, "f8": 9.9},
-            "AAPL": {"f6": 9.8, "f7": 6.8, "f8": 7.0},
-            "ASML": {"f6": 9.0, "f7": 5.5, "f8": 6.0},
-            "AVGO": {"f6": 9.4, "f7": 7.2, "f8": 7.5},
-            "GOOGL": {"f6": 8.5, "f7": 7.5, "f8": 9.5},
-            "MSFT": {"f6": 9.2, "f7": 6.5, "f8": 9.8},
-            "NVDA": {"f6": 9.0, "f7": 5.0, "f8": 6.5},
-            "FICO": {"f6": 9.9, "f7": 5.0, "f8": 8.5}
-        }
-        
-        for r in records:
-            ticker = r['ticker']
-            r['cqv_v1'] = r['cqv'] # original 5-factor score from CSV
-            
-            if ticker in custom_metrics:
-                r['f6'] = custom_metrics[ticker]['f6']
-                r['f7'] = custom_metrics[ticker]['f7']
-                r['f8'] = custom_metrics[ticker]['f8']
-            else:
-                # Deterministic defaults for other companies
-                r['f6'] = round((r['f1'] + r['f3']) / 2.0, 2)
-                r['f7'] = round((10.0 - (r['f1'] - 5.0)) * 0.8, 2)
-                if r['f7'] < 1.0: r['f7'] = 1.0
-                if r['f7'] > 10.0: r['f7'] = 10.0
-                r['f8'] = 8.0 # default
-                
-            # Recalculate consolidated CQV score v2.0
-            # weights: F1: 20%, F2: 10%, F3: 10%, F4: 20%, F5: 10%, F6: 10%, F7: 10%, F8: 10%
-            cqv_v2 = (
-                r['f1'] * 0.20 +
-                r['f2'] * 0.10 +
-                r['f3'] * 0.10 +
-                r['f4'] * 0.20 +
-                r['f5'] * 0.10 +
-                r['f6'] * 0.10 +
-                r['f7'] * 0.10 +
-                r['f8'] * 0.10
-            )
-            r['cqv_v2'] = round(cqv_v2, 2)
-            r['cqv'] = r.get('cqv_v3', r.get('cqv_v2', r['cqv'])) # default is v3.0
-            
-        json_data = json.dumps(records, indent=2)
-        
-        # 1. Save raw JSON data to cqv_data.json
-        with open('cqv_data.json', 'w', encoding='utf-8') as f:
-            f.write(json_data)
-        print("Successfully saved cqv_data.json")
-        
-        # 2. Save JS wrapper to cqv_data.js for offline file:/// protocol support
-        js_content = f"window.companiesData = {json_data};"
+        records = []
+        if os.path.exists('cqv_data.json'):
+            with open('cqv_data.json', 'r', encoding='utf-8') as f:
+                records = json.load(f)
+
+        history_db = {}
+        if os.path.exists('cqv_history.json'):
+            with open('cqv_history.json', 'r', encoding='utf-8') as hf:
+                history_db = json.load(hf)
+
+        theses_dict = {}
+        inform_dir = 'inform'
+        if os.path.exists(inform_dir):
+            for fn in os.listdir(inform_dir):
+                if fn.endswith('.md') and fn != 'template.md':
+                    base_key = fn.replace('.md', '').upper()
+                    ticker = base_key.split('_')[0]
+                    with open(os.path.join(inform_dir, fn), 'r', encoding='utf-8') as tf:
+                        content = tf.read()
+                        theses_dict[base_key] = content
+                        if ticker not in theses_dict:
+                            theses_dict[ticker] = content
+
+        json_data = json.dumps(records, indent=2, ensure_ascii=False)
+
+        js_content = f"window.companiesData = {json_data};\nwindow.cqvHistoryData = {json.dumps(history_db, indent=2)};\nwindow.investmentTheses = {json.dumps(theses_dict, indent=2)};"
         with open('cqv_data.js', 'w', encoding='utf-8') as f:
             f.write(js_content)
-        print("Successfully saved cqv_data.js")
-        
-        # 3. Build the HTML template linking cqv_data.js
-        html_content = """<!DOCTYPE html>
+        print("Successfully saved cqv_data.js and cqv_history.js wrapper")
+
+        html_template = """<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CQV Financial Dashboard | Quality & Structural Value</title>
+    <title>CQV Financial Dashboard v4.0 | Quality & Structural Value</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Chart.js -->
-    <script src="chart.min.js"></script>
+    <!-- Chart.js CDN -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Data Injections for file:/// and HTTP compatibility -->
+    <!-- Vue.js 3 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
+    <!-- Marked.js (Markdown renderer) -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- Mermaid.js (Diagrams & Charts renderer) -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+
+    <!-- Data Injections -->
     <script src="cqv_data.js"></script>
     <script src="cqv_history.js"></script>
-    <!-- DATA_INJECTION_START -->
-    <!-- DATA_INJECTION_END -->
     
+    <script>
+        window.companiesData = __INJECTED_COMPANIES__;
+        window.cqvHistoryData = __INJECTED_HISTORY__;
+        window.investmentTheses = __INJECTED_THESES__;
+    </script>
+
     <style>
         :root {
             --bg-color: #0b0f19;
-            --card-bg: rgba(17, 24, 39, 0.7);
+            --card-bg: rgba(17, 24, 39, 0.75);
             --card-border: rgba(255, 255, 255, 0.08);
             --text-primary: #f8fafc;
             --text-secondary: #94a3b8;
@@ -97,11 +76,11 @@ def main():
             --input-border: rgba(255, 255, 255, 0.08);
             --table-bg: rgba(15, 23, 42, 0.3);
             --item-bg: rgba(255, 255, 255, 0.02);
-            --item-hover-bg: rgba(255, 255, 255, 0.04);
-            --header-bg: rgba(11, 15, 25, 0.8);
+            --item-hover-bg: rgba(255, 255, 255, 0.05);
+            --header-bg: rgba(11, 15, 25, 0.85);
             --th-bg: #131b2e;
-            --primary: #4f46e5;
-            --primary-glow: rgba(79, 70, 229, 0.3);
+            --primary: #6366f1;
+            --primary-glow: rgba(99, 102, 241, 0.3);
             --secondary: #d946ef;
             --accent: #06b6d4;
             --elite: #10b981;
@@ -115,3425 +94,942 @@ def main():
 
         body.light-theme {
             --bg-color: #f1f5f9;
-            --card-bg: rgba(255, 255, 255, 0.85);
-            --card-border: rgba(15, 23, 42, 0.06);
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --card-border: rgba(15, 23, 42, 0.08);
             --text-primary: #0f172a;
             --text-secondary: #475569;
-            --input-bg: rgba(255, 255, 255, 0.95);
-            --input-border: rgba(15, 23, 42, 0.1);
-            --table-bg: rgba(255, 255, 255, 0.4);
-            --item-bg: rgba(15, 23, 42, 0.02);
-            --item-hover-bg: rgba(15, 23, 42, 0.04);
-            --header-bg: rgba(255, 255, 255, 0.85);
+            --input-bg: rgba(255, 255, 255, 0.9);
+            --input-border: rgba(0, 0, 0, 0.12);
+            --table-bg: rgba(255, 255, 255, 0.6);
+            --item-bg: rgba(0, 0, 0, 0.02);
+            --item-hover-bg: rgba(0, 0, 0, 0.05);
+            --header-bg: rgba(241, 245, 249, 0.9);
             --th-bg: #e2e8f0;
             --primary: #4f46e5;
-            --primary-glow: rgba(79, 70, 229, 0.1);
-            --secondary: #d946ef;
-            --accent: #0891b2;
-            --elite: #059669;
-            --strong: #2563eb;
-            --medium: #d97706;
-            --weak: #dc2626;
+            --primary-glow: rgba(79, 70, 229, 0.2);
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            scroll-behavior: smooth;
-        }
-
+        * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
-            background-color: var(--bg-color);
-            background-image: 
-                radial-gradient(at 10% 20%, rgba(79, 70, 229, 0.15) 0px, transparent 50%),
-                radial-gradient(at 90% 80%, rgba(217, 70, 239, 0.1) 0px, transparent 50%),
-                radial-gradient(at 50% 50%, rgba(6, 182, 212, 0.05) 0px, transparent 50%);
-            background-attachment: fixed;
-            color: var(--text-primary);
             font-family: var(--font-body);
-            line-height: 1.5;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            min-height: 100vh;
             overflow-x: hidden;
-            padding-bottom: 50px;
-            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+            line-height: 1.5;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
-        body.light-theme {
-            background-image: 
-                radial-gradient(at 10% 20%, rgba(79, 70, 229, 0.05) 0px, transparent 50%),
-                radial-gradient(at 90% 80%, rgba(217, 70, 239, 0.03) 0px, transparent 50%),
-                radial-gradient(at 50% 50%, rgba(6, 182, 212, 0.02) 0px, transparent 50%);
-        }
-
-        /* Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #0f172a;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #334155;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #475569;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 16px;
-        }
-
-        /* Header styling */
+        #app { display: flex; flex-direction: column; min-height: 100vh; }
+        
         header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            position: sticky; top: 0; z-index: 100;
             background: var(--header-bg);
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(16px);
             border-bottom: 1px solid var(--card-border);
-            padding: 8px 0;
-            margin-bottom: 14px;
-            transition: var(--transition);
+            padding: 0.85rem 2rem;
+            display: flex; justify-content: space-between; align-items: center;
         }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .logo-icon {
+        .brand { display: flex; align-items: center; gap: 0.75rem; }
+        .brand-icon {
+            width: 40px; height: 40px; border-radius: 10px;
             background: linear-gradient(135deg, var(--primary), var(--secondary));
-            width: 34px;
-            height: 34px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 0 15px var(--primary-glow);
-            font-weight: 800;
-            font-size: 15px;
-            color: white;
-            font-family: var(--font-title);
+            display: flex; align-items: center; justify-content: center;
+            color: #fff; font-size: 1.25rem; font-weight: bold;
+            box-shadow: 0 4px 14px var(--primary-glow);
         }
+        .brand-title { font-family: var(--font-title); font-size: 1.4rem; font-weight: 800; letter-spacing: -0.02em; }
+        .brand-subtitle { font-size: 0.75rem; color: var(--text-secondary); display: block; }
 
-        .logo-text h1 {
-            font-family: var(--font-title);
-            font-size: 17px;
-            font-weight: 700;
-            letter-spacing: -0.3px;
-            background: linear-gradient(to right, #ffffff, #94a3b8);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .logo-text p {
-            font-size: 9px;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
-        }
-
-        .nav-tabs {
-            display: flex;
-            gap: 8px;
-        }
-
+        nav { display: flex; gap: 0.5rem; }
         .nav-btn {
-            background: transparent;
-            border: 1px solid transparent;
-            color: var(--text-secondary);
-            padding: 6px 12px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 500;
-            font-size: 13px;
-            font-family: var(--font-title);
+            background: transparent; border: none; color: var(--text-secondary);
+            padding: 0.6rem 1.1rem; border-radius: 8px; font-family: var(--font-title);
+            font-weight: 600; font-size: 0.9rem; cursor: pointer; transition: var(--transition);
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+        .nav-btn:hover { color: var(--text-primary); background: var(--item-hover-bg); }
+        .nav-btn.active { color: #fff; background: var(--primary); box-shadow: 0 4px 12px var(--primary-glow); }
+
+        .header-actions { display: flex; align-items: center; gap: 1rem; }
+        .theme-btn {
+            background: var(--card-bg); border: 1px solid var(--card-border);
+            color: var(--text-primary); width: 38px; height: 38px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; cursor: pointer;
             transition: var(--transition);
-            display: flex;
-            align-items: center;
-            gap: 6px;
         }
+        .theme-btn:hover { transform: scale(1.05); border-color: var(--primary); }
 
-        .nav-btn:hover {
-            color: var(--text-primary);
-            background: rgba(255, 255, 255, 0.05);
-        }
-
-        .nav-btn.active {
-            background: rgba(79, 70, 229, 0.15);
-            border-color: rgba(79, 70, 229, 0.4);
-            color: var(--text-primary);
-            box-shadow: 0 0 15px rgba(79, 70, 229, 0.1);
-        }
-
-        .kpi-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 12px;
-            margin-bottom: 14px;
-        }
+        main { flex: 1; padding: 2rem; max-width: 1600px; margin: 0 auto; width: 100%; }
 
         .card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 12px 16px;
-            backdrop-filter: blur(16px);
-            transition: var(--transition);
-            position: relative;
-            overflow: hidden;
+            background: var(--card-bg); border: 1px solid var(--card-border);
+            border-radius: 16px; padding: 1.5rem; backdrop-filter: blur(12px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2); transition: var(--transition);
+        }
+        .card:hover { border-color: rgba(255, 255, 255, 0.15); }
+        
+        .kpi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; margin-bottom: 2rem; }
+        .kpi-card { display: flex; align-items: center; gap: 1.25rem; }
+        .kpi-icon {
+            width: 52px; height: 52px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; background: var(--item-bg); color: var(--primary);
+        }
+        .kpi-value { font-family: var(--font-title); font-size: 1.8rem; font-weight: 800; line-height: 1.1; }
+        .kpi-label { font-size: 0.8rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; font-weight: 600; }
+        .kpi-sub { font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.2rem; }
+
+        .showcase-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.25rem; margin-bottom: 2rem; }
+        .top20-card {
+            background: var(--card-bg); border: 1px solid var(--card-border);
+            border-radius: 14px; padding: 1.25rem; cursor: pointer; transition: var(--transition);
+            position: relative; overflow: hidden;
+        }
+        .top20-card:hover { transform: translateY(-4px); border-color: var(--primary); box-shadow: 0 12px 24px var(--primary-glow); }
+        .top20-rank {
+            position: absolute; top: 1rem; right: 1rem; font-family: var(--font-title);
+            font-weight: 800; font-size: 0.9rem; color: var(--text-secondary); opacity: 0.6;
+        }
+        .top20-ticker { font-family: var(--font-title); font-weight: 800; font-size: 1.4rem; color: var(--text-primary); }
+        .top20-name { font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .top20-scores { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 1rem; }
+        .top20-score-num { font-family: var(--font-title); font-size: 1.6rem; font-weight: 800; color: var(--elite); }
+
+        .metrics-pills { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; }
+        .pill { background: var(--item-bg); padding: 0.4rem 0.6rem; border-radius: 6px; font-size: 0.75rem; display: flex; justify-content: space-between; }
+        .pill-lbl { color: var(--text-secondary); }
+        .pill-val { font-weight: 700; font-family: var(--font-title); }
+
+        .charts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .chart-container { position: relative; height: 320px; width: 100%; }
+
+        .controls-bar { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; }
+        .search-box { position: relative; flex: 1; min-width: 280px; }
+        .search-box i { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-secondary); }
+        .input-field {
+            width: 100%; background: var(--input-bg); border: 1px solid var(--input-border);
+            color: var(--text-primary); padding: 0.75rem 1rem 0.75rem 2.8rem; border-radius: 10px;
+            font-size: 0.9rem; transition: var(--transition);
+        }
+        .input-field:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px var(--primary-glow); }
+
+        .select-field {
+            background: var(--input-bg); border: 1px solid var(--input-border);
+            color: var(--text-primary); padding: 0.75rem 1rem; border-radius: 10px;
+            font-size: 0.9rem; outline: none; cursor: pointer;
         }
 
-        .card::before {
+        .table-responsive { overflow-x: auto; border-radius: 12px; border: 1px solid var(--card-border); }
+        table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.82rem; }
+        th {
+            background: var(--th-bg); color: var(--text-secondary); font-family: var(--font-title);
+            font-weight: 700; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.05em;
+            padding: 0.8rem 0.6rem; cursor: pointer; user-select: none; border-bottom: 1px solid var(--card-border);
+            white-space: nowrap;
+        }
+        th:hover { color: var(--text-primary); }
+        td { padding: 0.8rem 0.6rem; border-bottom: 1px solid var(--card-border); white-space: nowrap; }
+        tbody tr { transition: var(--transition); cursor: pointer; }
+        tbody tr:hover { background: var(--item-hover-bg); }
+
+        .explorer-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.78rem; table-layout: auto; }
+        .explorer-table th {
+            background: var(--th-bg); color: var(--text-secondary); font-family: var(--font-title);
+            font-weight: 700; text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.03em;
+            padding: 0.6rem 0.35rem; cursor: pointer; user-select: none; border-bottom: 1px solid var(--card-border);
+            white-space: nowrap; text-align: center; transition: var(--transition);
+        }
+        .explorer-table th:hover { color: var(--text-primary); }
+        .explorer-table td { padding: 0.45rem 0.35rem; border-bottom: 1px solid var(--card-border); white-space: nowrap; text-align: center; font-size: 0.78rem; }
+        
+        .explorer-table .cell-ticker { font-weight: 800; color: var(--primary); text-align: left; }
+        .explorer-table .cell-name { max-width: 130px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: left; }
+        .explorer-table .cell-sector { max-width: 105px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: left; font-size: 0.72rem; color: var(--text-secondary); }
+        
+        .explorer-table.vertical-headers th {
+            height: 105px; vertical-align: bottom; padding: 0.5rem 0.15rem;
+        }
+        .explorer-table.vertical-headers th .th-content {
+            writing-mode: vertical-rl; transform: rotate(180deg);
+            white-space: nowrap; display: inline-flex; align-items: center; justify-content: flex-start;
+            gap: 0.3rem; max-height: 95px; margin: 0 auto;
+        }
+        .explorer-table th .th-content {
+            display: inline-flex; align-items: center; justify-content: center; gap: 0.25rem;
+        }
+
+        .badge {
+            display: inline-block; padding: 0.25rem 0.6rem; border-radius: 6px;
+            font-size: 0.75rem; font-weight: 700; font-family: var(--font-title); text-align: center;
+        }
+        .tier-elite-suprema { background: rgba(16, 185, 129, 0.22); color: #10b981; border: 1px solid rgba(16, 185, 129, 0.6); box-shadow: 0 0 10px rgba(16, 185, 129, 0.3); font-weight: 800; }
+        .tier-elite { background: rgba(132, 204, 22, 0.2); color: #84cc16; border: 1px solid rgba(132, 204, 22, 0.45); font-weight: 700; }
+        .tier-strong { background: rgba(59, 130, 246, 0.15); color: #3b82f6; border: 1px solid rgba(59, 130, 246, 0.3); }
+        .tier-medium { background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.3); }
+        .tier-speculative { background: rgba(239, 68, 68, 0.15); color: #ef4444; border: 1px solid rgba(239, 68, 68, 0.3); }
+
+        .has-tooltip {
+            position: relative;
+            cursor: help;
+        }
+        .has-tooltip:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 6px;
+            background: #0f172a;
+            color: #f8fafc;
+            padding: 0.65rem 0.9rem;
+            border-radius: 8px;
+            font-size: 0.76rem;
+            font-weight: 500;
+            white-space: normal;
+            width: max-content;
+            max-width: 250px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            z-index: 999999;
+            pointer-events: none;
+            text-transform: none;
+            letter-spacing: normal;
+            line-height: 1.4;
+            display: block !important;
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+        .has-tooltip:hover::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: transparent;
-            transition: var(--transition);
-        }
-
-        .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.25);
-            border-color: rgba(255, 255, 255, 0.15);
-        }
-
-        .card.primary-border:hover {
-            border-color: rgba(79, 70, 229, 0.5);
-        }
-
-        .kpi-card {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .kpi-info h3 {
-            font-size: 11px;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            margin-bottom: 2px;
-            font-weight: 500;
-        }
-
-        .kpi-info .value {
-            font-size: 24px;
-            font-weight: 700;
-            font-family: var(--font-title);
-            background: linear-gradient(to right, var(--text-primary), var(--text-secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .kpi-info .subtitle {
-            font-size: 11px;
-            color: var(--text-secondary);
-            margin-top: 2px;
-        }
-
-        .kpi-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 18px;
-        }
-
-        .kpi-blue {
-            background: rgba(59, 130, 246, 0.1);
-            color: #3b82f6;
-        }
-
-        .kpi-purple {
-            background: rgba(168, 85, 247, 0.1);
-            color: #a855f7;
-        }
-
-        .kpi-emerald {
-            background: rgba(16, 185, 129, 0.1);
-            color: #10b981;
-        }
-
-        .kpi-cyan {
-            background: rgba(6, 182, 212, 0.1);
-            color: #06b6d4;
-        }
-
-        /* Dashboard View Layout */
-        .dashboard-layout {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 16px;
-            margin-bottom: 16px;
-        }
-
-        .section-title {
-            font-family: var(--font-title);
-            font-size: 15px;
-            font-weight: 600;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--text-primary);
-        }
-
-        .section-title i {
-            color: var(--accent);
-        }
-
-        
-        /* Top 20 Showcase Grid Styles */
-        .top20-section {
-            margin-top: 25px;
-        }
-
-        .top20-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: 16px;
-            margin-top: 15px;
-        }
-
-        .top20-card {
-            background: rgba(15, 23, 42, 0.55);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            padding: 14px;
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            backdrop-filter: blur(8px);
-        }
-
-        .light-theme .top20-card {
-            background: #ffffff;
-            border-color: rgba(0, 0, 0, 0.08);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
-        }
-
-        .top20-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--primary);
-            box-shadow: 0 8px 22px rgba(99, 102, 241, 0.25);
-        }
-
-        .top20-rank-badge {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            font-size: 10px;
-            font-weight: 800;
-            padding: 3px 8px;
-            border-radius: 12px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .rank-gold { background: linear-gradient(135deg, #f59e0b, #d97706); color: #ffffff; box-shadow: 0 2px 8px rgba(245, 158, 11, 0.4); }
-        .rank-silver { background: linear-gradient(135deg, #94a3b8, #64748b); color: #ffffff; }
-        .rank-bronze { background: linear-gradient(135deg, #d97706, #b45309); color: #ffffff; }
-        .rank-elite { background: linear-gradient(135deg, #10b981, #059669); color: #ffffff; }
-        .rank-purple { background: linear-gradient(135deg, #8b5cf6, #6d28d9); color: #ffffff; }
-
-        .top20-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 4px;
-        }
-
-        .top20-ticker {
-            font-size: 18px;
-            font-weight: 800;
-            color: var(--font-title);
-            letter-spacing: 0.5px;
-        }
-
-        .top20-name {
-            font-size: 12px;
-            color: var(--text-secondary);
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            margin-bottom: 12px;
-        }
-
-        .top20-score-row {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            background: rgba(99, 102, 241, 0.1);
-            padding: 6px 10px;
-            border-radius: 8px;
-            border: 1px solid rgba(99, 102, 241, 0.2);
-        }
-
-        .top20-score-label {
-            font-size: 11px;
-            font-weight: 600;
-            color: var(--primary-light);
-        }
-
-        .top20-score-val {
-            font-size: 18px;
-            font-weight: 800;
-            color: #10b981;
-            font-family: var(--font-title);
-        }
-
-        .top20-metrics-pills {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 6px;
-            font-size: 11px;
-        }
-
-        .top20-pill {
-            background: rgba(255, 255, 255, 0.04);
-            padding: 4px 6px;
-            border-radius: 6px;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .light-theme .top20-pill {
-            background: rgba(0, 0, 0, 0.03);
-        }
-
-        .top20-pill-lbl {
-            color: var(--text-secondary);
-        }
-
-        .top20-pill-val {
-            font-weight: 700;
-            color: var(--font-title);
-        }
-
-/* Chart card */
-        .chart-card {
-            min-height: 260px;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .chart-card {
-            min-height: 320px;
-            display: flex;
-            flex-direction: column;
-            background: rgba(15, 23, 42, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 12px;
-            padding: 16px;
-        }
-
-        .chart-container {
-            position: relative;
-            width: 100%;
-            height: 250px;
-            min-height: 250px;
-            flex-grow: 1;
-        }
-
-        .chart-container canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100% !important;
-            height: 100% !important;
-            display: block;
-        }
-
-        .distribution-list {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            justify-content: center;
-            height: 100%;
-        }
-
-        .dist-item {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
-        .dist-label-row {
-            display: flex;
-            justify-content: space-between;
-            font-size: 12px;
-            font-weight: 500;
-        }
-
-        .dist-bar-bg {
-            height: 8px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .dist-bar-fill {
-            height: 100%;
-            border-radius: 4px;
-            transition: width 1s ease-out;
-        }
-
-        /* Explorer View Styling */
-        .explorer-card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 24px;
-            backdrop-filter: blur(16px);
-            margin-bottom: 32px;
-        }
-
-        .table-controls {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 16px;
-            flex-wrap: wrap;
-            margin-bottom: 20px;
-        }
-
-        .search-wrapper {
-            position: relative;
-            flex-grow: 1;
-            max-width: 400px;
-        }
-
-        .search-wrapper i {
-            position: absolute;
-            left: 14px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-secondary);
-        }
-
-        .search-input {
-            width: 100%;
-            background: var(--input-bg);
-            border: 1px solid var(--input-border);
-            border-radius: 8px;
-            padding: 10px 14px 10px 40px;
-            color: var(--text-primary);
-            font-family: var(--font-body);
-            font-size: 14px;
-            transition: var(--transition);
-        }
-
-        .search-input:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 10px rgba(79, 70, 229, 0.2);
-        }
-
-        .filters-wrapper {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .select-filter {
-            background: var(--input-bg);
-            border: 1px solid var(--input-border);
-            border-radius: 8px;
-            padding: 10px 16px;
-            color: var(--text-primary);
-            font-size: 14px;
-            outline: none;
-            cursor: pointer;
-            transition: var(--transition);
-            font-family: var(--font-body);
-        }
-
-        .select-filter:focus {
-            border-color: var(--primary);
-        }
-
-        .select-filter option {
-            background: var(--bg-color);
-            color: var(--text-primary);
-        }
-
-        /* Table design */
-        .table-container {
-            width: 100%;
-            overflow-x: auto;
-            max-height: 360px;
-            overflow-y: auto;
-            border-radius: 12px;
-            border: 1px solid var(--card-border);
-            background: var(--table-bg);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: left;
-            font-size: 13px;
-        }
-
-        th {
-            position: sticky;
-            top: 0;
-            z-index: 10;
-            background: var(--th-bg);
-            padding: 6px 10px;
-            font-weight: 600;
-            color: var(--text-primary);
-            border-bottom: 1px solid var(--card-border);
-            cursor: pointer;
-            user-select: none;
-            transition: var(--transition);
-            font-family: var(--font-title);
-            font-size: 13px;
-        }
-
-        th:hover {
-            background: rgba(30, 41, 59, 0.8);
-            color: white;
-        }
-
-        th i {
-            margin-left: 6px;
-            font-size: 11px;
-            color: var(--text-secondary);
-        }
-
-        td {
-            padding: 6px 10px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-            color: var(--text-secondary);
-            transition: var(--transition);
-            font-size: 13px;
-        }
-
-        tr:last-child td {
-            border-bottom: none;
-        }
-
-        tr:hover td {
-            background: rgba(255, 255, 255, 0.02);
-            color: var(--text-primary);
-        }
-
-        .ticker-badge {
-            background: rgba(79, 70, 229, 0.1);
-            border: 1px solid rgba(79, 70, 229, 0.3);
-            color: #818cf8;
-            padding: 4px 8px;
-            border-radius: 6px;
-            font-weight: 700;
-            font-size: 12px;
-            display: inline-block;
-            font-family: var(--font-title);
-        }
-
-        .q-badge {
-            background: rgba(6, 182, 212, 0.12);
-            border: 1px solid rgba(6, 182, 212, 0.3);
-            color: #06b6d4;
-            padding: 3px 7px;
-            border-radius: 6px;
-            font-weight: 700;
-            font-size: 11px;
-            display: inline-block;
-            font-family: var(--font-title);
-            white-space: nowrap;
-        }
-
-        .sparkline-container {
-            display: inline-flex;
-            align-items: flex-end;
-            gap: 2.5px;
-            height: 22px;
-            width: 46px;
-            padding: 2px;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 4px;
-        }
-
-        .sparkline-bar {
-            width: 6px;
-            border-radius: 1px;
-            min-height: 2px;
-            transition: height 0.3s ease;
-        }
-
-        .company-name {
-            font-weight: 500;
-            color: var(--text-primary);
-        }
-
-        .cqv-value-cell {
-            font-weight: 700;
-            font-family: var(--font-title);
-            font-size: 15px;
-        }
-
-        .score-high {
-            color: var(--elite);
-        }
-        .score-medium {
-            color: var(--medium);
-        }
-        .score-weak {
-            color: var(--weak);
-        }
-
-        /* Tier labels */
-        .tier-badge {
-            padding: 4px 10px;
-            border-radius: 9999px;
-            font-size: 11px;
-            font-weight: 600;
-            display: inline-block;
-            text-transform: uppercase;
-        }
-
-        .tier-elite {
-            background: rgba(16, 185, 129, 0.1);
-            color: var(--elite);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-        }
-
-        .tier-strong {
-            background: rgba(59, 130, 246, 0.1);
-            color: var(--strong);
-            border: 1px solid rgba(59, 130, 246, 0.2);
-        }
-
-        .tier-medium {
-            background: rgba(245, 158, 11, 0.1);
-            color: var(--medium);
-            border: 1px solid rgba(245, 158, 11, 0.2);
-        }
-
-        .tier-speculative {
-            background: rgba(239, 68, 68, 0.1);
-            color: var(--weak);
-            border: 1px solid rgba(239, 68, 68, 0.2);
-        }
-
-        /* Table Footer / Pagination */
-        .table-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: 20px;
-            color: var(--text-secondary);
-            font-size: 13px;
-        }
-
-        .pagination-btns {
-            display: flex;
-            gap: 6px;
-        }
-
-        .page-btn {
-            background: var(--input-bg);
-            border: 1px solid var(--input-border);
-            color: var(--text-secondary);
-            width: 34px;
-            height: 34px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: var(--transition);
-            font-weight: 500;
-        }
-
-        .page-btn:hover {
-            background: rgba(255, 255, 255, 0.05);
-            color: white;
-            border-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .page-btn.active {
-            background: var(--primary);
-            border-color: var(--primary);
-            color: white;
-            box-shadow: 0 0 10px rgba(79, 70, 229, 0.3);
-        }
-
-        .page-btn:disabled {
-            opacity: 0.3;
-            cursor: not-allowed;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 0px;
+            border-width: 6px;
+            border-style: solid;
+            border-color: transparent transparent #0f172a transparent;
+            z-index: 1000000;
             pointer-events: none;
+            display: block !important;
         }
 
-        /* Tab Content Control */
-        .tab-panel {
-            display: none;
-        }
+        .verdict-buy { background: rgba(16, 185, 129, 0.2); color: #34d399; font-weight: 800; }
+        .verdict-hold { background: rgba(245, 158, 11, 0.2); color: #fbbf24; font-weight: 800; }
+        .verdict-avoid { background: rgba(239, 68, 68, 0.2); color: #f87171; font-weight: 800; }
 
-        .tab-panel.active {
-            display: block;
-            animation: fadeIn 0.4s ease;
+        .pagination { display: flex; justify-content: space-between; align-items: center; margin-top: 1.5rem; }
+        .page-btns { display: flex; gap: 0.4rem; }
+        .page-btn {
+            background: var(--input-bg); border: 1px solid var(--input-border); color: var(--text-primary);
+            width: 34px; height: 34px; border-radius: 8px; cursor: pointer; display: flex; align-items: center; justify-content: center;
         }
+        .page-btn.active { background: var(--primary); border-color: var(--primary); }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Metodología Layout */
-        .method-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 32px;
-            margin-bottom: 32px;
-        }
-
-        .equation-box {
-            background: linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(217, 70, 239, 0.05));
-            border: 1px solid rgba(79, 70, 229, 0.3);
-            border-radius: 16px;
-            padding: 28px;
-            text-align: center;
-            margin-bottom: 24px;
-            box-shadow: 0 0 30px rgba(79, 70, 229, 0.05);
-        }
-
-        .equation-text {
-            font-family: var(--font-title);
-            font-size: 20px;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            margin: 16px 0;
-            background: linear-gradient(to right, var(--text-primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .formula-card {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .formula-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 14px;
-            padding: 16px;
-            background: var(--item-bg);
+        .thesis-body {
+            background: var(--table-bg); border-radius: 12px; padding: 2rem;
+            line-height: 1.7; color: var(--text-primary); max-height: 850px; overflow-y: auto;
             border: 1px solid var(--card-border);
-            border-radius: 12px;
-            transition: var(--transition);
+        }
+        .thesis-body h1, .thesis-body h2, .thesis-body h3 { font-family: var(--font-title); margin-top: 1.5rem; margin-bottom: 0.75rem; color: var(--text-primary); }
+        .thesis-body h1 { border-bottom: 1px solid var(--card-border); padding-bottom: 0.5rem; font-size: 1.6rem; color: var(--primary); }
+        .thesis-body h2 { font-size: 1.3rem; color: var(--accent); }
+        .thesis-body table { width: 100%; margin: 1rem 0; font-size: 0.85rem; border-collapse: collapse; }
+        .thesis-body th, .thesis-body td { padding: 0.6rem; border: 1px solid var(--card-border); }
+
+        .markdown-alert { padding: 1rem; border-radius: 8px; margin: 1.25rem 0; border-left: 4px solid var(--primary); background: var(--item-bg); }
+        .markdown-alert-note { border-left-color: #3b82f6; background: rgba(59, 130, 246, 0.1); }
+        .markdown-alert-warning { border-left-color: #ef4444; background: rgba(239, 68, 68, 0.1); }
+        .markdown-alert-tip { border-left-color: #10b981; background: rgba(16, 185, 129, 0.1); }
+        .markdown-alert-important { border-left-color: #8b5cf6; background: rgba(139, 92, 246, 0.1); }
+
+        .cqv-floating-tooltip {
+            position: fixed;
+            transform: translate(-50%, -100%);
+            background: #0f172a;
+            color: #f8fafc;
+            padding: 0.65rem 0.9rem;
+            border-radius: 10px;
+            font-size: 0.78rem;
+            max-width: 260px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            z-index: 999999;
+            pointer-events: none;
+            line-height: 1.45;
+            backdrop-filter: blur(12px);
+            transition: opacity 0.15s ease, transform 0.1s ease;
         }
 
-        .formula-item:hover {
-            background: var(--item-hover-bg);
-            border-color: var(--accent);
+        .quarter-pill {
+            padding: 0.4rem 0.8rem; border-radius: 8px; font-size: 0.8rem; font-family: var(--font-title);
+            font-weight: 700; cursor: pointer; border: 1px solid var(--card-border); background: var(--input-bg);
+            color: var(--text-secondary); transition: var(--transition);
         }
+        .quarter-pill:hover { color: var(--text-primary); border-color: var(--primary); }
+        .quarter-pill.active { background: var(--primary); color: #fff; border-color: var(--primary); box-shadow: 0 2px 8px var(--primary-glow); }
 
-        .factor-num {
-            width: 32px;
-            height: 32px;
-            border-radius: 8px;
-            background: var(--primary);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-family: var(--font-title);
-            font-size: 14px;
-            flex-shrink: 0;
-        }
-
-        .factor-details h4 {
-            font-family: var(--font-title);
-            font-size: 15px;
-            font-weight: 600;
-            margin-bottom: 4px;
-            color: var(--text-primary);
-        }
-
-        .factor-details p {
-            font-size: 13px;
-            color: var(--text-secondary);
-        }
-
-        .factor-weight {
-            background: rgba(217, 70, 239, 0.15);
-            color: var(--secondary);
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 11px;
-            font-weight: 700;
-            margin-left: 8px;
-        }
-
-        .faq-card {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .faq-item {
-            border-bottom: 1px solid var(--card-border);
-            padding-bottom: 16px;
-        }
-
-        .faq-item:last-child {
-            border-bottom: none;
-        }
-
-        .faq-question {
-            font-family: var(--font-title);
-            font-size: 15px;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 8px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .faq-question i {
-            color: var(--accent);
-        }
-
-        .faq-answer {
-            font-size: 13px;
-            color: var(--text-secondary);
-            padding-left: 24px;
-        }
-
-        /* Simulator Styling */
-        .simulator-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
-
-        .sim-controls {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .slider-group {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            background: rgba(255, 255, 255, 0.01);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            border-radius: 12px;
-            padding: 10px 12px;
-        }
-
-        .slider-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .slider-label {
-            font-weight: 600;
-            font-family: var(--font-title);
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .slider-val {
-            font-family: var(--font-title);
-            font-weight: 700;
-            color: var(--accent);
-            font-size: 16px;
-            background: rgba(6, 182, 212, 0.1);
-            padding: 2px 8px;
-            border-radius: 6px;
-            min-width: 48px;
-            text-align: center;
-        }
-
-        input[type="range"] {
-            -webkit-appearance: none;
-            width: 100%;
-            height: 6px;
-            background: #1e293b;
-            border-radius: 9999px;
-            outline: none;
-        }
-
-        input[type="range"]::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            cursor: pointer;
-            box-shadow: 0 0 10px var(--primary-glow);
-            transition: var(--transition);
-        }
-
-        input[type="range"]::-webkit-slider-thumb:hover {
-            transform: scale(1.15);
-        }
-
-        .sim-result-card {
-            background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(30, 41, 59, 0.4));
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 16px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-        }
-
-        .sim-cqv-display {
-            font-size: 52px;
-            font-weight: 800;
-            font-family: var(--font-title);
-            background: linear-gradient(135deg, var(--text-primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin: 6px 0;
-            text-shadow: 0 0 20px rgba(6, 182, 212, 0.2);
-            line-height: 1.1;
-        }
-
-        .sim-tier-display {
-            margin-top: 4px;
-        }
-
-        .sim-radial-container {
-            width: 100%;
-            max-width: 170px;
-            height: 170px;
-            margin: 6px 0;
-            position: relative;
-        }
-
-        .theme-toggle-btn {
-            background: transparent;
-            border: 1px solid var(--card-border);
-            color: var(--text-primary);
-            width: 30px;
-            height: 30px;
-            border-radius: 8px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-        }
-
-        .theme-toggle-btn:hover {
-            background: rgba(255, 255, 255, 0.05) !important;
-            border-color: var(--accent) !important;
-            color: var(--accent) !important;
-        }
-
-        body.light-theme .theme-toggle-btn:hover {
-            background: rgba(15, 23, 42, 0.05) !important;
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .dashboard-layout, .method-grid, .simulator-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 640px) {
-            .header-content {
-                flex-direction: column;
-                gap: 16px;
-            }
-            .table-controls {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .search-wrapper {
-                max-width: none;
-            }
-            .filters-wrapper {
-                width: 100%;
-            }
-            .filters-wrapper select {
-                flex-grow: 1;
-            }
-        }
-        /* CQV Version Switching Styles */
-        body.cqv-v1-active #tab-explorer table th:nth-child(8),
-        body.cqv-v1-active #tab-explorer table td:nth-child(8),
-        body.cqv-v1-active #tab-explorer table th:nth-child(9),
-        body.cqv-v1-active #tab-explorer table td:nth-child(9),
-        body.cqv-v1-active #tab-explorer table th:nth-child(10),
-        body.cqv-v1-active #tab-explorer table td:nth-child(10) {
-            display: none !important;
-        }
-
-        body.cqv-v1-active #history-details-table th:nth-child(7),
-        body.cqv-v1-active #history-details-table td:nth-child(7),
-        body.cqv-v1-active #history-details-table th:nth-child(8),
-        body.cqv-v1-active #history-details-table td:nth-child(8),
-        body.cqv-v1-active #history-details-table th:nth-child(9),
-        body.cqv-v1-active #history-details-table td:nth-child(9) {
-            display: none !important;
-        }
-
-        body.cqv-v1-active .v2-only {
-            display: none !important;
-        }
+        footer { text-align: center; padding: 2rem; border-top: 1px solid var(--card-border); color: var(--text-secondary); font-size: 0.8rem; margin-top: auto; }
     </style>
 </head>
 <body>
+    <div id="app">
+        <!-- Floating Tooltip Container -->
+        <div 
+            v-if="tooltipText" 
+            class="cqv-floating-tooltip" 
+            :style="{ top: tooltipY + 'px', left: tooltipX + 'px' }"
+        >
+            <div style="font-weight: 700; color: #38bdf8; margin-bottom: 2px;">{{ tooltipTitle }}</div>
+            <div>{{ tooltipText }}</div>
+        </div>
 
-    <header>
-        <div class="container header-content">
-            <div class="logo-area">
-                <div class="logo-icon">CQV</div>
-                <div class="logo-text">
-                    <h1>Score Financiero CQV</h1>
-                    <p>Quality and Structural Value</p>
+        <!-- Header -->
+        <header>
+            <div class="brand">
+                <div class="brand-icon"><i class="fa-solid fa-chart-line"></i></div>
+                <div>
+                    <div class="brand-title">CQV FINANCIAL DASHBOARD</div>
+                    <span class="brand-subtitle">Quality & Structural Value Model v4.0</span>
                 </div>
             </div>
             
-            <nav class="nav-tabs" style="display: flex; align-items: center; gap: 10px;">
-                <button class="nav-btn active" onclick="switchTab('dashboard')">
-                    <i class="fa-solid fa-chart-line"></i> Dashboard
+            <nav>
+                <button class="nav-btn" :class="{ active: activeTab === 'dashboard' }" @click="selectTab('dashboard')">
+                    <i class="fa-solid fa-gauge-high"></i> Resumen
                 </button>
-                <button class="nav-btn" onclick="switchTab('explorer')">
-                    <i class="fa-solid fa-table"></i> Explorador
+                <button class="nav-btn" :class="{ active: activeTab === 'explorer' }" @click="selectTab('explorer')">
+                    <i class="fa-solid fa-table-list"></i> Explorador
                 </button>
-                <button class="nav-btn" onclick="switchTab('history')">
-                    <i class="fa-solid fa-chart-line"></i> Tendencias
-                </button>
-                <button class="nav-btn" onclick="switchTab('methodology')">
-                    <i class="fa-solid fa-book-open"></i> Metodología
-                </button>
-                <button class="nav-btn" onclick="switchTab('simulator')">
-                    <i class="fa-solid fa-calculator"></i> Simulador
-                </button>
-                <div class="version-selector-container" style="display: flex; align-items: center; gap: 6px; margin-right: 5px;">
-                    <label for="version-select" style="font-size: 0.8rem; font-weight: 600; color: var(--text-secondary);"><i class="fa-solid fa-layer-group"></i> Modelo:</label>
-                    <select id="version-select" class="select-filter" onchange="setCQVVersion(this.value)" style="padding: 4px 10px; border-radius: 20px; background: var(--input-bg); color: var(--font-title); border: 1px solid var(--primary); font-weight: 700; cursor: pointer; font-size: 0.82rem; height: 32px;">
-                        <option value="v3" selected>CQV v3.0 (8F Pro - Recomendado)</option>
-                        <option value="v2">CQV v2.0 (8F Legacy)</option>
-                        <option value="v1_1">CQV v1.1 (5F Pro)</option>
-                        <option value="v1">CQV v1.0 (5F Legacy)</option>
-                    </select>
-                </div>
-                <button class="theme-toggle-btn" onclick="toggleTheme()" title="Cambiar Modo Claro/Oscuro">
-                    <i id="theme-toggle-icon" class="fa-solid fa-sun"></i>
+                <button class="nav-btn" :class="{ active: activeTab === 'history' }" @click="selectTab('history')">
+                    <i class="fa-solid fa-clock-rotate-left"></i> Historial & Tesis
                 </button>
             </nav>
-        </div>
-    </header>
 
-    <main class="container">
-        
-        <!-- Tab: Dashboard -->
-        <div id="tab-dashboard" class="tab-panel active">
-            <!-- KPIs -->
-            <div class="kpi-grid">
-                <div class="card primary-border">
-                    <div class="kpi-card">
-                        <div class="kpi-info">
-                            <h3>Empresas Auditadas</h3>
-                            <div class="value" id="kpi-total-companies">0</div>
-                            <div class="subtitle">Ticker de Calidad y Valor</div>
-                        </div>
-                        <div class="kpi-icon kpi-blue">
-                            <i class="fa-solid fa-building"></i>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="card primary-border">
-                    <div class="kpi-card">
-                        <div class="kpi-info">
-                            <h3>Promedio CQV General</h3>
-                            <div class="value" id="kpi-avg-cqv">0.00</div>
-                            <div class="subtitle">Calificación general media</div>
-                        </div>
-                        <div class="kpi-icon kpi-purple">
-                            <i class="fa-solid fa-star-half-stroke"></i>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="card primary-border">
-                    <div class="kpi-card">
-                        <div class="kpi-info">
-                            <h3>Calidad Élite (>9.0)</h3>
-                            <div class="value" id="kpi-elite-count">0</div>
-                            <div class="subtitle">Empresas con foso invicto</div>
-                        </div>
-                        <div class="kpi-icon kpi-emerald">
-                            <i class="fa-solid fa-shield-halved"></i>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="card primary-border">
-                    <div class="kpi-card">
-                        <div class="kpi-info">
-                            <h3>Líder de Calidad #1</h3>
-                            <div class="value" style="font-size: 24px;" id="kpi-top-performer">GOOGL (9.41)</div>
-                            <div class="subtitle" id="kpi-top-performer-name">Alphabet Inc.</div>
-                        </div>
-                        <div class="kpi-icon kpi-cyan">
-                            <i class="fa-solid fa-crown"></i>
-                        </div>
-                    </div>
-                </div>
+            <div class="header-actions">
+                <button class="theme-btn" @click="toggleTheme" title="Cambiar tema">
+                    <i :class="isLightTheme ? 'fa-solid fa-moon' : 'fa-solid fa-sun'"></i>
+                </button>
             </div>
+        </header>
 
-            <!-- Charts Row 1: Top 20 Bar Chart & Sector Distribution Top 20 -->
-            <div class="dashboard-layout" style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom: 20px;">
-                <!-- Bar Chart: Ranking Top 20 -->
-                <div class="card chart-card" style="min-height: 320px;">
-                    <h3 class="section-title">
-                        <i class="fa-solid fa-trophy" style="color: #f59e0b;"></i> Top 20 Empresas Élite (Score CQV)
-                    </h3>
-                    <div class="chart-container" style="height: 250px;">
-                        <canvas id="topChart"></canvas>
-                    </div>
-                </div>
-                
-                <!-- Sector Distribution Top 20 -->
-                <div class="card chart-card" style="min-height: 320px;">
-                    <h3 class="section-title">
-                        <i class="fa-solid fa-chart-pie" style="color: #10b981;"></i> Sectores del Top 20 Élite
-                    </h3>
-                    <div class="chart-container" style="height: 250px;">
-                        <canvas id="top20SectorChart"></canvas>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Charts Row 2: Pillars Comparison & Valuation vs Quality (Top 20) -->
-            <div class="dashboard-layout" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
-                <!-- Pillars Comparison Chart (F1, F2, F4) -->
-                <div class="card chart-card" style="min-height: 300px;">
-                    <h3 class="section-title">
-                        <i class="fa-solid fa-layer-group" style="color: #6366f1;"></i> Comparativa de Pilares (Top 20): F1 Rent., F2 Solidez, F4 Foso
-                    </h3>
-                    <div class="chart-container" style="height: 230px;">
-                        <canvas id="top20PillarsChart"></canvas>
-                    </div>
-                </div>
-                
-                <!-- Valuation PER vs CQV Score Chart -->
-                <div class="card chart-card" style="min-height: 300px;">
-                    <h3 class="section-title">
-                        <i class="fa-solid fa-scale-balanced" style="color: #3b82f6;"></i> Valuación PER Trailing vs Calidad CQV (Top 20)
-                    </h3>
-                    <div class="chart-container" style="height: 230px;">
-                        <canvas id="top20ValuationChart"></canvas>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Quality Tier Breakdown Bar Section -->
-            <div class="card" style="margin-bottom: 25px; padding: 20px;">
-                <h3 class="section-title" style="margin-bottom: 15px;">
-                    <i class="fa-solid fa-sliders" style="color: #ec4899;"></i> Distribución General por Categorías de Calidad CQV
-                </h3>
-                <div class="distribution-list" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
-                    <div class="dist-item">
-                        <div class="dist-label-row">
-                            <span style="font-weight: 700; color: var(--elite);">ÉLITE (CQV &gt; 9.0)</span>
-                            <span id="dist-count-elite">0 emp. (0%)</span>
-                        </div>
-                        <div class="dist-bar-bg" style="height: 10px; border-radius: 5px;">
-                            <div class="dist-bar-fill" id="dist-bar-elite" style="background: var(--elite); width: 0%; height: 100%; border-radius: 5px;"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="dist-item">
-                        <div class="dist-label-row">
-                            <span style="font-weight: 700; color: var(--strong);">SÓLIDA (8.5 - 9.0)</span>
-                            <span id="dist-count-strong">0 emp. (0%)</span>
-                        </div>
-                        <div class="dist-bar-bg" style="height: 10px; border-radius: 5px;">
-                            <div class="dist-bar-fill" id="dist-bar-strong" style="background: var(--strong); width: 0%; height: 100%; border-radius: 5px;"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="dist-item">
-                        <div class="dist-label-row">
-                            <span style="font-weight: 700; color: var(--medium);">MEDIA (8.0 - 8.5)</span>
-                            <span id="dist-count-medium">0 emp. (0%)</span>
-                        </div>
-                        <div class="dist-bar-bg" style="height: 10px; border-radius: 5px;">
-                            <div class="dist-bar-fill" id="dist-bar-medium" style="background: var(--medium); width: 0%; height: 100%; border-radius: 5px;"></div>
-                        </div>
-                    </div>
-                    
-                    <div class="dist-item">
-                        <div class="dist-label-row">
-                            <span style="font-weight: 700; color: var(--weak);">ESPECULATIVA (&lt; 8.0)</span>
-                            <span id="dist-count-weak">0 emp. (0%)</span>
-                        </div>
-                        <div class="dist-bar-bg" style="height: 10px; border-radius: 5px;">
-                            <div class="dist-bar-fill" id="dist-bar-weak" style="background: var(--weak); width: 0%; height: 100%; border-radius: 5px;"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Top 20 Showcase Grid Section -->
-            <div class="top20-section">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                    <h3 class="section-title" style="font-size: 1.25rem;">
-                        <i class="fa-solid fa-award" style="color: #f59e0b;"></i> Catálogo Élite: Las 20 Mejores Empresas del Mercado
-                    </h3>
-                    <span style="font-size: 0.85rem; color: var(--text-secondary);">Haz clic en cualquier tarjeta para ver su análisis e historial</span>
-                </div>
-                <div class="top20-grid" id="top20-grid">
-                    <!-- Populated dynamically via JS -->
-                </div>
-            </div>
-        </div>
-
-        <div id="tab-explorer" class="tab-panel">
-            <div class="explorer-card">
-                <h3 class="section-title">
-                    <i class="fa-solid fa-database"></i> Tabla Completa de Calificaciones CQV
-                </h3>
-                
-                <!-- Controls -->
-                <div class="table-controls">
-                    <div class="search-wrapper">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        <input type="text" class="search-input" id="search-bar" placeholder="Buscar por ticker o empresa..." oninput="handleSearch()">
-                    </div>
-                    
-                    <div class="filters-wrapper">
-                        <select class="select-filter" id="tier-filter" onchange="handleFilter()">
-                            <option value="all">Todas las Categorías</option>
-                            <option value="elite">Élite (&gt; 9.0)</option>
-                            <option value="strong">Sólida (8.5 - 9.0)</option>
-                            <option value="medium">Media (8.0 - 8.5)</option>
-                            <option value="speculative">Especulativa (&lt; 8.0)</option>
-                        </select>
-                        
-                        <select class="select-filter" id="rows-filter" onchange="handleRowsChange()">
-                            <option value="15">Mostrar 15</option>
-                            <option value="25">Mostrar 25</option>
-                            <option value="50" selected>Mostrar 50</option>
-                            <option value="all">Mostrar Todo</option>
-                        </select>
-                    </div>
-                </div>
-
-                <!-- Table -->
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th onclick="handleSort('ticker')">Acción <span id="sort-icon-ticker"><i class="fa-solid fa-sort"></i></span></th>
-                                <th onclick="handleSort('name')">Nombre de la Empresa <span id="sort-icon-name"><i class="fa-solid fa-sort"></i></span></th>
-                                <th onclick="handleSort('quarter')">Periodo (Q) <span id="sort-icon-quarter"><i class="fa-solid fa-sort"></i></span></th>
-                                <th onclick="handleSort('f1')">F1 (Rent.) <span id="sort-icon-f1"><i class="fa-solid fa-sort"></i></span></th>
-                                <th onclick="handleSort('f2')">F2 (Solidez) <span id="sort-icon-f2"><i class="fa-solid fa-sort"></i></span></th>
-                                <th onclick="handleSort('f3')">F3 (Crec.) <span id="sort-icon-f3"><i class="fa-solid fa-sort"></i></span></th>
-                                <th onclick="handleSort('f4')">F4 (Moat) <span id="sort-icon-f4"><i class="fa-solid fa-sort"></i></span></th>
-                                <th onclick="handleSort('f5')">F5 (Proj.) <span id="sort-icon-f5"><i class="fa-solid fa-sort"></i></span></th>
-                                <th onclick="handleSort('f6')">F6 (Asig.) <span id="sort-icon-f6"><i class="fa-solid fa-sort"></i></span></th>
-                                <th onclick="handleSort('f7')">F7 (Yield) <span id="sort-icon-f7"><i class="fa-solid fa-sort"></i></span></th>
-                                <th onclick="handleSort('f8')">F8 (Antif.) <span id="sort-icon-f8"><i class="fa-solid fa-sort"></i></span></th>
-                                <th onclick="handleSort('pe')">PER <span id="sort-icon-pe"><i class="fa-solid fa-sort"></i></span></th>
-                                <th onclick="handleSort('cqv')">CQV Score <span id="sort-icon-cqv"><i class="fa-solid fa-sort-down"></i></span></th>
-                                <th>Evolución (5a)</th>
-                                <th>Categoría</th>
-                            </tr>
-                        </thead>
-                        <tbody id="companies-table-body">
-                            <!-- Injected by JS -->
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- Pagination -->
-                <div class="table-footer">
-                    <div id="showing-entries-label">Mostrando 1 - 15 de 151 empresas</div>
-                    <div class="pagination-btns" id="pagination-wrapper">
-                        <!-- Injected by JS -->
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Tab: History -->
-        <div id="tab-history" class="tab-panel">
-            <div class="card">
-                <h3 class="section-title">
-                    <i class="fa-solid fa-chart-line"></i> Evolución de Score CQV (Últimos 5 Años)
-                </h3>
-                <p style="font-size: 13px; color: var(--text-secondary); margin-bottom: 20px; max-width: 800px; line-height: 1.4;">
-                    Visualiza la tendencia histórica anual del Score CQV calculado a partir de los estados financieros presentados ante la SEC. Haz clic en cualquier empresa en la pestaña <strong>Explorador</strong> para cargar automáticamente su historial aquí.
-                </p>
-                
-                <div style="margin-bottom: 20px; display: flex; gap: 15px; align-items: center; flex-wrap: wrap;">
-                    <div>
-                        <label for="history-company-select" style="font-size: 13px; color: var(--text-secondary); margin-bottom: 6px; display: block; font-weight: 500;">Seleccionar Empresa:</label>
-                        <select id="history-company-select" class="select-filter" style="min-width: 320px;" onchange="loadCompanyHistory()">
-                            <option value="">-- Seleccionar una empresa --</option>
-                        </select>
-                    </div>
-                </div>
-                
-                <!-- Chart Containers -->
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px;">
-                    <div style="background: rgba(30, 41, 59, 0.4); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 15px;">
-                        <h4 style="margin: 0 0 15px 0; font-size: 13px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em;"><i class="fa-solid fa-chart-line"></i> Evolución del Score CQV</h4>
-                        <div style="height: 280px; position: relative;">
-                            <canvas id="historyChart"></canvas>
-                        </div>
-                    </div>
-                    <div style="background: rgba(30, 41, 59, 0.4); border: 1px solid rgba(255,255,255,0.06); border-radius: 8px; padding: 15px;">
-                        <h4 style="margin: 0 0 15px 0; font-size: 13px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.05em; display: flex; justify-content: space-between; align-items: center;">
-                            <span><i class="fa-solid fa-scale-balanced"></i> Historial de Precio vs. PER</span>
-                            <span id="pe-average-badge" style="font-size: 11px; background: rgba(79, 70, 229, 0.2); color: #818cf8; padding: 2px 6px; border-radius: 4px; border: 1px solid rgba(79, 70, 229, 0.3); font-weight: bold;">PER Prom: -</span>
-                        </h4>
-                        <div style="height: 280px; position: relative;">
-                            <canvas id="peValuationChart"></canvas>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Details Table -->
-                <div class="table-container">
-                    <table class="companies-table" id="history-details-table">
-                        <thead>
-                            <tr>
-                                <th>Año</th>
-                                <th>F1: Rentabilidad</th>
-                                <th>F2: Solidez</th>
-                                <th>F3: Crecimiento</th>
-                                <th>F4: Moat (Fijo)</th>
-                                <th>F5: Proyección (Fijo)</th>
-                                <th>F6: Asignación (Fijo)</th>
-                                <th>F7: FCF Yield (Fijo)</th>
-                                <th>F8: Antifragilidad (Fijo)</th>
-                                <th>Múltiplo PER</th>
-                                <th>CQV Score</th>
-                            </tr>
-                        </thead>
-                        <tbody id="history-details-body">
-                            <tr>
-                                <td colspan="10" style="text-align: center; color: var(--text-secondary); padding: 30px 10px;">
-                                    Selecciona una empresa del desplegable o en la pestaña Explorador para ver su evolución.
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <!-- Business and Factors Profile in History -->
-                <div class="card" id="history-profile-card" style="margin-top: 14px; border-top: 1px solid var(--card-border); padding-top: 14px; display: none;">
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; min-height: 100px;">
+        <!-- Main Content Views -->
+        <main>
+            <!-- TAB 1: DASHBOARD SHOWCASE -->
+            <div v-show="activeTab === 'dashboard'">
+                <div class="kpi-grid">
+                    <div class="card kpi-card">
+                        <div class="kpi-icon"><i class="fa-solid fa-building"></i></div>
                         <div>
-                            <h3 class="section-title" style="margin-bottom: 6px;"><i class="fa-solid fa-circle-info"></i> Perfil del Negocio</h3>
-                            <p id="history-profile-desc" style="font-size: 13px; color: var(--text-secondary); line-height: 1.5;"></p>
+                            <div class="kpi-value">{{ totalCompanies }}</div>
+                            <div class="kpi-label">Empresas Evaluadas</div>
+                            <div class="kpi-sub">Dataset SSOT Auditado v4.0</div>
                         </div>
+                    </div>
+                    <div class="card kpi-card">
+                        <div class="kpi-icon" style="color: var(--primary);"><i class="fa-solid fa-star"></i></div>
                         <div>
-                            <h3 class="section-title" style="margin-bottom: 6px;"><i class="fa-solid fa-list-check"></i> Auditoría de Factores (Línea Base 2026)</h3>
-                            <ul style="list-style: none; font-size: 12px; display: flex; flex-direction: column; gap: 8px; padding-left: 0;" id="history-profile-factors">
-                                <!-- Populated dynamically -->
-                            </ul>
+                            <div class="kpi-value">{{ formatScore(avgCqv) }} / 10</div>
+                            <div class="kpi-label">Promedio CQV Calidad</div>
+                            <div class="kpi-sub">Media Ponderada F1-F8</div>
+                        </div>
+                    </div>
+                    <div class="card kpi-card">
+                        <div class="kpi-icon" style="color: #10b981;"><i class="fa-solid fa-crown"></i></div>
+                        <div>
+                            <div class="kpi-value" style="color: #10b981;">{{ eliteSupremaCount }}</div>
+                            <div class="kpi-label">Élite Suprema</div>
+                            <div class="kpi-sub">Score CQV v4.0 ≥ 9.50</div>
+                        </div>
+                    </div>
+                    <div class="card kpi-card">
+                        <div class="kpi-icon" style="color: #84cc16;"><i class="fa-solid fa-trophy"></i></div>
+                        <div>
+                            <div class="kpi-value" style="color: #84cc16;">{{ eliteCount }}</div>
+                            <div class="kpi-label">Empresas Élite</div>
+                            <div class="kpi-sub">Score CQV v4.0 (9.00 - 9.49)</div>
+                        </div>
+                    </div>
+                    <div class="card kpi-card" v-if="topCompany">
+                        <div class="kpi-icon" style="color: var(--secondary);"><i class="fa-solid fa-crown"></i></div>
+                        <div>
+                            <div class="kpi-value" style="color: var(--secondary);">{{ topCompany.ticker }} ({{ formatScore(topCompany.cqv) }})</div>
+                            <div class="kpi-label">Líder #1 Global</div>
+                            <div class="kpi-sub">{{ topCompany.name }}</div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Analyst Notes Section -->
-                <div class="card" style="margin-top: 14px; border-top: 1px solid var(--card-border); padding-top: 14px;">
-                    <h3 class="section-title" style="margin-bottom: 8px;">
-                        <i class="fa-solid fa-note-sticky"></i> Notas de Análisis y Auditoría CQV
-                    </h3>
-                    <div style="display: flex; flex-direction: column; gap: 8px;">
-                        <p style="font-size: 13px; color: var(--text-secondary); line-height: 1.4; font-weight: 500;" id="notes-description-label">
-                            Selecciona una empresa para gestionar sus notas de auditoría financiera.
-                        </p>
-                        <textarea id="company-analyst-notes" rows="3" style="width: 100%; background: var(--input-bg); border: 1px solid var(--input-border); border-radius: 8px; padding: 10px; color: var(--text-primary); font-family: var(--font-body); font-size: 13px; resize: vertical;" placeholder="Escribe aquí tus observaciones del análisis financiero, justificaciones de variación del score, etc..."></textarea>
-                        <div style="display: flex; justify-content: flex-end; gap: 10px; align-items: center;">
-                            <span id="save-note-status" style="font-size: 12px; color: var(--elite); opacity: 0; transition: var(--transition); font-weight: 500;"><i class="fa-solid fa-circle-check"></i> ¡Nota guardada correctamente!</span>
-                            <button class="nav-btn active" onclick="saveCompanyNotes()" style="box-shadow: none; border-radius: 6px; padding: 6px 14px;">
-                                <i class="fa-solid fa-floppy-disk"></i> Guardar Nota
-                            </button>
+                <h2 style="font-family: var(--font-title); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fa-solid fa-fire" style="color: var(--secondary);"></i> Top 20 Empresas de Mayor Calidad CQV v4.0
+                </h2>
+                <div class="showcase-grid">
+                    <div class="top20-card" v-for="(c, idx) in top20Companies" :key="c.ticker" @click="selectCompanyHistory(c.ticker)">
+                        <div class="top20-rank">#{{ idx + 1 }}</div>
+                        <div class="top20-ticker">{{ c.ticker }}</div>
+                        <div class="top20-name">{{ c.name }}</div>
+                        <div class="top20-scores">
+                            <span class="badge" :class="getTierInfo(c.cqv).class">{{ getTierInfo(c.cqv).name }}</span>
+                            <span class="top20-score-num">{{ formatScore(c.cqv) }}</span>
                         </div>
+                        <div class="metrics-pills">
+                            <div class="pill"><span class="pill-lbl">F1 Rentab.</span><span class="pill-val">{{ formatNum(c.f1, 1) }}</span></div>
+                            <div class="pill"><span class="pill-lbl">F2 Solidez</span><span class="pill-val">{{ formatNum(c.f2, 1) }}</span></div>
+                            <div class="pill"><span class="pill-lbl">F4 Moat</span><span class="pill-val">{{ formatNum(c.f4, 1) }}</span></div>
+                            <div class="pill"><span class="pill-lbl">PER Forward</span><span class="pill-val">{{ formatNum(c.pe_forward, 1, 'x') }}</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="charts-grid">
+                    <div class="card">
+                        <h3 style="font-family: var(--font-title); margin-bottom: 1rem;">Ranking Top 20: Score CQV Calidad v4.0</h3>
+                        <div class="chart-container"><canvas id="chartTop20"></canvas></div>
+                    </div>
+                    <div class="card">
+                        <h3 style="font-family: var(--font-title); margin-bottom: 1rem;">Distribución Sectorial Top 20</h3>
+                        <div class="chart-container"><canvas id="chartSectors"></canvas></div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Tab: Methodology -->
-        <div id="tab-methodology" class="tab-panel">
-            <div class="method-grid">
-                <!-- Formula Details -->
+            <!-- TAB 2: EXPLORADOR DE EMPRESAS -->
+            <div v-show="activeTab === 'explorer'">
                 <div class="card">
-                    <h3 class="section-title">
-                        <i class="fa-solid fa-calculator"></i> Algoritmo CQV Score
-                    </h3>
-                    
-                    <div class="equation-box">
-                        <p style="font-size: 13px; color: var(--text-secondary); text-transform: uppercase;">La Ecuación Matriz del CQV v2.0</p>
-                        <div class="equation-text">
-                            CQV = (F₁ &times; 0.20) + (F₂ &times; 0.10) + (F₃ &times; 0.10) + (F₄ &times; 0.20) + (F₅ &times; 0.10) + (F₆ &times; 0.10) + (F₇ &times; 0.10) + (F₈ &times; 0.10)
+                    <div class="controls-bar">
+                        <div class="search-box">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <input type="text" class="input-field" v-model="searchQuery" placeholder="Buscar por Ticker, Nombre o Sector...">
                         </div>
-                        <p style="font-size: 12px; text-align: left; color: var(--text-secondary); line-height: 1.4;">
-                            *Cada factor es calificado estrictamente de 1.0 a 10.0 con base en estados financieros auditados (10-K/10-Q) y modelos cualitativos estandarizados.
-                        </p>
+                        <select class="select-field" v-model="selectedSector">
+                            <option value="all">Todos los Sectores</option>
+                            <option v-for="sec in sectors" :key="sec" :value="sec">{{ sec }}</option>
+                        </select>
+                        <select class="select-field" v-model="rowsPerPage">
+                            <option :value="25">25 por pág.</option>
+                            <option :value="50">50 por pág.</option>
+                            <option :value="100">100 por pág.</option>
+                            <option value="all">Ver todas</option>
+                        </select>
                     </div>
 
-                    <div class="formula-card">
-                        <div class="formula-item" style="flex-direction: column; align-items: stretch; gap: 8px;">
-                            <div style="display: flex; align-items: center; gap: 14px;">
-                                <div class="factor-num">F₁</div>
-                                <div class="factor-details">
-                                    <h4>Rentabilidad (La Máquina de Caja) <span class="factor-weight">Peso: 20%</span></h4>
-                                </div>
-                            </div>
-                            <div style="font-size: 13px; color: var(--text-secondary); padding-left: 46px; line-height: 1.4; display: flex; flex-direction: column; gap: 6px;">
-                                <p>Mide la eficiencia para extraer valor del capital operativo y neto invertido.</p>
-                                <div style="display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: 4px; background: rgba(148, 163, 184, 0.06); padding: 8px; border-radius: 6px; border: 1px solid var(--card-border);">
-                                    <div><strong>Margen EBITDA:</strong> <code>(EBITDA / Ingresos) &times; 100</code> &rarr; <i>Óptimo &gt; 35%</i>.</div>
-                                    <div><strong>ROIC (Return on Invested Capital):</strong> <code>NOPAT / (Deuda + Patrimonio - Caja)</code> &rarr; <i>Óptimo &gt; 15% - 20%</i>.</div>
-                                    <div><strong>Conversión de Caja:</strong> <code>(Free Cash Flow / Beneficio Neto) &times; 100</code> &rarr; <i>Óptimo &ge; 100%</i>.</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="formula-item" style="flex-direction: column; align-items: stretch; gap: 8px;">
-                            <div style="display: flex; align-items: center; gap: 14px;">
-                                <div class="factor-num">F₂</div>
-                                <div class="factor-details">
-                                    <h4>Solidez Financiera (El Escudo Antifrágil) <span class="factor-weight">Peso: 10%</span></h4>
-                                </div>
-                            </div>
-                            <div style="font-size: 13px; color: var(--text-secondary); padding-left: 46px; line-height: 1.4; display: flex; flex-direction: column; gap: 6px;">
-                                <p>Determina la solvencia y nivel de apalancamiento ante escenarios de contracción de crédito.</p>
-                                <div style="display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: 4px; background: rgba(148, 163, 184, 0.06); padding: 8px; border-radius: 6px; border: 1px solid var(--card-border);">
-                                    <div><strong>Ratio de Apalancamiento:</strong> <code>Deuda Neta / EBITDA</code> &rarr; <i>Óptimo &lt; 1.5x (o Caja Neta)</i>.</div>
-                                    <div><strong>Cobertura de Intereses:</strong> <code>EBITDA / Gastos de Interés</code> &rarr; <i>Óptimo &gt; 8x - 10x</i>.</div>
-                                    <div><strong>Excepción de Recompras:</strong> Si el patrimonio neto es negativo por recompras históricas, se valida la solidez si la cobertura es sólida.</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="formula-item" style="flex-direction: column; align-items: stretch; gap: 8px;">
-                            <div style="display: flex; align-items: center; gap: 14px;">
-                                <div class="factor-num">F₃</div>
-                                <div class="factor-details">
-                                    <h4>Crecimiento Eficiente (Línea Roja de Dilución) <span class="factor-weight">Peso: 10%</span></h4>
-                                </div>
-                            </div>
-                            <div style="font-size: 13px; color: var(--text-secondary); padding-left: 46px; line-height: 1.4; display: flex; flex-direction: column; gap: 6px;">
-                                <p>Mide el aumento de ingresos neto de la dilución al accionista minoritario.</p>
-                                <div style="display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: 4px; background: rgba(148, 163, 184, 0.06); padding: 8px; border-radius: 6px; border: 1px solid var(--card-border);">
-                                    <div><strong>Tasa de Crecimiento:</strong> <code>((Ingresos_t - Ingresos_t-1) / Ingresos_t-1) &times; 100</code> &rarr; <i>Óptimo &gt; 10% - 15%</i>.</div>
-                                    <div><strong>Tasa de Dilución Neta:</strong> <code>(Acciones Emitidas - Acciones Recompradas) / Acciones en Circulación</code>.</div>
-                                    <div><strong>Filtro SBC:</strong> Si la dilución por Stock-Based Compensation supera el 1% neto anual, la nota se capa a 7.5 - 8.5.</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="formula-item" style="flex-direction: column; align-items: stretch; gap: 8px;">
-                            <div style="display: flex; align-items: center; gap: 14px;">
-                                <div class="factor-num">F₄</div>
-                                <div class="factor-details">
-                                    <h4>Moat Actual (Fosos de Peaje) <span class="factor-weight">Peso: 20%</span></h4>
-                                </div>
-                            </div>
-                            <div style="font-size: 13px; color: var(--text-secondary); padding-left: 46px; line-height: 1.4; display: flex; flex-direction: column; gap: 6px;">
-                                <p>Análisis de barreras cualitativas y cuantitativas contra la competencia directa.</p>
-                                <div style="display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: 4px; background: rgba(148, 163, 184, 0.06); padding: 8px; border-radius: 6px; border: 1px solid var(--card-border);">
-                                    <div><strong>Costo de Cambio (Switching Cost):</strong> Retención bruta de ingresos (GDR) &gt; 96% (ej. Intuit QuickBooks).</div>
-                                    <div><strong>Intangible Legal/Regulatorio:</strong> Licencias NRSRO oficiales (S&P, Moody's) o estándares hipotecarios (FICO).</div>
-                                    <div><strong>Efecto de Red (Network Effect):</strong> Incremento de utilidad conforme se suman usuarios (ej. Visa, Mastercard).</div>
-                                </div>
-                            </div>
-                        </div>
- 
-                        <div class="formula-item" style="flex-direction: column; align-items: stretch; gap: 8px;">
-                            <div style="display: flex; align-items: center; gap: 14px;">
-                                <div class="factor-num">F₅</div>
-                                <div class="factor-details">
-                                    <h4>Proyección Futura (Opcionalidad) <span class="factor-weight">Peso: 10%</span></h4>
-                                </div>
-                            </div>
-                            <div style="font-size: 13px; color: var(--text-secondary); padding-left: 46px; line-height: 1.4; display: flex; flex-direction: column; gap: 6px;">
-                                <p>Resiliencia del modelo de negocio e inmunidad disruptiva ante la próxima década.</p>
-                                <div style="display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: 4px; background: rgba(148, 163, 184, 0.06); padding: 8px; border-radius: 6px; border: 1px solid var(--card-border);">
-                                    <div><strong>Inmunidad AI Gen:</strong> Capacidad para evitar la desintermediación por modelos de lenguaje genéricos.</div>
-                                    <div><strong>Cuellos de Botella:</strong> Proveedor crítico en cadenas globales físicas/tecnológicas (ej. ASML, TSMC).</div>
-                                    <div><strong>Opcionalidad:</strong> Capacidad de re-invertir en nuevas líneas de negocio altamente rentables.</div>
-                                </div>
-                            </div>
+                    <div class="table-responsive">
+                        <table class="explorer-table">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th @click="toggleSort('ticker')">Ticker</th>
+                                    <th @click="toggleSort('name')">Nombre</th>
+                                    <th @click="toggleSort('sector')">Sector</th>
+                                    <th @click="toggleSort('quarter')">Trimestre</th>
+                                    <th @click="toggleSort('f1')" title="F1: Economía del Negocio & Rentabilidad (Margen Operativo, ROIC, Conversión FCF)" @mouseenter="showTooltip($event, 'F1: Economía del Negocio & Rentabilidad', 'Margen Operativo ajustado, ROIC (Retorno sobre Capital Invertido) y conversión de beneficios a Flujo de Caja Libre (FCF). Peso: 20%.')" @mouseleave="hideTooltip">F1 <i class="fa-solid fa-circle-info" style="font-size: 0.65rem; opacity: 0.75; color: var(--primary);"></i></th>
+                                    <th @click="toggleSort('f2')" title="F2: Solidez Financiera & Balance (Deuda Neta/EBITDA, Cobertura, Liquidez)" @mouseenter="showTooltip($event, 'F2: Solidez Financiera & Balance', 'Ratios de endeudamiento (Deuda Neta/EBITDA), cobertura de intereses, liquidez corriente y solidez del balance. Peso: 15%.')" @mouseleave="hideTooltip">F2 <i class="fa-solid fa-circle-info" style="font-size: 0.65rem; opacity: 0.75; color: var(--primary);"></i></th>
+                                    <th @click="toggleSort('f3')" title="F3: Crecimiento Durable (Crecimiento orgánico sostenido y CAGR multianual)" @mouseenter="showTooltip($event, 'F3: Crecimiento Durable', 'Crecimiento orgánico sostenido de ingresos y beneficios, predictibilidad y CAGR multianual. Peso: 15%.')" @mouseleave="hideTooltip">F3 <i class="fa-solid fa-circle-info" style="font-size: 0.65rem; opacity: 0.75; color: var(--primary);"></i></th>
+                                    <th @click="toggleSort('f4')" title="F4: Moat Competitivo & Foso (Ventajas estructurales y costes de cambio)" @mouseenter="showTooltip($event, 'F4: Moat Competitivo & Foso', 'Ventajas competitivas estructurales, foso (red, economías de escala, marca) y altos costes de cambio. Peso: 15%.')" @mouseleave="hideTooltip">F4 <i class="fa-solid fa-circle-info" style="font-size: 0.65rem; opacity: 0.75; color: var(--primary);"></i></th>
+                                    <th @click="toggleSort('f5')" title="F5: Asignación de Capital (Recompras de acciones, dividendos y M&A)" @mouseenter="showTooltip($event, 'F5: Asignación de Capital', 'Disciplina de la directiva en recompras de acciones, pago de dividendos y retorno de inversiones M&A/CapEx. Peso: 10%.')" @mouseleave="hideTooltip">F5 <i class="fa-solid fa-circle-info" style="font-size: 0.65rem; opacity: 0.75; color: var(--primary);"></i></th>
+                                    <th @click="toggleSort('f6')" title="F6: Dirección & Ejecución (Calidad directiva y alineación de incentivos)" @mouseenter="showTooltip($event, 'F6: Dirección & Ejecución', 'Calidad del equipo directivo, visión estratégica, historial de ejecución y alineación de incentivos. Peso: 10%.')" @mouseleave="hideTooltip">F6 <i class="fa-solid fa-circle-info" style="font-size: 0.65rem; opacity: 0.75; color: var(--primary);"></i></th>
+                                    <th @click="toggleSort('f7')" title="F7: Opcionalidad Futura (Nuevos mercados, innovación y líneas de crecimiento)" @mouseenter="showTooltip($event, 'F7: Opcionalidad Futura', 'Capacidad de expandirse hacia nuevos mercados adyacentes, innovación tecnológica y nuevas líneas de negocio. Peso: 5%.')" @mouseleave="hideTooltip">F7 <i class="fa-solid fa-circle-info" style="font-size: 0.65rem; opacity: 0.75; color: var(--primary);"></i></th>
+                                    <th @click="toggleSort('f8')" title="F8: Antifragilidad & Recurrencia (Predictibilidad de ingresos y resiliencia macro)" @mouseenter="showTooltip($event, 'F8: Antifragilidad & Recurrencia', 'Porcentaje de ingresos recurrentes (suscripciones), resistencia a recesiones macro y poder de fijación de precios. Peso: 10%.')" @mouseleave="hideTooltip">F8 <i class="fa-solid fa-circle-info" style="font-size: 0.65rem; opacity: 0.75; color: var(--primary);"></i></th>
+                                    <th @click="toggleSort('cqv')" title="CQV Calidad v4.0: Suma ponderada de F1-F8 (0 a 10)" @mouseenter="showTooltip($event, 'CQV Calidad v4.0', 'Puntuación fundamental ponderada de los 8 factores (F1 a F8) en escala de 0.00 a 10.00.')" @mouseleave="hideTooltip">CQV v4.0 <i class="fa-solid fa-circle-info" style="font-size: 0.65rem; opacity: 0.75; color: var(--primary);"></i></th>
+                                    <th @click="toggleSort('pe')" title="PER Trailing: Múltiplo sobre beneficios netos de los últimos 12 meses (TTM)" @mouseenter="showTooltip($event, 'PER Trailing (PER TTM)', 'Cotización actual dividida entre el Beneficio Neto por Acción acumulado de los últimos 12 meses reportados (TTM).')" @mouseleave="hideTooltip">PER Trail <i class="fa-solid fa-circle-info" style="font-size: 0.65rem; opacity: 0.75; color: var(--primary);"></i></th>
+                                    <th @click="toggleSort('pe_forward')" title="PER Forward: Múltiplo sobre estimaciones de beneficio neto NTM (próximos 12 meses)" @mouseenter="showTooltip($event, 'PER Forward (PER NTM)', 'Cotización actual dividida entre las estimaciones del consenso de Beneficio Neto por Acción a 12 meses vista (NTM).')" @mouseleave="hideTooltip">PER Fwd <i class="fa-solid fa-circle-info" style="font-size: 0.65rem; opacity: 0.75; color: var(--primary);"></i></th>
+                                    <th @click="toggleSort('value_score')" title="Value Score: Score ponderado de valoración (0.40 FCF Yield + 0.30 Score PEG + 0.30 Score MoS)" @mouseenter="showTooltip($event, 'Value Score (Capa Valoración)', 'Puntuación de valoración calculada como: 0.40(Score FCF Yield) + 0.30(Score PEG) + 0.30(Score MoS).')" @mouseleave="hideTooltip">Value Score <i class="fa-solid fa-circle-info" style="font-size: 0.65rem; opacity: 0.75; color: var(--primary);"></i></th>
+                                    <th @click="toggleSort('verdict')">Veredicto</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(c, idx) in paginatedCompanies" :key="c.ticker" @click="selectCompanyHistory(c.ticker)">
+                                    <td>{{ (currentPage - 1) * (rowsPerPage === 'all' ? 0 : rowsPerPage) + idx + 1 }}</td>
+                                    <td class="cell-ticker">{{ c.ticker }}</td>
+                                    <td class="cell-name">{{ c.name }}</td>
+                                    <td class="cell-sector">{{ c.sector }}</td>
+                                    <td>{{ c.quarter || 'Q2 2026' }}</td>
+                                    <td>{{ formatNum(c.f1, 1) }}</td>
+                                    <td>{{ formatNum(c.f2, 1) }}</td>
+                                    <td>{{ formatNum(c.f3, 1) }}</td>
+                                    <td>{{ formatNum(c.f4, 1) }}</td>
+                                    <td>{{ formatNum(c.f5, 1) }}</td>
+                                    <td>{{ formatNum(c.f6, 1) }}</td>
+                                    <td>{{ formatNum(c.f7, 1) }}</td>
+                                    <td>{{ formatNum(c.f8, 1) }}</td>
+                                    <td><span class="badge" :class="getTierInfo(c.cqv).class">{{ formatScore(c.cqv) }}</span></td>
+                                    <td>{{ formatNum(c.pe, 1, 'x') }}</td>
+                                    <td>{{ formatNum(c.pe_forward, 1, 'x') }}</td>
+                                    <td><strong style="color: var(--accent);">{{ formatNum(c.value_score, 2) }}</strong></td>
+                                    <td><span class="badge" :class="getVerdictClass(c.verdict)">{{ c.verdict || 'N/D' }}</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3: HISTORIAL TRIMESTRAL & TESIS -->
+            <div v-show="activeTab === 'history'">
+                <div class="card" style="margin-bottom: 1.5rem;">
+                    <div style="display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; justify-content: space-between;">
+                        <div style="display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;">
+                            <label style="font-family: var(--font-title); font-weight: 700;">Empresa:</label>
+                            <select class="select-field" style="min-width: 280px;" v-model="selectedTicker" @change="onHistoryTickerChange">
+                                <option v-for="c in sortedAllCompanies" :key="c.ticker" :value="c.ticker">{{ c.ticker }} - {{ c.name }}</option>
+                            </select>
                         </div>
 
-                        <div class="formula-item v2-only" style="flex-direction: column; align-items: stretch; gap: 8px;">
-                            <div style="display: flex; align-items: center; gap: 14px;">
-                                <div class="factor-num">F₆</div>
-                                <div class="factor-details">
-                                    <h4>Asignación de Capital (Capital Allocation) <span class="factor-weight">Peso: 10%</span></h4>
-                                </div>
-                            </div>
-                            <div style="font-size: 13px; color: var(--text-secondary); padding-left: 46px; line-height: 1.4; display: flex; flex-direction: column; gap: 6px;">
-                                <p>Evalúa el uso inteligente del flujo de caja por parte de la directiva para maximizar retornos.</p>
-                                <div style="display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: 4px; background: rgba(148, 163, 184, 0.06); padding: 8px; border-radius: 6px; border: 1px solid var(--card-border);">
-                                    <div><strong>ROCIC:</strong> Retorno sobre capital incremental, midiendo si los nuevos proyectos mantienen la rentabilidad.</div>
-                                    <div><strong>Recompras Inteligentes:</strong> Adquisición de acciones propias preferiblemente cuando cotizan a descuento.</div>
-                                    <div><strong>M&A Disciplinado:</strong> Fusiones y adquisiciones que crean valor real y sin pagar sobreprecios excesivos.</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="formula-item v2-only" style="flex-direction: column; align-items: stretch; gap: 8px;">
-                            <div style="display: flex; align-items: center; gap: 14px;">
-                                <div class="factor-num">F₇</div>
-                                <div class="factor-details">
-                                    <h4>Rendimiento FCF (FCF Yield / Valoración) <span class="factor-weight">Peso: 10%</span></h4>
-                                </div>
-                            </div>
-                            <div style="font-size: 13px; color: var(--text-secondary); padding-left: 46px; line-height: 1.4; display: flex; flex-direction: column; gap: 6px;">
-                                <p>Integra el precio pagado y la rentabilidad por flujo de caja libre.</p>
-                                <div style="display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: 4px; background: rgba(148, 163, 184, 0.06); padding: 8px; border-radius: 6px; border: 1px solid var(--card-border);">
-                                    <div><strong>Cálculo:</strong> <code>(Free Cash Flow por Acción / Precio de la Acción) &times; 100</code>.</div>
-                                    <div><strong>Métrica:</strong> <i>Óptimo &gt; 6% (Nota 10)</i>. Múltiplos demasiado exigentes (FCF Yield &lt; 2%) reducen drásticamente la nota.</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="formula-item v2-only" style="flex-direction: column; align-items: stretch; gap: 8px;">
-                            <div style="display: flex; align-items: center; gap: 14px;">
-                                <div class="factor-num">F₈</div>
-                                <div class="factor-details">
-                                    <h4>Antifragilidad y Diversificación <span class="factor-weight">Peso: 10%</span></h4>
-                                </div>
-                            </div>
-                            <div style="font-size: 13px; color: var(--text-secondary); padding-left: 46px; line-height: 1.4; display: flex; flex-direction: column; gap: 6px;">
-                                <p>Mide la resiliencia operativa y la diversificación del riesgo de concentración.</p>
-                                <div style="display: grid; grid-template-columns: 1fr; gap: 8px; margin-top: 4px; background: rgba(148, 163, 184, 0.06); padding: 8px; border-radius: 6px; border: 1px solid var(--card-border);">
-                                    <div><strong>Concentración de Clientes:</strong> Penalización automática (máx 6.5) si un cliente supera el 10% de ingresos netos.</div>
-                                    <div><strong>Cadena de Suministro:</strong> Diversificación e inmunidad ante cuellos de botella geográficos de manufactura.</div>
-                                </div>
-                            </div>
+                        <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;" v-if="availableQuartersForTicker.length > 0">
+                            <span style="font-size: 0.8rem; color: var(--text-secondary); font-weight: 600;">Presentaciones Trimestrales (Q):</span>
+                            <span 
+                                class="quarter-pill" 
+                                v-for="qItem in availableQuartersForTicker" 
+                                :key="qItem.label"
+                                :class="{ active: selectedQuarterLabel === qItem.label }"
+                                @click="selectQuarter(qItem.label)"
+                            >
+                                <i class="fa-solid fa-calendar-minus"></i> {{ qItem.label }}
+                            </span>
                         </div>
                     </div>
                 </div>
 
-                <!-- FAQ / Details -->
+                <div class="card" v-if="selectedCompanyObj" style="margin-bottom: 1.5rem;">
+                    <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                        <div>
+                            <h2 style="font-family: var(--font-title); font-size: 1.6rem;">
+                                {{ selectedCompanyObj.name }} <span style="color: var(--text-secondary);">({{ selectedCompanyObj.ticker }})</span>
+                            </h2>
+                            <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 0.25rem;">
+                                Sector: {{ selectedCompanyObj.sector }} | 
+                                <strong style="color: var(--primary);">Trimestre Seleccionado: {{ selectedQuarterLabel }}</strong>
+                            </p>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 1.5rem;">
+                            <div style="text-align: right;">
+                                <div style="font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase;">Score CQV Calidad ({{ selectedQuarterLabel }})</div>
+                                <div style="font-size: 2rem; font-weight: 800; color: var(--elite); font-family: var(--font-title);">{{ formatScore(activeQuarterSnapshot.cqv_v4 || selectedCompanyObj.cqv) }}</div>
+                            </div>
+                            <span class="badge" :class="getTierInfo(activeQuarterSnapshot.cqv_v4 || selectedCompanyObj.cqv).class" style="font-size: 0.9rem; padding: 0.5rem 1rem;">
+                                {{ getTierInfo(activeQuarterSnapshot.cqv_v4 || selectedCompanyObj.cqv).name }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card" style="margin-bottom: 1.5rem;" v-if="quarterlyBreakdownRows.length > 0">
+                    <h3 style="font-family: var(--font-title); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fa-solid fa-list-check" style="color: var(--elite);"></i> Registro Histórico Auditado por Trimestres (Q1, Q2, Q3, Q4)
+                    </h3>
+                    <div class="table-responsive">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Periodo / Trimestre</th>
+                                    <th>F1 Rent.</th>
+                                    <th>F2 Sol.</th>
+                                    <th>F3 Crec.</th>
+                                    <th>F4 Moat</th>
+                                    <th>F5 Asign.</th>
+                                    <th>F6 Direc.</th>
+                                    <th>F7 Opcion.</th>
+                                    <th>F8 Antif.</th>
+                                    <th>CQV v4.0</th>
+                                    <th>PER Trail</th>
+                                    <th>PER Fwd</th>
+                                    <th>Value Score</th>
+                                    <th>Veredicto</th>
+                                    <th>Acción</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr 
+                                    v-for="qRow in quarterlyBreakdownRows" 
+                                    :key="qRow.period"
+                                    :style="{ background: selectedQuarterLabel === qRow.period ? 'var(--item-hover-bg)' : 'transparent' }"
+                                >
+                                    <td><strong style="color: var(--primary); font-family: var(--font-title);">{{ qRow.period }}</strong></td>
+                                    <td>{{ formatNum(qRow.f1, 1) }}</td>
+                                    <td>{{ formatNum(qRow.f2, 1) }}</td>
+                                    <td>{{ formatNum(qRow.f3, 1) }}</td>
+                                    <td>{{ formatNum(qRow.f4, 1) }}</td>
+                                    <td>{{ formatNum(qRow.f5, 1) }}</td>
+                                    <td>{{ formatNum(qRow.f6, 1) }}</td>
+                                    <td>{{ formatNum(qRow.f7, 1) }}</td>
+                                    <td>{{ formatNum(qRow.f8, 1) }}</td>
+                                    <td><span class="badge" :class="getTierInfo(qRow.cqv_v4).class">{{ formatScore(qRow.cqv_v4) }}</span></td>
+                                    <td>{{ formatNum(qRow.pe, 1, 'x') }}</td>
+                                    <td>{{ formatNum(qRow.pe_forward, 1, 'x') }}</td>
+                                    <td><strong style="color: var(--accent);">{{ formatNum(qRow.value_score, 2) }}</strong></td>
+                                    <td><span class="badge" :class="getVerdictClass(qRow.verdict)">{{ qRow.verdict || 'N/D' }}</span></td>
+                                    <td>
+                                        <button class="quarter-pill" style="padding: 0.2rem 0.5rem; font-size: 0.75rem;" @click="selectQuarter(qRow.period)">
+                                            Ver Tesis
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
                 <div class="card">
-                    <h3 class="section-title">
-                        <i class="fa-solid fa-circle-question"></i> Reglas de Negocio del Sistema
+                    <h3 style="font-family: var(--font-title); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                        <i class="fa-solid fa-file-lines" style="color: var(--primary);"></i> Informe de Tesis de Inversión ({{ selectedQuarterLabel }})
                     </h3>
-                    
-                    <div class="faq-card">
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <i class="fa-solid fa-circle-check"></i> ¿Cómo se manejan los tipos de cambio e inflación?
-                            </div>
-                            <div class="faq-answer">
-                                Todos los datos se normalizan a la divisa de cotización del mercado primario. Las tasas de crecimiento se auditan a escala de ingresos brutos, reduciendo la exposición al ruido inflacionario temporal.
-                            </div>
-                        </div>
-                        
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <i class="fa-solid fa-triangle-exclamation"></i> Penalizador SBC (Stock-Based Compensation)
-                            </div>
-                            <div class="faq-answer">
-                                Si una empresa emite acciones y diluye de forma neta al accionista, el factor F3 se limita automáticamente a un rango de 7.5 a 8.5. Las recompras de acciones deben neto-neutralizar o destruir más flotante del emitido para eliminar la penalización.
-                            </div>
-                        </div>
-
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <i class="fa-solid fa-calculator"></i> El Filtro de Valoración: Score PEG
-                            </div>
-                            <div class="faq-answer">
-                                Para empresas Élite (CQV &gt; 9.00), el paso final es el gatillo de compra. Se calcula el Score PEG multiplicando el ratio inverso de valoración por 10:
-                                <div style="font-family: var(--font-title); font-weight: 700; margin: 8px 0; color: var(--accent); text-align: center;">
-                                    Score PEG = ( Crecimiento % / PER Forward ) × 10
-                                </div>
-                                Si el **Score PEG es &gt; 8.0**, se gatilla la alarma de **Anomalía de Descuento** de forma automática.
-                            </div>
-                        </div>
-
-                        <div class="faq-item">
-                            <div class="faq-question">
-                                <i class="fa-solid fa-lightbulb"></i> Caso de Estudio Exitoso: FICO
-                            </div>
-                            <div class="faq-answer">
-                                FICO cuenta con un margen operativo recurrente superior al 40% (Nota 9.9 en F1), deuda neta controlada con cobertura de intereses muy superior a 10x (Nota 8.8 en F2), pricing power extremo y recompra neta pura de acciones (Nota 9.6 en F3), monopolio de facto crediticio (Nota 9.9 en F4), e integración profunda de IA en análisis de riesgo (Nota 9.5 en F5). **Resultado CQV: 9.61** (Calidad Élite).
-                            </div>
-                        </div>
-                    </div>
+                    <div class="thesis-body" id="thesisViewer" v-html="renderedThesis"></div>
                 </div>
             </div>
-        </div>
+        </main>
+        <footer>
+            <p>CQV Financial Platform v4.0 | Modelo de Calidad, Resiliencia y Valoración Multifactorial © 2026</p>
+        </footer>
+    </div>
 
-        <!-- Tab: Simulator -->
-        <div id="tab-simulator" class="tab-panel">
-            <div class="card">
-                <h3 class="section-title">
-                    <i class="fa-solid fa-gears"></i> Simulador Dinámico de Scoring CQV
-                </h3>
-                
-                <div class="simulator-grid">
-                    <!-- Controls -->
-                    <div class="sim-controls">
-                        <!-- Dropdown to select company -->
-                        <div class="slider-group" style="background: rgba(79, 70, 229, 0.05); border: 1px dashed rgba(79, 70, 229, 0.3);">
-                            <div style="display: flex; gap: 10px; width: 100%; flex-wrap: wrap;">
-                                <div style="flex: 2; min-width: 180px;">
-                                    <div class="slider-header" style="margin-bottom: 8px;">
-                                        <span class="slider-label" style="color: var(--accent);"><i class="fa-solid fa-building"></i> Pre-cargar Empresa</span>
-                                    </div>
-                                    <select id="sim-company-select" class="select-filter" style="width: 100%;" onchange="loadCompanyIntoSimulator()">
-                                        <option value="">-- Valores por defecto (Simulación libre) --</option>
-                                    </select>
-                                </div>
-                                <div id="sim-year-wrapper" style="flex: 1; min-width: 90px; display: none;">
-                                    <div class="slider-header" style="margin-bottom: 8px;">
-                                        <span class="slider-label" style="color: var(--accent);"><i class="fa-solid fa-calendar"></i> Año</span>
-                                    </div>
-                                    <select id="sim-year-select" class="select-filter" style="width: 100%;" onchange="changeSimYear()">
-                                        <!-- Populated dynamically -->
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="slider-group">
-                            <div class="slider-header">
-                                <span class="slider-label" style="color: #3b82f6;"><i class="fa-solid fa-wallet"></i> F1: Rentabilidad (20%)</span>
-                                <span class="slider-val" id="val-f1">7.5</span>
-                            </div>
-                            <input type="range" id="slide-f1" min="1.0" max="10.0" step="0.1" value="7.5" oninput="runSimulation()">
-                        </div>
-
-                        <div class="slider-group">
-                            <div class="slider-header">
-                                <span class="slider-label" style="color: #a855f7;"><i class="fa-solid fa-lock"></i> F2: Solidez Financiera (10%)</span>
-                                <span class="slider-val" id="val-f2">8.0</span>
-                            </div>
-                            <input type="range" id="slide-f2" min="1.0" max="10.0" step="0.1" value="8.0" oninput="runSimulation()">
-                        </div>
-
-                        <div class="slider-group">
-                            <div class="slider-header">
-                                <span class="slider-label" style="color: #10b981;"><i class="fa-solid fa-arrow-trend-up"></i> F3: Crecimiento Eficiente (10%)</span>
-                                <span class="slider-val" id="val-f3">7.0</span>
-                            </div>
-                            <input type="range" id="slide-f3" min="1.0" max="10.0" step="0.1" value="7.0" oninput="runSimulation()">
-                        </div>
-
-                        <div class="slider-group">
-                            <div class="slider-header">
-                                <span class="slider-label" style="color: #f59e0b;"><i class="fa-solid fa-shield-halved"></i> F4: Moat Actual (20%)</span>
-                                <span class="slider-val" id="val-f4">8.5</span>
-                            </div>
-                            <input type="range" id="slide-f4" min="1.0" max="10.0" step="0.1" value="8.5" oninput="runSimulation()">
-                        </div>
-
-                        <div class="slider-group">
-                            <div class="slider-header">
-                                <span class="slider-label" style="color: #d946ef;"><i class="fa-solid fa-rocket"></i> F5: Proyección Futura (10%)</span>
-                                <span class="slider-val" id="val-f5">8.0</span>
-                            </div>
-                            <input type="range" id="slide-f5" min="1.0" max="10.0" step="0.1" value="8.0" oninput="runSimulation()">
-                        </div>
-
-                        <div class="slider-group v2-only">
-                            <div class="slider-header">
-                                <span class="slider-label" style="color: #6366f1;"><i class="fa-solid fa-hand-holding-dollar"></i> F6: Asignación Capital (10%)</span>
-                                <span class="slider-val" id="val-f6">8.0</span>
-                            </div>
-                            <input type="range" id="slide-f6" min="1.0" max="10.0" step="0.1" value="8.0" oninput="runSimulation()">
-                        </div>
-
-                        <div class="slider-group v2-only">
-                            <div class="slider-header">
-                                <span class="slider-label" style="color: #06b6d4;"><i class="fa-solid fa-money-bill-trend-up"></i> F7: FCF Yield / Val. (10%)</span>
-                                <span class="slider-val" id="val-f7">7.0</span>
-                            </div>
-                            <input type="range" id="slide-f7" min="1.0" max="10.0" step="0.1" value="7.0" oninput="runSimulation()">
-                        </div>
-
-                        <div class="slider-group v2-only">
-                            <div class="slider-header">
-                                <span class="slider-label" style="color: #ec4899;"><i class="fa-solid fa-triangle-exclamation"></i> F8: Antifragilidad Red (10%)</span>
-                                <span class="slider-val" id="val-f8">8.0</span>
-                            </div>
-                            <input type="range" id="slide-f8" min="1.0" max="10.0" step="0.1" value="8.0" oninput="runSimulation()">
-                        </div>
-                    </div>
-
-                    <!-- Output displaying Result -->
-                    <div class="sim-result-card">
-                        <p style="font-size: 13px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px;">PUNTUACIÓN CQV CONSOLIDADA</p>
-                        <div class="sim-cqv-display" id="sim-cqv-score">7.88</div>
-                        <div class="sim-tier-display">
-                            <span class="tier-badge" id="sim-tier-badge">Tier</span>
-                        </div>
-                        
-                        <!-- Radar Chart Comparison inside simulator -->
-                        <div class="sim-radial-container">
-                            <canvas id="simChart"></canvas>
-                        </div>
-                        <p style="font-size: 12px; color: var(--text-secondary); max-width: 320px; line-height: 1.4;">
-                            Mueve los deslizadores de los macro-factores para evaluar el impacto inmediato de los cambios fundamentales en la valoración estructural de la compañía.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Business and Factors Profile in Simulator -->
-                <div class="card" id="sim-profile-card" style="margin-top: 14px; border-top: 1px solid var(--card-border); padding-top: 14px; display: none;">
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; min-height: 100px;">
-                        <div>
-                            <h3 class="section-title" style="margin-bottom: 6px;"><i class="fa-solid fa-circle-info"></i> Perfil del Negocio (Simulador)</h3>
-                            <p id="sim-profile-desc" style="font-size: 13px; color: var(--text-secondary); line-height: 1.5;"></p>
-                        </div>
-                        <div>
-                            <h3 class="section-title" style="margin-bottom: 6px;"><i class="fa-solid fa-list-check"></i> Justificación de Factores en Línea Base</h3>
-                            <ul style="list-style: none; font-size: 12px; display: flex; flex-direction: column; gap: 8px; padding-left: 0;" id="sim-profile-factors">
-                                <!-- Populated dynamically -->
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <!-- Scripting -->
-    <!-- DATA_INJECTION_START -->
-    <script src="cqv_data.js"></script>
-    <script src="cqv_history.js"></script>
-    <!-- DATA_INJECTION_END -->
     <script>
-        // Check if data loaded correctly, fallback to fetch JSON if needed
-        let companies = [];
+        const { createApp, ref, computed, watch, onMounted, nextTick } = Vue;
 
-        const companyDetailedData = {
-            "MA": {
-                desc: "Mastercard Incorporated es una empresa tecnológica líder global en la industria de medios de pago, conectando a consumidores, instituciones financieras, comercios y gobiernos en más de 210 países.",
-                f1_desc: "Margen EBITDA extraordinario superior al 58% y ROIC colosal. Alta conversión de beneficio contable a flujo de caja libre neto.",
-                f2_desc: "Balance y solvencia excepcionales. Liquidez inmediata superior a 1.2x la deuda a corto plazo y cobertura de intereses sumamente holgada.",
-                f3_desc: "Crecimiento eficiente impulsado por la transición global del dinero físico a transacciones digitales y transfronterizas sin requerir alta inversión de capital.",
-                f4_desc: "Foso competitivo (Moat) casi impenetrable derivado de efectos de red globales bilaterales masivos y un duopolio de red de peaje de facto con Visa.",
-                f5_desc: "Preeminencia en seguridad digital mediante IA aplicada a detección de fraudes y soluciones transfronterizas complejas, asegurando resiliencia frente a disrupción Fintech.",
-                f6_desc: "Asignación de capital ultra-eficiente centrado en recompras masivas de acciones constantes y dividendos crecientes sustentados en flujos predecibles.",
-                f7_desc: "FCF Yield estable de ~3.0%-3.5% que refleja una valoración premium pero justificada por su foso de duopolio.",
-                f8_desc: "Diversificación total con miles de millones de tarjetas y comercios integrados en su red global."
-            },
-            "V": {
-                desc: "Visa Inc. es la red de procesamiento de pagos electrónicos más grande del mundo, operando como un peaje de transacción global para consumidores, comercios e instituciones financieras.",
-                f1_desc: "Margen operativo superior al 64%. Negocio asset-light con requerimientos mínimos de capital e inmensa conversión de efectivo.",
-                f2_desc: "Apalancamiento mínimo con Deuda Neta/EBITDA muy por debajo de 1.0x, complementado por flujos de caja de alta predecibilidad anticíclica.",
-                f3_desc: "Crecimiento constante impulsado por la digitalización del efectivo y la expansión de pagos sin contacto y transferencias P2P.",
-                f4_desc: "Efecto red bilateral insuperable (comercios-consumidores) y foso de escala global regulado, operando de facto como un peaje indestructible.",
-                f5_desc: "Opcionalidad en flujos transfronterizos complejos y APIs de seguridad financiera, inmune a la desintermediación por su escala y confianza institucional.",
-                f6_desc: "Asignación de capital óptima. Recompra neta masiva y constante reducción de acciones en circulación sin deuda significativa.",
-                f7_desc: "FCF Yield de ~3.0%-3.5%, consistente con un negocio de altísima calidad y baja intensidad de capital.",
-                f8_desc: "Excelente diversificación de ingresos entre múltiples emisores y adquirentes a nivel mundial."
-            },
-            "AAPL": {
-                desc: "Apple Inc. es la compañía de hardware de consumo y servicios más grande del mundo, destacando por su ecosistema cerrado que integra iPhone, iPad, Mac y una suite de servicios de alta fidelidad.",
-                f1_desc: "Márgenes brutos estables del 45% y generación de caja operativa colosal. ROIC extraordinario (>50%) debido a su modelo de manufactura optimizado.",
-                f2_desc: "Estructura de deuda conservadora orientada a neutralidad de caja neta, con alta predecibilidad del flujo libre de caja.",
-                f3_desc: "Crecimiento a un dígito alto apoyado por servicios recurrentes que compensan la maduración de las ventas de hardware físico.",
-                f4_desc: "Foso insuperable basado en costos de cambio extremos del ecosistema iOS/macOS y el valor de marca más fuerte del planeta.",
-                f5_desc: "Fuerte opcionalidad en servicios financieros, salud y computación espacial (Vision Pro), con un ecosistema extremadamente resistente a la desintermediación por terceros.",
-                f6_desc: "Asignación de capital agresiva y exitosa enfocada en recompras masivas (más de 90B anuales) y dividendos constantes.",
-                f7_desc: "FCF Yield de ~3.0%-3.5%. Su flujo de caja colosal ofrece protección ante presiones macroeconómicas.",
-                f8_desc: "Dependencia significativa de la manufactura en Asia (Foxconn), aunque cuenta con millones de consumidores diversificados en todo el mundo."
-            },
-            "ASML": {
-                desc: "ASML Holding N.V. es el único fabricante en el mundo de máquinas de litografía ultravioleta extrema (EUV), indispensables para fabricar los semiconductores más avanzados de la actualidad.",
-                f1_desc: "Rentabilidad extraordinaria con retornos de capital muy elevados (ROIC >30%) apoyados en su monopolio tecnológico.",
-                f2_desc: "Balance impecable con caja neta y nulo riesgo crediticio debido a pagos por hitos adelantados de sus clientes.",
-                f3_desc: "Crecimiento sólido impulsado por la demanda estructural de microchips de última generación y centros de datos de IA.",
-                f4_desc: "Monopolio tecnológico e intelectual absoluto en litografía avanzada, con barreras de entrada físicas y científicas multimillonarias.",
-                f5_desc: "Proveedor crítico insustituible para el futuro de la Inteligencia Artificial y la computación de alto rendimiento.",
-                f6_desc: "Retornos elevados sobre capital incremental (ROCIC) gracias a la reinversión constante en I+D crítica y recompras oportunistas.",
-                f7_desc: "FCF Yield bajo (~2.0%) debido a múltiplos de valoración exigentes que reflejan su monopolio tecnológico.",
-                f8_desc: "Riesgo de concentración de clientes medio-alto (TSMC, Intel y Samsung representan la gran mayoría de sus ingresos de EUV)."
-            },
-            "AVGO": {
-                desc: "Broadcom Inc. es un líder tecnológico global que diseña, desarrolla y suministra una amplia gama de soluciones de software de infraestructura y semiconductores analógicos y digitales.",
-                f1_desc: "Margen operativo superior al 45% sostenido. Excelente generación de flujo de caja libre, con conversión superior al 110%.",
-                f2_desc: "Apalancamiento manejable gracias a la rápida reducción de deuda utilizando los flujos de caja operativos tras la compra de VMware.",
-                f3_desc: "Crecimiento impulsado por adquisiciones estratégicas masivas (M&A) e integración de software y silicio personalizado para centros de datos de IA.",
-                f4_desc: "Moat fuerte basado en contratos de software empresarial a largo plazo y patentes críticas de conectividad de silicio para centros de datos.",
-                f5_desc: "Papel fundamental en el despliegue de redes para clústeres de GPU para IA y chips propietarios personalizados (ASICs).",
-                f6_desc: "Estrategia M&A agresiva pero disciplinada dirigida por Hock Tan, logrando desapalancamiento rápido tras adquisiciones (ej. VMware).",
-                f7_desc: "FCF Yield atractivo (~4.0%) sustentado en su capacidad de ordeñar flujos recurrentes de software de infraestructura.",
-                f8_desc: "Dependencia parcial de grandes proveedores de infraestructura cloud e hiperscalers en el área de silicio."
-            },
-            "GOOGL": {
-                desc: "Alphabet Inc. (Google) es el líder indiscutible en búsquedas web, publicidad digital y sistemas operativos móviles (Android). Su modelo de negocio se basa en la monetización de la atención de los usuarios y el procesamiento masivo de datos mediante IA.",
-                f1_desc: "Margen operativo superior al 27% sostenido. Elevado ROIC (>25%), aunque presionado por la intensidad de capital necesaria para la infraestructura de Inteligencia Artificial.",
-                f2_desc: "Balance extremadamente sólido con caja neta de más de 100,000 millones de dólares y un ratio Deuda Neta/EBITDA negativo.",
-                f3_desc: "Crecimiento histórico constante superior al 10%, sin embargo, el factor se ve afectado por la dilución neta derivada de su alta compensación basada en acciones (SBC).",
-                f4_desc: "Foso competitivo masivo derivado de costos de cambio operativos en Android/Google Workspace y un efecto red colosal en su motor de búsqueda y YouTube.",
-                f5_desc: "Posicionamiento líder en la revolución de IA con Gemini, Google Cloud y Waymo, ofreciendo opcionalidad en conducción autónoma y computación en la nube.",
-                f6_desc: "Asignación de capital buena pero diluida levemente por su compensación en acciones (SBC). Inversiones masivas en Capex de IA.",
-                f7_desc: "FCF Yield sólido de ~3.5%-4.0%, representando una de las valoraciones más atractivas en Big Tech por flujo de caja.",
-                f8_desc: "Excelente diversificación de anunciantes a nivel global, con nula dependencia de clientes individuales."
-            },
-            "MSFT": {
-                desc: "Microsoft Corporation es el gigante del software empresarial y servicios en la nube (Azure), con una integración líder en productividad de oficina (Office) e Inteligencia Artificial corporativa.",
-                f1_desc: "Márgenes operativos superiores al 40% y una de las tasas de conversión de beneficio neto a FCF más altas del mercado corporativo.",
-                f2_desc: "Calificación crediticia AAA (de las pocas del mundo), con una cobertura de intereses de triple dígito y una pila de caja formidable.",
-                f3_desc: "Crecimiento del 12%-18% anual impulsado por la migración masiva a la nube inteligente y la suscripción SaaS en todas sus líneas de negocio.",
-                f4_desc: "Monopolio de facto corporativo con la suite Office, Windows, Active Directory y Azure, con costos de cambio casi prohibitivos para empresas.",
-                f5_desc: "Máxima opcionalidad tecnológica derivada de su alianza preferente con OpenAI y la integración de Copilot en todo su ecosistema de software corporativo.",
-                f6_desc: "Retornos sobre capital invertido incremental (ROCIC) estelares mediante adquisiciones estratégicas clave y Capex agresivo en infraestructura de nube.",
-                f7_desc: "FCF Yield de ~2.5%-3.0% debido a múltiplos exigentes impulsados por el optimismo en IA.",
-                f8_desc: "Ecosistema empresarial masivo e hiper-diversificado con millones de clientes corporativos y consumidores globales."
-            },
-            "NVDA": {
-                desc: "NVIDIA Corporation es el diseñador dominante de unidades de procesamiento gráfico (GPU) y la plataforma de software CUDA, sirviendo como la espina dorsal tecnológica de la IA global.",
-                f1_desc: "Margen operativo superior al 55% y ROIC récord de la industria (>80%) gracias a su poder de fijación de precios absoluto ante la demanda de cómputo.",
-                f2_desc: "Posición financiera impecable con caja neta masiva generada en los últimos trimestres y nulo riesgo de liquidez.",
-                f3_desc: "Crecimiento explosivo de ingresos superior al 200% interanual en el sector de centros de datos, limitado únicamente por la capacidad de producción de TSMC.",
-                f4_desc: "Foso tecnológico e intelectual inmenso debido a CUDA, la plataforma de software propietaria que impide la migración fácil a chips competidores.",
-                f5_desc: "Posicionamiento absoluto como el 'peaje de hardware' de la revolución de IA, con opcionalidad en robótica, automóviles autónomos y gemelos digitales.",
-                f6_desc: "Reinversión masiva de capital en Capex y diseño de semiconductores de próxima generación para mantener el liderazgo tecnológico.",
-                f7_desc: "FCF Yield muy bajo (~1.5%-2.0%) debido a una valoración implícita de crecimiento hiper-exigente.",
-                f8_desc: "Alta concentración de ingresos en pocos proveedores en la nube y fabricantes contratados, penalizada por la regla del factor."
-            },
-            "FICO": {
-                desc: "Fair Isaac Corporation es el proveedor estándar del algoritmo de puntuación crediticia utilizado por más del 90% de los prestamistas en los Estados Unidos para evaluar el riesgo de consumo.",
-                f1_desc: "Márgenes EBITDA del 45% y ROIC infinito gracias a un modelo de negocio de licenciamiento puramente digital con mínima base de activos físicos.",
-                f2_desc: "Operación antifrágil. Aunque tiene patrimonio neto negativo debido a recompras agresivas, la cobertura de intereses supera las 10 veces el EBITDA.",
-                f3_desc: "Crecimiento del 10%-15% impulsado por incrementos continuos de precios y mayor adopción de analítica predictiva en banca.",
-                f4_desc: "Monopolio de facto regulado por las agencias hipotecarias federales (Fannie Mae y Freddie Mac), que exigen el uso del Score FICO para finalizar créditos.",
-                f5_desc: "Expansión en FICO Platform, una suite de decisión empresarial en la nube que integra analítica de IA y optimización de flujos de trabajo financieros.",
-                f6_desc: "Asignación de capital ultra-agresiva mediante recompras destructoras de flotante, logrando un crecimiento masivo de BPA a pesar del apalancamiento.",
-                f7_desc: "FCF Yield modesto (~2.5%) debido a la revalorización de múltiplos históricos por su pricing power absoluto.",
-                f8_desc: "Dependencia directa de los tres burós de crédito principales norteamericanos (Equifax, Experian y TransUnion)."
-            }
-        };
+        createApp({
+            setup() {
+                const activeTab = ref('dashboard');
+                const isLightTheme = ref(false);
+                const companies = ref(window.companiesData || []);
+                const historyDb = ref(window.cqvHistoryData || {});
+                const theses = ref(window.investmentTheses || {});
 
-        function getCompanyDetails(ticker, company) {
-            if (companyDetailedData[ticker]) {
-                return companyDetailedData[ticker];
-            }
-            return {
-                desc: `${company.name} (${company.ticker}) es una empresa cotizada en bolsa calificada con un Score CQV global de ${company.cqv.toFixed(2)}, posicionándose en la categoría de ${getTier(company.cqv).name}.`,
-                f1_desc: `Calificación F1 de ${company.f1.toFixed(2)} sobre rentabilidad, márgenes operativos y conversión de flujo de caja libre.`,
-                f2_desc: `Calificación F2 de ${company.f2.toFixed(2)} sobre la solidez de su balance y cobertura de intereses frente a la deuda.`,
-                f3_desc: `Calificación F3 de ${company.f3.toFixed(2)} sobre su tasa de crecimiento orgánico auditada y control de la dilución al accionista por SBC.`,
-                f4_desc: `Calificación F4 de ${company.f4.toFixed(2)} que refleja sus barreras de entrada competitivas (Moat) y retención del cliente.`,
-                f5_desc: `Calificación F5 de ${company.f5.toFixed(2)} de opcionalidad tecnológica ante la revolución digital y resiliencia disruptiva.`,
-                f6_desc: `Calificación F6 de ${company.f6 ? company.f6.toFixed(2) : '8.00'} sobre la asignación de capital operativo y dividendos de la directiva.`,
-                f7_desc: `Calificación F7 de ${company.f7 ? company.f7.toFixed(2) : '8.00'} sobre el FCF Yield y la valoración del flujo de caja de la empresa.`,
-                f8_desc: `Calificación F8 de ${company.f8 ? company.f8.toFixed(2) : '8.00'} sobre la resiliencia operativa y la diversificación de ingresos frente al riesgo de concentración.`
-            };
-        }
+                const searchQuery = ref('');
+                const selectedSector = ref('all');
+                const rowsPerPage = ref(25);
+                const currentPage = ref(1);
 
-        let currentVersion = 'v3'; // 'v1' or 'v2'
+                const sortKey = ref('cqv');
+                const sortAsc = ref(false);
 
-        function setCQVVersion(version) {
-            currentVersion = version;
-            
-            const versionSelect = document.getElementById('version-select');
-            if (versionSelect) {
-                versionSelect.value = version;
-            }
-            
-            companies.forEach(c => {
-                if (version === 'v1') {
-                    c.cqv = (c.cqv_v1 !== undefined && c.cqv_v1 !== null) ? c.cqv_v1 : c.cqv;
-                } else if (version === 'v1_1') {
-                    c.cqv = (c.cqv_v1_1 !== undefined && c.cqv_v1_1 !== null) ? c.cqv_v1_1 : (c.cqv_v1 || c.cqv);
-                } else if (version === 'v2') {
-                    c.cqv = (c.cqv_v2 !== undefined && c.cqv_v2 !== null) ? c.cqv_v2 : c.cqv;
-                } else {
-                    c.cqv = (c.cqv_v3 !== undefined && c.cqv_v3 !== null) ? c.cqv_v3 : (c.cqv_v2 || c.cqv);
-                }
-            });
-            
-            updateVersionUI();
-            
-            // Re-render everything
-            initKPIs();
-            renderTopChart();
-            sortData();
-            renderTable();
-            
-            // Update History/Trends
-            const historySelect = document.getElementById('history-company-select');
-            if (historySelect && historySelect.value) {
-                loadCompanyHistory();
-            }
-            
-            // Update Simulator
-            const simSelect = document.getElementById('sim-company-select');
-            if (simSelect) {
-                if (simSelect.value) {
-                    changeSimYear();
-                } else {
-                    runSimulation();
-                }
-            }
-        }
-        
-        function updateVersionUI() {
-            const is8F = (currentVersion === 'v2' || currentVersion === 'v3');
-            if (is8F) {
-                document.body.classList.remove('cqv-v1-active');
-            } else {
-                document.body.classList.add('cqv-v1-active');
-            }
-        }
+                const selectedTicker = ref(companies.value[0]?.ticker || 'AAPL');
+                const selectedQuarterLabel = ref('2026 Q2');
 
-        function initDashboard() {
-            // Apply saved theme preference
-            const savedTheme = localStorage.getItem('theme');
-            if (savedTheme === 'light') {
-                document.body.classList.add('light-theme');
-                const themeIcon = document.getElementById('theme-toggle-icon');
-                if (themeIcon) {
-                    themeIcon.className = 'fa-solid fa-moon';
-                }
-            }
-            
-            companies = window.companiesData || (typeof companiesData !== 'undefined' ? companiesData : []);
-            if (companies.length === 0) {
-                console.error("No companies data available!");
-                return;
-            }
-            filteredData = [...companies];
-            
-            // Set initial version
-            setCQVVersion('v3');
-            
-            populateSimCompanySelect();
-            populateHistoryCompanySelect();
-        }
+                let chartTop20Inst = null;
+                let chartSectorsInst = null;
 
-        function populateSimCompanySelect() {
-            const selectEl = document.getElementById('sim-company-select');
-            if (!selectEl) return;
-            selectEl.innerHTML = '<option value="">-- Valores por defecto (Simulación libre) --</option>';
-            const sortedCompanies = [...companies].sort((a, b) => a.ticker.localeCompare(b.ticker));
-            sortedCompanies.forEach(c => {
-                const opt = document.createElement('option');
-                opt.value = c.ticker;
-                opt.innerText = `${c.ticker} - ${c.name} (CQV: ${c.cqv.toFixed(2)})`;
-                selectEl.appendChild(opt);
-            });
-        }
+                const toggleTheme = () => {
+                    isLightTheme.value = !isLightTheme.value;
+                    document.body.classList.toggle('light-theme', isLightTheme.value);
+                    nextTick(() => renderAllCharts());
+                };
 
-        function loadCompanyIntoSimulator() {
-            const ticker = document.getElementById('sim-company-select').value;
-            const yearWrapper = document.getElementById('sim-year-wrapper');
-            const yearSelect = document.getElementById('sim-year-select');
-            const simProfileCard = document.getElementById('sim-profile-card');
-            const simProfileDesc = document.getElementById('sim-profile-desc');
-            const simProfileFactors = document.getElementById('sim-profile-factors');
-            
-            if (!ticker) {
-                if (yearWrapper) yearWrapper.style.display = 'none';
-                if (simProfileCard) simProfileCard.style.display = 'none';
-                
-                document.getElementById('slide-f1').value = 7.5;
-                document.getElementById('slide-f2').value = 8.0;
-                document.getElementById('slide-f3').value = 7.0;
-                document.getElementById('slide-f4').value = 8.5;
-                document.getElementById('slide-f5').value = 8.0;
-                document.getElementById('slide-f6').value = 8.0;
-                document.getElementById('slide-f7').value = 7.0;
-                document.getElementById('slide-f8').value = 8.0;
-                window.originalSimData = null;
-                runSimulation();
-            } else {
-                const company = companies.find(c => c.ticker === ticker);
-                if (company) {
-                    if (simProfileCard && simProfileDesc && simProfileFactors) {
-                        const details = getCompanyDetails(ticker, company);
-                        simProfileDesc.innerText = details.desc;
-                        
-                        simProfileFactors.innerHTML = `
-                            <li><strong style="color: #3b82f6;"><i class="fa-solid fa-wallet"></i> F1 (Rentabilidad):</strong> ${details.f1_desc}</li>
-                            <li><strong style="color: #a855f7;"><i class="fa-solid fa-lock"></i> F2 (Solidez):</strong> ${details.f2_desc}</li>
-                            <li><strong style="color: #10b981;"><i class="fa-solid fa-arrow-trend-up"></i> F3 (Crecimiento):</strong> ${details.f3_desc}</li>
-                            <li><strong style="color: #f59e0b;"><i class="fa-solid fa-shield-halved"></i> F4 (Moat):</strong> ${details.f4_desc}</li>
-                            <li><strong style="color: #d946ef;"><i class="fa-solid fa-rocket"></i> F5 (Proyección):</strong> ${details.f5_desc}</li>
-                            <li class="v2-only"><strong style="color: #6366f1;"><i class="fa-solid fa-hand-holding-dollar"></i> F6 (Asignación):</strong> ${details.f6_desc}</li>
-                            <li class="v2-only"><strong style="color: #06b6d4;"><i class="fa-solid fa-money-bill-trend-up"></i> F7 (FCF Yield):</strong> ${details.f7_desc}</li>
-                            <li class="v2-only"><strong style="color: #ec4899;"><i class="fa-solid fa-triangle-exclamation"></i> F8 (Antifragilidad):</strong> ${details.f8_desc}</li>
-                        `;
-                        simProfileCard.style.display = 'block';
-                    }
-                    
-                    if (yearSelect && yearWrapper) {
-                        yearSelect.innerHTML = '';
-                        
-                        const rawHistory = (typeof cqvHistoryData !== 'undefined' && cqvHistoryData[ticker]) ? cqvHistoryData[ticker] : {};
-                        const years = Object.keys(rawHistory).sort();
-                        
-                        if (!years.includes("2026")) {
-                            years.push("2026");
-                        }
-                        
-                        years.sort((a, b) => b - a);
-                        
-                        years.forEach(yr => {
-                            const opt = document.createElement('option');
-                            opt.value = yr;
-                            opt.innerText = yr === "2026" ? "2026 (Act.)" : yr;
-                            yearSelect.appendChild(opt);
+                const selectTab = (tab) => {
+                    activeTab.value = tab;
+                    nextTick(() => renderAllCharts());
+                };
+
+                const selectCompanyHistory = (ticker) => {
+                    selectedTicker.value = ticker;
+                    activeTab.value = 'history';
+                    onHistoryTickerChange();
+                };
+
+                const selectedCompanyObj = computed(() => {
+                    return companies.value.find(c => c.ticker === selectedTicker.value) || companies.value[0];
+                });
+
+                const sortedAllCompanies = computed(() => {
+                    return [...companies.value].sort((a, b) => (a.ticker || '').localeCompare(b.ticker || ''));
+                });
+
+                const quarterlyBreakdownRows = computed(() => {
+                    const ticker = selectedTicker.value;
+                    const rows = [];
+                    const hist = historyDb.value[ticker];
+
+                    if (hist) {
+                        Object.keys(hist).sort().reverse().forEach(yr => {
+                            const yrObj = hist[yr];
+                            ['Q4', 'Q3', 'Q2', 'Q1'].forEach(q => {
+                                if (yrObj[q] && (yrObj[q].cqv_v4 !== undefined || yrObj[q].cqv !== undefined)) {
+                                    rows.push({
+                                        period: `${yr} ${q}`,
+                                        year: yr, quarter: q,
+                                        ...yrObj[q]
+                                    });
+                                }
+                            });
                         });
-                        
-                        yearWrapper.style.display = 'block';
-                        yearSelect.value = "2026";
                     }
-                    changeSimYear();
-                }
-            }
-        }
-
-        function changeSimYear() {
-            const ticker = document.getElementById('sim-company-select').value;
-            const yr = document.getElementById('sim-year-select').value;
-            if (!ticker || !yr) return;
-            
-            const company = companies.find(c => c.ticker === ticker);
-            if (!company) return;
-            
-            let f1 = company.f1;
-            let f2 = company.f2;
-            let f3 = company.f3;
-            
-            const rawHistory = (typeof cqvHistoryData !== 'undefined' && cqvHistoryData[ticker]) ? cqvHistoryData[ticker] : {};
-            if (rawHistory[yr]) {
-                f1 = rawHistory[yr].f1;
-                f2 = rawHistory[yr].f2;
-                f3 = rawHistory[yr].f3;
-            }
-            
-            const f4 = company.f4;
-            const f5 = company.f5;
-            const f6 = company.f6;
-            const f7 = company.f7;
-            const f8 = company.f8;
-            
-            document.getElementById('slide-f1').value = f1;
-            document.getElementById('slide-f2').value = f2;
-            document.getElementById('slide-f3').value = f3;
-            document.getElementById('slide-f4').value = f4;
-            document.getElementById('slide-f5').value = f5;
-            document.getElementById('slide-f6').value = f6;
-            document.getElementById('slide-f7').value = f7;
-            document.getElementById('slide-f8').value = f8;
-            
-            window.originalSimData = {
-                name: company.name,
-                ticker: `${company.ticker} (${yr === "2026" ? "2026 Act." : yr})`,
-                data: [f1, f2, f3, f4, f5, f6, f7, f8]
-            };
-            
-            runSimulation();
-        }
-
-        function populateHistoryCompanySelect() {
-            const selectEl = document.getElementById('history-company-select');
-            if (!selectEl) return;
-            selectEl.innerHTML = '<option value="">-- Seleccionar una empresa --</option>';
-            const sortedCompanies = [...companies].sort((a, b) => a.ticker.localeCompare(b.ticker));
-            const historyObj = window.cqvHistoryData || (typeof cqvHistoryData !== 'undefined' ? cqvHistoryData : null);
-            sortedCompanies.forEach(c => {
-                if (!historyObj || historyObj[c.ticker]) {
-                    const opt = document.createElement('option');
-                    opt.value = c.ticker;
-                    opt.innerText = `${c.ticker} - ${c.name} (CQV: ${c.cqv.toFixed(2)})`;
-                    selectEl.appendChild(opt);
-                }
-            });
-        }
-
-        function getChartGridColor() {
-            return document.body.classList.contains('light-theme') ? 'rgba(15, 23, 42, 0.08)' : 'rgba(255, 255, 255, 0.06)';
-        }
-
-        function getChartLabelColor() {
-            return document.body.classList.contains('light-theme') ? '#475569' : '#94a3b8';
-        }
-
-        function toggleTheme() {
-            document.body.classList.toggle('light-theme');
-            const isLight = document.body.classList.contains('light-theme');
-            localStorage.setItem('theme', isLight ? 'light' : 'dark');
-            
-            const themeIcon = document.getElementById('theme-toggle-icon');
-            if (themeIcon) {
-                themeIcon.className = isLight ? 'fa-solid fa-moon' : 'fa-solid fa-sun';
-            }
-            
-            // Re-render charts
-            renderTopChart();
-            runSimulation();
-            if (typeof loadCompanyHistory === 'function') {
-                loadCompanyHistory();
-            }
-        }
-
-        const presetCompanyNotes = {
-            "GOOGL": "La reducción en el score CQV de Google se debe principalmente a una contracción en el Factor F1 (Rentabilidad y Retornos) por el aumento masivo en inversiones de capital (CapEx) en infraestructura de centros de datos para IA y mayores gastos operativos de desarrollo. Esto afectó el Factor F3 (Crecimiento de utilidades libres de caja), contrarrestando su excelente foso competitivo en búsquedas (Factor F4).",
-            "AAPL": "El score de Apple muestra gran solidez debido a su insuperable Factor F4 (Foso de Ecosistema cautivo) y alta rentabilidad (F1). Los ligeros retrocesos temporales se atribuyen a una desaceleración en el volumen de crecimiento en hardware (Factor F3), balanceado por el aumento de ingresos en servicios.",
-            "NVDA": "La subida vertical de la calificación CQV de Nvidia se debe al incremento exponencial en el Factor F1 (Rentabilidad operativa neta récord de márgenes) y el Factor F3 (Crecimiento de ingresos superiores al 200% interanual), consolidando un monopolio de hardware para Inteligencia Artificial (Factor F4).",
-            "MSFT": "Microsoft mantiene un posicionamiento de élite constante. Su score se ve impulsado por la expansión del margen y ventas en la nube (Azure) y la integración rápida de IA en su catálogo de software (Factor F5 - Proyecciones y Factor F4 - Foso corporativo)."
-        };
-
-        function loadCompanyNotes(ticker) {
-            const textarea = document.getElementById('company-analyst-notes');
-            const descLabel = document.getElementById('notes-description-label');
-            if (!textarea || !descLabel) return;
-            
-            const company = companies.find(c => c.ticker === ticker);
-            if (!company) {
-                textarea.value = '';
-                descLabel.innerText = 'Selecciona una empresa para gestionar sus notas de auditoría financiera.';
-                textarea.disabled = true;
-                return;
-            }
-            
-            textarea.disabled = false;
-            descLabel.innerText = `Notas del Analista para ${company.ticker} (${company.name}):`;
-            
-            // Check localStorage first
-            const saved = localStorage.getItem(`cqv_note_${ticker}`);
-            if (saved !== null) {
-                textarea.value = saved;
-            } else if (presetCompanyNotes[ticker]) {
-                textarea.value = presetCompanyNotes[ticker];
-            } else {
-                // Generate automated notes based on factors
-                const factors = [
-                    { name: 'Rentabilidad (F1)', val: company.f1 },
-                    { name: 'Solidez (F2)', val: company.f2 },
-                    { name: 'Crecimiento (F3)', val: company.f3 },
-                    { name: 'Foso/Moat (F4)', val: company.f4 },
-                    { name: 'Proyección (F5)', val: company.f5 }
-                ];
-                factors.sort((a, b) => b.val - a.val);
-                const highest = factors[0];
-                const lowest = factors[factors.length - 1];
-                
-                textarea.value = `Análisis de Score: Su principal fortaleza radica en ${highest.name} con una puntuación de ${highest.val.toFixed(2)}, mientras que presenta áreas de mejora en ${lowest.name} con ${lowest.val.toFixed(2)}.`;
-            }
-        }
-
-        function saveCompanyNotes() {
-            const selectEl = document.getElementById('history-company-select');
-            const textarea = document.getElementById('company-analyst-notes');
-            const statusSpan = document.getElementById('save-note-status');
-            if (!selectEl || !textarea) return;
-            
-            const ticker = selectEl.value;
-            if (!ticker) return;
-            
-            localStorage.setItem(`cqv_note_${ticker}`, textarea.value);
-            
-            // Show status label
-            if (statusSpan) {
-                statusSpan.style.opacity = '1';
-                setTimeout(() => {
-                    statusSpan.style.opacity = '0';
-                }, 2000);
-            }
-        }
-
-        let historyChart = null;
-        let peChart = null;
-        function loadCompanyHistory() {
-            const ticker = document.getElementById('history-company-select').value;
-            const tbody = document.getElementById('history-details-body');
-            const profileCard = document.getElementById('history-profile-card');
-            const profileDesc = document.getElementById('history-profile-desc');
-            const profileFactors = document.getElementById('history-profile-factors');
-            
-            if (!tbody) return;
-            tbody.innerHTML = '';
-            
-            if (!ticker) {
-                if (historyChart) {
-                    historyChart.destroy();
-                    historyChart = null;
-                }
-                tbody.innerHTML = '<tr><td colspan="10" style="text-align: center; color: var(--text-secondary); padding: 30px 10px;">Selecciona una empresa para ver su evolución.</td></tr>';
-                loadCompanyNotes('');
-                if (profileCard) profileCard.style.display = 'none';
-                return;
-            }
-            
-            const company = companies.find(c => c.ticker === ticker);
-            if (!company) return;
-            
-            if (profileCard && profileDesc && profileFactors) {
-                const details = getCompanyDetails(ticker, company);
-                profileDesc.innerText = details.desc;
-                
-                profileFactors.innerHTML = `
-                    <li><strong style="color: #3b82f6;"><i class="fa-solid fa-wallet"></i> F1 (Rentabilidad):</strong> ${details.f1_desc}</li>
-                    <li><strong style="color: #a855f7;"><i class="fa-solid fa-lock"></i> F2 (Solidez):</strong> ${details.f2_desc}</li>
-                    <li><strong style="color: #10b981;"><i class="fa-solid fa-arrow-trend-up"></i> F3 (Crecimiento):</strong> ${details.f3_desc}</li>
-                    <li><strong style="color: #f59e0b;"><i class="fa-solid fa-shield-halved"></i> F4 (Moat):</strong> ${details.f4_desc}</li>
-                    <li><strong style="color: #d946ef;"><i class="fa-solid fa-rocket"></i> F5 (Proyección):</strong> ${details.f5_desc}</li>
-                    <li class="v2-only"><strong style="color: #6366f1;"><i class="fa-solid fa-hand-holding-dollar"></i> F6 (Asignación):</strong> ${details.f6_desc}</li>
-                    <li class="v2-only"><strong style="color: #06b6d4;"><i class="fa-solid fa-money-bill-trend-up"></i> F7 (FCF Yield):</strong> ${details.f7_desc}</li>
-                    <li class="v2-only"><strong style="color: #ec4899;"><i class="fa-solid fa-triangle-exclamation"></i> F8 (Antifragilidad):</strong> ${details.f8_desc}</li>
-                `;
-                profileCard.style.display = 'block';
-            }
-            
-            const historyObj = window.cqvHistoryData || (typeof cqvHistoryData !== 'undefined' ? cqvHistoryData : {});
-            const rawHistory = historyObj[ticker] || {};
-            const history = { ...rawHistory };
-            
-
-            
-            // Append 2026 calculation if not already present in the history database
-            if (!history["2026"]) {
-                history["2026"] = { f1: company.f1, f2: company.f2, f3: company.f3, cqv: company.cqv, pe: company.pe };
-            }
-            
-            const years = Object.keys(history).sort();
-            const chartLabels = years.map(yr => (yr === "2026" && !rawHistory["2026"]) ? "2026 (Act.)" : yr);
-            
-            const chartData = [];
-            const priceData = [];
-            const peData = [];
-            let peSum = 0;
-            let peCount = 0;
-
-            years.forEach(yr => {
-                const data = history[yr];
-                const isCurrent = yr === "2026" && !rawHistory["2026"];
-                const label = isCurrent ? "2026 (Act.)" : yr;
-                
-                // Recalculate historical CQV using 8 factors (F1-F3 historical, F4-F8 fixed/current)
-                const cqv_v2 = (
-                    data.f1 * 0.20 +
-                    data.f2 * 0.10 +
-                    data.f3 * 0.10 +
-                    company.f4 * 0.20 +
-                    company.f5 * 0.10 +
-                    company.f6 * 0.10 +
-                    company.f7 * 0.10 +
-                    company.f8 * 0.10
-                );
-                chartData.push(cqv_v2);
-
-                // Get historical close price from company.close_history
-                const closePrice = company.close_history ? company.close_history[yr] : null;
-                priceData.push(closePrice);
-
-                const peVal = data.pe || null;
-                peData.push(peVal);
-                if (peVal) {
-                    peSum += peVal;
-                    peCount++;
-                }
-
-                const tr = document.createElement('tr');
-                tr.innerHTML = `
-                    <td><span style="font-weight: bold; color: ${isCurrent ? 'var(--accent)' : 'var(--text-primary)'};">${label}</span></td>
-                    <td class="cqv-value-cell">${data.f1.toFixed(2)}</td>
-                    <td class="cqv-value-cell">${data.f2.toFixed(2)}</td>
-                    <td class="cqv-value-cell">${data.f3.toFixed(2)}</td>
-                    <td class="cqv-value-cell">${company.f4.toFixed(2)}</td>
-                    <td class="cqv-value-cell">${company.f5.toFixed(2)}</td>
-                    <td class="cqv-value-cell">${company.f6.toFixed(2)}</td>
-                    <td class="cqv-value-cell">${company.f7.toFixed(2)}</td>
-                    <td class="cqv-value-cell">${company.f8.toFixed(2)}</td>
-                    <td class="cqv-value-cell">${data.pe ? data.pe.toFixed(1) + 'x' : '-'}</td>
-                    <td class="cqv-value-cell score-high" style="font-weight: bold;">${cqv_v2.toFixed(2)}</td>
-                `;
-                tbody.appendChild(tr);
-            });
-            
-            renderHistoryChart(ticker, chartLabels, chartData);
-
-            const avgPE = peCount > 0 ? (peSum / peCount) : null;
-            const avgPEBadge = document.getElementById('pe-average-badge');
-            if (avgPEBadge) {
-                avgPEBadge.innerText = avgPE ? `PER Prom: ${avgPE.toFixed(1)}x` : 'PER Prom: -';
-            }
-            renderPEValuationChart(ticker, chartLabels, priceData, peData, avgPE);
-            
-            // Load analyst notes
-            loadCompanyNotes(ticker);
-        }
-
-        function renderHistoryChart(ticker, labels, data) {
-            if (typeof Chart === 'undefined') {
-                console.warn("Chart.js is not loaded. Skipping line chart rendering.");
-                return;
-            }
-            const canvasEl = document.getElementById('historyChart');
-            if (!canvasEl) return;
-            const ctx = canvasEl.getContext('2d');
-            
-            if (historyChart) {
-                historyChart.destroy();
-            }
-            
-            const gradient = ctx.createLinearGradient(0, 0, 0, 300);
-            gradient.addColorStop(0, 'rgba(79, 70, 229, 0.4)');
-            gradient.addColorStop(1, 'rgba(79, 70, 229, 0.0)');
-            
-            historyChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: labels,
-                    datasets: [{
-                        label: `Evolución CQV - ${ticker}`,
-                        data: data,
-                        fill: true,
-                        backgroundColor: gradient,
-                        borderColor: '#4f46e5',
-                        borderWidth: 3,
-                        pointBackgroundColor: '#d946ef',
-                        pointBorderColor: '#fff',
-                        pointRadius: 6,
-                        pointHoverRadius: 8,
-                        tension: 0.3
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { display: false },
-                        tooltip: {
-                            backgroundColor: '#0f172a',
-                            borderColor: '#334155',
-                            borderWidth: 1,
-                            padding: 12,
-                            displayColors: false,
-                            callbacks: {
-                                title: function(context) {
-                                    return `Año ${context[0].label}`;
-                                },
-                                label: function(context) {
-                                    return `CQV Score: ${context.parsed.y.toFixed(2)}`;
-                                }
-                            }
-                        }
-                    },
-                    scales: {
-                        x: {
-                            grid: { color: getChartGridColor() },
-                            ticks: { color: getChartLabelColor() }
-                        },
-                        y: {
-                            min: 1,
-                            max: 10,
-                            grid: { color: getChartGridColor() },
-                            ticks: { color: getChartLabelColor(), stepSize: 1 }
-                        }
+                    if (rows.length === 0 && selectedCompanyObj.value) {
+                        const c = selectedCompanyObj.value;
+                        rows.push({
+                            period: c.quarter || '2026 Q2',
+                            year: '2026', quarter: 'Q2',
+                            f1: c.f1, f2: c.f2, f3: c.f3, f4: c.f4, f5: c.f5, f6: c.f6, f7: c.f7, f8: c.f8,
+                            cqv_v4: c.cqv, pe: c.pe, pe_forward: c.pe_forward, value_score: c.value_score,
+                            mos_pct: c.mos_pct, verdict: c.verdict, intrinsic_value: c.intrinsic_value
+                        });
                     }
-                }
-            });
-        }
-
-        function renderPEValuationChart(ticker, labels, prices, pes, avgPE) {
-            if (typeof Chart === 'undefined') {
-                console.warn("Chart.js is not loaded. Skipping PE chart rendering.");
-                return;
-            }
-            const canvasEl = document.getElementById('peValuationChart');
-            if (!canvasEl) return;
-            const ctx = canvasEl.getContext('2d');
-            
-            if (peChart) {
-                peChart.destroy();
-            }
-            
-            const avgLineData = labels.map(() => avgPE);
-            
-            peChart = new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: labels,
-                    datasets: [
-                        {
-                            label: 'Precio de Cierre ($)',
-                            data: prices,
-                            borderColor: '#10b981',
-                            backgroundColor: 'rgba(16, 185, 129, 0.1)',
-                            borderWidth: 2.5,
-                            pointRadius: 4,
-                            tension: 0.2,
-                            yAxisID: 'y-price'
-                        },
-                        {
-                            label: 'Múltiplo PER (x)',
-                            data: pes,
-                            borderColor: '#06b6d4',
-                            backgroundColor: 'rgba(6, 182, 212, 0.1)',
-                            borderWidth: 2.5,
-                            pointRadius: 4,
-                            tension: 0.2,
-                            yAxisID: 'y-pe'
-                        },
-                        {
-                            label: 'PER Promedio',
-                            data: avgLineData,
-                            borderColor: '#ef4444',
-                            borderWidth: 1.5,
-                            borderDash: [5, 5],
-                            pointRadius: 0,
-                            fill: false,
-                            yAxisID: 'y-pe'
-                        }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    interaction: {
-                        mode: 'index',
-                        intersect: false,
-                    },
-                    plugins: {
-                        legend: {
-                            display: true,
-                            position: 'top',
-                            labels: {
-                                color: getChartLabelColor(),
-                                font: { size: 11, family: 'Inter' }
-                            }
-                        },
-                        tooltip: {
-                            backgroundColor: '#0f172a',
-                            borderColor: '#334155',
-                            borderWidth: 1,
-                            padding: 10,
-                            callbacks: {
-                                label: function(context) {
-                                    const val = context.raw;
-                                    if (val === null || val === undefined) return '';
-                                    if (context.datasetIndex === 0) {
-                                        return `Precio: $${val.toFixed(2)}`;
-                                    } else if (context.datasetIndex === 1) {
-                                        return `PER: ${val.toFixed(1)}x`;
-                                    } else {
-                                        return `PER Prom: ${val.toFixed(1)}x`;
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    scales: {
-                        x: {
-                            grid: { color: getChartGridColor() },
-                            ticks: { color: getChartLabelColor(), font: { family: 'Inter' } }
-                        },
-                        'y-price': {
-                            type: 'linear',
-                            position: 'left',
-                            title: {
-                                display: true,
-                                text: 'Precio ($)',
-                                color: '#10b981',
-                                font: { weight: 'bold', family: 'Inter' }
-                            },
-                            grid: { color: getChartGridColor() },
-                            ticks: { color: getChartLabelColor() }
-                        },
-                        'y-pe': {
-                            type: 'linear',
-                            position: 'right',
-                            title: {
-                                display: true,
-                                text: 'PER Ratio (x)',
-                                color: '#06b6d4',
-                                font: { weight: 'bold', family: 'Inter' }
-                            },
-                            grid: { drawOnChartArea: false },
-                            ticks: { color: getChartLabelColor() }
-                        }
-                    }
-                }
-            });
-        }
-
-        // Navigation state
-        function switchTab(tabId) {
-            // Deactivate all panels
-            document.querySelectorAll('.tab-panel').forEach(panel => {
-                panel.classList.remove('active');
-            });
-            // Deactivate all nav buttons
-            document.querySelectorAll('.nav-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            // Activate current
-            document.getElementById('tab-' + tabId).classList.add('active');
-            
-            // Activate current button
-            const clickedBtn = Array.from(document.querySelectorAll('.nav-btn')).find(btn => {
-                const text = btn.innerText.toLowerCase();
-                if (tabId === 'explorer') return text.includes('explorador');
-                if (tabId === 'methodology') return text.includes('metodología');
-                if (tabId === 'history') return text.includes('tendencias') || text.includes('historial');
-                return text.includes(tabId);
-            });
-            if (clickedBtn) clickedBtn.classList.add('active');
-            
-            // Re-render chart if navigating back to dashboard or history
-            if (tabId === 'dashboard') {
-                setTimeout(renderTopChart, 50);
-            } else if (tabId === 'history') {
-                const historySelect = document.getElementById('history-company-select');
-                if (historySelect) {
-                    if (!historySelect.value || historySelect.value === '') {
-                        const sortedComp = [...companies].sort((a, b) => b.cqv - a.cqv);
-                        if (sortedComp.length > 0) {
-                            historySelect.value = sortedComp[0].ticker;
-                        }
-                    }
-                }
-                setTimeout(() => {
-                    loadCompanyHistory();
-                    if (historyChart && typeof historyChart.resize === 'function') historyChart.resize();
-                    if (typeof peChart !== 'undefined' && peChart && typeof peChart.resize === 'function') peChart.resize();
-                }, 50);
-            }
-        }
-
-        // Data Helpers
-        function getTier(score) {
-            if (score >= 9.0) return { name: 'ÉLITE', class: 'tier-elite' };
-            if (score >= 8.5) return { name: 'SÓLIDA', class: 'tier-strong' };
-            if (score >= 8.0) return { name: 'MEDIA', class: 'tier-medium' };
-            return { name: 'ESPECULATIVA', class: 'tier-speculative' };
-        }
-
-        // KPI Calculations
-        function initKPIs() {
-            document.getElementById('kpi-total-companies').innerText = companies.length;
-            
-            const totalCqv = companies.reduce((acc, c) => acc + c.cqv, 0);
-            const avgCqv = totalCqv / companies.length;
-            document.getElementById('kpi-avg-cqv').innerText = avgCqv.toFixed(2);
-            
-            const eliteCount = companies.filter(c => c.cqv >= 9.0).length;
-            document.getElementById('kpi-elite-count').innerText = eliteCount;
-            
-            if (companies.length > 0) {
-                const sorted = [...companies].sort((a, b) => b.cqv - a.cqv);
-                document.getElementById('kpi-top-performer').innerText = `${sorted[0].ticker} (${sorted[0].cqv.toFixed(2)})`;
-            }
-            
-            // Calculate distributions
-            const total = companies.length;
-            const elite = companies.filter(c => c.cqv >= 9.0).length;
-            const strong = companies.filter(c => c.cqv >= 8.5 && c.cqv < 9.0).length;
-            const medium = companies.filter(c => c.cqv >= 8.0 && c.cqv < 8.5).length;
-            const weak = companies.filter(c => c.cqv < 8.0).length;
-            
-            document.getElementById('dist-count-elite').innerText = `${elite} emp. (${(elite/total*100).toFixed(0)}%)`;
-            document.getElementById('dist-count-strong').innerText = `${strong} emp. (${(strong/total*100).toFixed(0)}%)`;
-            document.getElementById('dist-count-medium').innerText = `${medium} emp. (${(medium/total*100).toFixed(0)}%)`;
-            document.getElementById('dist-count-weak').innerText = `${weak} emp. (${(weak/total*100).toFixed(0)}%)`;
-            
-            document.getElementById('dist-bar-elite').style.width = `${(elite/total*100).toFixed(0)}%`;
-            document.getElementById('dist-bar-strong').style.width = `${(strong/total*100).toFixed(0)}%`;
-            document.getElementById('dist-bar-medium').style.width = `${(medium/total*100).toFixed(0)}%`;
-            document.getElementById('dist-bar-weak').style.width = `${(weak/total*100).toFixed(0)}%`;
-        }
-
-        // Render Top 15 Bar Chart
-        let topChart = null;
-        let top20SectorChart = null;
-        let top20PillarsChart = null;
-        let top20ValuationChart = null;
-
-        function renderTopChart() {
-            if (typeof Chart === 'undefined') {
-                console.warn("Chart.js is not loaded. Skipping chart rendering.");
-                return;
-            }
-            
-            if (!companies || companies.length === 0) return;
-            
-            // Sort companies descending by CQV score
-            const top20 = [...companies].sort((a, b) => b.cqv - a.cqv).slice(0, 20);
-            
-            const labelColor = getChartLabelColor();
-            const gridColor = getChartGridColor();
-            
-            // 1. Render Top 20 Bar Chart (Score CQV)
-            const canvasTop = document.getElementById('topChart');
-            if (canvasTop) {
-                const ctx = canvasTop.getContext('2d');
-                const labels = top20.map(c => c.ticker);
-                const data = top20.map(c => c.cqv);
-                
-                if (topChart && typeof topChart.destroy === 'function') topChart.destroy();
-                
-                const gradient = ctx.createLinearGradient(0, 0, 0, 300);
-                gradient.addColorStop(0, '#6366f1');
-                gradient.addColorStop(1, '#a855f7');
-                
-                topChart = new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: labels,
-                        datasets: [{
-                            label: 'Score CQV',
-                            data: data,
-                            backgroundColor: gradient,
-                            borderColor: 'rgba(255,255,255,0.15)',
-                            borderWidth: 1,
-                            borderRadius: 6
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: { display: false },
-                            tooltip: {
-                                backgroundColor: '#0f172a',
-                                titleColor: '#f8fafc',
-                                bodyColor: '#cbd5e1',
-                                borderColor: '#334155',
-                                borderWidth: 1,
-                                padding: 12,
-                                callbacks: {
-                                    title: (items) => `${top20[items[0].dataIndex].ticker} - ${top20[items[0].dataIndex].name}`,
-                                    label: (item) => `Score CQV: ${item.raw.toFixed(2)} / 10`
-                                }
-                            }
-                        },
-                        scales: {
-                            x: {
-                                grid: { display: false },
-                                ticks: { color: labelColor, font: { family: 'Inter', size: 10, weight: '700' } }
-                            },
-                            y: {
-                                min: 7, max: 10,
-                                grid: { color: gridColor },
-                                ticks: { color: labelColor, font: { family: 'Outfit', size: 11 } }
-                            }
-                        }
-                    }
+                    return rows;
                 });
-            }
 
-            // 2. Render Top 20 Sector Distribution Doughnut Chart
-            const canvasSector = document.getElementById('top20SectorChart');
-            if (canvasSector) {
-                const ctx = canvasSector.getContext('2d');
-                const sectorCounts = {};
-                top20.forEach(c => {
-                    const sec = c.sector || 'Otros';
-                    sectorCounts[sec] = (sectorCounts[sec] || 0) + 1;
+                const availableQuartersForTicker = computed(() => {
+                    return quarterlyBreakdownRows.value.map(r => ({ label: r.period }));
                 });
-                
-                const sectorLabels = Object.keys(sectorCounts);
-                const sectorData = Object.values(sectorCounts);
-                const sectorColors = ['#6366f1', '#10b981', '#3b82f6', '#f59e0b', '#ec4899', '#8b5cf6', '#14b8a6'];
-                
-                if (top20SectorChart && typeof top20SectorChart.destroy === 'function') top20SectorChart.destroy();
-                
-                top20SectorChart = new Chart(ctx, {
-                    type: 'doughnut',
-                    data: {
-                        labels: sectorLabels,
-                        datasets: [{
-                            data: sectorData,
-                            backgroundColor: sectorColors.slice(0, sectorLabels.length),
-                            borderWidth: 2,
-                            borderColor: gridColor
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                display: true,
-                                position: 'right',
-                                labels: { color: labelColor, font: { family: 'Inter', size: 10 } }
-                            },
-                            tooltip: {
-                                callbacks: {
-                                    label: (item) => `${item.label}: ${item.raw} empresas (${(item.raw/20*100).toFixed(0)}%)`
-                                }
-                            }
-                        },
-                        cutout: '60%'
-                    }
+
+                const activeQuarterSnapshot = computed(() => {
+                    const found = quarterlyBreakdownRows.value.find(r => r.period === selectedQuarterLabel.value);
+                    if (found) return found;
+                    if (quarterlyBreakdownRows.value.length > 0) return quarterlyBreakdownRows.value[0];
+                    return selectedCompanyObj.value || {};
                 });
-            }
 
-            // 3. Render Top 20 Pillars Comparison Chart (F1 Rentabilidad, F2 Solidez, F4 Moat)
-            const canvasPillars = document.getElementById('top20PillarsChart');
-            if (canvasPillars) {
-                const ctx = canvasPillars.getContext('2d');
-                const labels = top20.map(c => c.ticker);
-                const dataF1 = top20.map(c => c.f1 || 0);
-                const dataF2 = top20.map(c => c.f2 || 0);
-                const dataF4 = top20.map(c => c.f4 || 0);
-                
-                if (top20PillarsChart && typeof top20PillarsChart.destroy === 'function') top20PillarsChart.destroy();
-                
-                top20PillarsChart = new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: labels,
-                        datasets: [
-                            { label: 'F1 Rentabilidad', data: dataF1, backgroundColor: '#3b82f6', borderRadius: 4 },
-                            { label: 'F2 Solidez', data: dataF2, backgroundColor: '#10b981', borderRadius: 4 },
-                            { label: 'F4 Moat', data: dataF4, backgroundColor: '#8b5cf6', borderRadius: 4 }
-                        ]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                display: true,
-                                position: 'top',
-                                labels: { color: labelColor, font: { family: 'Inter', size: 11 } }
-                            }
-                        },
-                        scales: {
-                            x: {
-                                grid: { display: false },
-                                ticks: { color: labelColor, font: { family: 'Inter', size: 10 } }
-                            },
-                            y: {
-                                min: 5, max: 10,
-                                grid: { color: gridColor },
-                                ticks: { color: labelColor, font: { family: 'Outfit', size: 11 } }
-                            }
-                        }
+                const renderedThesis = computed(() => {
+                    const ticker = selectedTicker.value;
+                    if (!ticker) return '';
+                    const qLabel = selectedQuarterLabel.value || '';
+                    const parts = qLabel.split(' ');
+                    let qSuffix = '2026_Q2';
+                    if (parts.length === 2) {
+                        qSuffix = `${parts[0]}_${parts[1]}`;
                     }
+
+                    const key1 = `${ticker}_${qSuffix}`;
+                    const key2 = `${ticker.toLowerCase()}_${qSuffix.toLowerCase()}`;
+                    const key3 = ticker;
+                    const key4 = ticker.toLowerCase();
+
+                    let raw = theses.value[key1] 
+                           || theses.value[key2]
+                           || theses.value[key3]
+                           || theses.value[key4];
+
+                    if (!raw && theses.value) {
+                        const upperTicker = ticker.toUpperCase();
+                        const keys = Object.keys(theses.value);
+                        const matchKey = keys.find(k => k.startsWith(upperTicker + '_') || k === upperTicker);
+                        if (matchKey) raw = theses.value[matchKey];
+                    }
+
+                    if (raw && typeof marked !== 'undefined') {
+                        let parsedHtml = marked.parse(raw);
+                        parsedHtml = parsedHtml
+                            .replace(/<blockquote>\\s*<p>\\[!NOTE\\]/g, '<div class="markdown-alert markdown-alert-note"><p><strong><i class="fa-solid fa-circle-info"></i> NOTA AUDITADA:</strong>')
+                            .replace(/<blockquote>\\s*<p>\\[!WARNING\\]/g, '<div class="markdown-alert markdown-alert-warning"><p><strong><i class="fa-solid fa-triangle-exclamation"></i> ALERTA / LÍNEA ROJA:</strong>')
+                            .replace(/<blockquote>\\s*<p>\\[!TIP\\]/g, '<div class="markdown-alert markdown-alert-tip"><p><strong><i class="fa-solid fa-lightbulb"></i> RECOMENDACIÓN:</strong>')
+                            .replace(/<blockquote>\\s*<p>\\[!IMPORTANT\\]/g, '<div class="markdown-alert markdown-alert-important"><p><strong><i class="fa-solid fa-circle-exclamation"></i> IMPORTANTE:</strong>')
+                            .replace(/<\\/blockquote>/g, '</div>');
+                        return parsedHtml;
+                    } else if (raw) {
+                        return `<div style="white-space: pre-wrap;">${raw}</div>`;
+                    }
+                    return `<div style="text-align: center; padding: 2.5rem 1rem; color: var(--text-secondary);"><i class="fa-solid fa-file-circle-xmark" style="font-size: 2.5rem; margin-bottom: 0.75rem; color: var(--medium); display: block;"></i><strong style="font-size: 1.1rem; color: var(--text-primary); display: block; margin-bottom: 0.5rem;">Informe de Tesis para ${ticker} (${qLabel})</strong>El informe de tesis detallado está disponible cuantitativamente en las métricas de la tabla superior.</div>`;
                 });
-            }
 
-            // 4. Render Top 20 Valuation PER vs Quality Score Chart
-            const canvasValuation = document.getElementById('top20ValuationChart');
-            if (canvasValuation) {
-                const ctx = canvasValuation.getContext('2d');
-                const labels = top20.map(c => c.ticker);
-                const dataCQV = top20.map(c => c.cqv || 0);
-                const dataPER = top20.map(c => c.pe || 0);
-                
-                if (top20ValuationChart && typeof top20ValuationChart.destroy === 'function') top20ValuationChart.destroy();
-                
-                top20ValuationChart = new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: labels,
-                        datasets: [
-                            {
-                                type: 'line',
-                                label: 'Score CQV (Eje Izq)',
-                                data: dataCQV,
-                                borderColor: '#10b981',
-                                backgroundColor: '#10b981',
-                                borderWidth: 3,
-                                pointRadius: 4,
-                                yAxisID: 'y'
-                            },
-                            {
-                                type: 'bar',
-                                label: 'PER Trailing (Eje Der)',
-                                data: dataPER,
-                                backgroundColor: 'rgba(59, 130, 246, 0.65)',
-                                borderRadius: 4,
-                                yAxisID: 'y1'
-                            }
-                        ]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                display: true,
-                                position: 'top',
-                                labels: { color: labelColor, font: { family: 'Inter', size: 11 } }
-                            }
-                        },
-                        scales: {
-                            x: {
-                                grid: { display: false },
-                                ticks: { color: labelColor, font: { family: 'Inter', size: 10 } }
-                            },
-                            y: {
-                                type: 'linear',
-                                display: true,
-                                position: 'left',
-                                min: 6, max: 10,
-                                title: { display: true, text: 'Score CQV', color: labelColor, font: { size: 10 } },
-                                grid: { color: gridColor },
-                                ticks: { color: labelColor }
-                            },
-                            y1: {
-                                type: 'linear',
-                                display: true,
-                                position: 'right',
-                                min: 0,
-                                title: { display: true, text: 'Múltiplo PER', color: labelColor, font: { size: 10 } },
-                                grid: { drawOnChartArea: false },
-                                ticks: { color: labelColor }
-                            }
-                        }
-                    }
-                });
-            }
-
-            // 5. Render Top 20 Cards Showcase Grid
-            renderTop20Grid(top20);
-        }
-
-        function renderTop20Grid(top20) {
-            const gridEl = document.getElementById('top20-grid');
-            if (!gridEl) return;
-            gridEl.innerHTML = '';
-            
-            top20.forEach((c, idx) => {
-                const rank = idx + 1;
-                const card = document.createElement('div');
-                card.className = 'top20-card';
-                card.onclick = () => {
-                    switchTab('history');
-                    const historySelect = document.getElementById('history-company-select');
-                    if (historySelect) {
-                        historySelect.value = c.ticker;
-                        loadCompanyHistory();
-                    }
-                };
-                
-                const tierInfo = getTier(c.cqv);
-                card.innerHTML = `
-                    <div class="top20-rank-badge">#${rank}</div>
-                    <div class="top20-header">
-                        <div>
-                            <div class="top20-ticker">${c.ticker}</div>
-                            <div class="top20-name">${c.name}</div>
-                        </div>
-                    </div>
-                    <div class="top20-score-row">
-                        <div>
-                            <div class="top20-score-label">Score CQV</div>
-                            <span class="badge ${tierInfo.class}" style="font-size: 11px;">${tierInfo.name}</span>
-                        </div>
-                        <div class="top20-score-val">${c.cqv.toFixed(2)}</div>
-                    </div>
-                    <div class="top20-metrics-pills">
-                        <div class="top20-pill">
-                            <div class="top20-pill-lbl">F1 Rentab.</div>
-                            <div class="top20-pill-val">${c.f1.toFixed(1)}</div>
-                        </div>
-                        <div class="top20-pill">
-                            <div class="top20-pill-lbl">F2 Solidez</div>
-                            <div class="top20-pill-val">${c.f2.toFixed(1)}</div>
-                        </div>
-                        <div class="top20-pill">
-                            <div class="top20-pill-lbl">F4 Moat</div>
-                            <div class="top20-pill-val">${c.f4.toFixed(1)}</div>
-                        </div>
-                        <div class="top20-pill">
-                            <div class="top20-pill-lbl">PER Trailing</div>
-                            <div class="top20-pill-val">${c.pe ? c.pe.toFixed(1) + 'x' : '-'}</div>
-                        </div>
-                    </div>
-                `;
-                gridEl.appendChild(card);
-            });
-        }
-
-        // Explorer Table Logic
-        let filteredData = [];
-        let currentSort = { column: 'cqv', direction: 'desc' };
-        let currentPage = 1;
-        let rowsPerPage = 50;
-
-        function renderTable() {
-            const tbody = document.getElementById('companies-table-body');
-            if (!tbody) return;
-            tbody.innerHTML = '';
-            
-            const start = (currentPage - 1) * rowsPerPage;
-            const end = rowsPerPage === 'all' ? filteredData.length : start + parseInt(rowsPerPage);
-            const pageData = rowsPerPage === 'all' ? filteredData : filteredData.slice(start, end);
-            
-            pageData.forEach(c => {
-                const tier = getTier(c.cqv);
-                const tr = document.createElement('tr');
-                tr.style.cursor = 'pointer';
-                tr.onclick = function() {
-                    switchTab('history');
-                    const selectEl = document.getElementById('history-company-select');
-                    if (selectEl) {
-                        selectEl.value = c.ticker;
-                        loadCompanyHistory();
-                    }
-                };
-                
-                // Build sparkline HTML for 5-year CQV history (including current 2026)
-                let sparklineHtml = '';
-                const history = typeof cqvHistoryData !== 'undefined' ? cqvHistoryData[c.ticker] : null;
-                if (history) {
-                    const yrData = { ...history };
-                    if (!yrData["2026"]) {
-                        yrData["2026"] = { f1: c.f1, f2: c.f2, f3: c.f3, cqv: c.cqv };
-                    }
-                    const years = Object.keys(yrData).sort();
-                    let bars = '';
-                    years.forEach(yr => {
-                        let yrCqv = yrData[yr].cqv;
-                        if (currentVersion === 'v2') {
-                            yrCqv = (yrData[yr].f1 * 0.20) + (yrData[yr].f2 * 0.10) + (yrData[yr].f3 * 0.10) + (c.f4 * 0.20) + (c.f5 * 0.10) + (c.f6 * 0.10) + (c.f7 * 0.10) + (c.f8 * 0.10);
-                        }
-                        const heightPct = (yrCqv / 10.0) * 100;
-                        let barColor = 'var(--text-secondary)';
-                        if (yrCqv >= 9.0) barColor = 'var(--elite)';
-                        else if (yrCqv >= 8.5) barColor = 'var(--strong)';
-                        else if (yrCqv >= 8.0) barColor = 'var(--medium)';
-                        else barColor = 'var(--weak)';
-                        
-                        bars += `<div class="sparkline-bar" style="height: ${heightPct}%; background-color: ${barColor};" title="Año ${yr}: ${yrCqv.toFixed(2)}"></div>`;
-                    });
-                    sparklineHtml = `<div class="sparkline-container">${bars}</div>`;
-                } else {
-                    // Fallback to show at least the current 2026 bar if no history database is available
-                    const heightPct = (c.cqv / 10.0) * 100;
-                    let barColor = 'var(--text-secondary)';
-                    if (c.cqv >= 9.0) barColor = 'var(--elite)';
-                    else if (c.cqv >= 8.5) barColor = 'var(--strong)';
-                    else if (c.cqv >= 8.0) barColor = 'var(--medium)';
-                    else barColor = 'var(--weak)';
-                    
-                    sparklineHtml = `
-                        <div class="sparkline-container" style="justify-content: center;">
-                            <div class="sparkline-bar" style="height: ${heightPct}%; background-color: ${barColor};" title="Año 2026 (Act.): ${c.cqv.toFixed(2)}"></div>
-                        </div>
-                    `;
-                }
-
-                // Calculate trend from 2025 to 2026
-                let trendHtml = '';
-                if (history && history["2025"]) {
-                    let score2025 = history["2025"].cqv;
-                    if (currentVersion === 'v2') {
-                        score2025 = (history["2025"].f1 * 0.20) + (history["2025"].f2 * 0.10) + (history["2025"].f3 * 0.10) + (c.f4 * 0.20) + (c.f5 * 0.10) + (c.f6 * 0.10) + (c.f7 * 0.10) + (c.f8 * 0.10);
-                    }
-                    const score2026 = c.cqv;
-                    const diff = score2026 - score2025;
-                    
-                    if (diff > 0.005) {
-                        trendHtml = `<span style="color: var(--elite); font-weight: bold; font-size: 11px; display: inline-flex; align-items: center;" title="Mejorando vs 2025: +${diff.toFixed(2)}"><i class="fa-solid fa-arrow-trend-up"></i></span>`;
-                    } else if (diff < -0.005) {
-                        trendHtml = `<span style="color: var(--weak); font-weight: bold; font-size: 11px; display: inline-flex; align-items: center;" title="Empeorando vs 2025: ${diff.toFixed(2)}"><i class="fa-solid fa-arrow-trend-down"></i></span>`;
-                    } else {
-                        trendHtml = `<span style="color: var(--medium); font-weight: bold; font-size: 11px; display: inline-flex; align-items: center;" title="Sin cambios vs 2025"><i class="fa-solid fa-arrow-right"></i></span>`;
-                    }
-                } else {
-                    trendHtml = `<span style="color: var(--text-secondary); opacity: 0.3; font-size: 11px;" title="Sin datos de 2025">-</span>`;
-                }
-
-                const sparklineCellHtml = `
-                    <div style="display: flex; align-items: center; justify-content: space-between; gap: 8px; width: 68px;">
-                        ${sparklineHtml}
-                        ${trendHtml}
-                    </div>
-                `;
-
-                tr.innerHTML = `
-                    <td><span class="ticker-badge">${c.ticker}</span></td>
-                    <td><span class="company-name">${c.name}</span></td>
-                    <td><span class="q-badge">${c.quarter || 'Q1 2026'}</span></td>
-                    <td class="cqv-value-cell">${c.f1.toFixed(2)}</td>
-                    <td class="cqv-value-cell">${c.f2.toFixed(2)}</td>
-                    <td class="cqv-value-cell">${c.f3.toFixed(2)}</td>
-                    <td class="cqv-value-cell">${c.f4.toFixed(2)}</td>
-                    <td class="cqv-value-cell">${c.f5.toFixed(2)}</td>
-                    <td class="cqv-value-cell">${c.f6.toFixed(2)}</td>
-                    <td class="cqv-value-cell">${c.f7.toFixed(2)}</td>
-                    <td class="cqv-value-cell">${c.f8.toFixed(2)}</td>
-                    <td class="cqv-value-cell">${c.pe ? c.pe.toFixed(1) + 'x' : '-'}</td>
-                    <td class="cqv-value-cell score-high">${c.cqv.toFixed(2)}</td>
-                    <td>${sparklineCellHtml}</td>
-                    <td><span class="tier-badge ${tier.class}">${tier.name}</span></td>
-                `;
-                tbody.appendChild(tr);
-            });
-            
-            // Update labels
-            const totalCount = filteredData.length;
-            const showingStart = totalCount === 0 ? 0 : start + 1;
-            const showingEnd = rowsPerPage === 'all' ? totalCount : Math.min(end, totalCount);
-            document.getElementById('showing-entries-label').innerText = `Mostrando ${showingStart} - ${showingEnd} de ${totalCount} empresas`;
-            
-            renderPagination(totalCount);
-        }
-
-        function renderPagination(totalCount) {
-            const wrapper = document.getElementById('pagination-wrapper');
-            if (!wrapper) return;
-            wrapper.innerHTML = '';
-            
-            if (rowsPerPage === 'all' || totalCount <= rowsPerPage) return;
-            
-            const totalPages = Math.ceil(totalCount / rowsPerPage);
-            
-            // Prev btn
-            const prevBtn = document.createElement('button');
-            prevBtn.className = 'page-btn';
-            prevBtn.innerHTML = '<i class="fa-solid fa-chevron-left"></i>';
-            prevBtn.disabled = currentPage === 1;
-            prevBtn.onclick = () => { currentPage--; renderTable(); };
-            wrapper.appendChild(prevBtn);
-            
-            // Page numbers
-            const maxVisible = 5;
-            let startPage = Math.max(1, currentPage - 2);
-            let endPage = Math.min(totalPages, startPage + maxVisible - 1);
-            if (endPage - startPage < maxVisible - 1) {
-                startPage = Math.max(1, endPage - maxVisible + 1);
-            }
-            
-            for (let i = startPage; i <= endPage; i++) {
-                const pageBtn = document.createElement('button');
-                pageBtn.className = `page-btn ${i === currentPage ? 'active' : ''}`;
-                pageBtn.innerText = i;
-                pageBtn.onclick = () => { currentPage = i; renderTable(); };
-                wrapper.appendChild(pageBtn);
-            }
-            
-            // Next btn
-            const nextBtn = document.createElement('button');
-            nextBtn.className = 'page-btn';
-            nextBtn.innerHTML = '<i class="fa-solid fa-chevron-right"></i>';
-            nextBtn.disabled = currentPage === totalPages;
-            nextBtn.onclick = () => { currentPage++; renderTable(); };
-            wrapper.appendChild(nextBtn);
-        }
-
-        function handleSearch() {
-            const query = document.getElementById('search-bar').value.toLowerCase().trim();
-            applyFilters(query, document.getElementById('tier-filter').value);
-        }
-
-        function handleFilter() {
-            const tier = document.getElementById('tier-filter').value;
-            const query = document.getElementById('search-bar').value.toLowerCase().trim();
-            applyFilters(query, tier);
-        }
-
-        function applyFilters(query, tier) {
-            filteredData = companies.filter(c => {
-                const matchesQuery = c.ticker.toLowerCase().includes(query) || c.name.toLowerCase().includes(query);
-                
-                let matchesTier = true;
-                if (tier === 'elite') matchesTier = c.cqv >= 9.0;
-                else if (tier === 'strong') matchesTier = c.cqv >= 8.5 && c.cqv < 9.0;
-                else if (tier === 'medium') matchesTier = c.cqv >= 8.0 && c.cqv < 8.5;
-                else if (tier === 'speculative') matchesTier = c.cqv < 8.0;
-                
-                return matchesQuery && matchesTier;
-            });
-            
-            currentPage = 1;
-            sortData();
-            renderTable();
-        }
-
-        function handleRowsChange() {
-            rowsPerPage = document.getElementById('rows-filter').value;
-            currentPage = 1;
-            renderTable();
-        }
-
-        function handleSort(column) {
-            if (currentSort.column === column) {
-                currentSort.direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
-            } else {
-                currentSort.column = column;
-                currentSort.direction = 'desc'; // default high to low
-            }
-            
-            // Update UI headers indicators
-            const colIndices = { 'ticker': 0, 'name': 1, 'quarter': 2, 'f1': 3, 'f2': 4, 'f3': 5, 'f4': 6, 'f5': 7, 'f6': 8, 'f7': 9, 'f8': 10, 'pe': 11, 'cqv': 12 };
-            
-            for (let key in colIndices) {
-                const icon = document.getElementById('sort-icon-' + key);
-                if (icon) {
-                    if (key === column) {
-                        icon.innerHTML = currentSort.direction === 'asc' ? '<i class="fa-solid fa-sort-up"></i>' : '<i class="fa-solid fa-sort-down"></i>';
-                    } else {
-                        icon.innerHTML = '<i class="fa-solid fa-sort"></i>';
-                    }
-                }
-            }
-            
-            sortData();
-            renderTable();
-        }
-
-        function sortData() {
-            const col = currentSort.column;
-            const dir = currentSort.direction === 'asc' ? 1 : -1;
-            
-            filteredData.sort((a, b) => {
-                let valA = a[col];
-                let valB = b[col];
-                
-                if (typeof valA === 'string') {
-                    return valA.localeCompare(valB) * dir;
-                }
-                return (valA - valB) * dir;
-            });
-        }
-
-        // Simulator Logic
-        let simChart = null;
-        function runSimulation() {
-            const f1 = parseFloat(document.getElementById('slide-f1').value);
-            const f2 = parseFloat(document.getElementById('slide-f2').value);
-            const f3 = parseFloat(document.getElementById('slide-f3').value);
-            const f4 = parseFloat(document.getElementById('slide-f4').value);
-            const f5 = parseFloat(document.getElementById('slide-f5').value);
-            const f6 = parseFloat(document.getElementById('slide-f6').value);
-            const f7 = parseFloat(document.getElementById('slide-f7').value);
-            const f8 = parseFloat(document.getElementById('slide-f8').value);
-            
-            // Update labels
-            document.getElementById('val-f1').innerText = f1.toFixed(1);
-            document.getElementById('val-f2').innerText = f2.toFixed(1);
-            document.getElementById('val-f3').innerText = f3.toFixed(1);
-            document.getElementById('val-f4').innerText = f4.toFixed(1);
-            document.getElementById('val-f5').innerText = f5.toFixed(1);
-            document.getElementById('val-f6').innerText = f6.toFixed(1);
-            document.getElementById('val-f7').innerText = f7.toFixed(1);
-            document.getElementById('val-f8').innerText = f8.toFixed(1);
-            
-            // Equation weights based on version
-            let cqv = 0;
-            if (currentVersion === 'v1') {
-                cqv = (f1 * 0.25) + (f2 * 0.15) + (f3 * 0.15) + (f4 * 0.25) + (f5 * 0.20);
-            } else {
-                cqv = (f1 * 0.20) + (f2 * 0.10) + (f3 * 0.10) + (f4 * 0.20) + (f5 * 0.10) + (f6 * 0.10) + (f7 * 0.10) + (f8 * 0.10);
-            }
-            
-            // Update display
-            const display = document.getElementById('sim-cqv-score');
-            display.innerText = cqv.toFixed(2);
-            
-            const tier = getTier(cqv);
-            const tierBadge = document.getElementById('sim-tier-badge');
-            tierBadge.innerText = tier.name;
-            tierBadge.className = `tier-badge ${tier.class}`;
-            
-            const simData = [f1, f2, f3, f4, f5, f6, f7, f8];
-            updateSimChart(simData, window.originalSimData);
-        }
-
-        function updateSimChart(data, originalBenchmark) {
-            if (typeof Chart === 'undefined') {
-                console.warn("Chart.js is not loaded. Skipping radar chart update.");
-                return;
-            }
-            const canvasEl = document.getElementById('simChart');
-            if (!canvasEl) return;
-            const ctx = canvasEl.getContext('2d');
-            
-            if (simChart) {
-                simChart.destroy();
-            }
-            
-            const simDataFinal = (currentVersion === 'v2') ? data : data.slice(0, 5);
-            const datasets = [{
-                label: 'Valores Simulados',
-                data: simDataFinal,
-                backgroundColor: 'rgba(6, 182, 212, 0.2)',
-                borderColor: '#06b6d4',
-                borderWidth: 2,
-                pointBackgroundColor: '#06b6d4',
-                pointBorderColor: '#fff',
-                pointHoverBackgroundColor: '#fff',
-                pointHoverBorderColor: '#06b6d4'
-            }];
-            
-            if (originalBenchmark) {
-                const benchmarkDataFinal = (currentVersion === 'v2') ? originalBenchmark.data : originalBenchmark.data.slice(0, 5);
-                datasets.push({
-                    label: `Original: ${originalBenchmark.ticker}`,
-                    data: benchmarkDataFinal,
-                    backgroundColor: 'rgba(217, 70, 239, 0.05)',
-                    borderColor: 'rgba(217, 70, 239, 0.6)',
-                    borderWidth: 1.5,
-                    borderDash: [5, 5],
-                    pointBackgroundColor: '#d946ef',
-                    pointBorderColor: '#fff',
-                    pointHoverBackgroundColor: '#fff',
-                    pointHoverBorderColor: '#d946ef'
-                });
-            }
-            
-            simChart = new Chart(ctx, {
-                type: 'radar',
-                data: {
-                    labels: (currentVersion === 'v2') ?
-                        ['F1 (Rent.)', 'F2 (Solidez)', 'F3 (Crec.)', 'F4 (Moat)', 'F5 (Proj.)', 'F6 (Asig.)', 'F7 (Yield)', 'F8 (Antif.)'] :
-                        ['F1 (Rent.)', 'F2 (Solidez)', 'F3 (Crec.)', 'F4 (Moat)', 'F5 (Proj.)'],
-                    datasets: datasets
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: originalBenchmark ? true : false,
-                            labels: {
-                                color: '#94a3b8',
-                                font: { family: 'Inter', size: 10 }
-                            }
-                        }
-                    },
-                    scales: {
-                        r: {
-                            min: 0,
-                            max: 10,
-                            ticks: {
-                                stepSize: 2,
-                                display: false
-                            },
-                            grid: {
-                                color: getChartGridColor()
-                            },
-                            angleLines: {
-                                color: getChartGridColor()
-                            },
-                            pointLabels: {
-                                color: getChartLabelColor(),
-                                font: {
-                                    family: 'Outfit',
-                                    size: 11
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-        }
-
-        // Initialize script logic
-        function bootDashboard() {
-            const hasGlobalData = (typeof window.companiesData !== 'undefined' && window.companiesData.length > 0) || (typeof companiesData !== 'undefined' && companiesData.length > 0);
-            if (hasGlobalData) {
-                initDashboard();
-            } else {
-                fetch('cqv_data.json')
-                    .then(r => r.json())
-                    .then(data => {
-                        window.companiesData = data;
-                        initDashboard();
-                    })
-                    .catch(err => {
-                        console.warn("CORS block or missing file during fetch, falling back to window.companiesData if available", err);
-                        if (window.companiesData) {
-                            initDashboard();
+                watch(renderedThesis, () => {
+                    nextTick(() => {
+                        if (typeof mermaid !== 'undefined') {
+                            try {
+                                mermaid.init(undefined, document.querySelectorAll('.thesis-body .language-mermaid'));
+                            } catch (e) {}
                         }
                     });
-            }
-        }
+                });
 
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', bootDashboard);
-        } else {
-            bootDashboard();
-        }
-        window.addEventListener('load', bootDashboard);
+                const tooltipTitle = ref('');
+                const tooltipText = ref('');
+                const tooltipX = ref(0);
+                const tooltipY = ref(0);
+
+                const showTooltip = (evt, title, text) => {
+                    tooltipTitle.value = title;
+                    tooltipText.value = text;
+                    const rect = evt.currentTarget.getBoundingClientRect();
+                    tooltipX.value = rect.left + rect.width / 2;
+                    tooltipY.value = rect.top - 8;
+                };
+
+                const hideTooltip = () => {
+                    tooltipText.value = '';
+                };
+
+                const selectQuarter = (qLabel) => {
+                    selectedQuarterLabel.value = qLabel;
+                };
+
+                const onHistoryTickerChange = () => {
+                    nextTick(() => {
+                        if (availableQuartersForTicker.value.length > 0) {
+                            selectedQuarterLabel.value = availableQuartersForTicker.value[0].label;
+                        } else {
+                            selectedQuarterLabel.value = '2026 Q2';
+                        }
+                    });
+                };
+
+                const formatScore = (val) => val ? Number(val).toFixed(2) : 'N/D';
+                const formatNum = (val, dec = 2, suffix = '') => (val !== null && val !== undefined && !isNaN(val)) ? (Number(val).toFixed(dec) + suffix) : 'N/D';
+                
+                const getTierInfo = (score) => {
+                    const s = Number(score) || 0;
+                    if (s >= 9.50) return { name: 'ÉLITE SUPREMA', class: 'tier-elite-suprema' };
+                    if (s >= 9.00) return { name: 'ÉLITE', class: 'tier-elite' };
+                    if (s >= 8.00) return { name: 'ALTA CALIDAD', class: 'tier-strong' };
+                    if (s >= 7.00) return { name: 'CALIDAD MEDIA', class: 'tier-medium' };
+                    return { name: 'EN OBSERVACIÓN', class: 'tier-speculative' };
+                };
+
+                const getVerdictClass = (v) => {
+                    if (!v) return 'tier-medium';
+                    if (v.includes('Comprar')) return 'verdict-buy';
+                    if (v.includes('Acumular') || v.includes('Mantener')) return 'verdict-hold';
+                    return 'verdict-avoid';
+                };
+
+                const totalCompanies = computed(() => companies.value.length);
+                const avgCqv = computed(() => {
+                    if (companies.value.length === 0) return 0;
+                    const sum = companies.value.reduce((acc, c) => acc + (Number(c.cqv) || 0), 0);
+                    return sum / companies.value.length;
+                });
+                const eliteSupremaCount = computed(() => companies.value.filter(c => (Number(c.cqv) || 0) >= 9.50).length);
+                const eliteCount = computed(() => companies.value.filter(c => (Number(c.cqv) || 0) >= 9.00 && (Number(c.cqv) || 0) < 9.50).length);
+                const topCompany = computed(() => companies.value[0] || null);
+                const top20Companies = computed(() => companies.value.slice(0, 20));
+
+                const sectors = computed(() => {
+                    const set = new Set(companies.value.map(c => c.sector).filter(Boolean));
+                    return Array.from(set).sort();
+                });
+
+                const filteredCompanies = computed(() => {
+                    return companies.value.filter(c => {
+                        const q = searchQuery.value.toLowerCase();
+                        const matchesSearch = !q || (c.ticker && c.ticker.toLowerCase().includes(q)) || (c.name && c.name.toLowerCase().includes(q)) || (c.sector && c.sector.toLowerCase().includes(q));
+                        const matchesSector = selectedSector.value === 'all' || c.sector === selectedSector.value;
+                        return matchesSearch && matchesSector;
+                    });
+                });
+
+                const sortedCompanies = computed(() => {
+                    return [...filteredCompanies.value].sort((a, b) => {
+                        let va = a[sortKey.value];
+                        let vb = b[sortKey.value];
+                        if (typeof va === 'string') va = va.toLowerCase();
+                        if (typeof vb === 'string') vb = vb.toLowerCase();
+                        if (va < vb) return sortAsc.value ? -1 : 1;
+                        if (va > vb) return sortAsc.value ? 1 : -1;
+                        return 0;
+                    });
+                });
+
+                const totalPages = computed(() => {
+                    if (rowsPerPage.value === 'all') return 1;
+                    return Math.ceil(sortedCompanies.value.length / rowsPerPage.value) || 1;
+                });
+
+                const paginatedCompanies = computed(() => {
+                    if (rowsPerPage.value === 'all') return sortedCompanies.value;
+                    const start = (currentPage.value - 1) * rowsPerPage.value;
+                    return sortedCompanies.value.slice(start, start + rowsPerPage.value);
+                });
+
+                const toggleSort = (key) => {
+                    if (sortKey.value === key) {
+                        sortAsc.value = !sortAsc.value;
+                    } else {
+                        sortKey.value = key;
+                        sortAsc.value = false;
+                    }
+                };
+
+                const getLabelColor = () => isLightTheme.value ? '#475569' : '#94a3b8';
+                const getGridColor = () => isLightTheme.value ? 'rgba(0,0,0,0.06)' : 'rgba(255,255,255,0.08)';
+
+                const renderDashboardCharts = () => {
+                    if (typeof Chart === 'undefined') return;
+                    const top20 = top20Companies.value;
+                    const labelColor = getLabelColor();
+                    const gridColor = getGridColor();
+
+                    const canvas1 = document.getElementById('chartTop20');
+                    if (canvas1) {
+                        if (chartTop20Inst) chartTop20Inst.destroy();
+                        chartTop20Inst = new Chart(canvas1.getContext('2d'), {
+                            type: 'bar',
+                            data: {
+                                labels: top20.map(c => c.ticker),
+                                datasets: [{
+                                    label: 'Score CQV v4.0',
+                                    data: top20.map(c => c.cqv),
+                                    backgroundColor: '#6366f1',
+                                    borderRadius: 6
+                                }]
+                            },
+                            options: {
+                                responsive: true, maintainAspectRatio: false,
+                                plugins: { legend: { labels: { color: labelColor } } },
+                                scales: {
+                                    x: { grid: { display: false }, ticks: { color: labelColor } },
+                                    y: { min: 8, max: 10, grid: { color: gridColor }, ticks: { color: labelColor } }
+                                }
+                            }
+                        });
+                    }
+
+                    const canvas2 = document.getElementById('chartSectors');
+                    if (canvas2) {
+                        const secCounts = {};
+                        top20.forEach(c => { secCounts[c.sector] = (secCounts[c.sector] || 0) + 1; });
+                        if (chartSectorsInst) chartSectorsInst.destroy();
+                        chartSectorsInst = new Chart(canvas2.getContext('2d'), {
+                            type: 'doughnut',
+                            data: {
+                                labels: Object.keys(secCounts),
+                                datasets: [{
+                                    data: Object.values(secCounts),
+                                    backgroundColor: ['#6366f1', '#10b981', '#3b82f6', '#f59e0b', '#ec4899', '#8b5cf6', '#14b8a6']
+                                }]
+                            },
+                            options: {
+                                responsive: true, maintainAspectRatio: false,
+                                plugins: { legend: { position: 'right', labels: { color: labelColor } } },
+                                cutout: '60%'
+                            }
+                        });
+                    }
+                };
+
+                const renderAllCharts = () => {
+                    if (activeTab.value === 'dashboard') renderDashboardCharts();
+                };
+
+                onMounted(() => {
+                    onHistoryTickerChange();
+                    nextTick(() => {
+                        renderDashboardCharts();
+                    });
+                });
+
+                return {
+                    activeTab, isLightTheme, toggleTheme, selectTab, selectCompanyHistory,
+                    companies, sortedAllCompanies, totalCompanies, avgCqv, eliteSupremaCount, eliteCount, topCompany, top20Companies,
+                    searchQuery, selectedSector, sectors, rowsPerPage, currentPage, totalPages,
+                    filteredCompanies, sortedCompanies, paginatedCompanies, toggleSort,
+                    selectedTicker, selectedCompanyObj, selectedQuarterLabel, availableQuartersForTicker,
+                    quarterlyBreakdownRows, activeQuarterSnapshot, renderedThesis, selectQuarter, onHistoryTickerChange,
+                    formatScore, formatNum, getTierInfo, getVerdictClass,
+                    tooltipTitle, tooltipText, tooltipX, tooltipY, showTooltip, hideTooltip
+                };
+            }
+        }).mount('#app');
     </script>
 </body>
 </html>
 """
-        
-        # Inject data directly into dashboard.html for 100% offline file:/// compatibility
-        try:
-            import os
-            history_db = {}
-            if os.path.exists('cqv_history.json'):
-                with open('cqv_history.json', 'r', encoding='utf-8') as hf:
-                    history_db = json.load(hf)
-            
-            theses_dict = {}
-            inform_dir = 'inform'
-            if os.path.exists(inform_dir):
-                for fn in os.listdir(inform_dir):
-                    if fn.endswith('.md'):
-                        ticker = fn.split('_')[0].upper()
-                        with open(os.path.join(inform_dir, fn), 'r', encoding='utf-8') as tf:
-                            theses_dict[ticker] = tf.read()
 
-            import re
-            injection_block = f"""<!-- DATA_INJECTION_START -->
-    <script>
-        window.companiesData = {json_data};
-        window.cqvHistoryData = {json.dumps(history_db, indent=2)};
-        window.investmentTheses = {json.dumps(theses_dict, indent=2)};
-    </script>
-    <!-- DATA_INJECTION_END -->"""
+        html_out = html_template.replace('__INJECTED_COMPANIES__', json_data)
+        html_out = html_out.replace('__INJECTED_HISTORY__', json.dumps(history_db, indent=2))
+        html_out = html_out.replace('__INJECTED_THESES__', json.dumps(theses_dict, indent=2))
 
-            pattern = r'<!-- DATA_INJECTION_START -->[\s\S]*?<!-- DATA_INJECTION_END -->'
-            if re.search(pattern, html_content):
-                html_content = re.sub(pattern, lambda m: injection_block, html_content, count=1)
-        except Exception as ie:
-            print("Error injecting data into html_content:", ie)
-            
-        # Write clean html
         with open('dashboard.html', 'w', encoding='utf-8') as f:
-            f.write(html_content)
-        print("Successfully created clean dashboard.html with injected data")
-        
+            f.write(html_out)
+        print("Successfully generated clean Vue 3 powered dashboard.html!")
+
     except Exception as e:
-        print("Error:", e)
+        print("Error during dashboard generation:", e)
 
 if __name__ == "__main__":
     main()

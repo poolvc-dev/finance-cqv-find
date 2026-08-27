@@ -12,6 +12,8 @@ Actualiza completamente bajo la metodología CQV v4.0 las siguientes acciones:
 Periodo de análisis: [Q? YEAR]
 Fecha de valoración: [DD/MM/AAAA]
 
+La fecha de valoración debe ser la fecha en la que se publicó el informe financiero o earnings release analizado (`publication_date`). El precio utilizado debe ser obligatoriamente el cierre de mercado de esa misma fecha (`price_date`) y del mismo mercado de cotización. Está estrictamente prohibido usar el precio o la capitalización actual para un informe histórico.
+
 Aplica estrictamente:
 - flujo_actualizacion_datos.md
 - metodo_v4.0.md
@@ -37,10 +39,28 @@ REGLAS OBLIGATORIAS
    - Datos de mercado fechados.
 7. No reutilices datos de otro trimestre sin indicarlo expresamente.
 
+8. Fecha histórica y precio de mercado (Anclaje Temporal Obligatorio):
+   - Todo informe debe elaborarse congelado en la fecha exacta en la que se publicó el informe financiero o earnings release analizado (`publication_date`).
+   - `valuation_date` debe coincidir exactamente con `publication_date`, salvo que se documente una razón operativa verificable.
+   - `price_date` debe coincidir con `valuation_date` y el precio utilizado debe corresponder obligatoriamente al cierre del mercado de cotización de esa misma fecha.
+   - Si la publicación ocurre fuera del horario de mercado, utiliza el cierre de esa misma sesión; si no hubo sesión, utiliza la sesión anterior y documenta el motivo.
+   - Registra `price_source`, `price_market`, `price_currency` y la hora de publicación cuando esté disponible.
+   - Para informes históricos está prohibido utilizar un precio actual o una capitalización actual.
+   - Si no puede verificarse el precio de la fecha correcta, `price`, capitalización, PER, PEG, Value Score, MoS y veredicto dependientes deben quedar como `N/D`.
+
+9. Historial trimestral obligatorio:
+   - `cqv_history.json` debe organizarse como `TICKER → AÑO → Q1/Q2/Q3/Q4`.
+   - La actualización solo puede añadir o corregir el trimestre solicitado.
+   - Debe conservar los trimestres anteriores y no sobrescribirlos.
+   - No conviertas una puntuación anual en una puntuación trimestral.
+   - Si un trimestre no tiene evidencia verificable, registra `null`/`N/D`.
+   - Los registros anuales antiguos, si existen, deben conservarse bajo `annual_legacy` y no utilizarse como sustituto de Q1-Q4.
+   - Cada snapshot trimestral debe incluir, cuando existan, periodo, fecha de cierre, fecha de publicación, fecha de valoración, fecha del precio, F1-F8, CQV, valoración, fuentes y confianza.
+
 DATOS A RECOPILAR PARA CADA ACCIÓN
 
 A. Identificación:
-- Ticker, nombre, sector, periodo y fecha de valoración.
+- Ticker, nombre, sector, periodo, fecha de cierre fiscal, fecha de publicación, fecha de valoración y fecha del precio.
 
 B. Resultados financieros:
 - Ingresos.
@@ -92,10 +112,25 @@ F1×0.20 + F2×0.15 + F3×0.15 + F4×0.15
 
 Aplica los filtros rígidos de F2 y F4.
 
+Clasificación CQV:
+- ÉLITE: CQV ≥ 9.00 y F2, F4, F8 ≥ 7.0.
+- ALTA CALIDAD: CQV 8.00–8.99.
+- EN OBSERVACIÓN: CQV 7.00–7.99.
+- VULNERABLE: CQV < 7.00 o activación de filtro severo.
+
+Reglas de veredicto (CQV × Margen de Seguridad):
+- CQV ≥ 9.00 y MoS ≥ 25%: Comprar / Candidato Prioritario.
+- CQV ≥ 9.00 y MoS ≥ 18%: Comprar / Acumular.
+- CQV ≥ 8.00 y MoS ≥ 10%: Acumular / Compra Escalonada.
+- CQV ≥ 8.00 y MoS < 10%: Mantener.
+- CQV < 8.00 o filtro rígido activo: Evitar / En Observación.
+- Si CQV, MoS o un dato crítico es N/D, no se emite recomendación afirmativa.
+
 E. Valoración:
 
 Recopila:
-- Precio actual.
+- Precio de cierre de la fecha de valoración, no precio actual salvo que el informe sea del periodo actual.
+- Fuente, mercado, moneda y fecha exacta del precio.
 - PER Trailing.
 - PER Forward.
 - Crecimiento EPS NTM en puntos porcentuales.
@@ -112,7 +147,7 @@ Calcula:
 
 Owner Earnings = OCF - Maintenance CapEx
 
-FCF Yield = Owner Earnings / Capitalización bursátil
+FCF Yield = (Owner Earnings / Capitalización bursátil) × 100
 
 PEG Bruto =
 (Crecimiento EPS NTM en puntos porcentuales / PER Forward) × 10
@@ -166,7 +201,7 @@ Actualiza solo después de validar todos los datos:
    - cqv_history.js
    - dashboard.html
 
-5. Genera o actualiza el informe siguiendo la convención estricta:
+5. Genera o actualiza el informe trimestral a partir de `inform/template.md`, cumpliendo al 100% su formato en 10 secciones y siguiendo la convención estricta:
    - inform/[ACCION]_[AÑO]_[Q?].md  (Donde [ACCION] es el ticker en MAYÚSCULAS ej. MSFT, LIN, FICO, CPRT; [AÑO] es el año ej. 2026; y [Q?] es Q1, Q2, Q3 o Q4). Nunca usar el nombre de la empresa ni minúsculas.
 
 El dashboard debe actualizarse exclusivamente desde el SSOT, incluyendo:
@@ -176,37 +211,37 @@ El dashboard debe actualizarse exclusivamente desde el SSOT, incluyendo:
 
 No edites manualmente el dashboard.
 
-INFORME FINAL
+La **Sección 8 del informe Markdown** y la sección **Tendencias del Dashboard** deben consumir exclusivamente `cqv_history.json` / `window.cqvHistoryData` y presentar el desglose trimestral de cuatro observaciones por año (`Q1`, `Q2`, `Q3`, `Q4`) cuando existan. Tanto la tabla de la Sección 8 como el gráfico Mermaid del informe deben desglosar cada trimestre disponible por año (ejemplo: `2025 Q1`, `2025 Q2`, `2025 Q3`, `2025 Q4`, `2026 Q1`, `2026 Q2`). Los trimestres sin snapshot deben aparecer como `N/D` o valor nulo, sin interpolación ni reutilización de datos anuales.
 
-Cada informe debe incluir:
-- Resumen ejecutivo.
-- Bloque de salida 9.6.
-- CQV Calidad.
-- Value Score.
-- PEG Bruto.
-- Score PEG normalizado.
-- Owner Earnings.
-- FCF Yield.
-- Desglose completo del Value Score.
-- Justificación de F1-F8.
-- Resultados financieros.
-- DCF por escenarios.
-- Sensibilidad.
-- Registro de riesgos.
-- Fuentes.
-- Nivel de confianza.
-- Veredicto final.
-- **Sección 10: Auditoría, Observaciones y Recomendaciones del Analista / Auditor** (Matriz de Coherencia SSOT vs Informe, Registro de Correcciones/Campos N/D, y Recomendaciones Operativas para la gestión de cartera).
+El informe final de cada acción debe estructurarse obligatoriamente en 10 secciones a partir de `inform/template.md`:
+- Sección 1: Resumen Ejecutivo y Bloque de Salida 9.6.
+- Sección 2: Métricas y Puntuaciones CQV Calidad v4.0 (con tabla 2.1 de F1-F8).
+- Sección 3: Análisis del Estado de Resultados, Competidores y ROIC.
+  - Subsección 3.4: Evolución Multianual y Diagnóstico de Tendencia (¿Mejorando o Empeorando?) — Comparativa cuantitativa/cualitativa de los últimos 3 ejercicios fiscales (FY-2, FY-1, FY) auditando Ingresos, Márgenes, EPS, FCF y ROIC con diagnósticos explícitos (🟢 Mejorando / 🟡 Estabilidad / 🔴 Empeorando).
+  - Subsección 3.5: Guidance y Perspectivas Futuras para Próximos Periodos — Proyecciones oficiales de la compañía para el próximo ejercicio fiscal (FY+1), desglosadas por segmentos operativos y especificando cambios contables o estratégicos previstos.
+- Sección 4: Tesis de Inversión (Escenarios Toro vs. Oso y Líneas Rojas).
+- Sección 5: Owner Earnings, FCF Yield y Desglose del Value Score.
+- Sección 6: Valuación por Descuento de Flujos de Caja (DCF) y Sensibilidad.
+- Sección 7: Registro Auditado de Riesgos y Preguntas Frecuentes (FAQs).
+- Sección 8: Evolución Histórica de Puntuaciones CQV y Valuación por Trimestres (Serie 2020 - Presente con gráfico Mermaid).
+- Sección 9: Conclusión y Veredicto Final Operativo v4.0.
+- Sección 10: Auditoría, Observaciones y Recomendaciones del Analista / Auditor (Matriz 10.1 de coherencia SSOT vs Informe, Registro 10.2 de correcciones/campos N/D, y Recomendaciones Operativas 10.3 para gestión de cartera).
 
 PASO ADICIONAL DE AUDITORÍA Y AUTO-CORRECCIÓN
 
-1. Ejecuta una auditoría matemática y de integridad entre SSOT JSON e Informe Markdown.
-2. Si detectas cualquier discrepancia numérica, corrige de inmediato el informe Markdown y re-ejecuta `python sync_cqv.py --ticker [TICKER]` para garantizar coherencia del 100%.
-3. Documenta en la Sección 10 las observaciones, correcciones realizadas, campos `N/D` y recomendaciones para la toma de decisiones.
+1. **Regla Rígida de Redondeo:** El CQV Calidad v4.0 debe redondearse estrictamente a dos decimales a partir del cálculo de la suma ponderada de F1-F8 (`round(sum(F_i * w_i), 2)`). `sync_cqv.py` es la autoridad matemática SSOT. Está prohibido incluir en el informe Markdown un valor distinto al generado por el script.
+2. Ejecuta una auditoría matemática y de integridad entre SSOT JSON e Informe Markdown.
+3. Si detectas cualquier discrepancia numérica o de redondeo, corrige de inmediato el informe Markdown y re-ejecuta `python sync_cqv.py --ticker [TICKER]` para garantizar coherencia del 100%.
+4. Documenta en la Sección 10 las observaciones, correcciones realizadas, campos `N/D` y recomendaciones para la toma de decisiones.
 
 VALIDACIÓN FINAL
 
 Comprueba que coincidan exactamente entre JSON, JS, dashboard e informe:
+
+- Fecha de publicación, fecha de valoración y fecha del precio.
+- Mercado, moneda y fuente del precio histórico.
+- Estructura trimestral `TICKER → AÑO → Q1/Q2/Q3/Q4`.
+- Conservación de los trimestres históricos no actualizados.
 
 - F1-F8.
 - CQV.

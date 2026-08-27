@@ -1,5 +1,9 @@
 # Informe de Tesis de Inversión: [Nombre de la Empresa] ([TICKER]) - [Trimestre/Año ej. Q2 2026]
 **Fecha de Emisión:** [Fecha del Informe]  
+**Fecha de Publicación del Resultado Analizado:** [DD/MM/AAAA]  
+**Fecha de Valoración:** [DD/MM/AAAA]  
+**Fecha del Precio Utilizado:** [DD/MM/AAAA]  
+**Mercado / Fuente del Precio:** [NASDAQ/NYSE/etc. — Fuente]  
 **Clasificación CQV Calidad v4.0:** [ÉLITE / ALTA CALIDAD / EN OBSERVACIÓN / VULNERABLE]  
 **Veredicto Final Operativo v4.0:** [COMPRAR / ACUMULAR / MANTENER / EVITAR]. [Resumen en una frase del veredicto principal].
 
@@ -29,7 +33,7 @@
 | **PEG Bruto (EPS Growth / PER Fwd * 10):** | **[X.XX]** | Sin acotación | Métrica auditada bruta de crecimiento vs múltiplo. |
 | **Score PEG Normalizado:** | **[X.XX] / 10** | 0.00 – 10.00 | Métrica acotada para cálculo de Value Score. |
 | **Valor Intrínseco Estimado (DCF Base):** | **$[X.XX]** | En USD ($) | Estimación por Descuento de Flujos y Múltiplos. |
-| **Precio Actual de Mercado:** | **$[X.XX]** | En USD ($) | Cotización de la accion. |
+| **Precio de Mercado a la Fecha de Valoración:** | **$[X.XX]** | En USD ($) | Cierre de la misma fecha que la publicación/valoración; nunca precio actual para informes históricos. |
 | **Margen de Seguridad (%):** | **[X.X]%** | En porcentaje (%) | Diferencial entre Valor Intrínseco y Precio Mercado. |
 | **Nivel de Confianza de Datos:** | **[Alta / Media]** | Alta / Media / Baja | Calidad y completitud auditada de estados financieros. |
 | **Veredicto Final Operativo v4.0:** | **[Veredicto]** | 4 Categorías | **[Comprar / Acumular / Mantener / Evitar]** |
@@ -107,6 +111,40 @@ graph TD
 | **ROA / ROI (Return on Assets %)** | **[X]%** | **[X]%** | **[X]%** | **[X]%** | **[X]%** | **[X]%** | **[X]%** | **[Diagnóstico de eficiencia en activos]** |
 | **ROE (Return on Equity %)** | **[X]%** | **[X]%** | **[X]%** | **[X]%** | **[X]%** | **[X]%** | **[X]%** | **[Diagnóstico de retorno sobre capital]** |
 | **ROIC (Return on Invested Capital %)** | **[X]%** | **[X]%** | **[X]%** | **[X]%** | **[X]%** | **[X]%** | **[X]%** | **[Diagnóstico de retorno sobre inversión]** |
+
+---
+
+### 3.4. Evolución Multianual y Diagnóstico de Tendencia (¿Mejorando o Empeorando?)
+
+| Eje Financiero / Operativo | Hace 2 Años (FY-2) | Año Anterior (FY-1) | Año Actual (FY) | Diagnóstico de Tendencia (¿Mejorando o Empeorando?) |
+| :--- | :---: | :---: | :---: | :--- |
+| **Ingresos Consolidados ($B)** | $[X]B | $[X]B | $[X]B | **[🟢 Mejorando / 🟡 Estabilidad / 🔴 Empeorando]** — [Explicación del ritmo de aceleración/desaceleración]. |
+| **Crecimiento Orgánico (%)** | [X]% | [X]% | [X]% | **[🟢 Mejorando / 🟡 Estabilidad / 🔴 Empeorando]** — [Tendencia en volumen y fijación de precios]. |
+| **Margen Operativo (%)** | [X]% | [X]% | [X]% | **[🟢 Mejorando / 🟡 Estabilidad / 🔴 Empeorando]** — [Evolución de apalancamiento operativo y costos]. |
+| **Beneficio por Acción (EPS Non-GAAP)** | $[X] | $[X] | $[X] | **[🟢 Mejorando / 🟡 Estabilidad / 🔴 Empeorando]** — [Ritmo de expansión del beneficio por acción]. |
+| **Flujo de Caja Operativo (OCF $B)** | $[X]B | $[X]B | $[X]B | **[🟢 Mejorando / 🟡 Estabilidad / 🔴 Empeorando]** — [Conversión de caja libre y calidad de ganancias]. |
+
+> [!NOTE]
+> **Síntesis del Desempeño Multianual:**  
+> [Conclusión resumida sobre si la compañía presenta una trayectoria de mejora continua, meseta estructural o deterioro operativo en comparación con ejercicios pasados].
+
+---
+
+### 3.5. Guidance y Perspectivas Futuras para Próximos Periodos
+
+#### 🎯 Proyecciones Oficiales de la Compañía (Próximo Ejercicio Fiscal / Próximos Periodos)
+* **Ingresos Consolidados Estimados:** **$[X.XX]B – $[X.XX]B** (Crecimiento proyectado del **+[X]% al +[X]%**).
+* **Beneficio por Acción Ajustado (EPS Non-GAAP):** **$[X.XX] – $[X.XX]** (Expansión del **+[X]%**).
+* **Flujo de Caja Libre / Margen Operativo:** Target de margen del **[X]%**.
+
+#### 📊 Guidance Desglosado por Segmentos Clave
+1. **[Segmento Principal 1]:** Crecimiento proyectado del **+[X]% al +[X]%**.
+2. **[Segmento Principal 2]:** Crecimiento proyectado del **+[X]% al +[X]%**.
+3. **[Segmento 3 / Nuevas Iniciativas]:** Crecimiento proyectado del **+[X]%**.
+
+#### 🛠️ Cambios Estratégicos, Contables o de Reporte para Próximos Ejercicios
+- **[Cambio 1]:** [Detalle de cambios en la estructura de segmentos, reconocimientos de ingresos o ajustes contables].
+- **[Cambio 2]:** [Planes de asignación de capital, recompras o aceleración de inversiones en IA / I+D].
 
 ---
 
@@ -220,28 +258,36 @@ $$\text{Value Score} = 0.40([Score FCF]) + 0.30([Score PEG]) + 0.30([Score MoS])
 
 ---
 
-## 8. Evolución Histórica de Puntuaciones CQV y Valuación (Serie 2020 - 2026 TTM)
+## 8. Evolución Histórica de Puntuaciones CQV y Valuación por Trimestres (Serie 2020 - Presente)
 
-| Año / Periodo | PER Trailing | PER Forward | CQV v1.0 | CQV v1.1 | CQV v2.0 | CQV v3.0 | CQV v4.0 | Clasificación CQV v4.0 |
+### 8.1. Desglose Trimestral Histórico (Q1, Q2, Q3, Q4 por Año)
+
+> [!NOTE]
+> La tabla debe incorporar todos los trimestres disponibles (`Q1`, `Q2`, `Q3`, `Q4`) para cada año registrado en `cqv_history.json`. Para periodos históricos antiguos donde no exista desglose trimestral directo, se conservará la fila de referencia anual (`annual_legacy`).
+
+| Año / Trimestre | PER Trailing | PER Forward | CQV v1.0 | CQV v1.1 | CQV v2.0 | CQV v3.0 | CQV v4.0 | Clasificación CQV v4.0 |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **2020** | [X.X]x | [X.X]x | [X.XX] | [X.XX] | [X.XX] | [X.XX] | **[X.XX]** | [Clasificación] |
-| **2021** | [X.X]x | [X.X]x | [X.XX] | [X.XX] | [X.XX] | [X.XX] | **[X.XX]** | [Clasificación] |
-| **2022** | [X.X]x | [X.X]x | [X.XX] | [X.XX] | [X.XX] | [X.XX] | **[X.XX]** | [Clasificación] |
-| **2023** | [X.X]x | [X.X]x | [X.XX] | [X.XX] | [X.XX] | [X.XX] | **[X.XX]** | [Clasificación] |
-| **2024** | [X.X]x | [X.X]x | [X.XX] | [X.XX] | [X.XX] | [X.XX] | **[X.XX]** | [Clasificación] |
-| **2025** | [X.X]x | [X.X]x | [X.XX] | [X.XX] | [X.XX] | [X.XX] | **[X.XX]** | [Clasificación] |
-| **[Periodo Actual TTM]** | **[X.X]x** | **[X.X]x** | **[X.XX]** | **[X.XX]** | **[X.XX]** | **[X.XX]** | **[X.XX]** | **[Clasificación]** |
+| **2024 Q1** | [X.X]x | [X.X]x | [X.XX] | [X.XX] | [X.XX] | [X.XX] | **[X.XX]** | [Clasificación] |
+| **2024 Q2** | [X.X]x | [X.X]x | [X.XX] | [X.XX] | [X.XX] | [X.XX] | **[X.XX]** | [Clasificación] |
+| **2024 Q3** | [X.X]x | [X.X]x | [X.XX] | [X.XX] | [X.XX] | [X.XX] | **[X.XX]** | [Clasificación] |
+| **2024 Q4** | [X.X]x | [X.X]x | [X.XX] | [X.XX] | [X.XX] | [X.XX] | **[X.XX]** | [Clasificación] |
+| **2025 Q1** | [X.X]x | [X.X]x | [X.XX] | [X.XX] | [X.XX] | [X.XX] | **[X.XX]** | [Clasificación] |
+| **2025 Q2** | [X.X]x | [X.X]x | [X.XX] | [X.XX] | [X.XX] | [X.XX] | **[X.XX]** | [Clasificación] |
+| **2025 Q3** | [X.X]x | [X.X]x | [X.XX] | [X.XX] | [X.XX] | [X.XX] | **[X.XX]** | [Clasificación] |
+| **2025 Q4** | [X.X]x | [X.X]x | [X.XX] | [X.XX] | [X.XX] | [X.XX] | **[X.XX]** | [Clasificación] |
+| **2026 Q1** | [X.X]x | [X.X]x | [X.XX] | [X.XX] | [X.XX] | [X.XX] | **[X.XX]** | [Clasificación] |
+| **2026 Q2** | **[X.X]x** | **[X.X]x** | **[X.XX]** | **[X.XX]** | **[X.XX]** | **[X.XX]** | **[X.XX]** | **[Clasificación]** |
 
 ---
 
-### 8.2. Gráfico de Evolución Histórica del Score CQV v4.0 (2020 - Presente)
+### 8.2. Gráfico de Evolución Histórica Trimestral del Score CQV v4.0 (2020 - Presente)
 
 ```mermaid
 linechart
-    title Trayectoria Histórica del Score CQV v4.0 ([TICKER])
-    x-axis [2020, 2021, 2022, 2023, 2024, 2025, Periodo Actual]
+    title Trayectoria Histórica Trimestral del Score CQV v4.0 ([TICKER])
+    x-axis [Q1-25, Q2-25, Q3-25, Q4-25, Q1-26, Q2-26]
     y-axis "Score CQV (0-10)" 7.0 --> 10.0
-    line "CQV v4.0 Score" [[Score-2020], [Score-2021], [Score-2022], [Score-2023], [Score-2024], [Score-2025], [Score Actual]]
+    line "CQV v4.0 Score" [[Score-Q1-25], [Score-Q2-25], [Score-Q3-25], [Score-Q4-25], [Score-Q1-26], [Score-Q2-26]]
 ```
 
 ---
@@ -278,4 +324,3 @@ linechart
 1. **Estrategia de Ejecución en Cartera:** [Recomendación sobre si ejecutar la compra en un solo tramo o mediante compras escalonadas según el margen de seguridad actual].
 2. **Nivel de Activación de Stop-Loss Fundamental:** [Criterio de re-evaluación si la nota CQV cae por debajo de 8.00 o si cambia el equipo directivo/moat].
 3. **Frecuencia de Revisión Recomendada:** [Próxima fecha de revisión trimestral post-resultados SEC 10-Q/10-K].
-

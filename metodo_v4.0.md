@@ -13,6 +13,7 @@ CQV v4.0 es la versión operativa actual del sistema Quality and Structural Valu
 4. Los umbrales deben interpretarse según el sector y el modelo de negocio.
 5. El CQV no genera una orden automática de compra: genera una señal que debe combinarse con valoración, riesgo y margen de seguridad.
 6. La valoración no debe ocultar una calidad empresarial deficiente.
+7. **Anclaje Temporal Obligatorio:** Todo informe y valoración debe realizarse congelado a la fecha exacta en la que se publicó el informe financiero o earnings release analizado (`publication_date`), utilizando exclusivamente el precio de cierre de mercado correspondiente a esa fecha (`price_date` / `valuation_date`). Está estrictamente prohibido utilizar el precio o capitalización actual para un informe histórico.
 
 La escala de todos los factores es de 1.0 a 10.0. Los pesos suman 100%.
 
@@ -186,19 +187,21 @@ La v4.0 no activa compras automáticas. La señal final debe incluir CQV de cali
 
 ---
 
-## 7. Requisitos mínimos de publicación
+## 7. Requisitos mínimos de publicación y cumplimiento de plantilla `inform/template.md`
 
-Un informe v4.0 debe mostrar para cada factor:
+Todo informe trimestral ("informe Q", siguiendo la convención `inform/[ACCION]_[AÑO]_[Q?].md`) elaborado bajo la metodología CQV v4.0 debe cumplir obligatoriamente y al 100% con la estructura, secciones y formato maestro definidos en [`inform/template.md`](file:///e:/DeveloperGitHub/repo/finance-cqv-find/inform/template.md).
 
-1. Métricas brutas y unidades.
-2. Periodo fiscal y fecha de mercado.
-3. Fuente de cada dato.
-4. Fórmula aplicada.
-5. Puntuación del subcomponente.
-6. Puntuación final del factor.
-7. Confianza y limitaciones.
+Un informe v4.0 debe mostrar para cada factor y sección:
 
-Un score sin estos elementos se considera una estimación cualitativa y no un CQV v4.0 auditable.
+1. Estructura estándar completa en 10 secciones (desde Resumen Ejecutivo hasta la Sección 10 de Auditoría).
+2. Métricas brutas y unidades.
+3. Periodo fiscal, fecha de publicación, fecha de valoración y fecha del precio.
+4. Fuente de cada dato.
+5. Fórmula aplicada.
+6. Puntuación del subcomponente y puntuación final del factor.
+7. Confianza, limitaciones y justificación de campos `N/D`.
+
+Cualquier informe que no respete el formato de [`inform/template.md`](file:///e:/DeveloperGitHub/repo/finance-cqv-find/inform/template.md) o que omita los elementos auditables requeridos se considerará incompleto y no auditable dentro del marco CQV v4.0.
 
 ---
 
@@ -340,17 +343,18 @@ Las puntuaciones v4.0 no son directamente comparables con v1.0, v1.1, v2.0 o v3.
 Para evitar incoherencias entre los informes de tesis, datasets y el Dashboard Web, el sistema exige seguir el flujo estandarizado en la guía oficial:
 - [flujo_actualizacion_datos.md](file:///e:/DeveloperGitHub/repo/finance-cqv-find/flujo_actualizacion_datos.md)
 
-Cualquier actualización de datos debe ingresar a través de `cqv_data.json` / `cqv_history.json` y sincronizarse mediante el pipeline automatizado `python sync_cqv.py`.
+Cualquier informe trimestral ("informe Q") generado debe redactarse a partir de [`inform/template.md`](file:///e:/DeveloperGitHub/repo/finance-cqv-find/inform/template.md). Cualquier actualización de datos debe ingresar a través de `cqv_data.json` / `cqv_history.json` y sincronizarse mediante el pipeline automatizado `python sync_cqv.py`.
 
 ---
 
 ## 12. Protocolo de Auditoría, Auto-Corrección y Recomendaciones del Informe
 
-El estándar CQV v4.0 exige una **fase obligatoria de auditoría y validación experta** antes de la publicación final de cualquier informe de tesis:
+El estándar CQV v4.0 exige una **fase obligatoria de auditoría y validación experta** antes de la publicación final de cualquier informe de tesis trimestral:
 
-1. **Auditoría de Integridad Matemático-Financiera:** Se debe validar la coherencia absoluta de las fórmulas ($F_1 \dots F_8$, Value Score, PEG Bruto, Score PEG, FCF Yield, MoS, DCF) entre el dataset SSOT (`cqv_data.json`) y el documento Markdown (`inform/TICKER_PERIODO.md`).
-2. **Auto-Corrección Transparente:** En caso de discrepancias numéricas o de tipografía, el analista/sistema está facultado para corregir inmediatamente el informe y re-ejecutar el pipeline `sync_cqv.py` para asegurar que el 100% de los artefactos (JSON, JS, Dashboard, Markdown) sean idénticos.
-3. **Observaciones y Advertencias de Datos (`N/D`):** Se deben documentar formalmente las limitaciones de datos, vacíos de información (`N/D`) o particularidades contables del período.
-4. **Incorporación en la Sección 10 del Informe:** Todo informe debe incluir la **Sección 10**, que detalla la Matriz de Auditoría, el Registro de Correcciones/Observaciones y las Recomendaciones Operativas para la gestión de cartera.
+1. **Cumplimiento del Formato Estándar:** Verificar que el informe siga estrictamente el formato de [`inform/template.md`](file:///e:/DeveloperGitHub/repo/finance-cqv-find/inform/template.md) y la convención de nombres `inform/[ACCION]_[AÑO]_[Q?].md`.
+2. **Auditoría de Integridad Matemático-Financiera:** Validar la coherencia absoluta de las fórmulas ($F_1 \dots F_8$, Value Score, PEG Bruto, Score PEG, FCF Yield, MoS, DCF) entre el dataset SSOT (`cqv_data.json`) y el documento Markdown (`inform/[ACCION]_[AÑO]_[Q?].md`).
+3. **Auto-Corrección Transparente:** En caso de discrepancias numéricas o de tipografía, el analista/sistema está facultado para corregir inmediatamente el informe y re-ejecutar el pipeline `sync_cqv.py` para asegurar que el 100% de los artefactos (JSON, JS, Dashboard, Markdown) sean idénticos.
+4. **Observaciones y Advertencias de Datos (`N/D`):** Documentar formalmente las limitaciones de datos, vacíos de información (`N/D`) o particularidades contables del período.
+5. **Incorporación en la Sección 10 del Informe:** Todo informe debe incluir la **Sección 10**, que detalla la Matriz de Auditoría, el Registro de Correcciones/Observaciones y las Recomendaciones Operativas para la gestión de cartera (incluida en [`inform/template.md`](file:///e:/DeveloperGitHub/repo/finance-cqv-find/inform/template.md)).
 
 

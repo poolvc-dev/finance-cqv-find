@@ -44,3 +44,13 @@ $$\text{CQV v4.0} = (F_1 \times 0.20) + (F_2 \times 0.15) + (F_3 \times 0.15) + 
 - **ALTA CALIDAD (Score $8.00 - 8.99$):** Empresas con gran fortaleza financiera y foso competitivo robusto, pero con tasas de crecimiento moderadas o industrias más maduras.
 - **EN OBSERVACIÓN (Score $7.00 - 7.99$):** Compañías en transición o con compresión puntual en márgenes.
 - **VULNERABLE (Score $< 7.00$):** Trampas de valor o modelos amenazados estructuralmente.
+
+---
+
+## 📄 Estándar Obligatorio de Informes Trimestrales (Informes Q)
+
+En la versión v4.0 actual, la publicación de cualquier informe de tesis trimestral ("informe Q", convención `inform/[ACCION]_[AÑO]_[Q?].md`) debe cumplir obligatoriamente y al 100% con el formato maestro, la estructura en 10 secciones y las reglas de auditoría definidas en:
+- [`inform/template.md`](file:///e:/DeveloperGitHub/repo/finance-cqv-find/inform/template.md)
+- [`flujo_actualizacion_datos.md`](file:///e:/DeveloperGitHub/repo/finance-cqv-find/flujo_actualizacion_datos.md)
+
+Ningún informe trimestral se considera auditable ni válido dentro del marco CQV v4.0 si no respeta estrictamente la plantilla maestra.
