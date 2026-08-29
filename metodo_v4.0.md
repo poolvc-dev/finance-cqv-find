@@ -189,7 +189,7 @@ La v4.0 no activa compras automáticas. La señal final debe incluir CQV de cali
 
 ## 7. Requisitos mínimos de publicación y cumplimiento de plantilla `inform/template.md`
 
-Todo informe trimestral ("informe Q", siguiendo la convención `inform/[ACCION]_[AÑO]_[Q?].md`) elaborado bajo la metodología CQV v4.0 debe cumplir obligatoriamente y al 100% con la estructura, secciones y formato maestro definidos en [`inform/template.md`](file:///e:/DeveloperGitHub/repo/finance-cqv-find/inform/template.md).
+Todo informe trimestral ("informe Q", siguiendo la convención `inform/cqv_v4/[ACCION]_[AÑO]_[Q?]_CQVv4.md`) elaborado bajo la metodología CQV v4.0 debe cumplir obligatoriamente y al 100% con la estructura, secciones y formato maestro definidos en [`inform/template.md`](file:///e:/DeveloperGitHub/repo/finance-cqv-find/inform/template.md).
 
 Un informe v4.0 debe mostrar para cada factor y sección:
 
@@ -351,8 +351,8 @@ Cualquier informe trimestral ("informe Q") generado debe redactarse a partir de 
 
 El estándar CQV v4.0 exige una **fase obligatoria de auditoría y validación experta** antes de la publicación final de cualquier informe de tesis trimestral:
 
-1. **Cumplimiento del Formato Estándar:** Verificar que el informe siga estrictamente el formato de [`inform/template.md`](file:///e:/DeveloperGitHub/repo/finance-cqv-find/inform/template.md) y la convención de nombres `inform/[ACCION]_[AÑO]_[Q?].md`.
-2. **Auditoría de Integridad Matemático-Financiera:** Validar la coherencia absoluta de las fórmulas ($F_1 \dots F_8$, Value Score, PEG Bruto, Score PEG, FCF Yield, MoS, DCF) entre el dataset SSOT (`cqv_data.json`) y el documento Markdown (`inform/[ACCION]_[AÑO]_[Q?].md`).
+1. **Cumplimiento del Formato Estándar:** Verificar que el informe siga estrictamente el formato de [`inform/template.md`](file:///e:/DeveloperGitHub/repo/finance-cqv-find/inform/template.md) y la convención de nombres `inform/cqv_v4/[ACCION]_[AÑO]_[Q?]_CQVv4.md`.
+2. **Auditoría de Integridad Matemático-Financiera:** Validar la coherencia absoluta de las fórmulas ($F_1 \dots F_8$, Value Score, PEG Bruto, Score PEG, FCF Yield, MoS, DCF) entre el dataset SSOT (`cqv_data.json`) y el documento Markdown (`inform/cqv_v4/[ACCION]_[AÑO]_[Q?]_CQVv4.md`).
 3. **Auto-Corrección Transparente:** En caso de discrepancias numéricas o de tipografía, el analista/sistema está facultado para corregir inmediatamente el informe y re-ejecutar el pipeline `sync_cqv.py` para asegurar que el 100% de los artefactos (JSON, JS, Dashboard, Markdown) sean idénticos.
 4. **Observaciones y Advertencias de Datos (`N/D`):** Documentar formalmente las limitaciones de datos, vacíos de información (`N/D`) o particularidades contables del período.
 5. **Incorporación en la Sección 10 del Informe:** Todo informe debe incluir la **Sección 10**, que detalla la Matriz de Auditoría, el Registro de Correcciones/Observaciones y las Recomendaciones Operativas para la gestión de cartera (incluida en [`inform/template.md`](file:///e:/DeveloperGitHub/repo/finance-cqv-find/inform/template.md)).

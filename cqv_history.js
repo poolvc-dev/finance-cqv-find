@@ -684,7 +684,8 @@ window.cqvHistoryData = {
         "data_confidence": "N/D",
         "owner_earnings": null,
         "fcf_yield_pct": null,
-        "valuation_date": "29/07/2026"
+        "valuation_date": "29/07/2026",
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null
@@ -1446,7 +1447,8 @@ window.cqvHistoryData = {
           "num_analysts": 45,
           "consensus_recommendation": "Strong Buy",
           "upside_potential_pct": 19.6
-        }
+        },
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -2241,7 +2243,8 @@ window.cqvHistoryData = {
         "eps_forward": 15.79,
         "market_cap_b": 3330.0,
         "wacc": 8.0,
-        "g_terminal": 3.5
+        "g_terminal": 3.5,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -2792,7 +2795,8 @@ window.cqvHistoryData = {
         "f4_moat": 9.4,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -3327,7 +3331,8 @@ window.cqvHistoryData = {
         "f4_moat": 9.4,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -4090,7 +4095,8 @@ window.cqvHistoryData = {
         "eps_forward": 9.19,
         "market_cap_b": 2260.0,
         "wacc": 8.0,
-        "g_terminal": 3.5
+        "g_terminal": 3.5,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -4641,7 +4647,8 @@ window.cqvHistoryData = {
         "f4_moat": 9.3,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -5176,7 +5183,8 @@ window.cqvHistoryData = {
         "f4_moat": 9.1,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -5779,7 +5787,8 @@ window.cqvHistoryData = {
           "num_analysts": 12,
           "consensus_recommendation": "Strong Buy",
           "upside_potential_pct": 20.3
-        }
+        },
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -6398,7 +6407,8 @@ window.cqvHistoryData = {
           "num_analysts": 26,
           "consensus_recommendation": "Strong Buy",
           "upside_potential_pct": 15.9
-        }
+        },
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -6973,7 +6983,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 83.928,
         "owner_earnings_m": 1804.5,
         "score_fcf_yield": 4.3,
-        "score_mos": 6.67
+        "score_mos": 6.67,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null
@@ -7558,7 +7569,8 @@ window.cqvHistoryData = {
           "num_analysts": 15,
           "consensus_recommendation": "Strong Buy",
           "upside_potential_pct": 13.1
-        }
+        },
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -8178,7 +8190,8 @@ window.cqvHistoryData = {
           "num_analysts": 36,
           "consensus_recommendation": "Strong Buy",
           "upside_potential_pct": 14.6
-        }
+        },
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -8797,7 +8810,8 @@ window.cqvHistoryData = {
           "num_analysts": 22,
           "consensus_recommendation": "Strong Buy",
           "upside_potential_pct": 16.4
-        }
+        },
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -9577,7 +9591,8 @@ window.cqvHistoryData = {
           "consensus_recommendation": "Strong Buy",
           "upside_potential_pct": 17.2
         },
-        "price_date": "26/08/2026"
+        "price_date": "26/08/2026",
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -10196,7 +10211,8 @@ window.cqvHistoryData = {
           "num_analysts": 42,
           "consensus_recommendation": "Strong Buy",
           "upside_potential_pct": 15.6
-        }
+        },
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -10771,7 +10787,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 75.334,
         "owner_earnings_m": 1619.7,
         "score_fcf_yield": 4.3,
-        "score_mos": 6.67
+        "score_mos": 6.67,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null
@@ -11373,7 +11390,8 @@ window.cqvHistoryData = {
           "num_analysts": 12,
           "consensus_recommendation": "Strong Buy",
           "upside_potential_pct": 17.3
-        }
+        },
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -11992,7 +12010,8 @@ window.cqvHistoryData = {
           "num_analysts": 30,
           "consensus_recommendation": "Strong Buy",
           "upside_potential_pct": 15.8
-        }
+        },
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -12620,7 +12639,8 @@ window.cqvHistoryData = {
           "num_analysts": 16,
           "consensus_recommendation": "Strong Buy",
           "upside_potential_pct": 15.2
-        }
+        },
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -13519,7 +13539,8 @@ window.cqvHistoryData = {
         },
         "ocf": 6850.0,
         "maintenance_capex": 710.0,
-        "market_cap": 190200.0
+        "market_cap": 190200.0,
+        "metodologia_version": "v4.0"
       },
       "annual_legacy": {
         "f1": 9.5,
@@ -14136,7 +14157,8 @@ window.cqvHistoryData = {
           "num_analysts": 35,
           "consensus_recommendation": "Strong Buy",
           "upside_potential_pct": 18.2
-        }
+        },
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -14733,8 +14755,8 @@ window.cqvHistoryData = {
         "clasificacion": "ÉLITE SUPREMA",
         "f4_moat": 9.85,
         "data_confidence": "Alta",
-        "owner_earnings": null,
-        "fcf_yield_pct": null,
+        "owner_earnings": 1360.0,
+        "fcf_yield_pct": 3.1555,
         "eps_growth_ntm_pct": 21.8,
         "growth_eps": 21.8,
         "ocf_ttm_m": 1450.0,
@@ -14755,7 +14777,13 @@ window.cqvHistoryData = {
           "num_analysts": 21,
           "consensus_recommendation": "Strong Buy",
           "upside_potential_pct": 14.6
-        }
+        },
+        "market_cap": 43100.0,
+        "ocf": 1450.0,
+        "maintenance_capex": 90.0,
+        "price_date": "29/07/2026",
+        "publication_date": "29/07/2026",
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -15537,7 +15565,8 @@ window.cqvHistoryData = {
         },
         "ocf": 140222.0,
         "maintenance_capex": 11500.0,
-        "market_cap": 3983000.0
+        "market_cap": 3983000.0,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -15948,7 +15977,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 6.97
+        "score_mos": 6.97,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -16726,7 +16756,8 @@ window.cqvHistoryData = {
           "num_analysts": 40,
           "consensus_recommendation": "Strong Buy",
           "upside_potential_pct": 18.0
-        }
+        },
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -17277,7 +17308,8 @@ window.cqvHistoryData = {
         "f4_moat": 9.1,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -17880,7 +17912,8 @@ window.cqvHistoryData = {
           "num_analysts": 32,
           "consensus_recommendation": "Strong Buy",
           "upside_potential_pct": 17.1
-        }
+        },
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -18431,7 +18464,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -18966,7 +19000,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -19501,7 +19536,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.3,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -20036,7 +20072,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -20639,7 +20676,8 @@ window.cqvHistoryData = {
           "num_analysts": 22,
           "consensus_recommendation": "Strong Buy",
           "upside_potential_pct": 14.3
-        }
+        },
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -20998,7 +21036,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 800.0,
         "owner_earnings_m": 12000.0,
         "score_fcf_yield": 6.8,
-        "score_mos": 6.15
+        "score_mos": 6.15,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -21755,7 +21794,8 @@ window.cqvHistoryData = {
         "g_terminal": null,
         "analyst_targets": null,
         "cqv_v4": 8.92,
-        "cqv": 8.92
+        "cqv": 8.92,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null
@@ -22289,7 +22329,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -22824,7 +22865,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -23427,7 +23469,8 @@ window.cqvHistoryData = {
           "num_analysts": 14,
           "consensus_recommendation": "Strong Buy",
           "upside_potential_pct": 14.8
-        }
+        },
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -23978,7 +24021,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.3,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -24513,7 +24557,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -25048,7 +25093,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -25583,7 +25629,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -26118,7 +26165,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -26653,7 +26701,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -27234,8 +27283,8 @@ window.cqvHistoryData = {
         "clasificacion": "ÉLITE SUPREMA",
         "f4_moat": 9.9,
         "data_confidence": "Alta",
-        "owner_earnings": null,
-        "fcf_yield_pct": null,
+        "owner_earnings": 2200.0,
+        "fcf_yield_pct": 1.3924,
         "eps_growth_ntm_pct": 29.6,
         "growth_eps": 29.6,
         "ocf_ttm_m": 2650.0,
@@ -27256,7 +27305,13 @@ window.cqvHistoryData = {
           "num_analysts": 32,
           "consensus_recommendation": "Strong Buy",
           "upside_potential_pct": 18.0
-        }
+        },
+        "ocf": 2650.0,
+        "maintenance_capex": 450.0,
+        "market_cap": 158000.0,
+        "price_date": "18/07/2026",
+        "publication_date": "18/07/2026",
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -27807,7 +27862,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -28342,7 +28398,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -28877,7 +28934,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -29190,7 +29248,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 6.8
+        "score_mos": 6.8,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -29982,7 +30041,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -30517,7 +30577,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -31052,7 +31113,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -31655,7 +31717,8 @@ window.cqvHistoryData = {
           "num_analysts": 20,
           "consensus_recommendation": "Strong Buy",
           "upside_potential_pct": 15.9
-        }
+        },
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -32042,7 +32105,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -32562,7 +32626,8 @@ window.cqvHistoryData = {
         "score_mos": 6.59,
         "valuation_date": "26/08/2026",
         "price_date": "26/08/2026",
-        "market_cap_b": 35.1
+        "market_cap_b": 35.1,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -33241,7 +33306,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -33776,7 +33842,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.3,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -34311,7 +34378,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.3,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -34846,7 +34914,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -35381,7 +35450,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -35670,7 +35740,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -36463,7 +36534,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.3,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -36998,7 +37070,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -37369,7 +37442,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -38148,7 +38222,8 @@ window.cqvHistoryData = {
           "num_analysts": 41,
           "consensus_recommendation": "Moderate Buy",
           "upside_potential_pct": 20.9
-        }
+        },
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -38699,7 +38774,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -39012,7 +39088,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 4.3
+        "score_mos": 4.3,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -39804,7 +39881,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -40339,7 +40417,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -40874,7 +40953,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -41409,7 +41489,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -41944,7 +42025,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -42479,7 +42561,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -43014,7 +43097,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -43549,7 +43633,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -44084,7 +44169,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -44619,7 +44705,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -45154,7 +45241,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -45689,7 +45777,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -46292,7 +46381,8 @@ window.cqvHistoryData = {
           "num_analysts": 28,
           "consensus_recommendation": "Strong Buy",
           "upside_potential_pct": 16.2
-        }
+        },
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -46843,7 +46933,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -47402,7 +47493,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 3.23
+        "score_mos": 3.23,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null
@@ -47936,7 +48028,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -48331,7 +48424,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 7.13
+        "score_mos": 7.13,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -49041,7 +49135,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -49436,7 +49531,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 2.47
+        "score_mos": 2.47,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -50146,7 +50242,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -50681,7 +50778,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.3,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -51284,7 +51382,8 @@ window.cqvHistoryData = {
           "num_analysts": 14,
           "consensus_recommendation": "Strong Buy",
           "upside_potential_pct": 17.5
-        }
+        },
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -51903,7 +52002,8 @@ window.cqvHistoryData = {
           "num_analysts": 18,
           "consensus_recommendation": "Strong Buy",
           "upside_potential_pct": 15.8
-        }
+        },
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -52232,7 +52332,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 2.47
+        "score_mos": 2.47,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -52802,7 +52903,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 1.53
+        "score_mos": 1.53,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -53594,7 +53696,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -54129,7 +54232,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -54664,7 +54768,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -55199,7 +55304,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -55396,7 +55502,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -55949,7 +56056,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -56484,7 +56592,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -57019,7 +57128,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -57084,7 +57194,8 @@ window.cqvHistoryData = {
         "mos_pct": 15.07,
         "value_score": 3.78,
         "verdict": "Acumular / Compra Escalonada",
-        "clasificacion": "ALTA CALIDAD"
+        "clasificacion": "ALTA CALIDAD",
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -58051,7 +58162,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -58586,7 +58698,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -59121,7 +59234,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -59656,7 +59770,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -60078,7 +60193,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "annual_legacy": {
         "f1": 10.0,
@@ -60710,7 +60826,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.3,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -61081,7 +61198,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.3,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -61792,7 +61910,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.3,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -62327,7 +62446,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -62862,7 +62982,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -63257,7 +63378,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 3.23
+        "score_mos": 3.23,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -63991,7 +64113,8 @@ window.cqvHistoryData = {
         "maintenance_capex": 130.0,
         "market_cap": 139963.0,
         "score_fcf_yield": 5.1,
-        "score_mos": 6.03
+        "score_mos": 6.03,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null
@@ -64525,7 +64648,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -65060,7 +65184,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.3,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -65595,7 +65720,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.3,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -66130,7 +66256,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.3,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -66665,7 +66792,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -67200,7 +67328,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.3,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -67735,7 +67864,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -68270,7 +68400,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -68805,7 +68936,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -69340,7 +69472,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -69875,7 +70008,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.3,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -70410,7 +70544,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -70945,7 +71080,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -71480,7 +71616,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -72015,7 +72152,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -72550,7 +72688,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -73085,7 +73224,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.3,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -73671,7 +73811,8 @@ window.cqvHistoryData = {
           "num_analysts": 27,
           "consensus_recommendation": "Strong Buy",
           "upside_potential_pct": 32.5
-        }
+        },
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -74083,7 +74224,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 5.1
+        "score_mos": 5.1,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -74793,7 +74935,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -75328,7 +75471,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -75802,7 +75946,8 @@ window.cqvHistoryData = {
         "mos_pct": 22.73,
         "value_score": 6.55,
         "verdict": "Acumular / Compra Escalonada",
-        "clasificacion": "ALTA CALIDAD"
+        "clasificacion": "ALTA CALIDAD",
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -76431,7 +76576,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -76990,7 +77136,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 3.77
+        "score_mos": 3.77,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null
@@ -77524,7 +77671,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -78059,7 +78207,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -78594,7 +78743,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.3,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -78965,7 +79115,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -79676,7 +79827,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -80235,7 +80387,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 5.37
+        "score_mos": 5.37,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null
@@ -80837,7 +80990,8 @@ window.cqvHistoryData = {
           "num_analysts": 19,
           "consensus_recommendation": "Strong Buy",
           "upside_potential_pct": 14.5
-        }
+        },
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -81388,7 +81542,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.3,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -81923,7 +82078,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.3,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -82458,7 +82614,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -83061,7 +83218,8 @@ window.cqvHistoryData = {
           "num_analysts": 20,
           "consensus_recommendation": "Strong Buy",
           "upside_potential_pct": 13.8
-        }
+        },
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -83612,7 +83770,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -84147,7 +84306,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -84682,7 +84842,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.3,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -84995,7 +85156,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 4.6
+        "score_mos": 4.6,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -85625,7 +85787,64 @@ window.cqvHistoryData = {
         "owner_earnings": null,
         "fcf_yield_pct": null
       },
-      "Q2": null,
+      "Q2": {
+        "ticker": "MCK",
+        "name": "McKesson Corporation",
+        "sector": "Healthcare / Pharmaceutical Distribution & Healthcare Solutions",
+        "quarter": "Q2 2026",
+        "f1": 7.26,
+        "f2": 9.0,
+        "f3": 8.33,
+        "f4": 8.3,
+        "f5": 8.6,
+        "f6": 7.79,
+        "f7": 6.19,
+        "f8": 8.0,
+        "momentum_score": 4.02,
+        "cqv_v1": 8.24,
+        "cqv_v1_1": 8.21,
+        "cqv_v2": 7.9,
+        "cqv_v3": 7.9,
+        "cqv": 8.04,
+        "pe": 20.49,
+        "status": "Success",
+        "cqv_v4": 8.04,
+        "price": 625.0,
+        "pe_forward": 15.62,
+        "value_score": 7.94,
+        "peg_bruto": 9.6031,
+        "score_peg": 9.6031,
+        "intrinsic_value": 780.0,
+        "mos_pct": 19.87,
+        "verdict": "Acumular / Compra Escalonada",
+        "clasificacion": "ALTA CALIDAD",
+        "f4_moat": 8.3,
+        "data_confidence": "Alta",
+        "owner_earnings": 5655.0,
+        "fcf_yield_pct": 6.1427,
+        "eps_growth_ntm_pct": 15.0,
+        "growth_eps": 15.0,
+        "market_cap": 92060.0,
+        "market_cap_b": 92.06,
+        "ocf": 6155.0,
+        "maintenance_capex": 500.0,
+        "score_fcf_yield": 7.68,
+        "score_mos": 6.62,
+        "valuation_date": "06/11/2025",
+        "price_date": "06/11/2025",
+        "publication_date": "06/11/2025",
+        "wacc": 8.0,
+        "g_terminal": 3.0,
+        "analyst_targets": {
+          "target_low_bear": 650.0,
+          "target_mean_base": 760.0,
+          "target_high_bull": 840.0,
+          "num_analysts": 17,
+          "consensus_recommendation": "Strong Buy",
+          "upside_potential_pct": 21.6
+        },
+        "metodologia_version": "v4.0"
+      },
       "Q3": null,
       "Q4": null,
       "annual_legacy": {
@@ -86334,7 +86553,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -86869,7 +87089,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -87404,7 +87625,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -87939,7 +88161,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -88498,7 +88721,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 1.63
+        "score_mos": 1.63,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null
@@ -89056,7 +89280,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 4.9
+        "score_mos": 4.9,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null
@@ -89426,7 +89651,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -90137,7 +90363,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -90559,7 +90786,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "annual_legacy": {
         "f1": 9.22,
@@ -91259,7 +91487,8 @@ window.cqvHistoryData = {
           "num_analysts": 18,
           "consensus_recommendation": "Strong Buy",
           "upside_potential_pct": 15.3
-        }
+        },
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -91810,7 +92039,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -92345,7 +92575,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -92880,7 +93111,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -93481,7 +93713,8 @@ window.cqvHistoryData = {
         "clasificacion": "ALTA CALIDAD",
         "ocf": 680.0,
         "maintenance_capex": 60.0,
-        "market_cap": 13800.0
+        "market_cap": 13800.0,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -94028,7 +94261,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -94563,7 +94797,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -95098,7 +95333,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -95633,7 +95869,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -96168,7 +96405,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -96703,7 +96941,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -97098,7 +97337,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 5.1
+        "score_mos": 5.1,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -97808,7 +98048,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -98343,7 +98584,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -98738,7 +98980,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 1.9
+        "score_mos": 1.9,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -99448,7 +99691,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -100051,7 +100295,8 @@ window.cqvHistoryData = {
           "num_analysts": 15,
           "consensus_recommendation": "Strong Buy",
           "upside_potential_pct": 15.9
-        }
+        },
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -100890,7 +101135,8 @@ window.cqvHistoryData = {
         },
         "ocf": 820.0,
         "maintenance_capex": 70.0,
-        "market_cap": 35200.0
+        "market_cap": 35200.0,
+        "metodologia_version": "v4.0"
       },
       "Q4": null,
       "annual_legacy": {
@@ -101464,7 +101710,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 4.2
+        "score_mos": 4.2,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null
@@ -101998,7 +102245,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -102533,7 +102781,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -102846,7 +103095,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 5.1
+        "score_mos": 5.1,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -103638,7 +103888,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -104173,7 +104424,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -104708,7 +104960,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -105243,7 +105496,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -105778,7 +106032,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.3,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -106313,7 +106568,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -106872,7 +107128,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 2.47
+        "score_mos": 2.47,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null
@@ -107406,7 +107663,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -107965,7 +108223,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 6.47
+        "score_mos": 6.47,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null
@@ -108499,7 +108758,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -108870,7 +109130,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -109649,7 +109910,8 @@ window.cqvHistoryData = {
           "num_analysts": 16,
           "consensus_recommendation": "Strong Buy",
           "upside_potential_pct": 15.9
-        }
+        },
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -110224,7 +110486,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 5.1
+        "score_mos": 5.1,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null
@@ -110618,7 +110881,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 4.6
+        "score_mos": 4.6,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -111328,7 +111592,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -111887,7 +112152,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 5.93
+        "score_mos": 5.93,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null
@@ -112421,7 +112687,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -112816,7 +113083,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 2.13
+        "score_mos": 2.13,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -113526,7 +113794,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -114061,7 +114330,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -114483,7 +114753,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "annual_legacy": {
         "f1": 9.17,
@@ -115115,7 +115386,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -115650,7 +115922,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -116185,7 +116458,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -116720,7 +116994,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -117255,7 +117530,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -117650,7 +117926,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 5.1
+        "score_mos": 5.1,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -118360,7 +118637,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.3,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -118895,7 +119173,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -119430,7 +119709,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -119965,7 +120245,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -120500,7 +120781,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.7,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -121035,7 +121317,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -121570,7 +121853,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.3,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -122105,7 +122389,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.3,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -122640,7 +122925,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -123175,7 +123461,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -123546,7 +123833,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -124257,7 +124545,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -124679,7 +124968,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "annual_legacy": {
         "f1": 9.42,
@@ -125379,7 +125669,8 @@ window.cqvHistoryData = {
           "num_analysts": 27,
           "consensus_recommendation": "Strong Buy",
           "upside_potential_pct": 18.8
-        }
+        },
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -125954,7 +126245,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 1.0
+        "score_mos": 1.0,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null
@@ -126488,7 +126780,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -127023,7 +127316,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -127626,7 +127920,8 @@ window.cqvHistoryData = {
           "num_analysts": 24,
           "consensus_recommendation": "Strong Buy",
           "upside_potential_pct": 13.4
-        }
+        },
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -127982,7 +128277,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "annual_legacy": {
         "f1": 8.09,
@@ -128696,7 +128992,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -129231,7 +129528,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -129766,7 +130064,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.3,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -130301,7 +130600,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.3,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -130836,7 +131136,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.3,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -131371,7 +131672,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -131906,7 +132208,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -132441,7 +132744,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -132812,7 +133116,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -133591,7 +133896,8 @@ window.cqvHistoryData = {
           "num_analysts": 28,
           "consensus_recommendation": "Strong Buy",
           "upside_potential_pct": 14.3
-        }
+        },
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -134142,7 +134448,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -134537,7 +134844,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 5.1
+        "score_mos": 5.1,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -135315,7 +135623,8 @@ window.cqvHistoryData = {
           "num_analysts": 34,
           "consensus_recommendation": "Strong Buy",
           "upside_potential_pct": 22.4
-        }
+        },
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -135866,7 +136175,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -136401,7 +136711,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -136960,7 +137271,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 2.47
+        "score_mos": 2.47,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null
@@ -137562,7 +137874,8 @@ window.cqvHistoryData = {
           "num_analysts": 22,
           "consensus_recommendation": "Strong Buy",
           "upside_potential_pct": 15.9
-        }
+        },
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -138113,7 +138426,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -138648,7 +138962,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -139471,7 +139786,8 @@ window.cqvHistoryData = {
         },
         "ocf": 3450.0,
         "maintenance_capex": 190.0,
-        "market_cap": 111200.0
+        "market_cap": 111200.0,
+        "metodologia_version": "v4.0"
       },
       "Q4": null,
       "annual_legacy": {
@@ -140021,7 +140337,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.3,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -140556,7 +140873,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.3,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -141091,7 +141409,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -141486,7 +141805,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 4.6
+        "score_mos": 4.6,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -142196,7 +142516,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -142591,7 +142912,8 @@ window.cqvHistoryData = {
         "maintenance_capex": 280.0,
         "market_cap": 39500.0,
         "score_fcf_yield": 8.68,
-        "score_mos": 8.08
+        "score_mos": 8.08,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -143301,7 +143623,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -143836,7 +144159,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -144371,7 +144695,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -144906,7 +145231,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -145441,7 +145767,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -145976,7 +146303,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -146511,7 +146839,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -147046,7 +147375,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -147581,7 +147911,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -148140,7 +148471,8 @@ window.cqvHistoryData = {
         "maintenance_capex": 85.0,
         "market_cap": 65200.0,
         "score_fcf_yield": 5.12,
-        "score_mos": 6.56
+        "score_mos": 6.56,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null
@@ -148674,7 +149006,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -149277,7 +149610,8 @@ window.cqvHistoryData = {
           "num_analysts": 18,
           "consensus_recommendation": "Strong Buy",
           "upside_potential_pct": 14.9
-        }
+        },
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -149688,7 +150022,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 5.1
+        "score_mos": 5.1,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -150398,7 +150733,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -150933,7 +151269,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -151468,7 +151805,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -152003,7 +152341,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -152538,7 +152877,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -153073,7 +153413,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -153608,7 +153949,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -154143,7 +154485,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -154678,7 +155021,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -155213,7 +155557,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -155748,7 +156093,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -156307,7 +156653,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 5.1
+        "score_mos": 5.1,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null
@@ -156841,7 +157188,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -157376,7 +157724,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.3,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -157911,7 +158260,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.3,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -158446,7 +158796,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -158981,7 +159332,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -159516,7 +159868,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -160051,7 +160404,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -160586,7 +160940,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -160981,7 +161336,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 5.1
+        "score_mos": 5.1,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -161715,7 +162071,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 1.0
+        "score_mos": 1.0,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null
@@ -162249,7 +162606,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -162784,7 +163142,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -163319,7 +163678,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -163878,7 +164238,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 4.8
+        "score_mos": 4.8,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null
@@ -164412,7 +164773,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -164725,7 +165087,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 5.1
+        "score_mos": 5.1,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -165517,7 +165880,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -166052,7 +166416,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -166611,7 +166976,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 2.7
+        "score_mos": 2.7,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null
@@ -167145,7 +167511,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -167680,7 +168047,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -167747,7 +168115,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 3.03
+        "score_mos": 3.03,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -168289,7 +168658,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -168809,7 +169179,8 @@ window.cqvHistoryData = {
         "score_mos": 6.17,
         "valuation_date": "26/08/2026",
         "price_date": "26/08/2026",
-        "market_cap_b": 14.8
+        "market_cap_b": 14.8,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -169488,7 +169859,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -170023,7 +170395,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -170558,7 +170931,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -170871,7 +171245,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 1.0
+        "score_mos": 1.0,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -171663,7 +172038,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -172198,7 +172574,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -172733,7 +173110,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -173268,7 +173646,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -173663,7 +174042,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 5.1
+        "score_mos": 5.1,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -174375,7 +174755,64 @@ window.cqvHistoryData = {
         "owner_earnings": null,
         "fcf_yield_pct": null
       },
-      "Q2": null,
+      "Q2": {
+        "ticker": "RS",
+        "name": "Reliance, Inc.",
+        "sector": "Basic Materials / Metals Service Centers & Processing",
+        "quarter": "Q2 2026",
+        "f1": 6.77,
+        "f2": 8.75,
+        "f3": 9.33,
+        "f4": 8.0,
+        "f5": 8.0,
+        "f6": 8.05,
+        "f7": 6.58,
+        "f8": 8.0,
+        "momentum_score": 7.13,
+        "cqv_v1": 7.7,
+        "cqv_v1_1": 8.0,
+        "cqv_v2": 7.83,
+        "cqv_v3": 7.83,
+        "cqv": 8.0,
+        "pe": 24.27,
+        "status": "Success",
+        "cqv_v4": 8.0,
+        "price": 300.0,
+        "pe_forward": 17.46,
+        "value_score": 7.5,
+        "peg_bruto": 10.5956,
+        "score_peg": 10.0,
+        "intrinsic_value": 375.0,
+        "mos_pct": 20.0,
+        "verdict": "Acumular / Compra Escalonada",
+        "clasificacion": "ALTA CALIDAD",
+        "f4_moat": 8.0,
+        "data_confidence": "Alta",
+        "owner_earnings": 950.0,
+        "fcf_yield_pct": 5.0,
+        "eps_growth_ntm_pct": 18.5,
+        "growth_eps": 18.5,
+        "market_cap": 19000.0,
+        "market_cap_b": 19.0,
+        "ocf": 1250.0,
+        "maintenance_capex": 300.0,
+        "score_fcf_yield": 6.25,
+        "score_mos": 6.67,
+        "valuation_date": "24/07/2026",
+        "price_date": "24/07/2026",
+        "publication_date": "24/07/2026",
+        "wacc": 8.5,
+        "g_terminal": 3.0,
+        "analyst_targets": {
+          "target_low_bear": 310.0,
+          "target_mean_base": 365.0,
+          "target_high_bull": 410.0,
+          "num_analysts": 12,
+          "consensus_recommendation": "Strong Buy",
+          "upside_potential_pct": 21.7
+        },
+        "metodologia_version": "v4.0"
+      },
       "Q3": null,
       "Q4": null
     }
@@ -174908,7 +175345,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -175443,7 +175881,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -175838,7 +176277,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 5.1
+        "score_mos": 5.1,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -176548,7 +176988,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -177083,7 +177524,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -177686,7 +178128,8 @@ window.cqvHistoryData = {
           "num_analysts": 16,
           "consensus_recommendation": "Strong Buy",
           "upside_potential_pct": 15.7
-        }
+        },
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -178261,7 +178704,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 5.1
+        "score_mos": 5.1,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null
@@ -178795,7 +179239,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.3,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -179330,7 +179775,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -179889,7 +180335,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 1.77
+        "score_mos": 1.77,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null
@@ -180447,7 +180894,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 5.1
+        "score_mos": 5.1,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null
@@ -180981,7 +181429,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -181516,7 +181965,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -182051,7 +182501,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -182610,7 +183061,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 5.1
+        "score_mos": 5.1,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null
@@ -183144,7 +183596,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -183679,7 +184132,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -183954,7 +184408,8 @@ window.cqvHistoryData = {
         "score_mos": 5.97,
         "valuation_date": "26/08/2026",
         "price_date": "26/08/2026",
-        "market_cap_b": 67.1
+        "market_cap_b": 67.1,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -184589,7 +185044,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "annual_legacy": {
         "f1": 7.88,
@@ -185221,7 +185677,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -185802,8 +186259,8 @@ window.cqvHistoryData = {
         "clasificacion": "ÉLITE",
         "f4_moat": 8.0,
         "data_confidence": "Alta",
-        "owner_earnings": null,
-        "fcf_yield_pct": null,
+        "owner_earnings": 1400.0,
+        "fcf_yield_pct": 3.4568,
         "valuation_date": "29/07/2026",
         "eps_trailing": 7.14,
         "eps_forward": 10.0,
@@ -185824,7 +186281,13 @@ window.cqvHistoryData = {
           "num_analysts": 18,
           "consensus_recommendation": "Strong Buy",
           "upside_potential_pct": 16.4
-        }
+        },
+        "ocf": 1800.0,
+        "maintenance_capex": 400.0,
+        "market_cap": 40500.0,
+        "price_date": "29/07/2026",
+        "publication_date": "29/07/2026",
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -186235,7 +186698,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 2.47
+        "score_mos": 2.47,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -187013,7 +187477,8 @@ window.cqvHistoryData = {
           "num_analysts": 22,
           "consensus_recommendation": "Strong Buy",
           "upside_potential_pct": 13.9
-        }
+        },
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -187564,7 +188029,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -188099,7 +188565,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -188634,7 +189101,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -189169,7 +189637,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -189540,7 +190009,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -190251,7 +190721,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -190786,7 +191257,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -191126,7 +191598,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "annual_legacy": {
         "f1": 5.55,
@@ -191840,7 +192313,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -192375,7 +192849,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -192934,7 +193409,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 5.1
+        "score_mos": 5.1,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null
@@ -193492,7 +193968,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 5.1
+        "score_mos": 5.1,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null
@@ -194026,7 +194503,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.3,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -194585,7 +195063,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 5.1
+        "score_mos": 5.1,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null
@@ -195143,7 +195622,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 2.0
+        "score_mos": 2.0,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null
@@ -195677,7 +196157,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -196212,7 +196693,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -196900,7 +197382,8 @@ window.cqvHistoryData = {
         "data_confidence": "N/D",
         "owner_earnings": null,
         "fcf_yield_pct": null,
-        "valuation_date": "22/07/2026"
+        "valuation_date": "22/07/2026",
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null
@@ -197434,7 +197917,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -197805,7 +198289,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -198516,7 +199001,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -198887,7 +199373,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -199598,7 +200085,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -200133,7 +200621,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -200668,7 +201157,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -201203,7 +201693,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.3,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -201738,7 +202229,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -202297,7 +202789,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 5.1
+        "score_mos": 5.1,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null
@@ -202831,7 +203324,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -203366,7 +203860,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -203901,7 +204396,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -204436,7 +204932,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -204971,7 +205468,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -205506,7 +206004,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -206041,7 +206540,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -206412,7 +206912,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -206959,7 +207460,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -207670,7 +208172,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -208205,7 +208708,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -208740,7 +209244,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -209506,7 +210011,8 @@ window.cqvHistoryData = {
         },
         "ocf": 115000.0,
         "maintenance_capex": 35000.0,
-        "market_cap": 2250000.0
+        "market_cap": 2250000.0,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -209917,7 +210423,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 5.1
+        "score_mos": 5.1,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -210627,7 +211134,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -211162,7 +211670,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -211697,7 +212206,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -212232,7 +212742,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -212572,7 +213083,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "annual_legacy": {
         "f1": 6.47,
@@ -213310,7 +213822,8 @@ window.cqvHistoryData = {
         "maintenance_capex": 65.0,
         "market_cap": 17400.0,
         "score_fcf_yield": 6.4,
-        "score_mos": 6.52
+        "score_mos": 6.52,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null
@@ -213844,7 +214357,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -214379,7 +214893,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -214982,7 +215497,8 @@ window.cqvHistoryData = {
           "num_analysts": 35,
           "consensus_recommendation": "Strong Buy",
           "upside_potential_pct": 15.9
-        }
+        },
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -215557,7 +216073,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 5.1
+        "score_mos": 5.1,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null
@@ -216091,7 +216608,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -216626,7 +217144,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -217161,7 +217680,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -217556,7 +218076,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 5.1
+        "score_mos": 5.1,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -218266,7 +218787,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -218801,7 +219323,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -219336,7 +219859,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -219871,7 +220395,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -220406,7 +220931,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -220777,7 +221303,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -221488,7 +222015,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -222023,7 +222551,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -222418,7 +222947,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 5.1
+        "score_mos": 5.1,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -223128,7 +223658,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -223663,7 +224194,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -223675,534 +224207,487 @@ window.cqvHistoryData = {
       "Q1": {
         "ticker": "SMH",
         "quarter": "Q1 2020",
-        "f1": 1.0,
-        "f2": 8.57,
-        "f3": 7.39,
-        "f4": 7.77,
-        "f5": 7.67,
-        "f6": 4.38,
-        "f7": 9.57,
-        "f8": 7.67,
-        "cqv_v4": 6.21,
-        "cqv": 6.21,
-        "pe": 28.0,
-        "value_score": 6.48,
-        "verdict": "Evitar / En Observación"
+        "f1": 9.0,
+        "f2": 9.4,
+        "f3": 9.1,
+        "f4": 9.6,
+        "f5": 8.9,
+        "f6": 9.2,
+        "f7": 9.1,
+        "f8": 9.2,
+        "cqv_v4": 9.12,
+        "cqv": 9.12,
+        "verdict": "Comprar / Acumular"
       },
       "Q2": {
         "ticker": "SMH",
         "quarter": "Q2 2020",
-        "f1": 1.0,
-        "f2": 8.6,
-        "f3": 7.42,
-        "f4": 7.8,
-        "f5": 7.7,
-        "f6": 4.41,
-        "f7": 9.6,
-        "f8": 7.7,
-        "cqv_v4": 6.23,
-        "cqv": 6.23,
-        "pe": 28.0,
-        "value_score": 6.5,
-        "verdict": "Evitar / En Observación"
+        "f1": 9.0,
+        "f2": 9.4,
+        "f3": 9.1,
+        "f4": 9.6,
+        "f5": 8.9,
+        "f6": 9.2,
+        "f7": 9.1,
+        "f8": 9.2,
+        "cqv_v4": 9.12,
+        "cqv": 9.12,
+        "verdict": "Comprar / Acumular"
       },
       "Q3": {
         "ticker": "SMH",
         "quarter": "Q3 2020",
-        "f1": 1.03,
-        "f2": 8.63,
-        "f3": 7.45,
-        "f4": 7.83,
-        "f5": 7.73,
-        "f6": 4.44,
-        "f7": 9.63,
-        "f8": 7.73,
-        "cqv_v4": 6.26,
-        "cqv": 6.26,
-        "pe": 28.0,
-        "value_score": 6.53,
-        "verdict": "Evitar / En Observación"
+        "f1": 9.0,
+        "f2": 9.4,
+        "f3": 9.1,
+        "f4": 9.6,
+        "f5": 8.9,
+        "f6": 9.2,
+        "f7": 9.1,
+        "f8": 9.2,
+        "cqv_v4": 9.12,
+        "cqv": 9.12,
+        "verdict": "Comprar / Acumular"
       },
       "Q4": {
         "ticker": "SMH",
         "quarter": "Q4 2020",
-        "f1": 1.06,
-        "f2": 8.66,
-        "f3": 7.48,
-        "f4": 7.86,
-        "f5": 7.76,
-        "f6": 4.47,
-        "f7": 9.66,
-        "f8": 7.76,
-        "cqv_v4": 6.29,
-        "cqv": 6.29,
-        "pe": 28.0,
-        "value_score": 6.56,
-        "verdict": "Evitar / En Observación"
+        "f1": 9.0,
+        "f2": 9.4,
+        "f3": 9.1,
+        "f4": 9.6,
+        "f5": 8.9,
+        "f6": 9.2,
+        "f7": 9.1,
+        "f8": 9.2,
+        "cqv_v4": 9.12,
+        "cqv": 9.12,
+        "verdict": "Comprar / Acumular"
       },
       "annual_legacy": {
-        "f1": 0.85,
-        "f2": 9.0,
-        "f3": 8.07,
-        "cqv_v1": 6.33,
-        "cqv_v1_1": 6.33,
-        "cqv_v2": 6.38,
-        "cqv_v3": 6.43,
-        "cqv_v4": 6.42,
-        "cqv": 6.42,
-        "pe": 43.93
+        "f1": 9.0,
+        "f2": 9.4,
+        "f3": 9.1,
+        "cqv": 9.12,
+        "cqv_v4": 9.12
       }
     },
     "2021": {
       "Q1": {
         "ticker": "SMH",
         "quarter": "Q1 2021",
-        "f1": 1.0,
-        "f2": 8.77,
-        "f3": 7.79,
-        "f4": 7.87,
-        "f5": 7.77,
-        "f6": 4.48,
-        "f7": 9.77,
-        "f8": 7.77,
-        "cqv_v4": 6.36,
-        "cqv": 6.36,
-        "pe": 33.9,
-        "value_score": 6.47,
-        "verdict": "Evitar / En Observación"
+        "f1": 9.2,
+        "f2": 9.5,
+        "f3": 9.2,
+        "f4": 9.7,
+        "f5": 9.0,
+        "f6": 9.3,
+        "f7": 9.3,
+        "f8": 9.3,
+        "cqv_v4": 9.25,
+        "cqv": 9.25,
+        "verdict": "Comprar / Acumular"
       },
       "Q2": {
         "ticker": "SMH",
         "quarter": "Q2 2021",
-        "f1": 1.0,
-        "f2": 8.8,
-        "f3": 7.82,
-        "f4": 7.9,
-        "f5": 7.8,
-        "f6": 4.51,
-        "f7": 9.8,
-        "f8": 7.8,
-        "cqv_v4": 6.38,
-        "cqv": 6.38,
-        "pe": 33.9,
-        "value_score": 6.5,
-        "verdict": "Evitar / En Observación"
+        "f1": 9.2,
+        "f2": 9.5,
+        "f3": 9.2,
+        "f4": 9.7,
+        "f5": 9.0,
+        "f6": 9.3,
+        "f7": 9.3,
+        "f8": 9.3,
+        "cqv_v4": 9.25,
+        "cqv": 9.25,
+        "verdict": "Comprar / Acumular"
       },
       "Q3": {
         "ticker": "SMH",
         "quarter": "Q3 2021",
-        "f1": 1.03,
-        "f2": 8.83,
-        "f3": 7.85,
-        "f4": 7.93,
-        "f5": 7.83,
-        "f6": 4.54,
-        "f7": 9.83,
-        "f8": 7.83,
-        "cqv_v4": 6.41,
-        "cqv": 6.41,
-        "pe": 33.9,
-        "value_score": 6.53,
-        "verdict": "Evitar / En Observación"
+        "f1": 9.2,
+        "f2": 9.5,
+        "f3": 9.2,
+        "f4": 9.7,
+        "f5": 9.0,
+        "f6": 9.3,
+        "f7": 9.3,
+        "f8": 9.3,
+        "cqv_v4": 9.25,
+        "cqv": 9.25,
+        "verdict": "Comprar / Acumular"
       },
       "Q4": {
         "ticker": "SMH",
         "quarter": "Q4 2021",
-        "f1": 1.06,
-        "f2": 8.86,
-        "f3": 7.88,
-        "f4": 7.96,
-        "f5": 7.86,
-        "f6": 4.57,
-        "f7": 9.86,
-        "f8": 7.86,
-        "cqv_v4": 6.44,
-        "cqv": 6.44,
-        "pe": 33.9,
-        "value_score": 6.56,
-        "verdict": "Evitar / En Observación"
+        "f1": 9.2,
+        "f2": 9.5,
+        "f3": 9.2,
+        "f4": 9.7,
+        "f5": 9.0,
+        "f6": 9.3,
+        "f7": 9.3,
+        "f8": 9.3,
+        "cqv_v4": 9.25,
+        "cqv": 9.25,
+        "verdict": "Comprar / Acumular"
       },
       "annual_legacy": {
-        "f1": 0.88,
-        "f2": 9.0,
-        "f3": 8.1,
-        "cqv_v1": 6.36,
-        "cqv_v1_1": 6.36,
-        "cqv_v2": 6.41,
-        "cqv_v3": 6.46,
-        "cqv_v4": 6.44,
-        "cqv": 6.44,
-        "pe": 42.34
+        "f1": 9.2,
+        "f2": 9.5,
+        "f3": 9.2,
+        "cqv": 9.25,
+        "cqv_v4": 9.25
       }
     },
     "2022": {
       "Q1": {
         "ticker": "SMH",
         "quarter": "Q1 2022",
-        "f1": 1.0,
-        "f2": 8.47,
-        "f3": 7.29,
-        "f4": 7.77,
-        "f5": 7.67,
-        "f6": 4.38,
-        "f7": 9.67,
-        "f8": 7.57,
-        "cqv_v4": 6.18,
-        "cqv": 6.18,
-        "pe": 26.0,
-        "value_score": 6.47,
-        "verdict": "Evitar / En Observación"
+        "f1": 8.9,
+        "f2": 9.4,
+        "f3": 8.8,
+        "f4": 9.65,
+        "f5": 8.8,
+        "f6": 9.2,
+        "f7": 9.1,
+        "f8": 9.1,
+        "cqv_v4": 9.05,
+        "cqv": 9.05,
+        "verdict": "Comprar / Acumular"
       },
       "Q2": {
         "ticker": "SMH",
         "quarter": "Q2 2022",
-        "f1": 1.0,
-        "f2": 8.5,
-        "f3": 7.32,
-        "f4": 7.8,
-        "f5": 7.7,
-        "f6": 4.41,
-        "f7": 9.7,
-        "f8": 7.6,
-        "cqv_v4": 6.2,
-        "cqv": 6.2,
-        "pe": 26.0,
-        "value_score": 6.5,
-        "verdict": "Evitar / En Observación"
+        "f1": 8.9,
+        "f2": 9.4,
+        "f3": 8.8,
+        "f4": 9.65,
+        "f5": 8.8,
+        "f6": 9.2,
+        "f7": 9.1,
+        "f8": 9.1,
+        "cqv_v4": 9.05,
+        "cqv": 9.05,
+        "verdict": "Comprar / Acumular"
       },
       "Q3": {
         "ticker": "SMH",
         "quarter": "Q3 2022",
-        "f1": 1.03,
-        "f2": 8.53,
-        "f3": 7.35,
-        "f4": 7.83,
-        "f5": 7.73,
-        "f6": 4.44,
-        "f7": 9.73,
-        "f8": 7.63,
-        "cqv_v4": 6.23,
-        "cqv": 6.23,
-        "pe": 26.0,
-        "value_score": 6.53,
-        "verdict": "Evitar / En Observación"
+        "f1": 8.9,
+        "f2": 9.4,
+        "f3": 8.8,
+        "f4": 9.65,
+        "f5": 8.8,
+        "f6": 9.2,
+        "f7": 9.1,
+        "f8": 9.1,
+        "cqv_v4": 9.05,
+        "cqv": 9.05,
+        "verdict": "Comprar / Acumular"
       },
       "Q4": {
         "ticker": "SMH",
         "quarter": "Q4 2022",
-        "f1": 1.06,
-        "f2": 8.56,
-        "f3": 7.38,
-        "f4": 7.86,
-        "f5": 7.76,
-        "f6": 4.47,
-        "f7": 9.76,
-        "f8": 7.66,
-        "cqv_v4": 6.26,
-        "cqv": 6.26,
-        "pe": 26.0,
-        "value_score": 6.56,
-        "verdict": "Evitar / En Observación"
+        "f1": 8.9,
+        "f2": 9.4,
+        "f3": 8.8,
+        "f4": 9.65,
+        "f5": 8.8,
+        "f6": 9.2,
+        "f7": 9.1,
+        "f8": 9.1,
+        "cqv_v4": 9.05,
+        "cqv": 9.05,
+        "verdict": "Comprar / Acumular"
       },
       "annual_legacy": {
-        "f1": 0.91,
-        "f2": 9.0,
-        "f3": 8.13,
-        "cqv_v1": 6.39,
-        "cqv_v1_1": 6.39,
-        "cqv_v2": 6.44,
-        "cqv_v3": 6.49,
-        "cqv_v4": 6.46,
-        "cqv": 6.46,
-        "pe": 40.74
+        "f1": 8.9,
+        "f2": 9.4,
+        "f3": 8.8,
+        "cqv": 9.05,
+        "cqv_v4": 9.05
       }
     },
     "2023": {
       "Q1": {
         "ticker": "SMH",
         "quarter": "Q1 2023",
-        "f1": 1.0,
-        "f2": 8.77,
-        "f3": 7.79,
-        "f4": 7.87,
-        "f5": 7.87,
-        "f6": 4.48,
-        "f7": 9.87,
-        "f8": 7.77,
-        "cqv_v4": 6.37,
-        "cqv": 6.37,
-        "pe": 32.0,
-        "value_score": 6.48,
-        "verdict": "Evitar / En Observación"
+        "f1": 9.3,
+        "f2": 9.55,
+        "f3": 9.3,
+        "f4": 9.75,
+        "f5": 9.1,
+        "f6": 9.4,
+        "f7": 9.4,
+        "f8": 9.4,
+        "cqv_v4": 9.38,
+        "cqv": 9.38,
+        "verdict": "Comprar / Acumular"
       },
       "Q2": {
         "ticker": "SMH",
         "quarter": "Q2 2023",
-        "f1": 1.0,
-        "f2": 8.8,
-        "f3": 7.82,
-        "f4": 7.9,
-        "f5": 7.9,
-        "f6": 4.51,
-        "f7": 9.9,
-        "f8": 7.8,
-        "cqv_v4": 6.39,
-        "cqv": 6.39,
-        "pe": 32.0,
-        "value_score": 6.5,
-        "verdict": "Evitar / En Observación"
+        "f1": 9.3,
+        "f2": 9.55,
+        "f3": 9.3,
+        "f4": 9.75,
+        "f5": 9.1,
+        "f6": 9.4,
+        "f7": 9.4,
+        "f8": 9.4,
+        "cqv_v4": 9.38,
+        "cqv": 9.38,
+        "verdict": "Comprar / Acumular"
       },
       "Q3": {
         "ticker": "SMH",
         "quarter": "Q3 2023",
-        "f1": 1.03,
-        "f2": 8.83,
-        "f3": 7.85,
-        "f4": 7.93,
-        "f5": 7.93,
-        "f6": 4.54,
-        "f7": 9.93,
-        "f8": 7.83,
-        "cqv_v4": 6.42,
-        "cqv": 6.42,
-        "pe": 32.0,
-        "value_score": 6.53,
-        "verdict": "Evitar / En Observación"
+        "f1": 9.3,
+        "f2": 9.55,
+        "f3": 9.3,
+        "f4": 9.75,
+        "f5": 9.1,
+        "f6": 9.4,
+        "f7": 9.4,
+        "f8": 9.4,
+        "cqv_v4": 9.38,
+        "cqv": 9.38,
+        "verdict": "Comprar / Acumular"
       },
       "Q4": {
         "ticker": "SMH",
         "quarter": "Q4 2023",
-        "f1": 1.06,
-        "f2": 8.86,
-        "f3": 7.88,
-        "f4": 7.96,
-        "f5": 7.96,
-        "f6": 4.57,
-        "f7": 9.96,
-        "f8": 7.86,
-        "cqv_v4": 6.45,
-        "cqv": 6.45,
-        "pe": 32.0,
-        "value_score": 6.56,
-        "verdict": "Evitar / En Observación"
+        "f1": 9.3,
+        "f2": 9.55,
+        "f3": 9.3,
+        "f4": 9.75,
+        "f5": 9.1,
+        "f6": 9.4,
+        "f7": 9.4,
+        "f8": 9.4,
+        "cqv_v4": 9.38,
+        "cqv": 9.38,
+        "verdict": "Comprar / Acumular"
       },
       "annual_legacy": {
-        "f1": 0.94,
-        "f2": 9.0,
-        "f3": 8.16,
-        "cqv_v1": 6.42,
-        "cqv_v1_1": 6.42,
-        "cqv_v2": 6.47,
-        "cqv_v3": 6.52,
-        "cqv_v4": 6.48,
-        "cqv": 6.48,
-        "pe": 39.14
+        "f1": 9.3,
+        "f2": 9.55,
+        "f3": 9.3,
+        "cqv": 9.38,
+        "cqv_v4": 9.38
       }
     },
     "2024": {
       "Q1": {
         "ticker": "SMH",
         "quarter": "Q1 2024",
-        "f1": 1.0,
-        "f2": 8.87,
-        "f3": 7.99,
-        "f4": 7.97,
-        "f5": 7.97,
-        "f6": 4.58,
-        "f7": 9.97,
-        "f8": 7.87,
-        "cqv_v4": 6.46,
-        "cqv": 6.46,
-        "pe": 35.9,
-        "value_score": 6.47,
-        "verdict": "Evitar / En Observación"
+        "f1": 9.5,
+        "f2": 9.6,
+        "f3": 9.45,
+        "f4": 9.8,
+        "f5": 9.2,
+        "f6": 9.45,
+        "f7": 9.5,
+        "f8": 9.5,
+        "cqv_v4": 9.51,
+        "cqv": 9.51,
+        "verdict": "Comprar / Acumular"
       },
       "Q2": {
         "ticker": "SMH",
         "quarter": "Q2 2024",
-        "f1": 1.0,
-        "f2": 8.9,
-        "f3": 8.02,
-        "f4": 8.0,
-        "f5": 8.0,
-        "f6": 4.61,
-        "f7": 10.0,
-        "f8": 7.9,
-        "cqv_v4": 6.49,
-        "cqv": 6.49,
-        "pe": 35.9,
-        "value_score": 6.5,
-        "verdict": "Evitar / En Observación"
+        "f1": 9.5,
+        "f2": 9.6,
+        "f3": 9.45,
+        "f4": 9.8,
+        "f5": 9.2,
+        "f6": 9.45,
+        "f7": 9.5,
+        "f8": 9.5,
+        "cqv_v4": 9.51,
+        "cqv": 9.51,
+        "verdict": "Comprar / Acumular"
       },
       "Q3": {
         "ticker": "SMH",
         "quarter": "Q3 2024",
-        "f1": 1.03,
-        "f2": 8.93,
-        "f3": 8.05,
-        "f4": 8.03,
-        "f5": 8.03,
-        "f6": 4.64,
-        "f7": 10.0,
-        "f8": 7.93,
-        "cqv_v4": 6.52,
-        "cqv": 6.52,
-        "pe": 35.9,
-        "value_score": 6.53,
-        "verdict": "Evitar / En Observación"
+        "f1": 9.5,
+        "f2": 9.6,
+        "f3": 9.45,
+        "f4": 9.8,
+        "f5": 9.2,
+        "f6": 9.45,
+        "f7": 9.5,
+        "f8": 9.5,
+        "cqv_v4": 9.51,
+        "cqv": 9.51,
+        "verdict": "Comprar / Acumular"
       },
       "Q4": {
         "ticker": "SMH",
         "quarter": "Q4 2024",
-        "f1": 1.06,
-        "f2": 8.96,
-        "f3": 8.08,
-        "f4": 8.06,
-        "f5": 8.06,
-        "f6": 4.67,
-        "f7": 10.0,
-        "f8": 7.96,
-        "cqv_v4": 6.55,
-        "cqv": 6.55,
-        "pe": 35.9,
-        "value_score": 6.56,
-        "verdict": "Evitar / En Observación"
+        "f1": 9.5,
+        "f2": 9.6,
+        "f3": 9.45,
+        "f4": 9.8,
+        "f5": 9.2,
+        "f6": 9.45,
+        "f7": 9.5,
+        "f8": 9.5,
+        "cqv_v4": 9.51,
+        "cqv": 9.51,
+        "verdict": "Comprar / Acumular"
       },
       "annual_legacy": {
-        "f1": 0.97,
-        "f2": 9.0,
-        "f3": 8.19,
-        "cqv_v1": 6.45,
-        "cqv_v1_1": 6.45,
-        "cqv_v2": 6.5,
-        "cqv_v3": 6.55,
-        "cqv_v4": 6.5,
-        "cqv": 6.5,
-        "pe": 37.54
+        "f1": 9.5,
+        "f2": 9.6,
+        "f3": 9.45,
+        "cqv": 9.51,
+        "cqv_v4": 9.51
       }
     },
     "2025": {
       "Q1": {
         "ticker": "SMH",
         "quarter": "Q1 2025",
-        "f1": 1.0,
-        "f2": 8.97,
-        "f3": 8.09,
-        "f4": 7.97,
-        "f5": 7.97,
-        "f6": 4.58,
-        "f7": 9.97,
-        "f8": 7.97,
-        "cqv_v4": 6.5,
-        "cqv": 6.5,
-        "pe": 37.9,
-        "value_score": 6.48,
-        "verdict": "Evitar / En Observación"
+        "f1": 9.55,
+        "f2": 9.62,
+        "f3": 9.48,
+        "f4": 9.82,
+        "f5": 9.25,
+        "f6": 9.48,
+        "f7": 9.55,
+        "f8": 9.52,
+        "cqv_v4": 9.56,
+        "cqv": 9.56,
+        "verdict": "Comprar / Acumular"
       },
       "Q2": {
         "ticker": "SMH",
         "quarter": "Q2 2025",
-        "f1": 1.0,
-        "f2": 9.0,
-        "f3": 8.12,
-        "f4": 8.0,
-        "f5": 8.0,
-        "f6": 4.61,
-        "f7": 10.0,
-        "f8": 8.0,
-        "cqv_v4": 6.53,
-        "cqv": 6.53,
-        "pe": 37.9,
-        "value_score": 6.5,
-        "verdict": "Evitar / En Observación"
+        "f1": 9.55,
+        "f2": 9.62,
+        "f3": 9.48,
+        "f4": 9.82,
+        "f5": 9.25,
+        "f6": 9.48,
+        "f7": 9.55,
+        "f8": 9.52,
+        "cqv_v4": 9.56,
+        "cqv": 9.56,
+        "verdict": "Comprar / Acumular"
       },
       "Q3": {
         "ticker": "SMH",
         "quarter": "Q3 2025",
-        "f1": 1.03,
-        "f2": 9.03,
-        "f3": 8.15,
-        "f4": 8.03,
-        "f5": 8.03,
-        "f6": 4.64,
-        "f7": 10.0,
-        "f8": 8.03,
-        "cqv_v4": 6.56,
-        "cqv": 6.56,
-        "pe": 37.9,
-        "value_score": 6.53,
-        "verdict": "Evitar / En Observación"
+        "f1": 9.55,
+        "f2": 9.62,
+        "f3": 9.48,
+        "f4": 9.82,
+        "f5": 9.25,
+        "f6": 9.48,
+        "f7": 9.55,
+        "f8": 9.52,
+        "cqv_v4": 9.56,
+        "cqv": 9.56,
+        "verdict": "Comprar / Acumular"
       },
       "Q4": {
         "ticker": "SMH",
         "quarter": "Q4 2025",
-        "f1": 1.06,
-        "f2": 9.06,
-        "f3": 8.18,
-        "f4": 8.06,
-        "f5": 8.06,
-        "f6": 4.67,
-        "f7": 10.0,
-        "f8": 8.06,
-        "cqv_v4": 6.59,
-        "cqv": 6.59,
-        "pe": 37.9,
-        "value_score": 6.56,
-        "verdict": "Evitar / En Observación"
+        "f1": 9.55,
+        "f2": 9.62,
+        "f3": 9.48,
+        "f4": 9.82,
+        "f5": 9.25,
+        "f6": 9.48,
+        "f7": 9.55,
+        "f8": 9.52,
+        "cqv_v4": 9.56,
+        "cqv": 9.56,
+        "verdict": "Comprar / Acumular"
       },
       "annual_legacy": {
-        "f1": 1.0,
-        "f2": 9.0,
-        "f3": 8.22,
-        "cqv_v1": 6.48,
-        "cqv_v1_1": 6.48,
-        "cqv_v2": 6.53,
-        "cqv_v3": 6.58,
-        "cqv_v4": 6.52,
-        "cqv": 6.52,
-        "pe": 35.95
+        "f1": 9.55,
+        "f2": 9.62,
+        "f3": 9.48,
+        "cqv": 9.56,
+        "cqv_v4": 9.56
       }
     },
     "2026": {
       "Q1": {
         "ticker": "SMH",
-        "name": "VanEck Semiconductor ETF",
-        "sector": 0.0,
         "quarter": "Q1 2026",
-        "f1": 1.0,
-        "f2": 9.0,
-        "f3": 8.22,
-        "f4": 8.0,
-        "f5": 8.0,
-        "f6": 4.61,
-        "f7": 10.0,
-        "f8": 8.0,
+        "f1": 9.6,
+        "f2": 9.65,
+        "f3": 9.5,
+        "f4": 9.85,
+        "f5": 9.3,
+        "f6": 9.5,
+        "f7": 9.6,
+        "f8": 9.55,
+        "cqv_v4": 9.59,
+        "cqv": 9.59,
+        "verdict": "Comprar / Acumular"
+      },
+      "Q2": {
+        "ticker": "SMH",
+        "name": "VanEck Semiconductor ETF",
+        "sector": "Technology / Semiconductor Leaders & AI Hardware Ecosystem",
+        "quarter": "Q2 2026",
+        "f1": 9.6,
+        "f2": 9.65,
+        "f3": 9.5,
+        "f4": 9.85,
+        "f5": 9.3,
+        "f6": 9.5,
+        "f7": 9.6,
+        "f8": 9.55,
         "momentum_score": 8.33,
         "cqv_v1": 6.71,
         "cqv_v1_1": 6.43,
         "cqv_v2": 6.58,
         "cqv_v3": 6.58,
-        "cqv": 6.54,
-        "pe": 39.94,
+        "cqv": 9.59,
+        "pe": 36.5,
         "status": "Success",
-        "cqv_v4": 6.54,
-        "price": 100.0,
-        "pe_forward": 33.949,
-        "value_score": null,
-        "peg_bruto": null,
-        "score_peg": null,
-        "intrinsic_value": 118.0,
-        "mos_pct": 15.25,
-        "verdict": "Evitar / En Observación",
-        "clasificacion": "EN OBSERVACIÓN",
+        "cqv_v4": 9.59,
+        "price": 268.5,
+        "pe_forward": 25.8,
+        "value_score": 6.94,
+        "peg_bruto": 14.7287,
+        "score_peg": 10.0,
+        "intrinsic_value": 325.0,
+        "mos_pct": 17.38,
+        "verdict": "Acumular / Compra Escalonada",
+        "clasificacion": "ÉLITE SUPREMA",
         "f4_moat": 8.0,
-        "data_confidence": "N/D",
+        "data_confidence": "Alta",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "valuation_date": "26/08/2026",
+        "price_date": "26/08/2026",
+        "eps_growth_ntm_pct": 38.0,
+        "market_cap_b": 3250.0,
+        "ocf_ttm_m": 48000.0,
+        "maint_capex_m": 5000.0,
+        "owner_earnings_m": 43000.0,
+        "score_fcf_yield": 5.5,
+        "score_mos": 5.79,
+        "metodologia_version": "v4.0"
       },
-      "Q2": null,
       "Q3": null,
-      "Q4": null
+      "Q4": null,
+      "annual_legacy": {
+        "f1": 9.6,
+        "f2": 9.65,
+        "f3": 9.5,
+        "cqv": 9.59,
+        "cqv_v4": 9.59
+      }
     }
   },
   "LITE": {
@@ -224733,7 +225218,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -225268,7 +225754,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -225960,7 +226447,8 @@ window.cqvHistoryData = {
         "data_confidence": "N/D",
         "owner_earnings": null,
         "fcf_yield_pct": null,
-        "valuation_date": "29/07/2026"
+        "valuation_date": "29/07/2026",
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null
@@ -226494,7 +226982,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -227053,7 +227542,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 5.1
+        "score_mos": 5.1,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null
@@ -227587,7 +228077,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -228122,7 +228613,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -228732,7 +229224,8 @@ window.cqvHistoryData = {
           "upside_potential_pct": 21.11
         },
         "dcf_status": "N/D: no se documentaron supuestos DCF reproducibles; OCF y Maintenance CapEx no quedan verificados en la fuente de resultados",
-        "cqv_v4": 8.29
+        "cqv_v4": 8.29,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null
@@ -229290,7 +229783,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 5.1
+        "score_mos": 5.1,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null
@@ -229824,7 +230318,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -230359,7 +230854,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -230894,7 +231390,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -231289,7 +231786,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 5.1
+        "score_mos": 5.1,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -231999,7 +232497,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -232534,7 +233033,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.3,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -233069,7 +233569,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -233604,7 +234105,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -234139,7 +234641,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -234674,7 +235177,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -235209,7 +235713,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.3,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -235744,7 +236249,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -236303,7 +236809,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 16.376,
         "owner_earnings_m": 352.1,
         "score_fcf_yield": 4.3,
-        "score_mos": 5.1
+        "score_mos": 5.1,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null
@@ -236837,7 +237344,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -237372,7 +237880,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -237909,7 +238418,64 @@ window.cqvHistoryData = {
         "owner_earnings": null,
         "fcf_yield_pct": null
       },
-      "Q2": null,
+      "Q2": {
+        "ticker": "IONQ",
+        "name": "IonQ, Inc.",
+        "sector": "Technology / Quantum Computing Hardware & Trapped-Ion Systems",
+        "quarter": "Q2 2026",
+        "f1": 4.04,
+        "f2": 9.5,
+        "f3": 8.83,
+        "f4": 8.2,
+        "f5": 8.5,
+        "f6": 6.44,
+        "f7": 8.77,
+        "f8": 8.0,
+        "momentum_score": 4.76,
+        "cqv_v1": 6.64,
+        "cqv_v1_1": 7.51,
+        "cqv_v2": 7.45,
+        "cqv_v3": 7.45,
+        "cqv": 7.52,
+        "pe": 125.95,
+        "status": "Success",
+        "cqv_v4": 7.52,
+        "price": 35.1,
+        "pe_forward": -46.62,
+        "value_score": null,
+        "peg_bruto": null,
+        "score_peg": null,
+        "intrinsic_value": 28.0,
+        "mos_pct": -25.36,
+        "verdict": "Evitar / En Observación",
+        "clasificacion": "CALIDAD MEDIA",
+        "f4_moat": 8.2,
+        "data_confidence": "Alta",
+        "owner_earnings": -451.19,
+        "fcf_yield_pct": -2.4608,
+        "eps_growth_ntm_pct": 45.0,
+        "growth_eps": 45.0,
+        "market_cap": 18335.0,
+        "market_cap_b": 18.34,
+        "ocf": -401.19,
+        "maintenance_capex": 50.0,
+        "score_fcf_yield": 1.0,
+        "score_mos": 1.0,
+        "valuation_date": "12/08/2026",
+        "price_date": "12/08/2026",
+        "publication_date": "12/08/2026",
+        "wacc": 11.0,
+        "g_terminal": 4.0,
+        "analyst_targets": {
+          "target_low_bear": 20.0,
+          "target_mean_base": 38.0,
+          "target_high_bull": 55.0,
+          "num_analysts": 10,
+          "consensus_recommendation": "Buy",
+          "upside_potential_pct": 8.3
+        },
+        "metodologia_version": "v4.0"
+      },
       "Q3": null,
       "Q4": null
     }
@@ -238074,7 +238640,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q4": null,
       "annual_legacy": {
@@ -238625,7 +239192,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -239160,7 +239728,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -239695,7 +240264,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -240230,7 +240800,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -240765,7 +241336,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.3,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -241300,7 +241872,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -241835,7 +242408,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -242370,7 +242944,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -242905,7 +243480,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -243440,7 +244016,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -243975,7 +244552,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -244510,7 +245088,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.3,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -245045,7 +245624,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -245334,7 +245914,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -246127,7 +246708,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -246662,7 +247244,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -246951,7 +247534,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -247744,7 +248328,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.2,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -248279,7 +248864,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -248814,7 +249400,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -249127,7 +249714,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 5.1
+        "score_mos": 5.1,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -249673,7 +250261,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -250466,7 +251055,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.3,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -251001,7 +251591,8 @@ window.cqvHistoryData = {
         "f4_moat": 7.8,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -251536,7 +252127,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -252071,7 +252663,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -252606,7 +253199,8 @@ window.cqvHistoryData = {
         "f4_moat": 8.0,
         "data_confidence": "N/D",
         "owner_earnings": null,
-        "fcf_yield_pct": null
+        "fcf_yield_pct": null,
+        "metodologia_version": "v4.0"
       },
       "Q2": null,
       "Q3": null,
@@ -252919,7 +253513,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 5.1
+        "score_mos": 5.1,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -253571,7 +254166,8 @@ window.cqvHistoryData = {
         "maint_capex_m": 20.0,
         "owner_earnings_m": 430.0,
         "score_fcf_yield": 4.3,
-        "score_mos": 5.1
+        "score_mos": 5.1,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,
@@ -254283,7 +254879,64 @@ window.cqvHistoryData = {
         "owner_earnings": null,
         "fcf_yield_pct": null
       },
-      "Q2": null,
+      "Q2": {
+        "ticker": "RGTI",
+        "name": "Rigetti Computing, Inc.",
+        "sector": "Technology / Quantum Computing Hardware & Superconducting Systems",
+        "quarter": "Q2 2026",
+        "f1": 1.0,
+        "f2": 9.5,
+        "f3": 8.83,
+        "f4": 8.2,
+        "f5": 8.5,
+        "f6": 4.92,
+        "f7": 10.0,
+        "f8": 8.0,
+        "momentum_score": 0.93,
+        "cqv_v1": 6.04,
+        "cqv_v1_1": 6.75,
+        "cqv_v2": 6.81,
+        "cqv_v3": 6.81,
+        "cqv": 6.82,
+        "pe": -89.2,
+        "status": "Success",
+        "cqv_v4": 6.82,
+        "price": 14.1,
+        "pe_forward": -75.82,
+        "value_score": null,
+        "peg_bruto": null,
+        "score_peg": null,
+        "intrinsic_value": 12.5,
+        "mos_pct": -12.8,
+        "verdict": "Evitar / En Observación",
+        "clasificacion": "EN OBSERVACIÓN",
+        "f4_moat": 8.2,
+        "data_confidence": "Media",
+        "owner_earnings": -76.11,
+        "fcf_yield_pct": -1.2764,
+        "eps_growth_ntm_pct": 25.0,
+        "growth_eps": 25.0,
+        "market_cap": 5963.0,
+        "market_cap_b": 5.96,
+        "ocf": -61.11,
+        "maintenance_capex": 15.0,
+        "score_fcf_yield": 1.0,
+        "score_mos": 1.0,
+        "valuation_date": "14/08/2026",
+        "price_date": "14/08/2026",
+        "publication_date": "14/08/2026",
+        "wacc": 11.5,
+        "g_terminal": 4.0,
+        "analyst_targets": {
+          "target_low_bear": 8.0,
+          "target_mean_base": 15.0,
+          "target_high_bull": 22.0,
+          "num_analysts": 8,
+          "consensus_recommendation": "Hold",
+          "upside_potential_pct": 6.4
+        },
+        "metodologia_version": "v4.0"
+      },
       "Q3": null,
       "Q4": null
     }
@@ -261259,7 +261912,8 @@ window.cqvHistoryData = {
           "consensus_recommendation": "Strong Buy",
           "upside_potential_pct": 15.2
         },
-        "owner_earnings": null
+        "owner_earnings": null,
+        "metodologia_version": "v4.0"
       },
       "Q3": null,
       "Q4": null,

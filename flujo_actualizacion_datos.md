@@ -23,7 +23,7 @@ flowchart TD
  B --> C["sync_cqv.py: validar y recalcular"]
  C --> D["cqv_data.js + cqv_history.js"]
  C --> E["dashboard.html"]
- B --> F["Generar inform/TICKER_PERIODO.md"]
+ B --> F["Generar inform/cqv_v4/ o inform/cqv_v5/"]
  F --> G["Paso 5: Auditoría, Corrección y Recomendaciones (Sección 10)"]
  G --> H["Validar Coherencia Final 100% SSOT vs Informe"]
 ```
@@ -70,7 +70,7 @@ Cada actualización debe añadir o corregir únicamente el trimestre solicitado 
 
 Cada snapshot trimestral debe conservar, cuando estén disponibles, `quarter`, `period_end`, `valuation_date`, F1-F8, las versiones CQV, precio, PER, PER Forward, PEG, Value Score, veredicto, fuentes y confianza. No se permite derivar una puntuación trimestral a partir de una puntuación anual.
 
-Al redactar la **Sección 8** del informe de tesis (`inform/[ACCION]_[AÑO]_[Q?].md`), es obligatorio consumir todo el árbol `TICKER → AÑO → Q1/Q2/Q3/Q4` de `cqv_history.json` y listar una fila separada por cada trimestre disponible (ej. `2025 Q1`, `2025 Q2`, `2025 Q3`, `2025 Q4`), reflejando esa misma serie temporal trimestral en el gráfico Mermaid.
+Al redactar la **Sección 8** del informe de tesis (`inform/cqv_v4/[ACCION]_[AÑO]_[Q?]_CQVv4.md` o `inform/cqv_v5/[ACCION]_[AÑO]_[Q?]_CQVv5.md`), es obligatorio consumir todo el árbol `TICKER → AÑO → Q1/Q2/Q3/Q4` de `cqv_history.json` y listar una fila separada por cada trimestre disponible (ej. `2025 Q1`, `2025 Q2`, `2025 Q3`, `2025 Q4`), reflejando esa misma serie temporal trimestral en el gráfico Mermaid.
 
 ### 2.5 Fecha de publicación y precio histórico (Anclaje Temporal Obligatorio)
 
@@ -143,7 +143,7 @@ El pipeline **no redacta informes Markdown**.
 Usar obligatoriamente la plantilla maestra [`inform/template.md`](file:///e:/DeveloperGitHub/repo/finance-cqv-find/inform/template.md). Todo informe trimestral ("informe Q") debe cumplir íntegramente con el formato, la estructura en 10 secciones y los bloques oficiales de salida exigidos en `inform/template.md`.
 
 El archivo de informe debe seguir **estrictamente la convención oficial de nombres**:
-`inform/[ACCION]_[AÑO]_[Q?].md`
+`inform/cqv_v4/[ACCION]_[AÑO]_[Q?]_CQVv4.md` o `inform/cqv_v5/[ACCION]_[AÑO]_[Q?]_CQVv5.md`
 
 Donde:
 - `[ACCION]`: Es el **código de stock o ticker en MAYÚSCULAS** (ejemplo: `MSFT`, `LIN`, `FICO`, `BSX`, `CPRT`, `NFLX`, `MSI`, `ORCL`, `PYPL`, `RACE`, `FTNT`, `MSCI`, `MU`), **nunca** el nombre completo de la empresa ni en minúsculas.

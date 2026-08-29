@@ -1,11 +1,23 @@
-# Prompt maestro de actualización CQV v4.0
+# Prompt maestro de actualización CQV
 
 Utiliza este prompt para actualizar una o varias acciones bajo el flujo SSOT definido en `flujo_actualizacion_datos.md`.
+
+## PASO PREVIO OBLIGATORIO: Selección de Metodología
+
+**Antes de iniciar cualquier análisis, SIEMPRE preguntar al usuario qué metodología desea aplicar:**
+
+- **CQV v4.0** → Manual: `metodo_v4.0.md`
+- **CQV v5.0** → Manual: `metodo_v5.0.md`
+
+No asumir la versión. El usuario debe confirmarla explícitamente. La versión seleccionada determina:
+- El manual metodológico a aplicar.
+- El campo `"metodologia_version"` en `cqv_data.json` (`"v4.0"` o `"v5.0"`).
+- El sufijo del nombre del informe Markdown.
 
 ## Prompt
 
 ```text
-Actualiza completamente bajo la metodología CQV v4.0 las siguientes acciones:
+Actualiza completamente bajo la metodología CQV [VERSION] las siguientes acciones:
 
 [TICKER1], [TICKER2], [TICKER3]
 
@@ -16,7 +28,7 @@ La fecha de valoración debe ser la fecha en la que se publicó el informe finan
 
 Aplica estrictamente:
 - flujo_actualizacion_datos.md
-- metodo_v4.0.md
+- metodo_[VERSION].md   (según la versión seleccionada: metodo_v4.0.md o metodo_v5.0.md)
 - inform/template.md
 
 OBJETIVO
@@ -83,7 +95,7 @@ C. Evolución histórica:
 - Serie histórica 2020–2026 o el periodo disponible.
 - Evolución histórica de las puntuaciones CQV.
 
-D. Factores CQV v4.0:
+D. Factores CQV [VERSION]:
 
 Calcula y justifica F1-F8:
 
@@ -192,7 +204,7 @@ ACTUALIZACIÓN DE ARCHIVOS
 
 Actualiza solo después de validar todos los datos:
 
-1. cqv_data.json
+1. cqv_data.json (incluir el campo "metodologia_version": "[VERSION]")
 2. cqv_history.json
 3. Ejecuta:
     Para una acción: python sync_cqv.py --ticker [TICKER]`r`n    Para varias acciones: python sync_cqv.py
@@ -202,7 +214,8 @@ Actualiza solo después de validar todos los datos:
    - dashboard.html
 
 5. Genera o actualiza el informe trimestral a partir de `inform/template.md`, cumpliendo al 100% su formato en 10 secciones y siguiendo la convención estricta:
-   - inform/[ACCION]_[AÑO]_[Q?].md  (Donde [ACCION] es el ticker en MAYÚSCULAS ej. MSFT, LIN, FICO, CPRT; [AÑO] es el año ej. 2026; y [Q?] es Q1, Q2, Q3 o Q4). Nunca usar el nombre de la empresa ni minúsculas.
+   - inform/cqv_v4/[ACCION]_[AÑO]_[Q?]_CQVv4.md (para v4.0) o inform/cqv_v5/[ACCION]_[AÑO]_[Q?]_CQVv5.md (para v5.0)  (Donde [ACCION] es el ticker en MAYÚSCULAS ej. MSFT, LIN, FICO, CPRT; [AÑO] es el año ej. 2026; [Q?] es Q1, Q2, Q3 o Q4; y [VER] es el sufijo de la versión metodológica: `v4` o `v5`). Nunca usar el nombre de la empresa ni minúsculas.
+   - Ejemplos: `inform/cqv_v5/MSFT_2026_Q2_CQVv5.md`, `inform/cqv_v4/FICO_2026_Q1_CQVv4.md`
 
 El dashboard debe actualizarse exclusivamente desde el SSOT, incluyendo:
 - window.companiesData
@@ -215,7 +228,7 @@ La **Sección 8 del informe Markdown** y la sección **Tendencias del Dashboard*
 
 El informe final de cada acción debe estructurarse obligatoriamente en 10 secciones a partir de `inform/template.md`:
 - Sección 1: Resumen Ejecutivo y Bloque de Salida 9.6.
-- Sección 2: Métricas y Puntuaciones CQV Calidad v4.0 (con tabla 2.1 de F1-F8).
+- Sección 2: Métricas y Puntuaciones CQV Calidad [VERSION] (con tabla 2.1 de F1-F8).
 - Sección 3: Análisis del Estado de Resultados, Competidores y ROIC.
   - Subsección 3.4: Evolución Multianual y Diagnóstico de Tendencia (¿Mejorando o Empeorando?) — Comparativa cuantitativa/cualitativa de los últimos 3 ejercicios fiscales (FY-2, FY-1, FY) auditando Ingresos, Márgenes, EPS, FCF y ROIC con diagnósticos explícitos (🟢 Mejorando / 🟡 Estabilidad / 🔴 Empeorando).
   - Subsección 3.5: Guidance y Perspectivas Futuras para Próximos Periodos — Proyecciones oficiales de la compañía para el próximo ejercicio fiscal (FY+1), desglosadas por segmentos operativos y especificando cambios contables o estratégicos previstos.
@@ -229,7 +242,7 @@ El informe final de cada acción debe estructurarse obligatoriamente en 10 secci
 
 PASO ADICIONAL DE AUDITORÍA Y AUTO-CORRECCIÓN
 
-1. **Regla Rígida de Redondeo:** El CQV Calidad v4.0 debe redondearse estrictamente a dos decimales a partir del cálculo de la suma ponderada de F1-F8 (`round(sum(F_i * w_i), 2)`). `sync_cqv.py` es la autoridad matemática SSOT. Está prohibido incluir en el informe Markdown un valor distinto al generado por el script.
+1. **Regla Rígida de Redondeo:** El CQV Calidad [VERSION] debe redondearse estrictamente a dos decimales a partir del cálculo de la suma ponderada de F1-F8 (`round(sum(F_i * w_i), 2)`). `sync_cqv.py` es la autoridad matemática SSOT. Está prohibido incluir en el informe Markdown un valor distinto al generado por el script.
 2. Ejecuta una auditoría matemática y de integridad entre SSOT JSON e Informe Markdown.
 3. Si detectas cualquier discrepancia numérica o de redondeo, corrige de inmediato el informe Markdown y re-ejecuta `python sync_cqv.py --ticker [TICKER]` para garantizar coherencia del 100%.
 4. Documenta en la Sección 10 las observaciones, correcciones realizadas, campos `N/D` y recomendaciones para la toma de decisiones.
@@ -255,6 +268,7 @@ Comprueba que coincidan exactamente entre JSON, JS, dashboard e informe:
 - Valor intrínseco.
 - Margen de seguridad.
 - Veredicto.
+- Metodología (v4.0 o v5.0).
 - Sección 10 de Auditoría y Recomendaciones completada.
 
 Si una acción presenta errores, datos faltantes o discrepancias:
@@ -268,7 +282,7 @@ Si una acción presenta errores, datos faltantes o discrepancias:
 
 Entrega al final una tabla resumen:
 
-Ticker | Estado | CQV | Value Score | PEG Bruto | Score PEG | FCF Yield | MoS | Veredicto | Confianza | Campos N/D | Fuentes principales
+Ticker | Estado | CQV | Value Score | PEG Bruto | Score PEG | FCF Yield | MoS | Veredicto | Confianza | Metodología | Campos N/D | Fuentes principales
 ```
 
 ## Addendum obligatorio: uso de fuentes secundarias confiables
@@ -351,7 +365,7 @@ Cuando un dato no aparezca en los estados financieros, earnings release, present
 ## Ejemplo para una acción
 
 ```text
-Actualiza completamente MSFT para Q2 2026 bajo CQV v4.0 siguiendo exactamente el protocolo anterior.
+Actualiza completamente MSFT para Q2 2026 bajo CQV v5.0 siguiendo exactamente el protocolo anterior.
 ```
 
 ## Ejemplo para varias acciones

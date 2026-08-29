@@ -1,10 +1,11 @@
-"""CQV v4.0 — pipeline SSOT estricto y selectivo.
+"""CQV v4.0 / v5.0 — pipeline SSOT estricto y selectivo.
 
 Uso:
     python sync_cqv.py
     python sync_cqv.py --ticker MSFT
 
 No usa valores por defecto para cálculos. Los datos ausentes permanecen como N/D.
+Soporta metodologia_version 'v4.0' (default) y 'v5.0'.
 """
 
 import argparse
@@ -20,6 +21,8 @@ WEIGHTS = {
     "f1": 0.20, "f2": 0.15, "f3": 0.15, "f4": 0.15,
     "f5": 0.10, "f6": 0.10, "f7": 0.05, "f8": 0.10,
 }
+
+VALID_METODO_VERSIONS = {"v4.0", "v5.0"}
 
 
 def number(item, key, required=False):
@@ -194,10 +197,97 @@ def record_history(history, item):
     history[ticker][year][quarter] = history_snapshot(item)
 
 
+def _value_score_v5(score_fcf_yield, score_peg, score_mos):
+    """v5.0: Value Score con reponderación cuando falta un componente.
+
+    Requiere al menos dos de los tres componentes. Si solo hay uno o ninguno,
+    devuelve None. Los pesos originales (0.40, 0.30, 0.30) se reponderan
+    proporcionalmente entre los componentes disponibles.
+    """
+    components = []
+    weights = []
+    if score_fcf_yield is not None:
+        components.append(score_fcf_yield)
+        weights.append(0.40)
+    if score_peg is not None:
+        components.append(score_peg)
+        weights.append(0.30)
+    if score_mos is not None:
+        components.append(score_mos)
+        weights.append(0.30)
+    if len(components) < 2:
+        return None
+    total_w = sum(weights)
+    return sum(c * (w / total_w) for c, w in zip(components, weights))
+
+
+def _verdict_v4(cqv, mos_pct):
+    """Veredicto v4.0: basado solo en CQV y MoS."""
+    if cqv is None:
+        return "N/D - factores CQV incompletos"
+    if mos_pct is None:
+        return "N/D - valoración incompleta"
+    if cqv >= 9.0 and mos_pct >= 25.0:
+        return "Comprar / Candidato Prioritario"
+    if cqv >= 9.0 and mos_pct >= 18.0:
+        return "Comprar / Acumular"
+    if cqv >= 8.0 and mos_pct >= 10.0:
+        return "Acumular / Compra Escalonada"
+    if cqv >= 8.0:
+        return "Mantener"
+    return "Evitar / En Observación"
+
+
+def _verdict_v5(cqv, mos_pct, value_score, scores, data_confidence="N/D", mos_base_pct=None):
+    """Veredicto v5.0: incorpora Value Score, confianza de datos y disponibilidad de F2/F8.
+
+    Sección 7 de metodo_v5.0.md:
+    - Comprar:  CQV ≥8.0, confianza Alta/Media, F2 y F8 disponibles, MoS esperado ≥20%, MoS base ≥10%, VS ≥6.0
+    - Acumular: CQV ≥8.0, confianza Alta/Media, MoS esperado ≥10%, VS ≥5.0
+    - Mantener: CQV ≥8.0, pero MoS esperado <10% o precio exige supuestos exigentes
+    - Evitar:   CQV <7.0, filtro severo, confianza Baja, datos N/D
+    """
+    if cqv is None:
+        return "N/D - factores CQV incompletos"
+    if scores.get("f2") is None or scores.get("f8") is None:
+        return "N/D - F2 o F8 ausente"
+    if mos_pct is None:
+        return "N/D - valoración incompleta"
+
+    # Confianza Baja bloquea veredictos afirmativos de compra
+    conf = str(data_confidence).strip().capitalize() if data_confidence else "N/D"
+    if conf == "Baja":
+        return "Evitar / Confianza de Datos Baja"
+
+    # Si no se desglosa MoS Base por separado, se toma el MoS esperado
+    mos_base = mos_base_pct if mos_base_pct is not None else mos_pct
+
+    if (cqv >= 8.0 and mos_pct >= 20.0 and mos_base >= 10.0
+            and value_score is not None and value_score >= 6.0):
+        return "Comprar / Revisar Compra"
+    if cqv >= 8.0 and mos_pct >= 10.0 and value_score is not None and value_score >= 5.0:
+        return "Acumular"
+    if cqv >= 8.0:
+        return "Mantener"
+    if cqv < 7.0:
+        return "Evitar"
+    return "En Observación"
+
+
 def calculate(item):
     ticker = text(item, "ticker")
     for key in ("name", "sector", "quarter"):
         text(item, key)
+
+    # --- Metodología version ---
+    metodo_ver = str(item.get("metodologia_version", "v4.0")).strip()
+    if metodo_ver not in VALID_METODO_VERSIONS:
+        raise ValueError(
+            f"metodologia_version inválida: '{metodo_ver}'. "
+            f"Valores permitidos: {sorted(VALID_METODO_VERSIONS)}"
+        )
+    is_v5 = metodo_ver == "v5.0"
+
     valuation_date = item.get("valuation_date")
     price_date = item.get("price_date")
     if valuation_date and price_date and str(valuation_date) != str(price_date):
@@ -226,79 +316,137 @@ def calculate(item):
         if value is not None and not 0.0 <= value <= 10.0:
             raise ValueError(f"{key} fuera de rango 0-10")
 
+    # --- CQV (idéntico en v4.0 y v5.0) ---
     cqv = None
     if all(scores[key] is not None for key in WEIGHTS):
         cqv = sum(scores[key] * weight for key, weight in WEIGHTS.items())
     if cqv is not None and (scores["f2"] < 4.0 or scores["f4"] < 4.0):
         cqv = min(cqv, 6.99)
 
+    # --- Owner Earnings y FCF Yield (idéntico) ---
     owner_earnings = None
     fcf_yield_pct = None
     if ocf is not None and maintenance_capex is not None and market_cap and market_cap > 0:
         owner_earnings = ocf - maintenance_capex
         fcf_yield_pct = owner_earnings / market_cap * 100.0
 
+    # --- Score crecimiento/múltiplo (PEG) ---
+    # v4.0: growth ≤ 0 → score_peg = 0 (clamped)
+    # v5.0: growth ≤ 0 o PER ≤ 0 → N/D (no cero)
     peg_bruto = None
     score_peg = None
-    if eps_growth is not None and pe_forward is not None and pe_forward > 0:
-        peg_bruto = (eps_growth / pe_forward) * 10.0
-        score_peg = min(10.0, max(0.0, peg_bruto))
+    if is_v5:
+        if (eps_growth is not None and eps_growth > 0
+                and pe_forward is not None and pe_forward > 0):
+            peg_bruto = (eps_growth / pe_forward) * 10.0
+            score_peg = min(10.0, max(1.0, peg_bruto))
+        # else: N/D (None) — v5.0 no asigna cero
+    else:
+        if eps_growth is not None and pe_forward is not None and pe_forward > 0:
+            peg_bruto = (eps_growth / pe_forward) * 10.0
+            score_peg = min(10.0, max(0.0, peg_bruto))
 
+    # --- Margen de Seguridad (idéntico) ---
     mos_pct = None
     if intrinsic_value is not None and intrinsic_value > 0:
         mos_pct = ((intrinsic_value - price) / intrinsic_value) * 100.0
 
+    # --- Value Score ---
+    # v4.0: requiere los 3 componentes
+    # v5.0: reponderación con ≥2 componentes disponibles
     value_score = None
-    if score_fcf_yield is not None and score_mos is not None and score_peg is not None:
-        value_score = (
-            0.40 * score_fcf_yield
-            + 0.30 * score_peg
-            + 0.30 * score_mos
-        )
-
-    if cqv is None:
-        verdict = "N/D - factores CQV incompletos"
-    elif mos_pct is None:
-        verdict = "N/D - valoración incompleta"
-    elif cqv >= 9.0 and mos_pct >= 25.0:
-        verdict = "Comprar / Candidato Prioritario"
-    elif cqv >= 9.0 and mos_pct >= 18.0:
-        verdict = "Comprar / Acumular"
-    elif cqv >= 8.0 and mos_pct >= 10.0:
-        verdict = "Acumular / Compra Escalonada"
-    elif cqv >= 8.0:
-        verdict = "Mantener"
+    if is_v5:
+        value_score = _value_score_v5(score_fcf_yield, score_peg, score_mos)
     else:
-        verdict = "Evitar / En Observación"
+        if score_fcf_yield is not None and score_mos is not None and score_peg is not None:
+            value_score = (
+                0.40 * score_fcf_yield
+                + 0.30 * score_peg
+                + 0.30 * score_mos
+            )
 
+    # --- Veredicto ---
+    data_conf = item.get("data_confidence", "N/D")
+    mos_base_pct = number(item, "mos_base_pct")
+    stress_flag = bool(item.get("severe_stress_flag") or item.get("f2_stress_flag"))
+
+    if stress_flag and is_v5:
+        cqv = min(cqv, 6.99) if cqv is not None else None
+        verdict = "Evitar / Filtro de Estrés F2 Activo"
+    elif is_v5:
+        verdict = _verdict_v5(cqv, mos_pct, value_score, scores, data_confidence=data_conf, mos_base_pct=mos_base_pct)
+    else:
+        verdict = _verdict_v4(cqv, mos_pct)
+
+    # --- Clasificación ---
+    # v4.0: < 7.0 = "EN OBSERVACIÓN"
+    # v5.0: < 7.0 = "VULNERABLE" (alineado con metodo_v5.0.md §5)
     classification = "N/D"
     if cqv is not None:
-        if cqv >= 9.50:
+        if stress_flag:
+            classification = "VULNERABLE"
+        elif cqv >= 9.50:
             classification = "ÉLITE SUPREMA"
         elif cqv >= 9.00:
             classification = "ÉLITE"
         elif cqv >= 8.00:
             classification = "ALTA CALIDAD"
         elif cqv >= 7.00:
-            classification = "CALIDAD MEDIA"
+            if is_v5:
+                classification = "EN OBSERVACIÓN"
+            else:
+                classification = "CALIDAD MEDIA"
         else:
-            classification = "EN OBSERVACIÓN"
+            if is_v5:
+                classification = "VULNERABLE"
+            else:
+                classification = "EN OBSERVACIÓN"
 
+    # --- Output ---
     output = dict(item)
     output.pop("peg_score", None)
     output["data_confidence"] = item.get("data_confidence", "N/D")
+    output["metodologia_version"] = metodo_ver
+
+    cqv_rounded = round(cqv, 2) if cqv is not None else None
+
+    # Campo versionado del CQV
+    if is_v5:
+        output["cqv_v5"] = cqv_rounded
+        # Conservar cqv_v4 si ya existía en el registro (historial)
+        if "cqv_v4" not in item:
+            output.pop("cqv_v4", None)
+    else:
+        output["cqv_v4"] = cqv_rounded
+
+    # Campo genérico (siempre presente para dashboard/compatibilidad)
+    output["cqv"] = cqv_rounded
+
+    peg_bruto_r = round(peg_bruto, 4) if peg_bruto is not None else None
+    score_peg_r = round(score_peg, 4) if score_peg is not None else None
+
     output.update({
-        "cqv_v4": round(cqv, 2) if cqv is not None else None,
-        "cqv": round(cqv, 2) if cqv is not None else None,
         "owner_earnings": round(owner_earnings, 4) if owner_earnings is not None else None,
         "fcf_yield_pct": round(fcf_yield_pct, 4) if fcf_yield_pct is not None else None,
-        "peg_bruto": round(peg_bruto, 4) if peg_bruto is not None else None,
-        "score_peg": round(score_peg, 4) if score_peg is not None else None,
         "mos_pct": round(mos_pct, 2) if mos_pct is not None else None,
         "value_score": round(value_score, 2) if value_score is not None else None,
         "verdict": verdict,
         "clasificacion": classification,
     })
+
+    # Nombres de campo del score PEG según versión
+    if is_v5:
+        output["score_crecimiento_multiplo_bruto"] = peg_bruto_r
+        output["score_crecimiento_multiplo"] = score_peg_r
+        # Limpiar nombres v4 si no existían previamente
+        if "peg_bruto" not in item:
+            output.pop("peg_bruto", None)
+        if "score_peg" not in item:
+            output.pop("score_peg", None)
+    else:
+        output["peg_bruto"] = peg_bruto_r
+        output["score_peg"] = score_peg_r
+
     return output
 
 

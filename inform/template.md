@@ -4,39 +4,41 @@
 **Fecha de Valoración:** [DD/MM/AAAA]  
 **Fecha del Precio Utilizado:** [DD/MM/AAAA]  
 **Mercado / Fuente del Precio:** [NASDAQ/NYSE/etc. — Fuente]  
-**Clasificación CQV Calidad v4.0:** [ÉLITE / ALTA CALIDAD / EN OBSERVACIÓN / VULNERABLE]  
-**Veredicto Final Operativo v4.0:** [COMPRAR / ACUMULAR / MANTENER / EVITAR]. [Resumen en una frase del veredicto principal].
+**Metodología Aplicada:** [CQV v4.0 / CQV v5.0]  
+**Clasificación CQV Calidad:** [ÉLITE / ALTA CALIDAD / EN OBSERVACIÓN / VULNERABLE]  
+**Veredicto Final Operativo:** [COMPRAR / ACUMULAR / MANTENER / EVITAR]. [Resumen en una frase del veredicto principal].
 
 ---
 
-## 1. Resumen Ejecutivo y Bloque de Salida Final CQV v4.0
+## 1. Resumen Ejecutivo y Bloque de Salida Final CQV [v4.0 / v5.0]
 
 > [!NOTE]
-> ### 📊 BLOQUE OFICIAL DE SALIDA MATRIZ CQV v4.0 (SECCIÓN 9.6)
+> ### 📊 BLOQUE OFICIAL DE SALIDA MATRIZ CQV [v4.0 / v5.0] (SECCIÓN 9.6 / 7.1)
 > ```text
 > CQV Calidad (F1-F8):   [X.XX] / 10
 > Value Score:           [X.XX] / 10
-> PEG Bruto:             [X.XX]
-> Score PEG normalizado: [X.XX] / 10
+> Score Crecimiento/Múltiplo (o PEG): [X.XX] / 10
 > Valor Intrínseco:      $[X.XX] por acción
+> Precio Actual:         $[X.XX]
 > Margen de Seguridad:   [X.X]%
 > Confianza:             [Alta / Media / Baja]
+> Metodología:           [v4.0 / v5.0]
 > Veredicto Final:       [Comprar / Acumular / Mantener / Evitar]
 > ```
 
-### 📋 Matriz Identificadora de Métricas Emitidas por CQV v4.0
+### 📋 Matriz Identificadora de Métricas Emitidas por CQV [v4.0 / v5.0]
 
-| Parámetro Emitido por CQV v4.0 | Valor Obtenido | Rango / Escala | Diagnóstico Operativo |
+| Parámetro Emitido por CQV | Valor Obtenido | Rango / Escala | Diagnóstico Operativo |
 | :--- | :---: | :---: | :--- |
 | **CQV Calidad Fundamental (F1-F8):** | **[X.XX] / 10** | 0.00 – 10.00 | **[ÉLITE ≥9.00 / ALTA CALIDAD 8.00-8.99]** |
-| **Value Score (Capa de Valoración):** | **[X.XX] / 10** | 0.00 – 10.00 | **[Atractivo ≥8.00 / Exigente <6.00]** |
-| **PEG Bruto (EPS Growth / PER Fwd * 10):** | **[X.XX]** | Sin acotación | Métrica auditada bruta de crecimiento vs múltiplo. |
-| **Score PEG Normalizado:** | **[X.XX] / 10** | 0.00 – 10.00 | Métrica acotada para cálculo de Value Score. |
+| **Value Score (Capa de Valoración):** | **[X.XX] / 10** | 0.00 – 10.00 | **[Atractivo ≥6.00 / Exigente <5.00]** |
+| **PEG Bruto (v4) / Crecimiento-Múltiplo Bruto (v5):** | **[X.XX]** | Sin acotación | Métrica auditada bruta de crecimiento vs múltiplo. |
+| **Score PEG (v4) / Score Crecimiento-Múltiplo (v5):** | **[X.XX] / 10** | 0.00 – 10.00 (o N/D si growth ≤0 en v5) | Métrica para el cálculo de Value Score. |
 | **Valor Intrínseco Estimado (DCF Base):** | **$[X.XX]** | En USD ($) | Estimación por Descuento de Flujos y Múltiplos. |
 | **Precio de Mercado a la Fecha de Valoración:** | **$[X.XX]** | En USD ($) | Cierre de la misma fecha que la publicación/valoración; nunca precio actual para informes históricos. |
 | **Margen de Seguridad (%):** | **[X.X]%** | En porcentaje (%) | Diferencial entre Valor Intrínseco y Precio Mercado. |
 | **Nivel de Confianza de Datos:** | **[Alta / Media]** | Alta / Media / Baja | Calidad y completitud auditada de estados financieros. |
-| **Veredicto Final Operativo v4.0:** | **[Veredicto]** | 4 Categorías | **[Comprar / Acumular / Mantener / Evitar]** |
+| **Veredicto Final Operativo:** | **[Veredicto]** | 4 Categorías | **[Comprar / Acumular / Mantener / Evitar]** |
 
 ---
 
@@ -44,29 +46,29 @@
 
 [Resumen de los últimos resultados trimestrales/anuales, indicando crecimiento de ingresos, expansión/contracción de márgenes y generación de caja libre].
 
-Bajo el marco multifactorial **CQV v4.0 (Quality, Resilience and Value)**, la empresa obtiene una puntuación de calidad fundamental de **[X.XX]/10**, destacando en [mención de los factores F1-F8 más fuertes].
+Bajo el marco multifactorial **CQV [v4.0 / v5.0] (Quality, Resilience and Value)**, la empresa obtiene una puntuación de calidad fundamental de **[X.XX]/10**, destacando en [mención de los factores F1-F8 más fuertes].
 
 ---
 
-## 2. Métricas y Puntuaciones en el Modelo CQV Calidad v4.0
+## 2. Métricas y Puntuaciones en el Modelo CQV Calidad [v4.0 / v5.0]
 
-El modelo **CQV v4.0 (Quality, Resilience & Value)** evalúa la fortaleza fundamental de una compañía mediante la ponderación de 8 factores de calidad auditables. La fórmula de cálculo del score de calidad consolidado es la siguiente:
+El modelo **CQV [v4.0 / v5.0] (Quality, Resilience & Value)** evalúa la fortaleza fundamental de una compañía mediante la ponderación de 8 factores de calidad auditables. La fórmula de cálculo del score de calidad consolidado es la siguiente:
 
-$$\text{CQV Calidad v4.0} = (F_1 \times 0.20) + (F_2 \times 0.15) + (F_3 \times 0.15) + (F_4 \times 0.15) + (F_5 \times 0.10) + (F_6 \times 0.10) + (F_7 \times 0.05) + (F_8 \times 0.10)$$
+$$\text{CQV Calidad} = (F_1 \times 0.20) + (F_2 \times 0.15) + (F_3 \times 0.15) + (F_4 \times 0.15) + (F_5 \times 0.10) + (F_6 \times 0.10) + (F_7 \times 0.05) + (F_8 \times 0.10)$$
 
 ### 2.1. Tabla de Valoraciones Parciales y Desglose Auditado (F1-F8)
 
 | Factor / Componente del Modelo | Puntuación (0-10) | Peso Absoluto | Contribución Parcial | Diagnóstico Financiero y Evidencia Cuantitativa |
 | :--- | :---: | :---: | :---: | :--- |
 | **F1: Economía del Negocio & Rentabilidad** | **[X.XX]** | 20.0% | **[F1 * 0.20]** | [Margen bruto, margen operativo GAAP/Non-GAAP, ROIC real y conversión de FCF]. |
-| **F2: Solidez Financiera** | **[X.XX]** | 15.0% | **[F2 * 0.15]** | [Estructura de deuda, ratio Deuda/EBITDA, cobertura de intereses, liquidez y estabilidad de FCF]. |
+| **F2: Solidez Financiera** | **[X.XX]** | 15.0% | **[F2 * 0.15]** | [Estructura de deuda, ratio Deuda/EBITDA, cobertura de intereses, refinanciación, liquidez y estrés]. |
 | **F3: Crecimiento Durable** | **[X.XX]** | 15.0% | **[F3 * 0.15]** | [CAGR 3-5 años de ingresos, EPS normalizado, retención NRR y dilución neta por SBC]. |
 | **F4: Moat Competitivo** | **[X.XX]** | 15.0% | **[F4 * 0.15]** | [Costes de cambio, ventajas de red/datos, cuota de mercado global y durabilidad del foso]. |
-| **F5: Asignación de Capital** | **[X.XX]** | 10.0% | **[F5 * 0.10]** | [Reinversión orgánica (ROIC vs WACC), recompras netas accionarías, M&A e historial de dividendos]. |
+| **F5: Asignación de Capital** | **[X.XX]** | 10.0% | **[F5 * 0.10]** | [Reinversión orgánica (ROIC incremental vs WACC), recompras netas, M&A e historial de dividendos]. |
 | **F6: Dirección & Ejecución Operativa** | **[X.XX]** | 10.0% | **[F6 * 0.10]** | [Alineación directiva, estructura de incentivos y consistencia en el cumplimiento de guías]. |
 | **F7: Opcionalidad Futura & Disrupción** | **[X.XX]** | 5.0% | **[F7 * 0.05]** | [Monetización demostrada en megatendencias e IA, inmunidad a la desintermediación por LLMs]. |
-| **F8: Antifragilidad & Recurrencia** | **[X.XX]** | 10.0% | **[F8 * 0.10]** | [Porcentaje de ingresos recurrentes, resistencia recesiva, diversificación de clientes y flexibilidad]. |
-| **SCORE CQV Calidad v4.0 FINAL** | -- | **100.0%** | **[SUMA PARCIALES]** | **Calificación: [ÉLITE / ALTA CALIDAD / EN OBSERVACIÓN]** |
+| **F8: Resiliencia Operativa** | **[X.XX]** | 10.0% | **[F8 * 0.10]** | [Porcentaje de ingresos recurrentes, ciclicidad, diversificación de clientes y flexibilidad]. |
+| **SCORE CQV Calidad FINAL** | -- | **100.0%** | **[SUMA PARCIALES]** | **Calificación: [ÉLITE / ALTA CALIDAD / EN OBSERVACIÓN / VULNERABLE]** |
 
 ---
 
@@ -201,12 +203,11 @@ graph TD
 
 ---
 
-### 5.2. PEG Bruto y Score PEG Normalizado
+### 5.2. Score Crecimiento / Múltiplo (v5.0) / PEG Bruto (v4.0)
 - **Crecimiento Proyectado de EPS NTM (%):** **[X.X]%**
 - **Múltiplo PER Forward:** **[X.XX]x**
-- **PEG Bruto:**
-  $$\text{PEG Bruto} = \left(\frac{\text{Crecimiento EPS NTM (\%)}} {\text{PER Forward}}\right) \times 10 = \mathbf{[X.XX]}$$
-- **Score PEG Normalizado (Acotado a 10.0):** **[X.XX] / 10**
+- **Ratio Bruto (EPS Growth / PER Forward * 10):** **[X.XX]**
+- **Score Crecimiento/Múltiplo (o Score PEG):** **[X.XX] / 10** *(o N/D si crecimiento ≤ 0 en v5.0)*
 
 ---
 
@@ -217,8 +218,8 @@ graph TD
 - **Score Margen de Seguridad:** **[X.XX] / 10**
 
 #### Ecuación Consolidada del Value Score:
-$$\text{Value Score} = 0.40(\text{Score FCF Yield}) + 0.30(\text{Score PEG}) + 0.30(\text{Score Margen de Seguridad})$$
-$$\text{Value Score} = 0.40([Score FCF]) + 0.30([Score PEG]) + 0.30([Score MoS]) = \mathbf{[Value Score] / 10}$$
+$$\text{Value Score} = 0.40(\text{Score FCF Yield}) + 0.30(\text{Score Crecimiento/Múltiplo}) + 0.30(\text{Score Margen de Seguridad})$$
+*(Nota: En v5.0, si falta un componente, los pesos se reponderan proporcionalmente entre los componentes disponibles).*
 
 ---
 
@@ -244,17 +245,25 @@ $$\text{Value Score} = 0.40([Score FCF]) + 0.30([Score PEG]) + 0.30([Score MoS])
 
 ---
 
-### 6.3. Comparativa de Valoración DCF CQV v4.0 vs. Consenso de Analistas de Wall Street (12M)
+### 6.3. Expectativas Implicadas por el Precio y Comparativa de Consenso Wall Street
+
+- **Crecimiento Implícito por el Precio:** [Tasa de crecimiento de ingresos/EPS que descuenta la cotización actual].
+- **Margen Operativo Implícito:** [Margen requerido para justificar el precio].
+- **Prueba de Expectativas (Reverse DCF):** [¿El precio exige supuestos superiores al Escenario Optimista? Sí / No].
 
 | Escenario / Fuente | Escenario Pesimista (Bear) | Escenario Base (Neutro) | Escenario Optimista (Bull) | Diagnóstico de Brecha de Mercado |
 | :--- | :---: | :---: | :---: | :--- |
-| **Valor Intrínseco DCF CQV v4.0** | **$[DCF Bear]** | **$[DCF Base]** | **$[DCF Bull]** | Estimación multifactorial de caja propia a largo plazo. |
+| **Valor Intrínseco DCF** | **$[DCF Bear]** | **$[DCF Base]** | **$[DCF Bull]** | Estimación multifactorial de caja propia a largo plazo. |
 | **Consenso Analistas Wall Street (12M)** | **$[Target Low]** | **$[Target Mean]** | **$[Target High]** | Basado en el consenso de [N] analistas institucionales. |
 | **Cotización Actual de Mercado** | **$[Precio]** | **$[Precio]** | **$[Precio]** | Potencial de revalorización al Target Mean: **+[X.X]%**. |
 
 ---
 
 ## 7. Registro Auditado de Riesgos y Preguntas Frecuentes (FAQs)
+
+| Riesgo Identificado | Probabilidad (0-1) | Impacto (1-5) | Mitigación (0-1) | Indicador Adelantado | Responsable / Seguimiento | Riesgo Ajustado |
+| :--- | :---: | :---: | :---: | :--- | :--- | :---: |
+| **[Riesgo 1: Regulativo / Competitivo]** | 0.3 | 4 | 0.5 | [Indicador clave] | [Analista] | [Score] |
 
 ---
 
@@ -263,38 +272,38 @@ $$\text{Value Score} = 0.40([Score FCF]) + 0.30([Score PEG]) + 0.30([Score MoS])
 ### 8.1. Desglose Trimestral Histórico (Q1, Q2, Q3, Q4 por Año)
 
 > [!NOTE]
-> La tabla debe incorporar todos los trimestres disponibles (`Q1`, `Q2`, `Q3`, `Q4`) para cada año registrado en `cqv_history.json`. Para periodos históricos antiguos donde no exista desglose trimestral directo, se conservará la fila de referencia anual (`annual_legacy`).
+> La tabla debe incorporar todos los trimestres disponibles (`Q1`, `Q2`, `Q3`, `Q4`) para cada año registrado en `cqv_history.json`. Se muestran las columnas de CQV correspondientes a cada versión histórica.
 
-| Año / Trimestre | PER Trailing | PER Forward | CQV v1.0 | CQV v1.1 | CQV v2.0 | CQV v3.0 | CQV v4.0 | Clasificación CQV v4.0 |
+| Año / Trimestre | PER Trailing | PER Forward | CQV v1.0 | CQV v2.0 | CQV v3.0 | CQV v4.0 | CQV v5.0 | Clasificación |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **2024 Q1** | [X.X]x | [X.X]x | [X.XX] | [X.XX] | [X.XX] | [X.XX] | **[X.XX]** | [Clasificación] |
-| **2024 Q2** | [X.X]x | [X.X]x | [X.XX] | [X.XX] | [X.XX] | [X.XX] | **[X.XX]** | [Clasificación] |
-| **2024 Q3** | [X.X]x | [X.X]x | [X.XX] | [X.XX] | [X.XX] | [X.XX] | **[X.XX]** | [Clasificación] |
-| **2024 Q4** | [X.X]x | [X.X]x | [X.XX] | [X.XX] | [X.XX] | [X.XX] | **[X.XX]** | [Clasificación] |
-| **2025 Q1** | [X.X]x | [X.X]x | [X.XX] | [X.XX] | [X.XX] | [X.XX] | **[X.XX]** | [Clasificación] |
-| **2025 Q2** | [X.X]x | [X.X]x | [X.XX] | [X.XX] | [X.XX] | [X.XX] | **[X.XX]** | [Clasificación] |
-| **2025 Q3** | [X.X]x | [X.X]x | [X.XX] | [X.XX] | [X.XX] | [X.XX] | **[X.XX]** | [Clasificación] |
-| **2025 Q4** | [X.X]x | [X.X]x | [X.XX] | [X.XX] | [X.XX] | [X.XX] | **[X.XX]** | [Clasificación] |
-| **2026 Q1** | [X.X]x | [X.X]x | [X.XX] | [X.XX] | [X.XX] | [X.XX] | **[X.XX]** | [Clasificación] |
+| **2024 Q1** | [X.X]x | [X.X]x | [X.XX] | [X.XX] | [X.XX] | [X.XX] | [X.XX] | [Clasificación] |
+| **2024 Q2** | [X.X]x | [X.X]x | [X.XX] | [X.XX] | [X.XX] | [X.XX] | [X.XX] | [Clasificación] |
+| **2024 Q3** | [X.X]x | [X.X]x | [X.XX] | [X.XX] | [X.XX] | [X.XX] | [X.XX] | [Clasificación] |
+| **2024 Q4** | [X.X]x | [X.X]x | [X.XX] | [X.XX] | [X.XX] | [X.XX] | [X.XX] | [Clasificación] |
+| **2025 Q1** | [X.X]x | [X.X]x | [X.XX] | [X.XX] | [X.XX] | [X.XX] | [X.XX] | [Clasificación] |
+| **2025 Q2** | [X.X]x | [X.X]x | [X.XX] | [X.XX] | [X.XX] | [X.XX] | [X.XX] | [Clasificación] |
+| **2025 Q3** | [X.X]x | [X.X]x | [X.XX] | [X.XX] | [X.XX] | [X.XX] | [X.XX] | [Clasificación] |
+| **2025 Q4** | [X.X]x | [X.X]x | [X.XX] | [X.XX] | [X.XX] | [X.XX] | [X.XX] | [Clasificación] |
+| **2026 Q1** | [X.X]x | [X.X]x | [X.XX] | [X.XX] | [X.XX] | [X.XX] | [X.XX] | [Clasificación] |
 | **2026 Q2** | **[X.X]x** | **[X.X]x** | **[X.XX]** | **[X.XX]** | **[X.XX]** | **[X.XX]** | **[X.XX]** | **[Clasificación]** |
 
 ---
 
-### 8.2. Gráfico de Evolución Histórica Trimestral del Score CQV v4.0 (2020 - Presente)
+### 8.2. Gráfico de Evolución Histórica Trimestral del Score CQV ([TICKER])
 
 ```mermaid
 linechart
-    title Trayectoria Histórica Trimestral del Score CQV v4.0 ([TICKER])
+    title Trayectoria Histórica Trimestral del Score CQV ([TICKER])
     x-axis [Q1-25, Q2-25, Q3-25, Q4-25, Q1-26, Q2-26]
     y-axis "Score CQV (0-10)" 7.0 --> 10.0
-    line "CQV v4.0 Score" [[Score-Q1-25], [Score-Q2-25], [Score-Q3-25], [Score-Q4-25], [Score-Q1-26], [Score-Q2-26]]
+    line "CQV Score" [[Score-Q1-25], [Score-Q2-25], [Score-Q3-25], [Score-Q4-25], [Score-Q1-26], [Score-Q2-26]]
 ```
 
 ---
 
-## 9. Conclusión y Veredicto Final Operativo v4.0
+## 9. Conclusión y Veredicto Final Operativo
 
-**Veredicto Final:** **[COMPRAR / ACUMULAR / MANTENER / EVITAR]. Clasificación [ÉLITE / ALTA CALIDAD]. [Instrucciones finales de ejecución en cartera].**
+**Veredicto Final:** **[COMPRAR / ACUMULAR / MANTENER / EVITAR]. Metodología [CQV v4.0 / v5.0]. Clasificación [ÉLITE / ALTA CALIDAD / EN OBSERVACIÓN / VULNERABLE]. [Instrucciones finales de ejecución en cartera].**
 
 ---
 
@@ -304,12 +313,13 @@ linechart
 
 | Elemento Auditado | Valor en Dataset SSOT (`cqv_data.json`) | Valor en Informe (`inform/[ticker].md`) | Estado de Coherencia | Diagnóstico del Auditor |
 | :--- | :---: | :---: | :---: | :--- |
-| **Score CQV Calidad v4.0** | **[X.XX]** | **[X.XX]** | 🟢 **COHERENTE** | Verificado mediante la suma ponderada de F1 a F8. |
-| **Value Score (Capa Valoración)** | **[X.XX]** | **[X.XX]** | 🟢 **COHERENTE** | Verificado mediante 0.40(FCF Yield) + 0.30(PEG) + 0.30(MoS). |
-| **PEG Bruto / Score PEG** | **[X.XX] / [X.XX]** | **[X.XX] / [X.XX]** | 🟢 **COHERENTE** | Auditada la fórmula (EPS Growth / PER Fwd) * 10. |
+| **Metodología Aplicada** | **[v4.0 / v5.0]** | **[v4.0 / v5.0]** | 🟢 **COHERENTE** | Verificada coincidencia de versión metodológica. |
+| **Score CQV Calidad** | **[X.XX]** | **[X.XX]** | 🟢 **COHERENTE** | Verificado mediante la suma ponderada de F1 a F8. |
+| **Value Score (Capa Valoración)** | **[X.XX]** | **[X.XX]** | 🟢 **COHERENTE** | Verificado mediante fórmula/reponderación correspondiente. |
+| **Score PEG / Crecimiento-Múltiplo** | **[X.XX] / [X.XX]** | **[X.XX] / [X.XX]** | 🟢 **COHERENTE** | Auditada la fórmula (growth/PER) según versión. |
 | **Owner Earnings / FCF Yield** | **$[X]M / [X.XX]%** | **$[X]M / [X.XX]%** | 🟢 **COHERENTE** | Verificado OCF minus CapEx Mantenimiento / Market Cap. |
 | **Valor Intrínseco / MoS (%)** | **$[X.XX] / [X.X]%** | **$[X.XX] / [X.X]%** | 🟢 **COHERENTE** | Verificado diferencial vs cotización actual. |
-| **Veredicto Final Operativo** | **[Veredicto]** | **[Veredicto]** | 🟢 **COHERENTE** | Coincidencia 100% con la matriz de decisión de 4 niveles. |
+| **Veredicto Final Operativo** | **[Veredicto]** | **[Veredicto]** | 🟢 **COHERENTE** | Coincidencia 100% con la matriz de decisión. |
 
 ---
 
