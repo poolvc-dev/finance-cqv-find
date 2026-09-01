@@ -1,5 +1,6 @@
-# Informe de Tesis de Inversión: [Nombre de la Empresa] ([TICKER]) - [Trimestre/Año ej. Q2 2026]
-**Fecha de Emisión:** [Fecha del Informe]  
+# Informe de Tesis de Inversión: [Nombre de la Empresa] ([TICKER]) — P[1-4] [AÑO_CALENDARIO] (Q[1-4] [AÑO_FISCAL])
+**Ciclo de Presentación / Trimestre Analizado:** P[1-4] [AÑO_CALENDARIO] (Correspondiente a Q[1-4] Fiscal [AÑO_FISCAL])  
+**Fecha de Emisión:** [Fecha del Informe DD/MM/AAAA]  
 **Fecha de Publicación del Resultado Analizado:** [DD/MM/AAAA]  
 **Fecha de Valoración:** [DD/MM/AAAA]  
 **Fecha del Precio Utilizado:** [DD/MM/AAAA]  
@@ -30,10 +31,10 @@
 
 | Parámetro Emitido por CQV | Valor Obtenido | Rango / Escala | Diagnóstico Operativo |
 | :--- | :---: | :---: | :--- |
-| **CQV Calidad Fundamental (F1-F8):** | **[X.XX] / 10** | 0.00 – 10.00 | **[ÉLITE ≥9.00 / ALTA CALIDAD 8.00-8.99]** |
-| **Value Score (Capa de Valoración):** | **[X.XX] / 10** | 0.00 – 10.00 | **[Atractivo ≥6.00 / Exigente <5.00]** |
+| **CQV Calidad Fundamental (F1-F8):** | **[X.XX] / 10** | 1.00 – 10.00 | **[ÉLITE ≥9.00 / ALTA CALIDAD 8.00-8.99]** |
+| **Value Score (Capa de Valoración):** | **[X.XX] / 10** | 1.00 – 10.00 | **[Atractivo ≥6.00 / Exigente <5.00]** |
 | **PEG Bruto (v4) / Crecimiento-Múltiplo Bruto (v5):** | **[X.XX]** | Sin acotación | Métrica auditada bruta de crecimiento vs múltiplo. |
-| **Score PEG (v4) / Score Crecimiento-Múltiplo (v5):** | **[X.XX] / 10** | 0.00 – 10.00 (o N/D si growth ≤0 en v5) | Métrica para el cálculo de Value Score. |
+| **Score PEG (v4) / Score Crecimiento-Múltiplo (v5):** | **[X.XX] / 10** | 1.00 – 10.00 (o N/D si growth ≤0 en v5) | Métrica para el cálculo de Value Score. |
 | **Valor Intrínseco Estimado (DCF Base):** | **$[X.XX]** | En USD ($) | Estimación por Descuento de Flujos y Múltiplos. |
 | **Precio de Mercado a la Fecha de Valoración:** | **$[X.XX]** | En USD ($) | Cierre de la misma fecha que la publicación/valoración; nunca precio actual para informes históricos. |
 | **Margen de Seguridad (%):** | **[X.X]%** | En porcentaje (%) | Diferencial entre Valor Intrínseco y Precio Mercado. |
@@ -269,7 +270,7 @@ $$\text{Value Score} = 0.40(\text{Score FCF Yield}) + 0.30(\text{Score Crecimien
 
 ## 8. Evolución Histórica de Puntuaciones CQV y Valuación por Trimestres (Serie 2020 - Presente)
 
-### 8.1. Desglose Trimestral Histórico (Q1, Q2, Q3, Q4 por Año)
+### 8.1. Desglose Trimestral Histórico (P1, P2, P3, P4 por Año)
 
 > [!NOTE]
 > La tabla debe incorporar todos los trimestres disponibles (`Q1`, `Q2`, `Q3`, `Q4`) para cada año registrado en `cqv_history.json`. Se muestran las columnas de CQV correspondientes a cada versión histórica.

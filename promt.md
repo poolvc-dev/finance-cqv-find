@@ -214,8 +214,8 @@ Actualiza solo después de validar todos los datos:
    - dashboard.html
 
 5. Genera o actualiza el informe trimestral a partir de `inform/template.md`, cumpliendo al 100% su formato en 10 secciones y siguiendo la convención estricta:
-   - inform/cqv_v4/[ACCION]_[AÑO]_[Q?]_CQVv4.md (para v4.0) o inform/cqv_v5/[ACCION]_[AÑO]_[Q?]_CQVv5.md (para v5.0)  (Donde [ACCION] es el ticker en MAYÚSCULAS ej. MSFT, LIN, FICO, CPRT; [AÑO] es el año ej. 2026; [Q?] es Q1, Q2, Q3 o Q4; y [VER] es el sufijo de la versión metodológica: `v4` o `v5`). Nunca usar el nombre de la empresa ni minúsculas.
-   - Ejemplos: `inform/cqv_v5/MSFT_2026_Q2_CQVv5.md`, `inform/cqv_v4/FICO_2026_Q1_CQVv4.md`
+   - inform/cqv_v4/[ACCION]_[AÑO]_P[1-4]_CQVv4.md (para v4.0) o inform/cqv_v5/[ACCION]_[AÑO]_P[1-4]_CQVv5.md (para v5.0)  (Donde [ACCION] es el ticker en MAYÚSCULAS ej. MSFT, LIN, FICO, CPRT; [AÑO] es el año ej. 2026; [Q?] es Q1, Q2, Q3 o Q4; y [VER] es el sufijo de la versión metodológica: `v4` o `v5`). Nunca usar el nombre de la empresa ni minúsculas.
+   - Ejemplos: `inform/cqv_v5/MSFT_2026_P2_CQVv5.md`, `inform/cqv_v4/FICO_2026_P1_CQVv4.md`
 
 El dashboard debe actualizarse exclusivamente desde el SSOT, incluyendo:
 - window.companiesData
@@ -373,3 +373,17 @@ Actualiza completamente MSFT para Q2 2026 bajo CQV v5.0 siguiendo exactamente el
 ```text
 Actualiza completamente FICO, MSCI y MSFT para Q2 2026 bajo CQV v4.0 siguiendo exactamente el protocolo anterior. Procesa las acciones de forma transaccional y no publiques cambios parciales si alguna falla la validación.
 ```
+
+
+### Estándar de Nominación por Ciclo de Presentación (P1 - P4)
+El ciclo de presentación (P1 - P4) se determina de forma estricta según la **ventana de publicación del año calendario** en que la empresa emite sus resultados:
+
+- **P1**: Presentación de resultados emitida entre **Abril y Junio** (Mayo - Junio; 1er informe trimestral presentado en el año).
+- **P2**: Presentación de resultados emitida entre **Julio y Septiembre** (Julio - Agosto; 2º informe trimestral / mitad del año).
+- **P3**: Presentación de resultados emitida entre **Octubre y Diciembre** (Octubre - Noviembre; 3er informe trimestral del año).
+- **P4**: Presentación de resultados emitida entre **Enero y Marzo del siguiente año** (4º informe trimestral / cierre de año fiscal).
+
+### Estándar de Título de Informe Markdown:
+Todo informe debe incluir obligatoriamente en el título H1 tanto el periodo de presentación como el trimestre fiscal correspondiente:
+`# Informe de Tesis de Inversión: [Nombre de la Empresa] ([TICKER]) — P[1-4] [AÑO_CALENDARIO] (Q[1-4] [AÑO_FISCAL])`
+*Formato de archivo:* `inform/cqv_v5/[ACCION]_[AÑO]_P[1-4]_CQVv5.md` o `inform/cqv_v4/[ACCION]_[AÑO]_P[1-4]_CQVv4.md`

@@ -45,6 +45,15 @@ $$CQV = 0.20F_1 + 0.15F_2 + 0.15F_3 + 0.15F_4 + 0.10F_5 + 0.10F_6 + 0.05F_7 + 0.
 - Métricas con volatilidad extraordinaria: se muestra rango y explicación, sin eliminar años desfavorables salvo ajuste contable claramente documentado.
 - Todos los importes conservan moneda, unidades, periodo fiscal, fecha de corte y enlace o referencia de la fuente primaria. Las fuentes secundarias se etiquetan como tales.
 
+### 3.1.1 Norma de Periodización P1 - P4 por Ventana de Publicación
+
+La nominación de periodos (P1 - P4) en la metodología CQV se rige estrictamente por la **ventana del año calendario en que la empresa emite la presentación de resultados**, independientemente de las variaciones del año fiscal de cada compañía:
+
+- **P1**: Presentación emitida entre **Abril y Junio** (Mayo - Junio; 1er trimestre presentado en el año).
+- **P2**: Presentación emitida entre **Julio y Septiembre** (Julio - Agosto; 2º trimestre / mitad del año).
+- **P3**: Presentación emitida entre **Octubre y Diciembre** (Octubre - Noviembre; 3er trimestre del año).
+- **P4**: Presentación emitida entre **Enero y Marzo del año siguiente** (4º trimestre / cierre del ejercicio previo).
+
 ### 3.2 Grupos comparables y percentiles
 
 Antes de puntuar se asigna una taxonomía: software/servicios recurrentes, consumo defensivo, industrial/cíclico, energía/materiales, salud, financiero, inmobiliario u otra justificada. Se documentan entre 8 y 25 pares cotizados comparables, país o región, fecha, fuente y exclusiones.
@@ -266,7 +275,7 @@ El CQV Calidad se redondea estrictamente a dos decimales a partir de `round(sum(
 
 ### 8.1 Requisitos mínimos de publicación
 
-Cada informe trimestral sigue íntegramente [`inform/template.md`](file:///e:/DeveloperGitHub/repo/finance-cqv-find/inform/template.md) y la convención `inform/cqv_v5/[ACCION]_[AÑO]_[Q?]_CQVv5.md`. Debe incluir diez secciones, puntuaciones brutas y finales, fuentes, fórmulas, nivel de confianza, `N/D`, riesgos, escenarios y registro de correcciones.
+Cada informe trimestral sigue íntegramente [`inform/template.md`](file:///e:/DeveloperGitHub/repo/finance-cqv-find/inform/template.md) y la convención `inform/cqv_v5/[ACCION]_[AÑO]_P[1-4]_CQVv5.md`. Debe incluir diez secciones, puntuaciones brutas y finales, fuentes, fórmulas, nivel de confianza, `N/D`, riesgos, escenarios y registro de correcciones.
 
 Un informe v5.0 debe mostrar para cada factor y sección:
 
@@ -284,7 +293,7 @@ Cualquier informe que no respete el formato de [`inform/template.md`](file:///e:
 
 El estándar CQV v5.0 exige una **fase obligatoria de auditoría y validación experta** antes de la publicación final de cualquier informe de tesis trimestral:
 
-1. **Cumplimiento del Formato Estándar:** Verificar que el informe siga estrictamente el formato de [`inform/template.md`](file:///e:/DeveloperGitHub/repo/finance-cqv-find/inform/template.md) y la convención de nombres `inform/cqv_v5/[ACCION]_[AÑO]_[Q?]_CQVv5.md`.
+1. **Cumplimiento del Formato Estándar:** Verificar que el informe siga estrictamente el formato de [`inform/template.md`](file:///e:/DeveloperGitHub/repo/finance-cqv-find/inform/template.md) y la convención de nombres `inform/cqv_v5/[ACCION]_[AÑO]_P[1-4]_CQVv5.md`.
 2. **Auditoría de Integridad Matemático-Financiera:** Validar la coherencia absoluta de las fórmulas ($F_1 \dots F_8$, Value Score, Score crecimiento/múltiplo, FCF Yield, MoS, DCF) entre el dataset SSOT (`cqv_data.json`) y el documento Markdown.
 3. **Auto-Corrección Transparente:** En caso de discrepancias numéricas o de tipografía, el analista/sistema está facultado para corregir inmediatamente el informe y re-ejecutar el pipeline `sync_cqv.py` para asegurar que el 100% de los artefactos (JSON, JS, Dashboard, Markdown) sean idénticos.
 4. **Observaciones y Advertencias de Datos (`N/D`):** Documentar formalmente las limitaciones de datos, vacíos de información (`N/D`) o particularidades contables del período.

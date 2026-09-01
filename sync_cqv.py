@@ -50,12 +50,15 @@ def text(item, key, required=True):
 
 
 def quarter_key(item):
-    """Return (year, quarter) for a record such as ``Q2 2026``."""
+    """Return (year, quarter) for a record such as ``Q2 2026`` or ``P2 2026`` or ``2026 P2``."""
     period = text(item, "quarter")
-    match = re.fullmatch(r"Q([1-4])\s+(20\d{2})", period, flags=re.IGNORECASE)
+    match = re.search(r"[QP]([1-4])\s+(20\d{2})|(20\d{2})\s+[QP]([1-4])", period, flags=re.IGNORECASE)
     if not match:
         raise ValueError(f"quarter inválido: {period}")
-    return match.group(2), f"Q{match.group(1)}"
+    if match.group(1) and match.group(2):
+        return match.group(2), f"P{match.group(1)}"
+    else:
+        return match.group(3), f"P{match.group(4)}"
 
 
 def migrate_history(history, cqv_source=None):
@@ -450,8 +453,12 @@ def calculate(item):
     return output
 
 
+from pathlib import Path
+
+
 def write_data(path, data, variable=None):
-    with open(path, "w", encoding="utf-8") as handle:
+    target_path = Path(path).resolve()
+    with open(target_path, "w", encoding="utf-8") as handle:
         if variable == "cqvData":
             handle.write("window.cqvData = ")
         elif variable == "cqvHistory":

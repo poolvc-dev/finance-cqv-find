@@ -70,7 +70,7 @@ Cada actualización debe añadir o corregir únicamente el trimestre solicitado 
 
 Cada snapshot trimestral debe conservar, cuando estén disponibles, `quarter`, `period_end`, `valuation_date`, F1-F8, las versiones CQV, precio, PER, PER Forward, PEG, Value Score, veredicto, fuentes y confianza. No se permite derivar una puntuación trimestral a partir de una puntuación anual.
 
-Al redactar la **Sección 8** del informe de tesis (`inform/cqv_v4/[ACCION]_[AÑO]_[Q?]_CQVv4.md` o `inform/cqv_v5/[ACCION]_[AÑO]_[Q?]_CQVv5.md`), es obligatorio consumir todo el árbol `TICKER → AÑO → Q1/Q2/Q3/Q4` de `cqv_history.json` y listar una fila separada por cada trimestre disponible (ej. `2025 Q1`, `2025 Q2`, `2025 Q3`, `2025 Q4`), reflejando esa misma serie temporal trimestral en el gráfico Mermaid.
+Al redactar la **Sección 8** del informe de tesis (`inform/cqv_v4/[ACCION]_[AÑO]_P[1-4]_CQVv4.md` o `inform/cqv_v5/[ACCION]_[AÑO]_P[1-4]_CQVv5.md`), es obligatorio consumir todo el árbol `TICKER → AÑO → Q1/Q2/Q3/Q4` de `cqv_history.json` y listar una fila separada por cada trimestre disponible (ej. `2025 Q1`, `2025 Q2`, `2025 Q3`, `2025 Q4`), reflejando esa misma serie temporal trimestral en el gráfico Mermaid.
 
 ### 2.5 Fecha de publicación y precio histórico (Anclaje Temporal Obligatorio)
 
@@ -84,6 +84,19 @@ Todo informe y valoración en la metodología CQV debe elaborar congelado en la 
 - Capitalización, PER, PER Forward, PEG, Value Score, DCF y MoS deben utilizar entradas compatibles congeladas a esa misma fecha.
 - Está estrictamente prohibido utilizar el precio o capitalización actual para un informe histórico.
 - Si el precio de la fecha correcta no puede verificarse, las métricas dependientes quedan como `N/D` y no se emite recomendación afirmativa.
+
+### 2.6 Estándar de Nominación de Periodos P1 - P4 por Ventana de Publicación
+
+Para mantener la máxima consistencia y evitar confusiones con los desfases de los ejercicios fiscales de distintas compañías (ej. cierres fiscales en octubre o mayo), la nominación de periodos (P1 - P4) en la metodología CQV se rige estrictamente por la **ventana de publicación en el año calendario**:
+
+| Periodo | Ventana Habitual de Publicación | Descripción / Tipo de Informe |
+| :---: | :--- | :--- |
+| **P1** | **Abril – Junio** (habitual Mayo - Junio) | Resultados del primer trimestre reportado en el año calendario (Q1 fiscal). |
+| **P2** | **Julio – Septiembre** (habitual Julio - Agosto) | Resultados del segundo trimestre / mitad del año calendario (Q2 fiscal). |
+| **P3** | **Octubre – Diciembre** (habitual Octubre - Noviembre) | Resultados del tercer trimestre reportado en el año calendario (Q3 fiscal). |
+| **P4** | **Enero – Marzo** (del año siguiente) | Resultados del cuarto trimestre / cierre del ejercicio previo (Q4 fiscal). |
+
+Todos los datasets (`cqv_data.json`, `cqv_history.json`) e informes Markdown (`inform/cqv_v5/`) deben nombrar y clasificar los periodos bajo este estándar universal.
 
 ## 3. Cálculos oficiales
 
@@ -143,7 +156,7 @@ El pipeline **no redacta informes Markdown**.
 Usar obligatoriamente la plantilla maestra [`inform/template.md`](file:///e:/DeveloperGitHub/repo/finance-cqv-find/inform/template.md). Todo informe trimestral ("informe Q") debe cumplir íntegramente con el formato, la estructura en 10 secciones y los bloques oficiales de salida exigidos en `inform/template.md`.
 
 El archivo de informe debe seguir **estrictamente la convención oficial de nombres**:
-`inform/cqv_v4/[ACCION]_[AÑO]_[Q?]_CQVv4.md` o `inform/cqv_v5/[ACCION]_[AÑO]_[Q?]_CQVv5.md`
+`inform/cqv_v4/[ACCION]_[AÑO]_P[1-4]_CQVv4.md` o `inform/cqv_v5/[ACCION]_[AÑO]_P[1-4]_CQVv5.md`
 
 Donde:
 - `[ACCION]`: Es el **código de stock o ticker en MAYÚSCULAS** (ejemplo: `MSFT`, `LIN`, `FICO`, `BSX`, `CPRT`, `NFLX`, `MSI`, `ORCL`, `PYPL`, `RACE`, `FTNT`, `MSCI`, `MU`), **nunca** el nombre completo de la empresa ni en minúsculas.
