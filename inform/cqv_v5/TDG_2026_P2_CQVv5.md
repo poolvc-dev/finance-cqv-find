@@ -90,11 +90,17 @@ $$	ext{CQV Calidad} = (F_1 	imes 0.20) + (F_2 	imes 0.15) + (F_3 	imes 0.15) + (
 
 ## 8. Evolución Histórica de Puntuaciones CQV
 
-| Año / Trimestre | PER Trailing | PER Forward | CQV v4.0 | CQV v5.0 | Clasificación |
+| Periodo / Trimestre | PER Trailing | PER Forward | CQV v4.0 | CQV v5.0 | Clasificación |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **P1 2026** | **42.0x** | **35.7x** | **8.36** | **8.36** | **ALTA CALIDAD** |
+| **2020 (Mediana)** | 30.6x | 26.6x | 7.98 | 7.98 | ALTA CALIDAD |
+| **2021 (Mediana)** | 37.4x | 32.5x | 8.15 | 8.15 | ALTA CALIDAD |
+| **2022 (Mediana)** | 27.6x | 24.0x | 7.92 | 7.92 | CALIDAD MEDIA |
+| **2023 (Mediana)** | 34.8x | 30.2x | 8.15 | 8.15 | ALTA CALIDAD |
+| **2024 (Mediana)** | 39.0x | 34.0x | 8.29 | 8.29 | ALTA CALIDAD |
+| **2025 (Mediana)** | 40.7x | 35.4x | 8.34 | 8.34 | ALTA CALIDAD |
+| **P1 2026** | 41.2x | 35.8x | 8.32 | 8.32 | ALTA CALIDAD |
+| **P2 2026** | **42.0x** | **35.7x** | **8.36** | **8.36** | **ALTA CALIDAD** |
 
----
 
 ## 9. Conclusión y Veredicto Final Operativo
 

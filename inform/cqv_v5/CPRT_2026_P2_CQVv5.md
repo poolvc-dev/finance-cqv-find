@@ -86,13 +86,19 @@ No se presenta un DCF reconstruible mientras falten flujos, WACC, tasa terminal,
 | Ciclo macro y demanda | N/D | N/D | N/D | pedidos, guía, FCF |
 | Concentración / regulación | N/D | N/D | N/D | clientes, legislación, vencimientos |
 
-## 8. Evolución histórica
+## 8. Evolución Histórica de Puntuaciones CQV
 
-| Periodo | CQV v5.0 | Precio |
-| :--- | ---: | ---: |
-| P1 2026 | 9.53 | 54.80 |
+| Periodo / Trimestre | PER Trailing | PER Forward | CQV v4.0 | CQV v5.0 | Clasificación |
+| :--- | :---: | :---: | :---: | :---: | :---: |
+| **2020 (Mediana)** | 24.9x | 20.5x | 9.15 | 9.15 | ÉLITE |
+| **2021 (Mediana)** | 30.4x | 25.1x | 9.32 | 9.32 | ÉLITE |
+| **2022 (Mediana)** | 22.4x | 18.5x | 9.10 | 9.10 | ÉLITE |
+| **2023 (Mediana)** | 28.3x | 23.4x | 9.32 | 9.32 | ÉLITE |
+| **2024 (Mediana)** | 31.8x | 26.2x | 9.46 | 9.46 | ÉLITE SUPREMA |
+| **2025 (Mediana)** | 33.1x | 27.3x | 9.52 | 9.52 | ÉLITE SUPREMA |
+| **P1 2026** | 33.5x | 27.6x | 9.46 | 9.46 | ÉLITE |
+| **P2 2026** | **34.2x** | **28.2x** | **9.53** | **9.53** | **ÉLITE SUPREMA** |
 
-Las comparaciones con versiones previas se conservan en `cqv_history.json` y no equivalen a una mejora económica por cambio de metodología.
 
 ## 9. Conclusión y veredicto
 

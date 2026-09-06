@@ -106,16 +106,17 @@ Alphabet Inc. (GOOGL) obtiene la calificación **ÉLITE SUPREMA** en la metodolo
 
 ## 8. Evolución Histórica de Puntuaciones CQV
 
-| Año / Trimestre | PER Trailing | PER Forward | CQV v4.0 | CQV v5.0 | Clasificación |
+| Periodo / Trimestre | PER Trailing | PER Forward | CQV v4.0 | CQV v5.0 | Clasificación |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **2020 (Mediana)** | 28.5x | N/D | 9.45 | N/D | ÉLITE |
-| **2023 (Mediana)** | 24.2x | N/D | 9.51 | N/D | ÉLITE |
-| **2024 (Mediana)** | 23.8x | N/D | 9.53 | N/D | ÉLITE |
-| **2025 (Mediana)** | 22.5x | N/D | 9.55 | N/D | ÉLITE |
-| **P1 2026** | 25.3x | 19.8x | 9.56 | 9.56 | ÉLITE SUPREMA |
+| **2020 (Mediana)** | 17.1x | 14.1x | 9.18 | 9.18 | ÉLITE |
+| **2021 (Mediana)** | 20.9x | 17.2x | 9.35 | 9.35 | ÉLITE |
+| **2022 (Mediana)** | 15.4x | 12.7x | 9.12 | 9.12 | ÉLITE |
+| **2023 (Mediana)** | 19.5x | 16.1x | 9.35 | 9.35 | ÉLITE |
+| **2024 (Mediana)** | 21.9x | 18.0x | 9.48 | 9.48 | ÉLITE SUPREMA |
+| **2025 (Mediana)** | 22.8x | 18.8x | 9.54 | 9.54 | ÉLITE SUPREMA |
+| **P1 2026** | 23.0x | 18.9x | 9.48 | 9.48 | ÉLITE |
 | **P2 2026** | **23.5x** | **19.8x** | **9.56** | **9.56** | **ÉLITE SUPREMA** |
 
----
 
 ## 9. Conclusión y Veredicto Final Operativo
 

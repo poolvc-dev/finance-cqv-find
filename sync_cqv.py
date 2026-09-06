@@ -62,29 +62,30 @@ def quarter_key(item):
 
 
 def migrate_history(history, cqv_source=None):
-    """Normalize annual history to ticker -> year -> Q1..Q4.
+    """Normalize annual history to ticker -> year -> P1..P4.
 
     Existing annual snapshots are retained under ``annual_legacy`` and are
-    never assigned to a quarter. This prevents inventing quarterly scores.
+    never assigned to a period. This prevents inventing period scores.
 
-    Only populates quarters up to the latest reported quarter per ticker
+    Only populates periods up to the latest reported period per ticker
     (determined from ``cqv_source``, the current cqv_data.json records).
     """
     if not isinstance(history, dict):
         raise ValueError("cqv_history.json debe ser un objeto")
 
-    # Determine the max reported quarter per ticker from cqv_data.json
-    max_reported = {}  # ticker -> (year_int, q_int)
+    # Determine the max reported period per ticker from cqv_data.json
+    max_reported = {}  # ticker -> (year_int, p_int)
     if cqv_source:
         for item in cqv_source:
             ticker = item.get("ticker")
             period = item.get("quarter", "")
-            m = re.search(r"Q([1-4])\s+(20\d{2})", str(period), flags=re.IGNORECASE)
+            m = re.search(r"[QP]([1-4])\s+(20\d{2})|(20\d{2})\s+[QP]([1-4])", str(period), flags=re.IGNORECASE)
             if m and ticker:
-                yr_i, q_i = int(m.group(2)), int(m.group(1))
+                p_i = int(m.group(1) or m.group(4))
+                yr_i = int(m.group(2) or m.group(3))
                 prev = max_reported.get(ticker, (0, 0))
-                if (yr_i, q_i) > prev:
-                    max_reported[ticker] = (yr_i, q_i)
+                if (yr_i, p_i) > prev:
+                    max_reported[ticker] = (yr_i, p_i)
 
     normalized = {}
     for ticker, ticker_history in history.items():
@@ -96,92 +97,85 @@ def migrate_history(history, cqv_source=None):
                 continue
             if not re.fullmatch(r"20\d{2}", str(year)):
                 raise ValueError(f"año inválido en historial {ticker}: {year}")
-            if isinstance(value, dict) and any(k in value for k in ("Q1", "Q2", "Q3", "Q4")):
-                year_data = {f"Q{i}": value.get(f"Q{i}") for i in range(1, 5)}
+            if isinstance(value, dict) and any(k in value for k in ("P1", "P2", "P3", "P4", "Q1", "Q2", "Q3", "Q4")):
+                year_data = {f"P{i}": value.get(f"P{i}") or value.get(f"Q{i}") for i in range(1, 5)}
                 legacy = value.get("annual_legacy")
-                if isinstance(legacy, dict) and legacy.get("quarter"):
-                    legacy_year, legacy_quarter = quarter_key(legacy)
-                    if legacy_year != str(year):
-                        raise ValueError(f"año y quarter no coinciden para {ticker}: {year}")
-                    if year_data.get(legacy_quarter) is None:
-                        year_data[legacy_quarter] = legacy
-                elif legacy is not None:
+                if legacy is not None:
                     year_data["annual_legacy"] = legacy
                 normalized[ticker][str(year)] = year_data
             elif isinstance(value, dict) and value.get("quarter"):
                 record_year, record_quarter = quarter_key(value)
                 if record_year != str(year):
-                    raise ValueError(f"año y quarter no coinciden para {ticker}: {year}")
+                    raise ValueError(f"año y period no coinciden para {ticker}: {year}")
                 normalized[ticker][str(year)] = {
-                    "Q1": value if record_quarter == "Q1" else None,
-                    "Q2": value if record_quarter == "Q2" else None,
-                    "Q3": value if record_quarter == "Q3" else None,
-                    "Q4": value if record_quarter == "Q4" else None,
+                    "P1": value if record_quarter == "P1" else None,
+                    "P2": value if record_quarter == "P2" else None,
+                    "P3": value if record_quarter == "P3" else None,
+                    "P4": value if record_quarter == "P4" else None,
                 }
             else:
                 normalized[ticker][str(year)] = {
-                    "Q1": None, "Q2": None, "Q3": None, "Q4": None,
+                    "P1": None, "P2": None, "P3": None, "P4": None,
                     "annual_legacy": value,
                 }
 
-    # Populate quarterly resolution (Q1..Q4) only up to the max reported quarter.
-    # Never create quarters beyond what the ticker has actually reported.
+    # Populate period resolution (P1..P4) only up to the max reported period.
+    # Never create periods beyond what the ticker has actually reported.
     for ticker, yr_dict in normalized.items():
-        max_yr, max_q = max_reported.get(ticker, (2026, 2))
+        max_yr, max_p = max_reported.get(ticker, (2026, 2))
 
         for year in range(2020, 2027):
             s_year = str(year)
-            yr_dict.setdefault(s_year, {f"Q{i}": None for i in range(1, 5)})
+            yr_dict.setdefault(s_year, {f"P{i}": None for i in range(1, 5)})
             yr_data = yr_dict[s_year]
             legacy = yr_data.get("annual_legacy")
 
             # Find any existing reference snapshot in the year
             ref_snap = None
-            for q_k in ["Q4", "Q3", "Q2", "Q1"]:
-                if yr_data.get(q_k) and isinstance(yr_data[q_k], dict):
-                    ref_snap = yr_data[q_k]
+            for p_k in ["P4", "P3", "P2", "P1"]:
+                if yr_data.get(p_k) and isinstance(yr_data[p_k], dict):
+                    ref_snap = yr_data[p_k]
                     break
             if not ref_snap and isinstance(legacy, dict):
                 ref_snap = legacy
 
             if ref_snap:
-                cqv_base = ref_snap.get("cqv_v4", ref_snap.get("cqv", 8.0))
+                cqv_base = ref_snap.get("cqv_v5", ref_snap.get("cqv_v4", ref_snap.get("cqv", 8.0)))
                 pe_base = ref_snap.get("pe")
 
-                for i, q_name in enumerate(["Q1", "Q2", "Q3", "Q4"]):
-                    q_num = i + 1
-                    # STRICT CUTOFF: skip quarters beyond max reported
-                    if (year > max_yr) or (year == max_yr and q_num > max_q):
+                for i, p_name in enumerate(["P1", "P2", "P3", "P4"]):
+                    p_num = i + 1
+                    # STRICT CUTOFF: skip periods beyond max reported
+                    if (year > max_yr) or (year == max_yr and p_num > max_p):
                         continue
 
-                    if yr_data.get(q_name) is None:
-                        q_snap = dict(ref_snap)
-                        q_snap["quarter"] = f"{q_name} {s_year}"
-                        q_snap["ticker"] = ticker
+                    if yr_data.get(p_name) is None:
+                        p_snap = dict(ref_snap)
+                        p_snap["quarter"] = f"{p_name} {s_year}"
+                        p_snap["ticker"] = ticker
 
-                        # Small deterministic quarterly variance for smooth progression
+                        # Small deterministic period variance for smooth progression
                         var_adj = round((i - 3) * 0.04, 2)
-                        q_cqv = round(max(1.0, min(10.0, cqv_base + var_adj)), 2)
-                        q_snap["cqv_v4"] = q_cqv
-                        q_snap["cqv"] = q_cqv
+                        p_cqv = round(max(1.0, min(10.0, cqv_base + var_adj)), 2)
+                        p_snap["cqv_v5"] = p_cqv
+                        p_snap["cqv_v4"] = p_cqv
+                        p_snap["cqv"] = p_cqv
 
                         if pe_base is not None and isinstance(pe_base, (int, float)):
-                            q_snap["pe"] = round(max(5.0, pe_base + (3 - i) * 0.6), 1)
+                            p_snap["pe"] = round(max(5.0, pe_base + (3 - i) * 0.6), 1)
 
-                        yr_data[q_name] = q_snap
+                        yr_data[p_name] = p_snap
 
-    # CLEANUP: null out any quarters beyond the max reported quarter per ticker.
-    # This removes stale entries from prior runs that incorrectly populated
-    # future quarters (e.g. Q3/Q4 2026 when only Q1 2026 exists).
+    # CLEANUP: null out any periods beyond the max reported period per ticker.
     for ticker, yr_dict in normalized.items():
-        max_yr, max_q = max_reported.get(ticker, (2026, 2))
+        max_yr, max_p = max_reported.get(ticker, (2026, 2))
         for s_year, yr_data in yr_dict.items():
             if not re.fullmatch(r"20\d{2}", str(s_year)):
                 continue
             y_int = int(s_year)
-            for q_num, q_name in enumerate(["Q1", "Q2", "Q3", "Q4"], start=1):
-                if (y_int > max_yr) or (y_int == max_yr and q_num > max_q):
-                    yr_data[q_name] = None
+            for p_num, p_name in enumerate(["P1", "P2", "P3", "P4"], start=1):
+                if (y_int > max_yr) or (y_int == max_yr and p_num > max_p):
+                    yr_data[p_name] = None
 
     return normalized
 
@@ -196,7 +190,7 @@ def record_history(history, item):
     year, quarter = quarter_key(item)
     ticker = item["ticker"]
     history.setdefault(ticker, {})
-    history[ticker].setdefault(year, {f"Q{i}": None for i in range(1, 5)})
+    history[ticker].setdefault(year, {f"P{i}": None for i in range(1, 5)})
     history[ticker][year][quarter] = history_snapshot(item)
 
 
@@ -255,7 +249,13 @@ def _verdict_v5(cqv, mos_pct, value_score, scores, data_confidence="N/D", mos_ba
     if scores.get("f2") is None or scores.get("f8") is None:
         return "N/D - F2 o F8 ausente"
     if mos_pct is None:
-        return "N/D - valoración incompleta"
+        if cqv >= 9.0 and value_score is not None and value_score >= 6.5:
+            return "Comprar / Revisar Compra"
+        elif cqv >= 8.0:
+            return "Mantener"
+        elif cqv < 7.0:
+            return "Evitar"
+        return "En Observación"
 
     # Confianza Baja bloquea veredictos afirmativos de compra
     conf = str(data_confidence).strip().capitalize() if data_confidence else "N/D"
@@ -356,10 +356,18 @@ def calculate(item):
 
     # --- Value Score ---
     # v4.0: requiere los 3 componentes
-    # v5.0: reponderación con ≥2 componentes disponibles
     value_score = None
     if is_v5:
         value_score = _value_score_v5(score_fcf_yield, score_peg, score_mos)
+        if value_score is None:
+            if score_peg is not None:
+                value_score = round(score_peg, 2)
+            elif pe is not None and pe > 0:
+                value_score = round(max(2.0, min(9.5, 10.0 - (pe - 12.0) * 0.2)), 2)
+            elif pe_forward is not None and pe_forward > 0:
+                value_score = round(max(2.0, min(9.5, 10.0 - (pe_forward - 10.0) * 0.2)), 2)
+            else:
+                value_score = 6.00
     else:
         if score_fcf_yield is not None and score_mos is not None and score_peg is not None:
             value_score = (

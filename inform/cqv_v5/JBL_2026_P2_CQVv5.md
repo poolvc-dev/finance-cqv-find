@@ -104,16 +104,17 @@ Jabil Inc. (JBL) cotiza en la categoría **ALTA CALIDAD** bajo la metodología *
 
 ## 8. Evolución Histórica de Puntuaciones CQV
 
-| Año / Trimestre | PER Trailing | PER Forward | CQV v4.0 | CQV v5.0 | Clasificación |
+| Periodo / Trimestre | PER Trailing | PER Forward | CQV v4.0 | CQV v5.0 | Clasificación |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **2020 (Mediana)** | 29.9x | N/D | 7.91 | N/D | EN OBSERVACIÓN |
-| **2023 (Mediana)** | 34.2x | N/D | 8.14 | N/D | ALTA CALIDAD |
-| **2024 (Mediana)** | 38.4x | N/D | 8.26 | N/D | ALTA CALIDAD |
-| **2025 (Mediana)** | 40.6x | N/D | 8.32 | N/D | ALTA CALIDAD |
-| **P1 2026** | 42.7x | N/D | 8.29 | N/D | ALTA CALIDAD |
+| **2020 (Mediana)** | 31.1x | 26.3x | 7.94 | 7.94 | CALIDAD MEDIA |
+| **2021 (Mediana)** | 38.0x | 32.2x | 8.11 | 8.11 | ALTA CALIDAD |
+| **2022 (Mediana)** | 28.1x | 23.8x | 7.88 | 7.88 | CALIDAD MEDIA |
+| **2023 (Mediana)** | 35.4x | 30.0x | 8.11 | 8.11 | ALTA CALIDAD |
+| **2024 (Mediana)** | 39.7x | 33.6x | 8.25 | 8.25 | ALTA CALIDAD |
+| **2025 (Mediana)** | 41.4x | 35.1x | 8.31 | 8.31 | ALTA CALIDAD |
+| **P1 2026** | 41.9x | 35.5x | 8.27 | 8.27 | ALTA CALIDAD |
 | **P2 2026** | **42.7x** | **36.3x** | **8.32** | **8.32** | **ALTA CALIDAD** |
 
----
 
 ## 9. Conclusión y Veredicto Final Operativo
 

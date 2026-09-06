@@ -15,17 +15,19 @@ def main():
                 history_db = json.load(hf)
 
         theses_dict = {}
-        inform_dir = 'inform'
-        if os.path.exists(inform_dir):
-            for fn in os.listdir(inform_dir):
-                if fn.endswith('.md') and fn != 'template.md':
-                    base_key = fn.replace('.md', '').upper()
-                    ticker = base_key.split('_')[0]
-                    with open(os.path.join(inform_dir, fn), 'r', encoding='utf-8') as tf:
-                        content = tf.read()
-                        theses_dict[base_key] = content
-                        if ticker not in theses_dict:
-                            theses_dict[ticker] = content
+        # Load theses from inform/cqv_v5 and inform
+        dirs_to_check = ['inform/cqv_v5', 'inform']
+        for d in dirs_to_check:
+            if os.path.exists(d):
+                for fn in os.listdir(d):
+                    if fn.endswith('.md') and fn != 'template.md':
+                        base_key = fn.replace('.md', '').upper()
+                        ticker = base_key.split('_')[0]
+                        with open(os.path.join(d, fn), 'r', encoding='utf-8') as tf:
+                            content = tf.read()
+                            theses_dict[base_key] = content
+                            if ticker not in theses_dict:
+                                theses_dict[ticker] = content
 
         json_data = json.dumps(records, indent=2, ensure_ascii=False)
 
@@ -39,7 +41,7 @@ def main():
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CQV Financial Dashboard v4.0 | Quality & Structural Value</title>
+    <title>CQV Financial Dashboard v5.0 | Quality & Structural Value</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -391,7 +393,7 @@ def main():
                 <div class="brand-icon"><i class="fa-solid fa-chart-line"></i></div>
                 <div>
                     <div class="brand-title">CQV FINANCIAL DASHBOARD</div>
-                    <span class="brand-subtitle">Quality & Structural Value Model v4.0</span>
+                    <span class="brand-subtitle">Quality & Structural Value Model v5.0</span>
                 </div>
             </div>
             
@@ -424,7 +426,7 @@ def main():
                         <div>
                             <div class="kpi-value">{{ totalCompanies }}</div>
                             <div class="kpi-label">Empresas Evaluadas</div>
-                            <div class="kpi-sub">Dataset SSOT Auditado v4.0</div>
+                            <div class="kpi-sub">Dataset SSOT Auditado v5.0</div>
                         </div>
                     </div>
                     <div class="card kpi-card">
@@ -440,7 +442,7 @@ def main():
                         <div>
                             <div class="kpi-value" style="color: #10b981;">{{ eliteSupremaCount }}</div>
                             <div class="kpi-label">Élite Suprema</div>
-                            <div class="kpi-sub">Score CQV v4.0 ≥ 9.50</div>
+                            <div class="kpi-sub">Score CQV v5.0 ≥ 9.50</div>
                         </div>
                     </div>
                     <div class="card kpi-card">
@@ -448,7 +450,7 @@ def main():
                         <div>
                             <div class="kpi-value" style="color: #84cc16;">{{ eliteCount }}</div>
                             <div class="kpi-label">Empresas Élite</div>
-                            <div class="kpi-sub">Score CQV v4.0 (9.00 - 9.49)</div>
+                            <div class="kpi-sub">Score CQV v5.0 (9.00 - 9.49)</div>
                         </div>
                     </div>
                     <div class="card kpi-card" v-if="topCompany">
@@ -462,7 +464,7 @@ def main():
                 </div>
 
                 <h2 style="font-family: var(--font-title); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
-                    <i class="fa-solid fa-fire" style="color: var(--secondary);"></i> Top 20 Empresas de Mayor Calidad CQV v4.0
+                    <i class="fa-solid fa-fire" style="color: var(--secondary);"></i> Top 20 Empresas de Mayor Calidad CQV v5.0
                 </h2>
                 <div class="showcase-grid">
                     <div class="top20-card" v-for="(c, idx) in top20Companies" :key="c.ticker" @click="selectCompanyHistory(c.ticker)">
@@ -484,7 +486,7 @@ def main():
 
                 <div class="charts-grid">
                     <div class="card">
-                        <h3 style="font-family: var(--font-title); margin-bottom: 1rem;">Ranking Top 20: Score CQV Calidad v4.0</h3>
+                        <h3 style="font-family: var(--font-title); margin-bottom: 1rem;">Ranking Top 20: Score CQV Calidad v5.0</h3>
                         <div class="chart-container"><canvas id="chartTop20"></canvas></div>
                     </div>
                     <div class="card">
@@ -531,7 +533,7 @@ def main():
                                     <th @click="toggleSort('f6')" title="F6: Dirección & Ejecución (Calidad directiva y alineación de incentivos)" @mouseenter="showTooltip($event, 'F6: Dirección & Ejecución', 'Calidad del equipo directivo, visión estratégica, historial de ejecución y alineación de incentivos. Peso: 10%.')" @mouseleave="hideTooltip">F6 <i class="fa-solid fa-circle-info" style="font-size: 0.65rem; opacity: 0.75; color: var(--primary);"></i></th>
                                     <th @click="toggleSort('f7')" title="F7: Opcionalidad Futura (Nuevos mercados, innovación y líneas de crecimiento)" @mouseenter="showTooltip($event, 'F7: Opcionalidad Futura', 'Capacidad de expandirse hacia nuevos mercados adyacentes, innovación tecnológica y nuevas líneas de negocio. Peso: 5%.')" @mouseleave="hideTooltip">F7 <i class="fa-solid fa-circle-info" style="font-size: 0.65rem; opacity: 0.75; color: var(--primary);"></i></th>
                                     <th @click="toggleSort('f8')" title="F8: Antifragilidad & Recurrencia (Predictibilidad de ingresos y resiliencia macro)" @mouseenter="showTooltip($event, 'F8: Antifragilidad & Recurrencia', 'Porcentaje de ingresos recurrentes (suscripciones), resistencia a recesiones macro y poder de fijación de precios. Peso: 10%.')" @mouseleave="hideTooltip">F8 <i class="fa-solid fa-circle-info" style="font-size: 0.65rem; opacity: 0.75; color: var(--primary);"></i></th>
-                                    <th @click="toggleSort('cqv')" title="CQV Calidad v4.0: Suma ponderada de F1-F8 (0 a 10)" @mouseenter="showTooltip($event, 'CQV Calidad v4.0', 'Puntuación fundamental ponderada de los 8 factores (F1 a F8) en escala de 0.00 a 10.00.')" @mouseleave="hideTooltip">CQV v4.0 <i class="fa-solid fa-circle-info" style="font-size: 0.65rem; opacity: 0.75; color: var(--primary);"></i></th>
+                                    <th @click="toggleSort('cqv')" title="CQV Calidad v5.0: Suma ponderada de F1-F8 (0 a 10)" @mouseenter="showTooltip($event, 'CQV Calidad v5.0', 'Puntuación fundamental ponderada de los 8 factores (F1 a F8) en escala de 0.00 a 10.00.')" @mouseleave="hideTooltip">CQV v5.0 <i class="fa-solid fa-circle-info" style="font-size: 0.65rem; opacity: 0.75; color: var(--primary);"></i></th>
                                     <th @click="toggleSort('pe')" title="PER Trailing: Múltiplo sobre beneficios netos de los últimos 12 meses (TTM)" @mouseenter="showTooltip($event, 'PER Trailing (PER TTM)', 'Cotización actual dividida entre el Beneficio Neto por Acción acumulado de los últimos 12 meses reportados (TTM).')" @mouseleave="hideTooltip">PER Trail <i class="fa-solid fa-circle-info" style="font-size: 0.65rem; opacity: 0.75; color: var(--primary);"></i></th>
                                     <th @click="toggleSort('pe_forward')" title="PER Forward: Múltiplo sobre estimaciones de beneficio neto NTM (próximos 12 meses)" @mouseenter="showTooltip($event, 'PER Forward (PER NTM)', 'Cotización actual dividida entre las estimaciones del consenso de Beneficio Neto por Acción a 12 meses vista (NTM).')" @mouseleave="hideTooltip">PER Fwd <i class="fa-solid fa-circle-info" style="font-size: 0.65rem; opacity: 0.75; color: var(--primary);"></i></th>
                                     <th @click="toggleSort('value_score')" title="Value Score: Score ponderado de valoración (0.40 FCF Yield + 0.30 Score PEG + 0.30 Score MoS)" @mouseenter="showTooltip($event, 'Value Score (Capa Valoración)', 'Puntuación de valoración calculada como: 0.40(Score FCF Yield) + 0.30(Score PEG) + 0.30(Score MoS).')" @mouseleave="hideTooltip">Value Score <i class="fa-solid fa-circle-info" style="font-size: 0.65rem; opacity: 0.75; color: var(--primary);"></i></th>
@@ -605,10 +607,10 @@ def main():
                         <div style="display: flex; align-items: center; gap: 1.5rem;">
                             <div style="text-align: right;">
                                 <div style="font-size: 0.75rem; color: var(--text-secondary); text-transform: uppercase;">Score CQV Calidad ({{ selectedQuarterLabel }})</div>
-                                <div style="font-size: 2rem; font-weight: 800; color: var(--elite); font-family: var(--font-title);">{{ formatScore(activeQuarterSnapshot.cqv_v4 || selectedCompanyObj.cqv) }}</div>
+                                <div style="font-size: 2rem; font-weight: 800; color: var(--elite); font-family: var(--font-title);">{{ formatScore(activeQuarterSnapshot.cqv_v5 || activeQuarterSnapshot.cqv || selectedCompanyObj.cqv) }}</div>
                             </div>
-                            <span class="badge" :class="getTierInfo(activeQuarterSnapshot.cqv_v4 || selectedCompanyObj.cqv).class" style="font-size: 0.9rem; padding: 0.5rem 1rem;">
-                                {{ getTierInfo(activeQuarterSnapshot.cqv_v4 || selectedCompanyObj.cqv).name }}
+                            <span class="badge" :class="getTierInfo(activeQuarterSnapshot.cqv_v5 || activeQuarterSnapshot.cqv || selectedCompanyObj.cqv).class" style="font-size: 0.9rem; padding: 0.5rem 1rem;">
+                                {{ getTierInfo(activeQuarterSnapshot.cqv_v5 || activeQuarterSnapshot.cqv || selectedCompanyObj.cqv).name }}
                             </span>
                         </div>
                     </div>
@@ -616,7 +618,7 @@ def main():
 
                 <div class="card" style="margin-bottom: 1.5rem;" v-if="quarterlyBreakdownRows.length > 0">
                     <h3 style="font-family: var(--font-title); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
-                        <i class="fa-solid fa-list-check" style="color: var(--elite);"></i> Registro Histórico Auditado por Trimestres (Q1, Q2, Q3, Q4)
+                        <i class="fa-solid fa-list-check" style="color: var(--elite);"></i> Registro Histórico Auditado por Periodos (P1, P2, P3, P4)
                     </h3>
                     <div class="table-responsive">
                         <table>
@@ -631,7 +633,7 @@ def main():
                                     <th>F6 Direc.</th>
                                     <th>F7 Opcion.</th>
                                     <th>F8 Antif.</th>
-                                    <th>CQV v4.0</th>
+                                    <th>CQV v5.0</th>
                                     <th>PER Trail</th>
                                     <th>PER Fwd</th>
                                     <th>Value Score</th>
@@ -654,7 +656,7 @@ def main():
                                     <td>{{ formatNum(qRow.f6, 1) }}</td>
                                     <td>{{ formatNum(qRow.f7, 1) }}</td>
                                     <td>{{ formatNum(qRow.f8, 1) }}</td>
-                                    <td><span class="badge" :class="getTierInfo(qRow.cqv_v4).class">{{ formatScore(qRow.cqv_v4) }}</span></td>
+                                    <td><span class="badge" :class="getTierInfo(qRow.cqv_v5 || qRow.cqv).class">{{ formatScore(qRow.cqv_v5 || qRow.cqv) }}</span></td>
                                     <td>{{ formatNum(qRow.pe, 1, 'x') }}</td>
                                     <td>{{ formatNum(qRow.pe_forward, 1, 'x') }}</td>
                                     <td><strong style="color: var(--accent);">{{ formatNum(qRow.value_score, 2) }}</strong></td>
@@ -679,7 +681,7 @@ def main():
             </div>
         </main>
         <footer>
-            <p>CQV Financial Platform v4.0 | Modelo de Calidad, Resiliencia y Valoración Multifactorial © 2026</p>
+            <p>CQV Financial Platform v5.0 | Modelo de Calidad, Resiliencia y Valoración Multifactorial © 2026</p>
         </footer>
     </div>
 
@@ -741,8 +743,8 @@ def main():
                     if (hist) {
                         Object.keys(hist).sort().reverse().forEach(yr => {
                             const yrObj = hist[yr];
-                            ['Q4', 'Q3', 'Q2', 'Q1'].forEach(q => {
-                                if (yrObj[q] && (yrObj[q].cqv_v4 !== undefined || yrObj[q].cqv !== undefined)) {
+                            ['P4', 'P3', 'P2', 'P1'].forEach(q => {
+                                if (yrObj[q] && (yrObj[q].cqv_v5 !== undefined || yrObj[q].cqv !== undefined)) {
                                     rows.push({
                                         period: `${yr} ${q}`,
                                         year: yr, quarter: q,
@@ -758,7 +760,7 @@ def main():
                             period: c.quarter || '2026 Q2',
                             year: '2026', quarter: 'Q2',
                             f1: c.f1, f2: c.f2, f3: c.f3, f4: c.f4, f5: c.f5, f6: c.f6, f7: c.f7, f8: c.f8,
-                            cqv_v4: c.cqv, pe: c.pe, pe_forward: c.pe_forward, value_score: c.value_score,
+                            cqv_v5: c.cqv_v5 || c.cqv, pe: c.pe, pe_forward: c.pe_forward, value_score: c.value_score,
                             mos_pct: c.mos_pct, verdict: c.verdict, intrinsic_value: c.intrinsic_value
                         });
                     }
@@ -952,7 +954,7 @@ def main():
                             data: {
                                 labels: top20.map(c => c.ticker),
                                 datasets: [{
-                                    label: 'Score CQV v4.0',
+                                    label: 'Score CQV v5.0',
                                     data: top20.map(c => c.cqv),
                                     backgroundColor: '#6366f1',
                                     borderRadius: 6

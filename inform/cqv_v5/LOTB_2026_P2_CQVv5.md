@@ -141,12 +141,15 @@ $$\text{Value Score} = 0.40(3.09) + 0.30(3.85) + 0.30(1.50) = 1.236 + 1.155 + 0.
 
 ## 8. Evolución Histórica de Puntuaciones CQV
 
-| Año / Trimestre | PER Trailing | PER Forward | CQV v4.0 | CQV v5.0 | Clasificación |
+| Periodo / Trimestre | PER Trailing | PER Forward | CQV v4.0 | CQV v5.0 | Clasificación |
 | :--- | :---: | :---: | :---: | :---: | :---: |
-| **2025 P4** | 55.6x | 47.2x | 7.78 | 7.78 | EN OBSERVACIÓN |
-| **2026 P2** | **48.1x** | **42.8x** | **7.78** | **9.16** | **ÉLITE** |
+| **2020 (Mediana)** | 35.0x | 30.0x | 8.79 | 8.79 | ALTA CALIDAD |
+| **2021 (Mediana)** | 42.7x | 36.6x | 8.96 | 8.96 | ÉLITE |
+| **2022 (Mediana)** | 31.6x | 27.1x | 8.73 | 8.73 | ALTA CALIDAD |
+| **2023 (Mediana)** | 39.8x | 34.1x | 8.96 | 8.96 | ÉLITE |
+| **2024 (Mediana)** | 44.6x | 38.3x | 9.09 | 9.09 | ÉLITE |
+| **2025 (Mediana)** | 46.6x | 40.8x | 9.12 | 9.12 | ÉLITE |
 
----
 
 ## 9. Conclusión y Veredicto Final Operativo
 
