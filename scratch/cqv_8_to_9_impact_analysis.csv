@@ -1,0 +1,225 @@
+ticker,name,sector,cqv_v5,f2_solidez,f1_econ,pe,pe_forward,effective_pe,wacc,iv_impact_100bps_pct,iv_impact_200bps_pct,category,reasons
+FLEX,Flex Ltd.,"Technology / Advanced Manufacturing, Data Center Cloud & Power Infrastructure",8.99,9.25,8.9,25.98,20.84,26.0,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+BKNG,Booking Holdings Inc. Common St,Consumer Cyclical,8.95,8.75,9.97,24.32,20.672,24.3,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+CDNS,"Cadence Design Systems, Inc.",Technology,8.95,8.2,9.0,79.3,41.8037,79.3,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 79.3x), extrema compresión de múltiplo por subida de WACC."
+ADBE,Adobe Inc.,Technology / Creative & Document SaaS,8.94,9.25,10.0,14.29,10.68,14.3,8.5,-15.38,-26.67,MÁS BENEFICIADA,"Baja duración bursátil (P/E < 20x), alta caja neta e incremento en ingresos por intereses."
+FDS,FactSet Research Systems,Financials / Financial Data & Analytical Workstations,8.93,9.25,9.15,27.5,24.2,27.5,8.0,-18.18,-30.77,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+NFLX,"Netflix, Inc.",Communication Services / Entertainment & Streaming Media,8.92,9.0,9.2,23.38,21.18,23.4,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+NTAP,"NetApp, Inc.","Technology / Software-Defined Storage, Enterprise Hybrid Cloud & AI Data Infrastructure",8.9,9.1,9.0,28.83,17.82,28.8,8.5,-16.67,-28.57,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+DSGX,The Descartes Systems Group Inc,Technology,8.88,9.5,9.42,33.96,27.97,34.0,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+MRSH,MMC,0.0,8.86,9.0,9.1,23.466745,17.320711,23.5,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+MU,"Micron Technology, Inc.",Technology / Semiconductor Memory & Storage (DRAM / HBM / NAND),8.8,9.0,8.8,18.5,11.2,18.5,9.5,-13.33,-23.53,MÁS BENEFICIADA,"Baja duración bursátil (P/E < 20x), alta caja neta e incremento en ingresos por intereses."
+CNS,Cohen & Steers Inc,Financial Services,8.8,9.25,9.91,26.02,22.116999999999997,26.0,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+SNOW,Snowflake Inc.,"Technology / Cloud Data Platform, Data Lakehouse & Enterprise AI",8.8,9.6,7.9,,110.15,132.2,9.0,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 132.2x), extrema compresión de múltiplo por subida de WACC."
+RMD,ResMed Inc.,Healthcare,8.77,9.25,10.0,20.2,17.169999999999998,20.2,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+DXCM,"DexCom, Inc.",Healthcare,8.76,9.0,9.71,30.58,25.993,30.6,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+MDB,"MongoDB, Inc.","Technology / Developer Data Platform, Document Database & Vector Search",8.76,9.2,8.1,625.67,48.44,625.7,8.5,-16.67,-28.57,MÁS AFECTADA,"Alta valoración (P/E 625.7x), extrema compresión de múltiplo por subida de WACC."
+IBKR,"Interactive Brokers Group, Inc.",Financial Services,8.75,9.25,10.0,39.2,33.32,39.2,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+NICE,NICE Ltd,Technology,8.74,9.4,9.1,11.46,9.741,11.5,8.5,-15.38,-26.67,MÁS BENEFICIADA,"Baja duración bursátil (P/E < 20x), alta caja neta e incremento en ingresos por intereses."
+PLTR,Palantir Technologies Inc.,Technology,8.74,9.5,9.86,145.28,123.488,145.3,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 145.3x), extrema compresión de múltiplo por subida de WACC."
+PYPL,"PayPal Holdings, Inc.",Financials / Digital Payments & Consumer Commerce Platforms,8.74,9.0,8.9,14.2,12.5,14.2,9.0,-14.29,-25.0,MÁS BENEFICIADA,"Baja duración bursátil (P/E < 20x), alta caja neta e incremento en ingresos por intereses."
+BAM,Brookfield Asset Management Inc,Financial Services,8.72,9.0,10.0,29.4,24.99,29.4,8.5,-15.38,-26.67,MÁS BENEFICIADA,Beneficio directo por rendimiento del float asegurador o fondos fiduciarios / gestión de activos.
+IDXX,"IDEXX Laboratories, Inc.",Healthcare,8.7,9.0,9.49,40.98,34.833,41.0,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+HCI,"HCI Group, Inc.",Financial Services,8.69,9.25,10.0,8.01,6.8084999999999996,8.0,8.5,-15.38,-26.67,MÁS BENEFICIADA,Beneficio directo por rendimiento del float asegurador o fondos fiduciarios / gestión de activos.
+CSU,CONSTELLATION SOFTWARE INC.,Technology,8.69,9.25,9.36,56.49,48.0165,56.5,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 56.5x), extrema compresión de múltiplo por subida de WACC."
+LRCX,Lam Research Corporation,Technology,8.69,9.5,9.62,66.18,56.25300000000001,66.2,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 66.2x), extrema compresión de múltiplo por subida de WACC."
+PAYX,"Paychex, Inc.",Technology,8.68,9.25,10.0,21.75,18.4875,21.8,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+FSLR,"First Solar, Inc.",Technology,8.67,9.5,9.5,14.52,12.341999999999999,14.5,8.5,-15.38,-26.67,MÁS BENEFICIADA,"Baja duración bursátil (P/E < 20x), alta caja neta e incremento en ingresos por intereses."
+ACN,Accenture plc,Technology,8.67,9.5,9.1,10.96,9.316,11.0,8.5,-15.38,-26.67,MÁS BENEFICIADA,"Baja duración bursátil (P/E < 20x), alta caja neta e incremento en ingresos por intereses."
+ADSK,"Autodesk, Inc.",Technology,8.66,9.25,9.63,30.29,25.746499999999997,30.3,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+QLYS,"Qualys, Inc.",Technology,8.66,9.5,10.0,26.59,22.601499999999998,26.6,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+TW,Tradeweb Markets Inc.,Financial Services,8.66,9.25,9.54,25.38,21.572999999999997,25.4,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+EW,Edwards Lifesciences Corporatio,Healthcare,8.65,9.25,9.01,51.01,43.3585,51.0,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 51.0x), extrema compresión de múltiplo por subida de WACC."
+PODD,Insulet Corporation,Healthcare,8.64,9.0,9.13,38.43,32.6655,38.4,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+PJT,PJT Partners Inc.,Financial Services,8.63,9.25,9.4,23.66,20.111,23.7,8.5,-15.38,-26.67,MÁS BENEFICIADA,Beneficio directo por rendimiento del float asegurador o fondos fiduciarios / gestión de activos.
+UI,Ubiquiti Inc.,Technology,8.62,9.25,9.45,33.79,28.7215,33.8,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+APH,Amphenol Corporation,Technology,8.61,9.25,9.41,47.43,40.3155,47.4,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 47.4x), extrema compresión de múltiplo por subida de WACC."
+GGG,Graco Inc.,Industrials,8.61,9.0,9.91,24.59,20.9015,24.6,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+WDC,Western Digital Corporation,Technology,8.6,9.25,9.37,32.26,27.420999999999996,32.3,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+PCTY,Paylocity Holding Corporation,Technology,8.57,9.5,9.52,24.59,20.9015,24.6,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+KINS,"Kingstone Companies, Inc",Financial Services,8.57,9.25,9.13,9.1,7.734999999999999,9.1,8.5,-15.38,-26.67,MÁS BENEFICIADA,Beneficio directo por rendimiento del float asegurador o fondos fiduciarios / gestión de activos.
+VRTX,Vertex Pharmaceuticals Incorpor,Healthcare,8.57,9.25,9.41,31.36,26.656,31.4,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+MNST,Monster Beverage Corporation,Consumer Defensive,8.57,9.0,9.55,47.15,40.0775,47.1,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 47.1x), extrema compresión de múltiplo por subida de WACC."
+LLY,Eli Lilly and Company,Healthcare,8.56,9.0,8.74,43.11,36.643499999999996,43.1,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 43.1x), extrema compresión de múltiplo por subida de WACC."
+PRI,"Primerica, Inc.",Financial Services,8.55,9.0,9.92,12.47,10.5995,12.5,8.5,-15.38,-26.67,MÁS BENEFICIADA,Beneficio directo por rendimiento del float asegurador o fondos fiduciarios / gestión de activos.
+MORN,"Morningstar, Inc.",Financial Services,8.55,9.0,9.66,16.98,14.433,17.0,8.5,-15.38,-26.67,MÁS BENEFICIADA,Beneficio directo por rendimiento del float asegurador o fondos fiduciarios / gestión de activos.
+EXLS,"ExlService Holdings, Inc.",Technology,8.55,9.25,9.25,17.21,14.6285,17.2,8.5,-15.38,-26.67,MÁS BENEFICIADA,"Baja duración bursátil (P/E < 20x), alta caja neta e incremento en ingresos por intereses."
+BLK,"BlackRock, Inc.",Financial Services,8.55,9.0,9.2,25.06,21.301,25.1,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+WST,"West Pharmaceutical Services, I",Healthcare,8.55,9.25,8.52,48.77,41.4545,48.8,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 48.8x), extrema compresión de múltiplo por subida de WACC."
+VRSN,"VeriSign, Inc.",Technology,8.54,9.25,9.96,28.33,24.080499999999997,28.3,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+STX,Seagate Technology Holdings PLC,Technology,8.54,8.83,9.4,77.52,65.892,77.5,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 77.5x), extrema compresión de múltiplo por subida de WACC."
+CBOE,"Cboe Global Markets, Inc.",Financial Services,8.53,9.25,9.82,21.28,18.088,21.3,8.5,-15.38,-26.67,MÁS BENEFICIADA,Beneficio directo por rendimiento del float asegurador o fondos fiduciarios / gestión de activos.
+SEZL,Sezzle Inc.,Financial Services,8.53,9.0,9.09,23.52,19.992,23.5,8.5,-15.38,-26.67,MÁS BENEFICIADA,Beneficio directo por rendimiento del float asegurador o fondos fiduciarios / gestión de activos.
+RDDT,"Reddit, Inc.",Communication Services,8.52,9.0,9.08,55.62,47.276999999999994,55.6,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 55.6x), extrema compresión de múltiplo por subida de WACC."
+NTES,"NetEase, Inc.",Communication Services,8.51,9.0,9.94,16.33,13.880499999999998,16.3,8.5,-15.38,-26.67,MÁS BENEFICIADA,"Baja duración bursátil (P/E < 20x), alta caja neta e incremento en ingresos por intereses."
+ADP,"Automatic Data Processing, Inc.",Technology,8.51,9.25,9.79,22.62,19.227,22.6,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+JKHY,"Jack Henry & Associates, Inc.",Technology,8.51,9.25,9.58,20.54,17.459,20.5,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+HWM,Howmet Aerospace Inc.,Industrials,8.51,8.75,9.21,62.89,53.4565,62.9,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 62.9x), extrema compresión de múltiplo por subida de WACC."
+TROW,"T. Rowe Price Group, Inc.",Financial Services,8.5,9.25,9.8,12.72,10.812,12.7,8.5,-15.38,-26.67,MÁS BENEFICIADA,Beneficio directo por rendimiento del float asegurador o fondos fiduciarios / gestión de activos.
+MRK,"Merck & Company, Inc.",Healthcare,8.5,9.0,9.54,36.5,31.025,36.5,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+TDD,"The Trade Desk, Inc.",Communication Services,8.49,9.0,9.26,21.7,18.445,21.7,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+CME,CME Group Inc.,Financial Services,8.49,9.25,8.79,20.2,17.169999999999998,20.2,8.5,-15.38,-26.67,MÁS BENEFICIADA,Beneficio directo por rendimiento del float asegurador o fondos fiduciarios / gestión de activos.
+AMZN,"Amazon.com, Inc.","Technology / E-Commerce, AWS Cloud Infrastructure & Ad Services",8.48,8.4,8.2,32.83,29.71,32.8,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+KEYS,Keysight Technologies Inc.,Technology,8.48,9.25,8.8,50.54,42.958999999999996,50.5,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 50.5x), extrema compresión de múltiplo por subida de WACC."
+NSSC,"NAPCO Security Technologies, In",Industrials,8.47,9.0,9.59,36.69,31.1865,36.7,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+MLI,"Mueller Industries, Inc.",Industrials,8.47,9.0,8.85,14.83,12.6055,14.8,8.5,-15.38,-26.67,MÁS BENEFICIADA,"Baja duración bursátil (P/E < 20x), alta caja neta e incremento en ingresos por intereses."
+NYT,New York Times Company (The),Communication Services,8.47,9.0,9.12,31.7,26.945,31.7,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+ALAB,"Astera Labs, Inc.",Technology,8.47,9.5,8.59,278.37,236.6145,278.4,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 278.4x), extrema compresión de múltiplo por subida de WACC."
+TER,"Teradyne, Inc.",Technology,8.47,9.5,8.56,68.48,58.208,68.5,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 68.5x), extrema compresión de múltiplo por subida de WACC."
+UBER,"Uber Technologies, Inc.",Technology,8.47,9.0,8.2,17.3,23.09,17.3,8.5,-15.38,-26.67,MÁS BENEFICIADA,"Baja duración bursátil (P/E < 20x), alta caja neta e incremento en ingresos por intereses."
+INFY,Infosys Limited,Technology,8.46,9.5,9.43,13.95,11.8575,13.9,8.5,-15.38,-26.67,MÁS BENEFICIADA,"Baja duración bursátil (P/E < 20x), alta caja neta e incremento en ingresos por intereses."
+ABBV,AbbVie Inc.,Healthcare,8.46,7.17,9.89,127.98,108.783,128.0,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 128.0x), extrema compresión de múltiplo por subida de WACC."
+PAYC,"Paycom Software, Inc.",Technology,8.46,9.5,9.3,16.11,13.693499999999998,16.1,8.5,-15.38,-26.67,MÁS BENEFICIADA,"Baja duración bursátil (P/E < 20x), alta caja neta e incremento en ingresos por intereses."
+MTD,"Mettler-Toledo International, I",Healthcare,8.46,8.84,9.21,30.77,26.1545,30.8,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+DUOL,"Duolingo, Inc.",Technology,8.45,9.5,8.47,14.39,12.2315,14.4,8.5,-15.38,-26.67,MÁS BENEFICIADA,"Baja duración bursátil (P/E < 20x), alta caja neta e incremento en ingresos por intereses."
+TEL,TE Connectivity plc,Technology,8.45,9.25,8.72,20.17,17.1445,20.2,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+JNJ,Johnson & Johnson,Healthcare,8.45,9.0,8.78,30.48,25.908,30.5,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+SHOP,Shopify Inc.,Technology,8.45,9.5,8.47,117.12,99.552,117.1,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 117.1x), extrema compresión de múltiplo por subida de WACC."
+TOST,"Toast, Inc.",Technology,8.44,9.5,8.4,43.01,36.558499999999995,43.0,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 43.0x), extrema compresión de múltiplo por subida de WACC."
+GE,GE Aerospace,Industrials,8.44,8.75,8.87,46.96,39.916,47.0,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 47.0x), extrema compresión de múltiplo por subida de WACC."
+ARM,Arm Holdings plc,Technology,8.44,9.5,8.41,370.92,315.282,370.9,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 370.9x), extrema compresión de múltiplo por subida de WACC."
+ADI,"Analog Devices, Inc.",Technology,8.43,9.25,8.55,56.21,47.7785,56.2,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 56.2x), extrema compresión de múltiplo por subida de WACC."
+LOGI,Logitech International S.A. - R,Technology,8.42,9.5,9.14,19.58,16.642999999999997,19.6,8.5,-15.38,-26.67,MÁS BENEFICIADA,"Baja duración bursátil (P/E < 20x), alta caja neta e incremento en ingresos por intereses."
+DT,"Dynatrace, Inc.",Technology,8.42,9.5,8.32,82.91,70.4735,82.9,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 82.9x), extrema compresión de múltiplo por subida de WACC."
+AMAT,"Applied Materials, Inc.",Technology,8.42,9.5,8.69,56.84,48.314,56.8,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 56.8x), extrema compresión de múltiplo por subida de WACC."
+VRSK,"Verisk Analytics, Inc.",Industrials,8.41,8.63,10.0,28.76,24.446,28.8,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+ABT,Abbott Laboratories,Healthcare,8.41,9.0,8.79,26.72,22.712,26.7,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+PDD,PDD Holdings Inc.,Consumer Cyclical,8.4,9.0,9.13,8.68,7.377999999999999,8.7,8.5,-15.38,-26.67,MÁS BENEFICIADA,"Baja duración bursátil (P/E < 20x), alta caja neta e incremento en ingresos por intereses."
+NXPI,NXP Semiconductors N.V.,Technology,8.4,8.48,9.25,26.11,22.1935,26.1,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+ROST,"Ross Stores, Inc.",Consumer Cyclical,8.4,8.75,8.9,29.85,25.372500000000002,29.9,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+AME,"AMETEK, Inc.",Industrials,8.4,8.75,9.06,35.44,30.124,35.4,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+MRVL,"Marvell Technology, Inc.",Technology,8.4,9.25,8.39,84.0,71.39999999999999,84.0,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 84.0x), extrema compresión de múltiplo por subida de WACC."
+ZTS,Zoetis Inc.,Healthcare,8.39,8.82,9.33,12.26,10.421,12.3,8.5,-15.38,-26.67,MÁS BENEFICIADA,"Baja duración bursátil (P/E < 20x), alta caja neta e incremento en ingresos por intereses."
+ROL,"Rollins, Inc.",Consumer Cyclical,8.39,8.75,9.37,39.8,33.83,39.8,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+DECK,Deckers Outdoor Corporation,Consumer Cyclical,8.38,9.0,9.21,14.91,12.6735,14.9,8.5,-15.38,-26.67,MÁS BENEFICIADA,"Baja duración bursátil (P/E < 20x), alta caja neta e incremento en ingresos por intereses."
+YUM,"Yum! Brands, Inc.",Consumer Cyclical,8.38,8.25,9.16,26.61,22.618499999999997,26.6,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+GEV,GE Vernova Inc.,Industrials,8.38,9.0,8.39,32.58,27.692999999999998,32.6,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+CB,Chubb Limited,Financial Services,8.37,9.0,8.85,12.77,10.8545,12.8,8.5,-15.38,-26.67,MÁS BENEFICIADA,Beneficio directo por rendimiento del float asegurador o fondos fiduciarios / gestión de activos.
+DOCU,"DocuSign, Inc.",Technology,8.37,9.5,8.77,29.72,25.261999999999997,29.7,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+STE,STERIS plc (Ireland),Healthcare,8.37,9.0,8.66,27.55,23.4175,27.6,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+FAST,Fastenal Company,Industrials,8.37,8.75,8.81,43.01,36.558499999999995,43.0,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 43.0x), extrema compresión de múltiplo por subida de WACC."
+WTS,"Watts Water Technologies, Inc.",Industrials,8.37,9.0,8.37,33.66,28.610999999999997,33.7,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+EXPO,"Exponent, Inc.",Industrials,8.36,9.0,8.76,28.5,24.224999999999998,28.5,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+TDG,Transdigm Group Incorporated,Industrials,8.36,8.25,8.82,42.02,35.717,42.0,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 42.0x), extrema compresión de múltiplo por subida de WACC."
+GDDY,GoDaddy Inc.,Technology,8.35,8.66,9.55,14.03,11.9255,14.0,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+OKTA,"Okta, Inc.",Technology,8.35,8.9,8.3,48.5,28.2,48.5,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 48.5x), extrema compresión de múltiplo por subida de WACC."
+AMGN,Amgen Inc.,Healthcare,8.34,7.93,9.46,26.04,22.134,26.0,8.5,-15.38,-26.67,MÁS AFECTADA,"Solidez F2 moderada (7.93), mayor exposición a refinanciación de deuda."
+CRVL,CorVel Corp.,Financial Services,8.34,9.25,8.85,29.97,25.4745,30.0,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+XPEL,"XPEL, Inc.",Consumer Cyclical,8.34,9.0,8.66,25.4,21.59,25.4,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+BR,"Broadridge Financial Solutions,",Technology,8.33,8.89,9.1,15.38,13.073,15.4,8.5,-15.38,-26.67,MÁS BENEFICIADA,"Baja duración bursátil (P/E < 20x), alta caja neta e incremento en ingresos por intereses."
+SSD,"Simpson Manufacturing Company, ",Basic Materials,8.33,8.75,8.98,23.59,20.0515,23.6,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+EBAY,eBay Inc.,Consumer Cyclical,8.33,8.48,8.75,26.52,22.541999999999998,26.5,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+EME,"EMCOR Group, Inc.",Industrials,8.33,9.0,8.15,26.04,22.134,26.0,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+CELH,"Celsius Holdings, Inc.",Consumer Defensive,8.33,8.75,8.56,77.12,65.552,77.1,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 77.1x), extrema compresión de múltiplo por subida de WACC."
+HRB,"H&R Block, Inc.",Consumer Cyclical,8.32,8.75,9.55,7.16,6.086,7.2,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+JBL,Jabil Inc.,Technology,8.32,9.25,8.38,42.72,36.312,42.7,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 42.7x), extrema compresión de múltiplo por subida de WACC."
+FTDR,"frontdoor, inc.",Consumer Cyclical,8.31,8.75,9.46,22.43,19.0655,22.4,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+QCOM,QUALCOMM Incorporated,Technology,8.31,9.25,9.94,18.93,16.0905,18.9,8.5,-15.38,-26.67,MÁS BENEFICIADA,"Baja duración bursátil (P/E < 20x), alta caja neta e incremento en ingresos por intereses."
+RELX,RELX PLC PLC,Industrials,8.31,8.36,10.0,21.57,18.3345,21.6,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+PH,Parker-Hannifin Corporation,Industrials,8.31,8.64,8.81,35.58,30.243,35.6,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+TKO,"TKO Group Holdings, Inc.",Communication Services,8.31,7.9,8.85,72.54,61.659000000000006,72.5,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 72.5x), extrema compresión de múltiplo por subida de WACC."
+AON,Aon plc,Financial Services,8.3,8.3,9.42,19.61,16.668499999999998,19.6,8.5,-15.38,-26.67,MÁS BENEFICIADA,Beneficio directo por rendimiento del float asegurador o fondos fiduciarios / gestión de activos.
+LPLA,LPL Financial Holdings Inc.,Financials / Independent Broker-Dealer & Wealth Management Advisory Services,8.29,8.2,8.2,28.19,15.25,28.2,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+TT,Trane Technologies plc,Industrials,8.29,8.75,9.08,36.5,31.025,36.5,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+DOCN,"DigitalOcean Holdings, Inc.",Technology,8.29,8.75,8.25,57.07,48.509499999999996,57.1,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 57.1x), extrema compresión de múltiplo por subida de WACC."
+SPSC,"SPS Commerce, Inc.",Technology,8.28,9.5,8.65,24.51,20.8335,24.5,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+TYL,"Tyler Technologies, Inc.",Technology,8.28,9.5,8.36,43.88,37.298,43.9,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 43.9x), extrema compresión de múltiplo por subida de WACC."
+TCEHY,TENCENT,Communication Services,8.28,8.75,8.72,15.48,13.158,15.5,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+IEX,IDEX Corporation,Industrials,8.28,8.75,8.75,33.11,28.1435,33.1,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+ATR,"AptarGroup, Inc.",Healthcare,8.28,9.0,7.87,21.74,18.479,21.7,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+TTC,Toro Company (The),Industrials,8.27,8.75,8.78,27.98,23.783,28.0,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+ULTA,"Ulta Beauty, Inc.",Consumer Cyclical,8.27,8.75,8.68,17.3,14.705,17.3,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+MCD,McDonald's Corporation,Consumer Cyclical,8.27,8.25,9.23,23.15,19.6775,23.1,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+ROK,"Rockwell Automation, Inc.",Industrials,8.26,8.05,8.85,49.03,41.6755,49.0,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 49.0x), extrema compresión de múltiplo por subida de WACC."
+AMD,"Advanced Micro Devices, Inc.",Technology,8.26,9.5,7.55,172.61,146.7185,172.6,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 172.6x), extrema compresión de múltiplo por subida de WACC."
+INMD,InMode Ltd.,Healthcare,8.25,9.25,8.14,10.96,9.316,11.0,8.5,-15.38,-26.67,MÁS BENEFICIADA,"Baja duración bursátil (P/E < 20x), alta caja neta e incremento en ingresos por intereses."
+MMSI,"Merit Medical Systems, Inc.",Healthcare,8.24,9.0,8.03,30.64,26.044,30.6,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+TTWO,"Take-Two Interactive Software, ",Communication Services,8.24,8.75,8.84,25.58,21.743,25.6,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+HOOD,"Robinhood Markets, Inc.",Financial Services,8.24,7.31,8.96,54.72,46.512,54.7,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 54.7x), extrema compresión de múltiplo por subida de WACC."
+TXN,Texas Instruments Incorporated,Technology,8.24,9.25,7.65,50.01,42.5085,50.0,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 50.0x), extrema compresión de múltiplo por subida de WACC."
+EFX,"Equifax, Inc.",Industrials,8.23,7.69,8.68,30.29,25.746499999999997,30.3,8.5,-15.38,-26.67,MÁS AFECTADA,"Solidez F2 moderada (7.69), mayor exposición a refinanciación de deuda."
+MAS,Masco Corporation,Industrials,8.23,8.43,8.99,20.49,17.4165,20.5,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+SYK,Stryker Corporation,Healthcare,8.23,8.66,8.72,37.75,32.0875,37.8,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+ITW,Illinois Tool Works Inc.,Industrials,8.23,8.48,9.15,25.33,21.530499999999996,25.3,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+BCPC,Balchem Corporation,Basic Materials,8.23,8.75,8.59,34.73,29.520499999999995,34.7,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+GWW,"W.W. Grainger, Inc.",Industrials,8.23,8.75,8.37,36.1,30.685,36.1,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+FSS,Federal Signal Corporation,Industrials,8.23,8.75,7.88,29.79,25.3215,29.8,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+NOVT,Novanta Inc.,Technology,8.22,9.5,7.88,116.35,98.8975,116.3,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 116.3x), extrema compresión de múltiplo por subida de WACC."
+EVO,Evolution AB,Consumer Cyclical,8.22,9.0,9.6,11.36,9.655999999999999,11.4,8.5,-15.38,-26.67,MÁS BENEFICIADA,"Baja duración bursátil (P/E < 20x), alta caja neta e incremento en ingresos por intereses."
+IT,"Gartner, Inc.",Technology,8.21,9.25,9.25,13.48,11.458,13.5,8.5,-15.38,-26.67,MÁS BENEFICIADA,"Baja duración bursátil (P/E < 20x), alta caja neta e incremento en ingresos por intereses."
+ACGL,Arch Capital Group Ltd.,Financial Services,8.21,9.0,9.51,7.86,6.681,7.9,8.5,-15.38,-26.67,MÁS BENEFICIADA,Beneficio directo por rendimiento del float asegurador o fondos fiduciarios / gestión de activos.
+CTVA,"Corteva, Inc.",Basic Materials,8.21,9.0,8.03,46.38,39.423,46.4,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 46.4x), extrema compresión de múltiplo por subida de WACC."
+LULU,lululemon athletica inc.,Consumer Cyclical,8.2,9.0,8.91,9.59,8.1515,9.6,8.5,-15.38,-26.67,MÁS BENEFICIADA,"Baja duración bursátil (P/E < 20x), alta caja neta e incremento en ingresos por intereses."
+WDAY,"Workday, Inc.",Technology,8.2,9.18,7.68,42.18,35.853,42.2,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 42.2x), extrema compresión de múltiplo por subida de WACC."
+YETI,"YETI Holdings, Inc.",Consumer Cyclical,8.2,8.75,8.65,25.35,21.5475,25.4,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+DOV,Dover Corporation,Industrials,8.2,8.75,8.25,26.75,22.7375,26.8,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+TRMB,Trimble Inc.,Technology,8.2,9.25,7.8,27.77,23.604499999999998,27.8,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+MAMA,"Mama's Creations, Inc.",Consumer Defensive,8.2,9.0,7.76,124.53,105.8505,124.5,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 124.5x), extrema compresión de múltiplo por subida de WACC."
+GIB,CGI Inc.,Technology,8.19,9.25,8.65,12.31,10.4635,12.3,8.5,-15.38,-26.67,MÁS BENEFICIADA,"Baja duración bursátil (P/E < 20x), alta caja neta e incremento en ingresos por intereses."
+NVO,Novo Nordisk A/S,Healthcare,8.19,9.0,7.0,12.09,10.2765,12.1,8.5,-15.38,-26.67,MÁS BENEFICIADA,"Baja duración bursátil (P/E < 20x), alta caja neta e incremento en ingresos por intereses."
+TRU,TransUnion,Financial Services,8.18,7.68,8.54,21.69,18.436500000000002,21.7,8.5,-15.38,-26.67,MÁS BENEFICIADA,Beneficio directo por rendimiento del float asegurador o fondos fiduciarios / gestión de activos.
+URI,"United Rentals, Inc.",Industrials,8.18,8.19,8.86,28.09,23.8765,28.1,8.5,-15.38,-26.67,MÁS AFECTADA,"Solidez F2 moderada (8.19), mayor exposición a refinanciación de deuda."
+BRK,Berkshire Hathaway Inc. New,Financial Services,8.17,9.0,8.51,15.1,12.834999999999999,15.1,8.5,-15.38,-26.67,MÁS BENEFICIADA,Beneficio directo por rendimiento del float asegurador o fondos fiduciarios / gestión de activos.
+WSM,"Williams-Sonoma, Inc.",Consumer Cyclical,8.17,8.75,8.93,25.51,21.683500000000002,25.5,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+ROP,"Roper Technologies, Inc.",Technology,8.16,8.02,8.52,22.73,19.3205,22.7,8.5,-15.38,-26.67,MÁS AFECTADA,"Solidez F2 moderada (8.02), mayor exposición a refinanciación de deuda."
+WAT,Waters Corporation,Healthcare,8.16,9.0,6.85,48.32,41.071999999999996,48.3,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 48.3x), extrema compresión de múltiplo por subida de WACC."
+HCA,"HCA Healthcare, Inc.",Healthcare,8.15,7.6,8.96,14.15,12.0275,14.2,8.5,-15.38,-26.67,MÁS AFECTADA,"Solidez F2 moderada (7.6), mayor exposición a refinanciación de deuda."
+BRO,"Brown & Brown, Inc.",Financial Services,8.15,7.34,8.5,22.8,19.38,22.8,8.5,-15.38,-26.67,MÁS BENEFICIADA,Beneficio directo por rendimiento del float asegurador o fondos fiduciarios / gestión de activos.
+FIVE,"Five Below, Inc.",Consumer Cyclical,8.15,8.29,8.03,22.98,19.533,23.0,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+DASH,"DoorDash, Inc.",Consumer Cyclical,8.15,9.0,7.56,91.0,77.35,91.0,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 91.0x), extrema compresión de múltiplo por subida de WACC."
+TEAM,Atlassian Corporation,Technology,8.14,9.5,7.0,13.47,11.4495,13.5,8.5,-15.38,-26.67,MÁS BENEFICIADA,"Baja duración bursátil (P/E < 20x), alta caja neta e incremento en ingresos por intereses."
+LOR,L'OREAL,Consumer Defensive,8.14,8.75,9.17,33.43,28.415499999999998,33.4,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+MLM,"Martin Marietta Materials, Inc.",Basic Materials,8.14,7.68,8.18,37.6,31.96,37.6,8.5,-15.38,-26.67,MÁS AFECTADA,"Solidez F2 moderada (7.68), mayor exposición a refinanciación de deuda."
+CMC,Commercial Metals Company,Industrials,8.14,8.75,7.46,11.67,9.9195,11.7,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+CSL,Carlisle Companies Incorporated,Industrials,8.13,8.75,9.42,21.41,18.1985,21.4,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+APO,"Apollo Global Management, Inc. ",Financial Services,8.13,9.25,9.57,74.6,63.41,74.6,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 74.6x), extrema compresión de múltiplo por subida de WACC."
+ZBRA,Zebra Technologies Corporation,Technology,8.13,7.89,8.16,32.27,27.4295,32.3,8.5,-15.38,-26.67,MÁS AFECTADA,"Solidez F2 moderada (7.89), mayor exposición a refinanciación de deuda."
+BF.B,Brown Forman Inc,Consumer Defensive,8.12,8.27,9.3,17.1,14.535,17.1,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+EVR,Evercore Inc.,Financial Services,8.12,9.25,7.0,19.27,16.3795,19.3,8.5,-15.38,-26.67,MÁS BENEFICIADA,Beneficio directo por rendimiento del float asegurador o fondos fiduciarios / gestión de activos.
+BMI,"Badger Meter, Inc.",Technology,8.12,9.5,9.43,33.0,28.05,33.0,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+SCHW,Charles Schwab Corporation (The,Financial Services,8.12,9.25,6.97,19.28,16.388,19.3,8.5,-15.38,-26.67,MÁS BENEFICIADA,Beneficio directo por rendimiento del float asegurador o fondos fiduciarios / gestión de activos.
+SKY,"Champion Homes, Inc.",Consumer Cyclical,8.12,9.0,8.51,23.29,19.796499999999998,23.3,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+BXSX,Boston Scientific Corporation,Healthcare,8.12,7.8,8.45,18.89,16.0565,18.9,8.5,-15.38,-26.67,MÁS AFECTADA,"Solidez F2 moderada (7.8), mayor exposición a refinanciación de deuda."
+TDY,Teledyne Technologies Incorpora,Technology,8.12,9.22,7.89,33.0,28.05,33.0,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+ZG,"Zillow Group, Inc.",Communication Services,8.12,9.0,7.16,133.68,113.628,133.7,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 133.7x), extrema compresión de múltiplo por subida de WACC."
+WWD,"Woodward, Inc.",Industrials,8.12,8.75,7.36,50.0,42.5,50.0,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 50.0x), extrema compresión de múltiplo por subida de WACC."
+IPAR,"Interparfums, Inc.",Consumer Defensive,8.11,8.75,8.9,22.61,19.2185,22.6,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+TMO,Thermo Fisher Scientific Inc,Healthcare,8.11,8.04,8.2,28.73,24.4205,28.7,8.5,-15.38,-26.67,MÁS AFECTADA,"Solidez F2 moderada (8.04), mayor exposición a refinanciación de deuda."
+CMG,"Chipotle Mexican Grill, Inc.",Consumer Cyclical,8.11,8.31,8.66,32.47,27.5995,32.5,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+PEP,"Pepsico, Inc.",Consumer Defensive,8.1,7.74,8.9,22.64,19.244,22.6,8.5,-15.38,-26.67,MÁS AFECTADA,"Solidez F2 moderada (7.74), mayor exposición a refinanciación de deuda."
+IHG,Intercontinental Hotels Group,Consumer Cyclical,8.1,7.87,9.42,34.97,29.7245,35.0,8.5,-15.38,-26.67,MÁS AFECTADA,"Solidez F2 moderada (7.87), mayor exposición a refinanciación de deuda."
+EPAM,"EPAM Systems, Inc.",Technology / IT Consulting & Digital Software Engineering Services,8.09,8.8,8.1,13.18,7.18,13.2,8.5,-15.38,-26.67,MÁS BENEFICIADA,"Baja duración bursátil (P/E < 20x), alta caja neta e incremento en ingresos por intereses."
+SSNC,"SS&C Technologies Holdings, Inc",Technology,8.09,7.54,8.83,20.35,17.2975,20.4,8.5,-15.38,-26.67,MÁS AFECTADA,"Solidez F2 moderada (7.54), mayor exposición a refinanciación de deuda."
+TEQ,Teqnion AB,Industrials,8.09,8.75,7.21,28.11,23.8935,28.1,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+DHR,Danaher Corporation,Healthcare,8.09,8.4,8.15,38.28,32.538,38.3,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+DRS,"Leonardo DRS, Inc.",Industrials,8.09,9.0,7.98,40.86,34.731,40.9,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+TPL,Texas Pacific Land Corporation,Energy,8.09,9.0,7.0,55.86,47.481,55.9,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 55.9x), extrema compresión de múltiplo por subida de WACC."
+OTIS,Otis Worldwide Corporation,Industrials,8.08,7.31,9.08,19.45,16.5325,19.4,8.5,-15.38,-26.67,MÁS AFECTADA,"Solidez F2 moderada (7.31), mayor exposición a refinanciación de deuda."
+RJF,"Raymond James Financial, Inc.",Financial Services,8.08,9.25,7.0,15.36,13.056,15.4,8.5,-15.38,-26.67,MÁS BENEFICIADA,Beneficio directo por rendimiento del float asegurador o fondos fiduciarios / gestión de activos.
+DBD,Diebold Nixdorf Incorporated,Technology,8.07,9.08,7.9,28.68,24.378,28.7,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+CASY,"Caseys General Stores, Inc.",Consumer Cyclical,8.07,8.65,7.48,41.66,35.410999999999994,41.7,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 41.7x), extrema compresión de múltiplo por subida de WACC."
+KRI,KRI-KRI S.A.,Consumer Defensive,8.07,9.0,7.16,23.23,19.7455,23.2,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+ON,ON Semiconductor Corporation,Technology,8.06,9.25,7.87,67.07,57.009499999999996,67.1,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 67.1x), extrema compresión de múltiplo por subida de WACC."
+NU,Nu Holdings Ltd.,Financial Services,8.06,9.25,6.68,20.94,17.799,20.9,8.5,-15.38,-26.67,MÁS BENEFICIADA,Beneficio directo por rendimiento del float asegurador o fondos fiduciarios / gestión de activos.
+WSO,"Watsco, Inc.",Industrials,8.06,8.75,8.64,33.23,28.245499999999996,33.2,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+TECH,Bio-Techne Corp,Healthcare,8.06,9.0,8.12,101.19,86.0115,101.2,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 101.2x), extrema compresión de múltiplo por subida de WACC."
+CAT,"Caterpillar, Inc.",Industrials,8.06,8.0,7.58,48.08,40.867999999999995,48.1,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 48.1x), extrema compresión de múltiplo por subida de WACC."
+MKTX,"MarketAxess Holdings, Inc.",Financial Services,8.06,9.25,7.0,13.81,11.7385,13.8,8.5,-15.38,-26.67,MÁS BENEFICIADA,Beneficio directo por rendimiento del float asegurador o fondos fiduciarios / gestión de activos.
+HSY,The Hershey Company,Consumer Defensive,8.05,7.87,8.35,33.92,28.832,33.9,8.5,-15.38,-26.67,MÁS AFECTADA,"Solidez F2 moderada (7.87), mayor exposición a refinanciación de deuda."
+WING,Wingstop Inc.,Consumer Cyclical,8.05,8.25,8.4,43.84,37.264,43.8,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 43.8x), extrema compresión de múltiplo por subida de WACC."
+TXRH,"Texas Roadhouse, Inc.",Consumer Cyclical,8.04,8.75,7.45,30.94,26.299,30.9,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+TMUS,"T-Mobile US, Inc.",Communication Services,8.04,6.77,8.85,18.87,16.0395,18.9,8.5,-15.38,-26.67,MÁS AFECTADA,"Solidez F2 moderada (6.77), mayor exposición a refinanciación de deuda."
+MCK,McKesson Corporation,Healthcare / Pharmaceutical Distribution & Healthcare Solutions,8.04,9.0,7.26,20.49,15.62,20.5,8.0,-16.67,-28.57,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+LVMH,LVMH,Consumer Cyclical,8.03,8.75,9.22,22.68,19.278,22.7,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+UNP,Union Pacific Corporation,Industrials,8.03,7.91,8.74,23.25,19.7625,23.2,8.5,-15.38,-26.67,MÁS AFECTADA,"Solidez F2 moderada (7.91), mayor exposición a refinanciación de deuda."
+ZS,"Zscaler, Inc.",Technology,8.03,9.5,6.46,32.05,27.242499999999996,32.0,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+TSLA,"Tesla, Inc.",Consumer Cyclical,8.03,9.0,6.96,357.68,304.028,357.7,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 357.7x), extrema compresión de múltiplo por subida de WACC."
+APG,APi Group Corporation,Industrials,8.02,7.89,7.46,21.62,18.377,21.6,8.5,-15.38,-26.67,MÁS AFECTADA,"Solidez F2 moderada (7.89), mayor exposición a refinanciación de deuda."
+SHW,Sherwin-Williams Company (The),Basic Materials,8.02,7.54,8.6,33.89,28.8065,33.9,8.5,-15.38,-26.67,MÁS AFECTADA,"Solidez F2 moderada (7.54), mayor exposición a refinanciación de deuda."
+CDW,CDW Corporation,Technology,8.01,8.21,7.9,16.23,13.7955,16.2,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+TREX,"Trex Company, Inc.",Industrials,8.01,8.75,8.27,26.93,22.8905,26.9,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+USLM,"United States Lime & Minerals, ",Basic Materials,8.01,9.0,8.59,23.68,20.128,23.7,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.
+MKC,"McCormick & Company, Incorporat",Consumer Defensive,8.0,7.37,8.0,8.89,7.556500000000001,8.9,8.5,-15.38,-26.67,MÁS AFECTADA,"Solidez F2 moderada (7.37), mayor exposición a refinanciación de deuda."
+HLT,Hilton Worldwide Holdings Inc.,Consumer Cyclical,8.0,6.42,9.07,51.54,43.809,51.5,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 51.5x), extrema compresión de múltiplo por subida de WACC."
+DIOD,Diodes Incorporated,Technology,8.0,9.5,6.32,52.03,44.2255,52.0,8.5,-15.38,-26.67,MÁS AFECTADA,"Alta valoración (P/E 52.0x), extrema compresión de múltiplo por subida de WACC."
+RS,"Reliance, Inc.",Basic Materials / Metals Service Centers & Processing,8.0,8.75,6.77,24.27,17.46,24.3,8.5,-15.38,-26.67,MODERADAMENTE AFECTADA,Resiliencia operativa razonable con impacto estándar por tasa de descuento.

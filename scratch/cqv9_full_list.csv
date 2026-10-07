@@ -1,0 +1,58 @@
+rank,ticker,name,sector,cqv_v5,pe,pe_forward,f1_econ,f2_solidez,f3_crecimiento,f8_resiliencia,wacc,g_terminal,price,intrinsic_value,mos_pct,verdict
+1,NVDA,NVIDIA Corporation,"Technology / AI Computing Infrastructure, Semiconductors & CUDA Software Ecosystem",9.8,26.62,21.77,9.85,9.9,9.7,9.75,8.5,3.5,209.0,282.0,25.89,Comprar / Revisar Compra
+2,RMS,Hermès International,Consumer Discretionary / Ultra-Luxury Leather Goods & Apparel,9.69,48.5,40.5,9.8,9.9,9.3,9.8,7.5,3.5,2354.4,2943.0,20.0,Acumular
+3,FICO,Fair Isaac Corporation,"Technology / Software, Credit Scoring & Decision Analytics",9.68,68.5,54.2,9.85,9.6,9.4,9.8,8.5,3.5,1780.0,2225.0,20.0,Acumular
+4,MSFT,Microsoft Corporation,"Technology / Software, Cloud Infrastructure & AI Platforms",9.68,33.8,28.4,9.7,9.85,9.3,9.7,8.0,3.5,448.5,560.63,20.0,Comprar / Revisar Compra
+5,RACE,Ferrari N.V.,Consumer Discretionary / Luxury Automotive & Racing Infrastructure,9.65,51.5,41.2,9.75,9.8,9.35,9.75,8.0,3.5,435.2,544.0,20.0,Comprar / Revisar Compra
+6,ASML,ASML Holding N.V.,Technology / Semiconductor Photolithography Systems & EUV Technology,9.63,38.5,27.5,9.6,9.7,9.4,9.7,8.0,3.5,825.0,1031.25,20.0,Comprar / Revisar Compra
+7,HEI,HEICO Corporation,Industrials / Aerospace & Defense Replacement Parts (FAA-PMA) & Flight Support,9.63,48.2,39.8,9.6,9.65,9.45,9.65,8.0,3.5,255.0,320.0,20.31,Comprar / Revisar Compra
+8,ISRG,"Intuitive Surgical, Inc.",Healthcare / Robotic Surgical Systems & Medical Devices,9.62,62.5,48.2,9.6,9.8,9.4,9.7,8.0,3.5,445.0,556.25,20.0,Acumular
+9,MANH,"Manhattan Associates, Inc.","Technology / Supply Chain Management, WMS & Omnichannel Cloud Software",9.61,55.0,42.5,9.5,9.8,9.4,9.6,8.0,3.5,240.0,300.0,20.0,Comprar / Revisar Compra
+10,V,Visa Inc.,Financials / Payment Processing & Financial Networks,9.6,27.8,23.2,9.8,9.6,9.2,9.7,9.0,3.0,272.5,340.63,20.0,Comprar / Revisar Compra
+11,AVGO,Broadcom Inc.,"Technology / Custom AI Accelerators, Networking Semiconductors & Enterprise Software",9.58,35.45,26.37,9.6,9.5,9.5,9.6,8.0,3.5,178.0,222.5,20.0,Comprar / Revisar Compra
+12,META,"Meta Platforms, Inc.","Technology / Social Media, AI Infrastructure & Digital Advertising",9.57,24.5,20.2,9.6,9.7,9.3,9.6,8.0,3.5,510.0,637.5,20.0,Comprar / Revisar Compra
+13,GOOGL,Alphabet Inc.,"Technology / Digital Advertising, Search, Cloud Computing & Applied AI",9.56,23.5,19.8,9.5,9.8,9.3,9.6,8.0,3.5,182.0,227.5,20.0,Comprar / Revisar Compra
+14,FIX,"Comfort Systems USA, Inc.","Industrials / Mission-Critical Mechanical & Electrical Infrastructure, Data Centers & Modular Pre-fabrication",9.54,47.69,37.75,9.65,9.5,9.7,9.4,8.0,3.5,1831.15,2280.0,19.69,Acumular
+15,CPRT,"Copart, Inc.",Industrials / Salvage Auto Auctions & Online Re-marketing,9.53,19.84,17.28,9.6,9.9,8.9,9.6,8.5,3.5,30.75,42.5,27.65,Comprar / Revisar Compra
+16,NOW,"ServiceNow, Inc.",Technology / Enterprise Cloud Platform & Digital Workflow Automation,9.53,62.5,48.5,9.5,9.7,9.35,9.5,8.5,3.5,785.6,982.0,20.0,Comprar / Revisar Compra
+17,MSCI,MSCI Inc.,"Financials / Market Indexes, Data & Financial Analytics",9.5,36.8,30.2,9.6,9.4,9.2,9.6,9.0,3.0,545.2,681.5,20.0,Acumular
+18,LIN,Linde plc,Materials / Industrial Gases & Engineering Infrastructure,9.48,31.2,26.5,9.5,9.4,9.1,9.7,8.0,3.0,455.0,568.75,20.0,Comprar / Revisar Compra
+19,HLI,"Houlihan Lokey, Inc.","Financials / Investment Banking, Global M&A Advisory & Financial Restructuring",9.48,27.5,21.2,9.4,9.6,9.3,9.5,8.0,3.5,162.0,202.5,20.0,Comprar / Revisar Compra
+20,MCO,Moody's Corporation,Financials / Financial Data & Credit Ratings,9.47,36.5,29.8,9.6,9.4,9.1,9.6,9.0,3.0,468.2,585.25,20.0,Comprar / Revisar Compra
+21,MA,Mastercard Incorporated,Financial Services,9.46,31.25,26.5625,10.0,9.0,9.33,9.9,,,100.0,158.4,36.87,Comprar / Revisar Compra
+22,KLAC,KLA Corporation,Technology / Semiconductor Equipment & Inspection Systems,9.46,28.4,22.5,9.6,9.3,9.2,9.5,9.0,3.0,785.4,981.75,20.0,Comprar / Revisar Compra
+23,TSM,Taiwan Semiconductor Manufacturing Co.,Technology / Semiconductor Foundry & Advanced Packaging,9.46,28.5,21.8,9.45,9.6,9.3,9.3,8.5,3.5,175.0,218.75,20.0,Comprar / Revisar Compra
+24,PANW,"Palo Alto Networks, Inc.",Technology / Cybersecurity & Network Security Platforms,9.46,56.14,41.2,9.45,9.35,9.4,9.5,9.0,3.0,362.09,445.0,18.63,Acumular
+25,ODFL,"Old Dominion Freight Line, Inc.",Industrials / Less-Than-Truckload (LTL) Freight Transportation,9.44,34.5,28.2,9.6,9.5,9.1,9.5,9.0,3.0,195.8,244.75,20.0,Acumular
+26,FTNT,"Fortinet, Inc.",Technology / Cybersecurity & Network Infrastructure,9.44,36.5,29.8,9.6,9.5,9.1,9.4,9.0,3.0,76.8,96.0,20.0,Comprar / Revisar Compra
+27,APP,Applovin Corporation,Communication Services,9.42,36.8,27.5,9.7,9.1,9.6,9.1,,,417.8,510.0,18.08,Acumular
+28,MSI,"Motorola Solutions, Inc.","Technology / Public Safety, Critical Communications & Video Security",9.41,34.8,28.5,9.5,9.2,9.1,9.6,8.5,3.0,445.5,556.88,20.0,Comprar / Revisar Compra
+29,SAP,SAP SE,"Technology / Enterprise Software, ERP Systems & Business Cloud Applications",9.41,34.5,26.8,9.35,9.5,9.1,9.5,8.0,3.5,228.0,285.0,20.0,Comprar / Revisar Compra
+30,INTU,Intuit Inc.,Technology / Enterprise Financial Software & Tax Services,9.41,41.2,28.5,9.6,9.3,9.2,9.45,9.0,3.0,678.4,855.0,20.65,Comprar / Revisar Compra
+31,BSX,Boston Scientific Corporation,"Healthcare / Medical Devices, Electrophysiology & Cardiovascular Solutions",9.4,36.5,29.8,9.4,9.2,9.3,9.5,8.5,3.5,82.5,103.13,20.0,Comprar / Revisar Compra
+32,COST,Costco Wholesale Corporation,Consumer Defensive / Wholesale Club & Subscription Retail,9.37,46.82,40.97,9.2,9.5,9.0,9.7,7.5,3.5,928.48,815.0,-13.92,Mantener
+33,CTAS,Cintas Corporation,Industrials / Corporate Uniforms & Facility Services,9.35,44.2,36.8,9.35,9.55,9.1,9.45,8.0,3.5,198.4,248.0,20.0,Acumular
+34,MEDP,"Medpace Holdings, Inc.",Healthcare / Contract Research Organization (CRO) & Clinical Trials,9.35,31.2,24.5,9.4,9.6,9.3,9.2,8.5,3.5,345.0,431.25,20.0,Comprar / Revisar Compra
+35,DELL,Dell Technologies Inc.,Technology,9.34,21.5,16.67,9.25,9.15,9.8,9.25,9.0,3.0,425.0,545.0,22.02,Comprar / Revisar Compra
+36,UNH,UnitedHealth Group Incorporated,"Healthcare / Managed Care, Health Insurance & Optum Healthcare Services",9.34,19.95,16.55,9.32,9.4,9.12,9.5,8.0,3.5,505.0,631.25,20.0,Comprar / Revisar Compra
+37,AZO,"AutoZone, Inc.",Consumer Discretionary / Specialty Retail – Automotive Parts & Accessories,9.34,20.1,17.5,9.4,8.8,9.1,9.6,8.5,3.0,3018.0,3772.5,20.0,Comprar / Revisar Compra
+38,ETN,Eaton Corporation plc,"Industrials / Electrical Equipment, Power Management & Aerospace",9.33,32.5,25.2,9.2,9.4,9.3,9.4,8.0,3.5,315.0,393.75,20.0,Comprar / Revisar Compra
+39,FN,Fabrinet,Technology,9.32,34.25,28.06,9.25,9.8,9.3,9.0,,,482.59,600.0,19.57,Acumular
+40,JPM,JPMorgan Chase & Co.,Financial Services / Mega-Cap Banking & Capital Markets,9.31,10.73,11.18,9.2,9.5,8.8,9.4,9.0,3.0,212.5,265.0,19.81,Acumular
+41,MPWR,"Monolithic Power Systems, Inc.",Technology / Power Management Integrated Circuits & AI Power,9.3,64.5,46.8,9.3,9.6,9.4,9.1,8.5,3.5,820.0,1025.0,20.0,Acumular
+42,VEEV,Veeva Systems Inc.,Healthcare,9.3,38.5,31.2,9.5,9.6,8.9,9.4,,,215.0,268.0,19.78,Acumular
+43,ORLY,"O'Reilly Automotive, Inc.",Consumer Discretionary / Automotive Aftermarket Parts Retail,9.28,27.5,23.5,9.3,9.4,8.9,9.45,8.0,3.5,1120.0,1400.0,20.0,Comprar / Revisar Compra
+44,KO,The Coca-Cola Company,Consumer Staples / Non-Alcoholic Beverages,9.25,25.5,22.8,9.2,9.5,8.7,9.5,7.5,3.5,68.5,85.63,20.0,Comprar / Revisar Compra
+45,KNSL,"Kinsale Capital Group, Inc.",Financial Services,9.24,15.036728,17.400797,9.5,9.4,9.5,8.8,,,376.67,470.84,20.0,Comprar / Revisar Compra
+46,ICE,"Intercontinental Exchange, Inc.","Financials / Financial Exchanges, Data & Mortgage Tech",9.2,28.5,21.5,9.25,9.35,9.0,9.2,8.0,3.5,148.5,185.63,20.0,Comprar / Revisar Compra
+47,PGR,The Progressive Corporation,Financials / Property & Casualty Insurance,9.17,18.5,14.8,9.3,9.4,9.0,9.1,8.0,3.5,219.99,274.99,20.0,Comprar / Revisar Compra
+48,LOTB,Lotus Bakeries NV,Consumer Defensive / Packaged Food & Global Snacking,9.16,48.05,42.83,9.1,9.4,9.2,9.1,7.5,3.5,9850.0,7800.0,-26.28,Mantener
+49,CRWD,"CrowdStrike Holdings, Inc.",Technology,9.15,82.5,52.4,9.0,9.3,9.4,9.1,,,275.0,335.0,17.91,Acumular
+50,SPGI,S&P Global Inc.,Financial Services,9.14,26.509161,20.76957,9.4,9.3,9.0,9.0,,,419.64,524.55,20.0,Acumular
+51,AAPL,Apple Inc.,"Technology / Consumer Electronics, Operating Systems & Ecosystem Services",9.12,31.5,26.8,9.2,9.5,8.7,9.3,,,271.35,345.0,21.35,Mantener
+52,VRT,Vertiv Holdings Co,"Industrials / Data Center Infrastructure, Power & Liquid Cooling",9.09,42.5,31.2,8.8,8.9,9.6,9.0,8.5,3.5,88.5,110.63,20.0,Comprar / Revisar Compra
+53,AJG,Arthur J. Gallagher & Co.,Financials / Insurance Brokerage & Risk Management,9.07,34.5,25.8,9.1,9.3,8.9,9.1,8.0,3.5,255.0,318.75,20.0,Comprar / Revisar Compra
+54,CRM,"Salesforce, Inc.",Technology,9.07,28.2,21.5,9.2,9.1,8.6,9.3,,,265.0,325.0,18.46,Acumular
+55,PWR,"Quanta Services, Inc.",Industrials / Electric Power Grid Infrastructure & Clean Energy,9.06,38.5,27.5,8.8,8.9,9.5,9.0,8.5,3.5,275.0,343.75,20.0,Comprar / Revisar Compra
+56,ORCL,Oracle Corporation,"Technology / Cloud Infrastructure, Databases & Enterprise Software",9.02,34.42,20.02,9.1,8.0,9.4,9.0,9.0,3.0,153.17,205.0,25.28,Comprar / Revisar Compra
+57,ANET,"Arista Networks, Inc.",Technology,9.02,54.98,46.733,10.0,9.5,8.83,8.0,,,100.0,140.8,28.98,Mantener

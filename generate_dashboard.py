@@ -61,11 +61,15 @@ def main():
     <script src="cqv_data.js"></script>
     <script src="cqv_history.js"></script>
     
+    <!-- DATA_INJECTION_START -->
     <script>
-        window.companiesData = __INJECTED_COMPANIES__;
+        window.cqvData = __INJECTED_COMPANIES__;
+        window.companiesData = window.cqvData;
         window.cqvHistoryData = __INJECTED_HISTORY__;
+        window.cqvHistory = window.cqvHistoryData;
         window.investmentTheses = __INJECTED_THESES__;
     </script>
+    <!-- DATA_INJECTION_END -->
 
     <style>
         :root {

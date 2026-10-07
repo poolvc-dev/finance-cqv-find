@@ -482,11 +482,21 @@ def write_data(path, data, variable=None):
 
 def sync_dashboard(data, history):
     try:
+        import generate_dashboard
+        generate_dashboard.main()
+        return
+    except Exception as e:
+        print(f"[NOTE] generate_dashboard error, falling back to direct injection: {e}")
+
+    try:
         with open("dashboard.html", "r", encoding="utf-8") as handle:
             html = handle.read()
 
         data_text = json.dumps(data, indent=2, ensure_ascii=False).replace("</script>", "<\\/script>")
         history_text = json.dumps(history, indent=2, ensure_ascii=False).replace("</script>", "<\\/script>")
+
+        theses_match = re.search(r"window\.investmentTheses\s*=\s*(\{[\s\S]*?\});", html)
+        theses_text = theses_match.group(1) if theses_match else "{}"
 
         injection = f"""<!-- DATA_INJECTION_START -->
     <script>
@@ -494,6 +504,7 @@ def sync_dashboard(data, history):
         window.companiesData = window.cqvData;
         window.cqvHistoryData = {history_text};
         window.cqvHistory = window.cqvHistoryData;
+        window.investmentTheses = {theses_text};
     </script>
     <!-- DATA_INJECTION_END -->"""
 
