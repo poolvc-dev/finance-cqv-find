@@ -5,7 +5,7 @@
 **Ticker:** NYSE: FICO (Fair Isaac Corporation)  
 **Precio de Mercado Actual:** **$617.87 USD** *(tras capitulación post-orden Single Pricing Grid FHFA del 29/09/2026)*  
 **Metodología Aplicada:** CQV v5.0 (Quality, Resilience, Moat & Value)  
-**Ubicación en el Repositorio:** `tesis/FICO/FICO_Ajuste_Previsiones_Analistas_Wall_Street_Precio_Objetivo_20261003.md` (sincronizado con `inform/tesis/FICO/`)
+**Ubicación en el Repositorio:** `inform/tesis/FICO/FICO_Ajuste_Previsiones_Analistas_Wall_Street_Precio_Objetivo_20261003.md` (sincronizado en `tesis/FICO/`)
 
 ---
 
@@ -121,7 +121,7 @@ graph TD
 
     E["FICO a $617.87 USD (Post-FHFA)"] --> F["PER Forward: ~16.8x - 17.3x"]
     F --> G["PEG Ratio: ~0.84x (Profunda Infravaloración)"]
-    G --> H["Value Score CQV v5.0: 9.22 (Atractivo Supremo / Descuento del 48%)"]
+    G --> H["Value Score CQV v5.0: 9.49 (Atractivo Supremo / Descuento del 48%)"]
 ```
 
 ### A. Diagnóstico de Múltiplos
@@ -154,4 +154,4 @@ $$\text{Value Score v5.0} = (0.40 \times 8.20) + (0.30 \times 10.00) + (0.30 \ti
 
 ---
 *Informe redactado y auditado bajo la Metodología CQV v5.0.*  
-*Archivado oficialmente en `tesis/FICO/FICO_Ajuste_Previsiones_Analistas_Wall_Street_Precio_Objetivo_20261003.md`.*
+*Archivado oficialmente en `inform/tesis/FICO/FICO_Ajuste_Previsiones_Analistas_Wall_Street_Precio_Objetivo_20261003.md`.*

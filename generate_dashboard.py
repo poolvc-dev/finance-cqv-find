@@ -15,19 +15,20 @@ def main():
                 history_db = json.load(hf)
 
         theses_dict = {}
-        # Load theses from inform/cqv_v5 and inform
+        # Load theses from inform/cqv_v5 (including subfolders by period) and inform
         dirs_to_check = ['inform/cqv_v5', 'inform']
         for d in dirs_to_check:
             if os.path.exists(d):
-                for fn in os.listdir(d):
-                    if fn.endswith('.md') and fn != 'template.md':
-                        base_key = fn.replace('.md', '').upper()
-                        ticker = base_key.split('_')[0]
-                        with open(os.path.join(d, fn), 'r', encoding='utf-8') as tf:
-                            content = tf.read()
-                            theses_dict[base_key] = content
-                            if ticker not in theses_dict:
-                                theses_dict[ticker] = content
+                for root, _, files in os.walk(d):
+                    for fn in sorted(files):
+                        if fn.endswith('.md') and fn != 'template.md':
+                            base_key = fn.replace('.md', '').upper()
+                            ticker = base_key.split('_')[0]
+                            with open(os.path.join(root, fn), 'r', encoding='utf-8') as tf:
+                                content = tf.read()
+                                theses_dict[base_key] = content
+                                if ticker not in theses_dict or '_P3_' in fn:
+                                    theses_dict[ticker] = content
 
         json_data = json.dumps(records, indent=2, ensure_ascii=False)
 
